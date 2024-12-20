@@ -20,7 +20,7 @@ footer {
 .cat-card {
   border: 1px solid #ddd;
   text-align: center;
-  height: 250px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -29,4 +29,23 @@ footer {
 .cat-info {
   background: #f8f9fa;
   border-radius: 4px;
+}
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.filter-container select,
+.filter-container input {
+  margin-right: 10px;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-bottom: 10px;
 }
