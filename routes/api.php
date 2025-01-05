@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -10,8 +12,6 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/', function () {
-    return ['Laravel' => app()->version()];
-});
-
+Route::get('/test', [TestController::class, 'getTestHuman'])->middleware('test.middleware');
+Route::get('/test/{id}', [TestController::class, 'getTestHumanWithId']);
 

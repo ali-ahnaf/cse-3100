@@ -38,5 +38,7 @@ class Kernel extends HttpKernel
      *
      * @var array<string, class-string|string>
      */
-    protected $routeMiddleware = [];
+    protected $routeMiddleware = [
+        'test.middleware' => \App\Http\Middleware\TestMiddleware::class,
+    ];
 }
