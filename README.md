@@ -29,6 +29,15 @@ The task is to add the following features to the cat adoption website demonstrat
 
 #### HINT: You might have to integrate bootstrap!
 
+## UI Mockups
+
+| Mockup | Mockup |
+|-------|-------|
+| <img src="https://github.com/user-attachments/assets/fb24a67f-4276-4452-a0c3-83d7743deae2" width="100%" /> | <img src="https://github.com/user-attachments/assets/5a85f9fe-cf6a-4a3e-aa02-10433c4b4f77" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/5dd3b5f5-d49a-4281-9628-3afe0b6970e9" width="100%" /> | <img src="https://github.com/user-attachments/assets/12cd720a-6e70-4ee6-ab7e-a112877e579b" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/a555d83c-5d0a-4295-877c-e5d7575d8dbe" width="100%" /> |  |
+
+
 ## Setup Instructions
 
 1.  **Install dependencies**:
