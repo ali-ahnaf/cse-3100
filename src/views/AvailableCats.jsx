@@ -44,7 +44,7 @@ export default function AvailableCats() {
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">
         {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
+          <div key={cat.name} className="col-md-4">
             <div className="cat-card">
               <img
                 src={cat.image}

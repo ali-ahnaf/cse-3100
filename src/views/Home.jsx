@@ -38,7 +38,7 @@ export default function Home() {
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
@@ -56,7 +56,7 @@ export default function Home() {
         <div className="mt-2 row g-4" id="cats-container"></div>
         <div className="mt-2 row g-4" id="cats-container">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={cat.name} className="col-md-4">
               <div className="cat-card">
                 <img
                   src={cat.image}
