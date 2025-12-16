@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed_type: 'Sphynx' },
+  { name: 'Mittens', age: '2', breed_type: 'Peterbald' },
+  { name: 'Shadow', age: '1', breed_type: 'Birman' },
 ];
 
 export default function Home() {
@@ -25,20 +25,15 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
+        
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
@@ -71,6 +66,7 @@ export default function Home() {
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-0">Breed Type: {cat.breed_type}</p>
                 </div>
               </div>
             </div>
