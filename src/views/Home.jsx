@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: "Whiskers", age: "2" },
+  { name: "Mittens", age: "2" },
+  { name: "Shadow", age: "1" },
 ];
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
+            fetch("https://api.thecatapi.com/v1/images/search").then((res) =>
               res.json()
             )
           )
@@ -29,11 +29,11 @@ export default function Home() {
 
         if (cats.length > 10) {
           alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
+            "Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! "
           );
         }
       } catch (error) {
-        console.error('Error fetching cat images:', error);
+        console.error("Error fetching cat images:", error);
       }
     };
 
@@ -63,9 +63,9 @@ export default function Home() {
                   alt={cat.name}
                   className="img-fluid mb-2"
                   style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
+                    borderRadius: "8px",
+                    height: "200px",
+                    objectFit: "cover",
                   }}
                 />
                 <div className="cat-info">

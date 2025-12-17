@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: "Whiskers", age: "2" },
+  { name: "Mittens", age: "2" },
+  { name: "Shadow", age: "1" },
+  { name: "Pumpkin", age: "3" },
+  { name: "Luna", age: "4" },
+  { name: "Simba", age: "2" },
 ];
 
 export default function AvailableCats() {
@@ -18,7 +18,7 @@ export default function AvailableCats() {
       try {
         const responses = await Promise.all(
           availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
+            fetch("https://api.thecatapi.com/v1/images/search").then((res) =>
               res.json()
             )
           )
@@ -30,7 +30,7 @@ export default function AvailableCats() {
 
         setCats(catsWithImages);
       } catch (error) {
-        console.error('Error fetching cat images:', error);
+        console.error("Error fetching cat images:", error);
       }
     };
 
@@ -51,9 +51,9 @@ export default function AvailableCats() {
                 alt={cat.name}
                 className="img-fluid mb-2"
                 style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
+                  borderRadius: "8px",
+                  height: "200px",
+                  objectFit: "cover",
                 }}
               />
               <div className="cat-info">
