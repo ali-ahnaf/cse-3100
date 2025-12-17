@@ -4,9 +4,9 @@
 
 .layout {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 100vh;
-  overflow: hidden;
-  /* transform: rotate(1deg); */
 }
 
 header {
@@ -24,11 +24,6 @@ main {
 footer {
   padding: 1em;
   text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
 }
 
 .cat-card {
