@@ -28,16 +28,24 @@ footer {
 
 .cat-card {
   border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  border-radius: 0.75rem;
   overflow: hidden;
+  position: relative;
+}
+
+.cat-card > img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .cat-info {
   background: #000;
   color: #fff;
-  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
