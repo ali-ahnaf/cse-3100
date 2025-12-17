@@ -1,7 +1,13 @@
 import useCats from "../hooks/useCats.js";
 
+const featuredCats = [
+  { name: "Whiskers", age: "2" },
+  { name: "Mittens", age: "2" },
+  { name: "Shadow", age: "1" },
+];
+
 export default function Home() {
-  const { loading, error, cats } = useCats();
+  const { cats } = useCats(featuredCats);
 
   return (
     <>

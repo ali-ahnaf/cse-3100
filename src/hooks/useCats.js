@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const featuredCats = [
-  { name: "Whiskers", age: "2" },
-  { name: "Mittens", age: "2" },
-  { name: "Shadow", age: "1" },
-];
-
-const useCats = () => {
+const useCats = (featuredCats) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [cats, setCats] = useState([]);
@@ -30,7 +24,8 @@ const useCats = () => {
       const catsWithImages = featuredCats.map((cat, i) => ({
         ...cat, image: res.data[i].url,
       }));
-      setCats((prev) => [...prev, ...catsWithImages]);
+      // setCats((prev) => [...prev, ...catsWithImages]);
+      setCats([...catsWithImages]);
       setLoading(false);
     })
 

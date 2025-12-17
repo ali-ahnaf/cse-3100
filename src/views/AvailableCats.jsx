@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import useCats from "../hooks/useCats";
 
 const availableCats = [
   { name: "Whiskers", age: "2" },
@@ -10,32 +10,7 @@ const availableCats = [
 ];
 
 export default function AvailableCats() {
-  const [cats, setCats] = useState([]);
-
-  useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch("https://api.thecatapi.com/v1/images/search").then((res) =>
-              res.json()
-            )
-          )
-        );
-        const catsWithImages = availableCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats(catsWithImages);
-      } catch (error) {
-        console.error("Error fetching cat images:", error);
-      }
-    };
-
-    fetchCatImages();
-  }, []);
+  const { cats } = useCats(availableCats);
 
   return (
     <section className="text-center mt-4">
