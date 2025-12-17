@@ -6,7 +6,7 @@
   display: flex;
   min-height: 100vh;
   overflow: hidden;
-  transform: rotate(1deg);
+  /* transform: rotate(1deg); */
 }
 
 header {
