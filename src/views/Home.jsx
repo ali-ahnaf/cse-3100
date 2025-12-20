@@ -25,7 +25,8 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
+        // setCats((prevCats) => [...prevCats, ...catsWithImages]);
+        setCats(catsWithImages);
 
         if (cats.length > 10) {
           alert(
@@ -38,22 +39,22 @@ export default function Home() {
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+        <p  className='intro-text'>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc 
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc 
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
         </p>
       </section>
 
       <section className="mt-5">
         <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
+        {/* <div className="mt-2 row g-4" id="cats-container"></div> */}
         <div className="mt-2 row g-4" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
