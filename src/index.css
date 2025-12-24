@@ -1,70 +1,220 @@
-/* Global box-sizing and reset */
 * {
   box-sizing: border-box;
 }
 
-html, body, #root {
-  height: 100%;
+body {
+  background-color: #f5f5f5;
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Page layout: header, main, footer stacked vertically */
 .layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  background-color: #fff;
 }
 
 header {
-  padding: 1rem;
-  background-color: #222;
-  color: #fff;
+  padding: 1em 1.5em;
+  background-color: #fff;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+header .nav-link {
+  color: #333;
+  text-decoration: none;
 }
 
 main {
-  flex: 1 1 auto;
-  padding: 1rem;
-  display: block;
+  flex: 1;
+  padding: 1.5em;
+  background-color: #fff;
 }
 
 footer {
-  padding: 1rem;
-  text-align: right;
-  background: #f5f5f5;
+  padding: 1em;
+  text-align: center;
+  background: #fff;
   color: #333;
-  width: 100%;
-  margin-top: auto;
+  border-top: 1px solid #ddd;
 }
 
-/* Card styles */
-.cat-card {
-  border: 1px solid #e0e0e0;
-  background: #fff;
+/* Welcome Section */
+.welcome-section {
   text-align: center;
-  height: 150px;
+  padding: 1em 2em;
+  margin-bottom: 2em;
+}
+
+.welcome-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+}
+
+.welcome-section p {
+  color: #555;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Featured Cats Section */
+.featured-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}
+
+.cats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.cat-card {
+  border: 2px solid #333;
+  border-radius: 12px;
+  text-align: left;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   overflow: hidden;
-  padding: 0.5rem;
+  background: #fff;
+  height: 220px;
+}
+
+.cat-card .cat-image-placeholder {
+  flex: 1;
+  background: #f9f9f9;
+  min-height: 140px;
+}
+
+.cat-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
-  padding: 0.5rem 0.75rem;
-  display: inline-block;
+  background: #f5f5f5;
+  color: #333;
+  padding: 0.5em 0.75em;
+  border-radius: 0 0 10px 10px;
+  border-top: 1px solid #ddd;
 }
 
-/* Small responsive tweaks */
-@media (max-width: 600px) {
-  header, main, footer {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-  .cat-card {
-    height: auto;
-    padding: 1rem;
-  }
+.cat-info h3 {
+  font-size: 0.95rem;
+  margin: 0 0 0.2em 0;
+  font-weight: 600;
+}
+
+.cat-info p {
+  font-size: 0.8rem;
+  margin: 0;
+  color: #666;
+}
+
+/* Available Cats Section */
+.available-cats-section {
+  padding: 0;
+}
+
+.available-cats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.available-cats-section h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  text-align: left;
+}
+
+.search-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.breed-select {
+  padding: 0.5em 1em;
+  border: 1px solid #333;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.search-input {
+  padding: 0.5em 1em;
+  border: 1px solid #333;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  width: 140px;
+}
+
+.search-btn {
+  padding: 0.5em 1.5em;
+  border: none;
+  border-radius: 20px;
+  background: #6b9bd1;
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #5a8ac0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 1em 0;
+}
+
+/* Nav Buttons */
+.available-cats-nav-btn {
+  background: #6b9bd1;
+  color: #fff !important;
+  padding: 0.4em 1em;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.available-cats-nav-btn:hover {
+  background: #5a8ac0;
+}
+
+.donate-nav-btn {
+  background: #f0ad4e;
+  color: #fff !important;
+  padding: 0.4em 1em;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.donate-nav-btn:hover {
+  background: #ec971f;
 }
