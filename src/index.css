@@ -140,8 +140,58 @@ footer {
   padding: 0;
 }
 
+.available-cats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
 .available-cats-section h2 {
   font-size: 1.2rem;
-  margin-bottom: 1em;
+  margin: 0;
   text-align: left;
+}
+
+.search-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.breed-select {
+  padding: 0.5em 1em;
+  border: 1px solid #333;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.search-input {
+  padding: 0.5em 1em;
+  border: 1px solid #333;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  width: 140px;
+}
+
+.search-btn {
+  padding: 0.5em 1.5em;
+  border: none;
+  border-radius: 20px;
+  background: #6b9bd1;
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #5a8ac0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 1em 0;
 }
