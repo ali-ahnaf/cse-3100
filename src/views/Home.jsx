@@ -25,20 +25,15 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        // Set fetched cats once (avoid appending on every render)
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
