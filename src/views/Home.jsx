@@ -9,9 +9,11 @@ const featuredCats = [
 
 export default function Home() {
   const [cats, setCats] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCatImages = async () => {
+      setLoading(true);
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
@@ -29,6 +31,8 @@ export default function Home() {
         setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -49,19 +53,29 @@ export default function Home() {
       <section className="featured-section">
         <h2>Featured cats</h2>
         <div className="cats-grid" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="cat-card">
-              {cat.image ? (
-                <img src={cat.image} alt={cat.name} />
-              ) : (
-                <div className="cat-image-placeholder"></div>
-              )}
-              <div className="cat-info">
-                <h3>{cat.name}</h3>
-                <p>Age: {cat.age}</p>
-              </div>
-            </div>
-          ))}
+          {loading
+            ? featuredCats.map((_, i) => (
+                <div key={i} className="cat-card skeleton-card">
+                  <div className="skeleton-image"></div>
+                  <div className="cat-info">
+                    <div className="skeleton-text skeleton-title"></div>
+                    <div className="skeleton-text skeleton-subtitle"></div>
+                  </div>
+                </div>
+              ))
+            : cats.map((cat, i) => (
+                <div key={i} className="cat-card">
+                  {cat.image ? (
+                    <img src={cat.image} alt={cat.name} />
+                  ) : (
+                    <div className="cat-image-placeholder"></div>
+                  )}
+                  <div className="cat-info">
+                    <h3>{cat.name}</h3>
+                    <p>Age: {cat.age}</p>
+                  </div>
+                </div>
+              ))}
         </div>
       </section>
     </>

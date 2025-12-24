@@ -19,10 +19,12 @@ export default function AvailableCats() {
   const [filteredCats, setFilteredCats] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState('');
   const [searchName, setSearchName] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
+      setLoading(true);
       try {
         const responses = await Promise.all(
           availableCats.map(() =>
@@ -40,6 +42,8 @@ export default function AvailableCats() {
         setFilteredCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -96,19 +100,29 @@ export default function AvailableCats() {
       <hr className="divider" />
 
       <div className="cats-grid" id="cats-container">
-        {filteredCats.map((cat, i) => (
-          <div key={i} className="cat-card">
-            {cat.image ? (
-              <img src={cat.image} alt={cat.name} />
-            ) : (
-              <div className="cat-image-placeholder"></div>
-            )}
-            <div className="cat-info">
-              <h3>{cat.name}</h3>
-              <p>Age: {cat.age}</p>
-            </div>
-          </div>
-        ))}
+        {loading
+          ? availableCats.map((_, i) => (
+              <div key={i} className="cat-card skeleton-card">
+                <div className="skeleton-image"></div>
+                <div className="cat-info">
+                  <div className="skeleton-text skeleton-title"></div>
+                  <div className="skeleton-text skeleton-subtitle"></div>
+                </div>
+              </div>
+            ))
+          : filteredCats.map((cat, i) => (
+              <div key={i} className="cat-card">
+                {cat.image ? (
+                  <img src={cat.image} alt={cat.name} />
+                ) : (
+                  <div className="cat-image-placeholder"></div>
+                )}
+                <div className="cat-info">
+                  <h3>{cat.name}</h3>
+                  <p>Age: {cat.age}</p>
+                </div>
+              </div>
+            ))}
       </div>
     </section>
   );
