@@ -8,11 +8,19 @@
   min-height: 100vh;
   overflow: hidden;
 }
+.layout ul li {
+  font-size: 1.1rem;
+  margin: 0px 15px;
+  font-weight: 600;
+  position: relative;
+}
+
 
 header {
-  padding: 1em;
+  padding: .6em;
   background-color: #fff;
   color: #fff;
+  border-bottom: 1px solid black;
 }
 
 main {
@@ -25,13 +33,13 @@ footer {
   padding: 1em;
   bottom: 0;
   width: 100%;
-  border: 1px solid black;
+  border-top: 1px solid black;
 }
 
 .cat-card {
   border: 2px solid black;
   text-align: center;
-  height: 250px;
+  height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -56,8 +64,8 @@ footer {
 }
 
 .cat-info {
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
   color: #fff;
   text-align: center;
   position: relative;
@@ -67,4 +75,32 @@ footer {
 .cat-info h3 {
   font-size: 1.1rem;
   font-weight: 500;
+}
+.cat-info p {
+  font-size: .9rem;
+  font-weight: 400;
+}
+
+.nav-link:hover {
+  color: black !important;
+}
+.layout ul li::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.3s ease-out;
+}
+
+.layout ul li:hover::after {
+  width: 100%;
+}
+
+.contact-form {
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }

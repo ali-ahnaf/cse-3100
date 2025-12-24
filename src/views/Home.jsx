@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Luna', age: '3' },
-  { name: 'Oliver', age: '2' },
-  { name: 'Bella', age: '1' },
-  { name: 'Simba', age: '4' },
-  { name: 'Chloe', age: '2' },
-  { name: 'Leo', age: '3' },
-  { name: 'Daisy', age: '1' },
+  { name: 'Whiskers', breed: 'Sphynx' , age: '2' },
+  { name: 'Mittens', breed: 'Siamese' , age: '2' },
+  { name: 'Shadow', breed: 'Peterbald' , age: '1' },
+  { name: 'Luna', breed: 'Birman' , age: '3' },
+  { name: 'Oliver', breed: 'Abyssinian' , age: '2' },
+  { name: 'Bella', breed: 'Birman' , age: '1' },
+  { name: 'Simba', breed: 'Persian' , age: '4' },
+  { name: 'Chloe', breed: 'Bengal' , age: '2' },
+  { name: 'Leo', breed: 'Persian' , age: '3' },
+  { name: 'Daisy', breed: 'Siamese' , age: '1' },
 ];
 
 export default function Home() {
@@ -57,9 +57,9 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="mt-5 mx-4">
+      <section className="m-4">
         <h2>Featured cats</h2>
-        <div className="mt-2 row g-4 " id="cats-container">
+        <div className="mt-1 row g-5 " id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4 col-lg-2">
               <div className="cat-card">
@@ -73,6 +73,7 @@ export default function Home() {
                 />
                 <div className="cat-info py-2">
                   <h3 className="mb-1">{cat.name}</h3>
+                  <p className="mb-0">Breed: {cat.breed}</p>
                   <p className="mb-0">Age: {cat.age}</p>
                 </div>
               </div>
