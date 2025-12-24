@@ -4,9 +4,9 @@
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
-  transform: rotate(1deg);
 }
 
 header {
@@ -23,26 +23,48 @@ main {
 
 footer {
   padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
+  bottom: 0;
   width: 100%;
-  z-index: 9999;
-  background: red;
+  border: 1px solid black;
 }
 
 .cat-card {
-  border: 1px solid #ddd;
+  border: 2px solid black;
   text-align: center;
-  height: 150px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.cat-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s;
+}
+
+.cat-card:hover {
+  transform: scale(1.05);
 }
 
 .cat-info {
-  background: #000;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
-  border-radius: 4px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cat-info h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
 }

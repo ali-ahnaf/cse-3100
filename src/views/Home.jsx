@@ -4,6 +4,13 @@ const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
   { name: 'Shadow', age: '1' },
+  { name: 'Luna', age: '3' },
+  { name: 'Oliver', age: '2' },
+  { name: 'Bella', age: '1' },
+  { name: 'Simba', age: '4' },
+  { name: 'Chloe', age: '2' },
+  { name: 'Leo', age: '3' },
+  { name: 'Daisy', age: '1' },
 ];
 
 export default function Home() {
@@ -14,7 +21,7 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
+            fetch('https://api.thecatapi.com/v1/images/search?limit=10').then((res) =>
               res.json()
             )
           )
@@ -25,7 +32,8 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
+        const limitCats = catsWithImages.slice(0, 10);
+        setCats(limitCats);
 
         if (cats.length > 10) {
           alert(
@@ -38,38 +46,33 @@ export default function Home() {
     };
 
     fetchCatImages();
-  });
+  }, []); //Added dependency array to stop the infinite render
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+        <p className='p-4 mx-auto text-center' style={{width: '70%'}}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, unde eius? Quae deleniti tenetur voluptatum sint quibusdam nesciunt. Lorem ipsum dolor sit amet.  Lorem ipsum dolor sit amet. Tempora eveniet esse nam voluptate modi nesciunt assumenda obcaecati doloribus labore ratione! Fugit iusto voluptatem repellat ratione quaerat? Maxime voluptatibus recusandae ad ipsa, quibusdam veritatis.
         </p>
       </section>
 
-      <section className="mt-5">
+      <section className="mt-5 mx-4">
         <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+        <div className="mt-2 row g-4 " id="cats-container">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={i} className="col-md-4 col-lg-2">
               <div className="cat-card">
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="img-fluid mb-2"
+                  className="img-fluid"
                   style={{
-                    borderRadius: '8px',
-                    height: '200px',
                     objectFit: 'cover',
                   }}
                 />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
+                <div className="cat-info py-2">
+                  <h3 className="mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
                 </div>
               </div>
