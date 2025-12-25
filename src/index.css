@@ -104,3 +104,19 @@ footer {
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+
+.contact-form .form-control {
+  width: 95%;
+}
+
+.team-card {
+  width: 100%;
+  max-width: 14rem;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+.team-img {
+  height: 180px;
+  object-fit: cover;
+}

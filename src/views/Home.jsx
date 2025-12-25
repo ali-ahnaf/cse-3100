@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const featuredCats = [
-  { name: 'Whiskers', breed: 'Sphynx' , age: '2' },
-  { name: 'Mittens', breed: 'Siamese' , age: '2' },
-  { name: 'Shadow', breed: 'Peterbald' , age: '1' },
-  { name: 'Luna', breed: 'Birman' , age: '3' },
-  { name: 'Oliver', breed: 'Abyssinian' , age: '2' },
-  { name: 'Bella', breed: 'Birman' , age: '1' },
-  { name: 'Simba', breed: 'Persian' , age: '4' },
-  { name: 'Chloe', breed: 'Bengal' , age: '2' },
-  { name: 'Leo', breed: 'Persian' , age: '3' },
-  { name: 'Daisy', breed: 'Siamese' , age: '1' },
+  { name: "Whiskers", breed: "Sphynx", age: "2" },
+  { name: "Mittens", breed: "Siamese", age: "2" },
+  { name: "Shadow", breed: "Peterbald", age: "1" },
+  { name: "Luna", breed: "Birman", age: "3" },
+  { name: "Oliver", breed: "Abyssinian", age: "2" },
+  { name: "Bella", breed: "Birman", age: "1" },
+  { name: "Simba", breed: "Persian", age: "4" },
+  { name: "Chloe", breed: "Bengal", age: "2" },
+  { name: "Leo", breed: "Persian", age: "3" },
+  { name: "Daisy", breed: "Siamese", age: "1" },
 ];
 
 export default function Home() {
@@ -21,8 +21,8 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search?limit=10').then((res) =>
-              res.json()
+            fetch("https://api.thecatapi.com/v1/images/search?limit=10").then(
+              (res) => res.json()
             )
           )
         );
@@ -37,11 +37,11 @@ export default function Home() {
 
         if (cats.length > 10) {
           alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
+            "Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! "
           );
         }
       } catch (error) {
-        console.error('Error fetching cat images:', error);
+        console.error("Error fetching cat images:", error);
       }
     };
 
@@ -52,14 +52,18 @@ export default function Home() {
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
-        <p className='p-4 mx-auto text-center' style={{width: '70%'}}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, unde eius? Quae deleniti tenetur voluptatum sint quibusdam nesciunt. Lorem ipsum dolor sit amet.  Lorem ipsum dolor sit amet. Tempora eveniet esse nam voluptate modi nesciunt assumenda obcaecati doloribus labore ratione! Fugit iusto voluptatem repellat ratione quaerat? Maxime voluptatibus recusandae ad ipsa, quibusdam veritatis.
+        <p className="p-4 mx-auto text-center" style={{ width: "70%" }}>
+          Welcome to <b>Purrfect Adoptions!</b> We're dedicated to finding loving homes
+          for cats in need. Every cat deserves a second chance at happiness, and
+          we're here to make that connection between you and your future feline
+          friend. Browse our available cats, learn about the adoption process,
+          and discover how you can make a difference in a cat's life today.
         </p>
       </section>
 
       <section className="m-4">
         <h2>Featured cats</h2>
-        <div className="mt-1 row g-5 " id="cats-container">
+        <div className="mt-1 row g-5" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4 col-lg-2">
               <div className="cat-card">
@@ -68,7 +72,7 @@ export default function Home() {
                   alt={cat.name}
                   className="img-fluid"
                   style={{
-                    objectFit: 'cover',
+                    objectFit: "cover",
                   }}
                 />
                 <div className="cat-info py-2">

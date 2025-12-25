@@ -25,7 +25,7 @@ export default function ContactUs() {
             <label for="phone" className="form-label fw-bold">
               Phone
             </label>
-            <input type="tel" className="form-control" id="phone"/>
+            <input type="tel" className="form-control" id="phone" />
           </div>
 
           <div className="mb-4">
@@ -39,11 +39,7 @@ export default function ContactUs() {
             <label for="message" className="form-label fw-bold">
               Message
             </label>
-            <textarea
-              className="form-control"
-              id="message"
-              rows="5"
-            ></textarea>
+            <textarea className="form-control" id="message" rows="5" />
           </div>
 
           <div className="text-center">
