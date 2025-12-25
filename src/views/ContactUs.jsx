@@ -15,28 +15,28 @@ export default function ContactUs() {
       <section className="p-4 mx-auto mb-2" style={{ maxWidth: "600px" }}>
         <form className="contact-form">
           <div className="mb-4">
-            <label for="name" className="form-label fw-bold">
+            <label htmlFor="name" className="form-label fw-bold">
               Name
             </label>
             <input type="text" className="form-control" id="name" />
           </div>
 
           <div className="mb-4">
-            <label for="phone" className="form-label fw-bold">
+            <label htmlFor="phone" className="form-label fw-bold">
               Phone
             </label>
             <input type="tel" className="form-control" id="phone" />
           </div>
 
           <div className="mb-4">
-            <label for="email" className="form-label fw-bold">
+            <label htmlFor="email" className="form-label fw-bold">
               Email
             </label>
             <input type="email" className="form-control" id="email" />
           </div>
 
           <div className="mb-4">
-            <label for="message" className="form-label fw-bold">
+            <label htmlFor="message" className="form-label fw-bold">
               Message
             </label>
             <textarea className="form-control" id="message" rows="5" />

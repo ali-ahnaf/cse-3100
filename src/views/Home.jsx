@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <>
       <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
+        <h2 className="fw-bold">Welcome to Purrfect Adoption</h2>
         <p className="p-4 mx-auto text-center" style={{ width: "70%" }}>
           Welcome to <b>Purrfect Adoptions!</b> We're dedicated to finding loving homes
           for cats in need. Every cat deserves a second chance at happiness, and
@@ -62,7 +62,7 @@ export default function Home() {
       </section>
 
       <section className="m-4">
-        <h2 className="fw-bold">Featured cats</h2>
+        <h2>Featured cats</h2>
         <div className="mt-2 row g-4" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4 col-lg-2">
