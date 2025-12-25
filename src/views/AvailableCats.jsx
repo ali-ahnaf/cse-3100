@@ -1,18 +1,32 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: 'Whiskers', age: '2', breed: 'Persian' },
+  { name: 'Mittens', age: '2', breed: 'Siamese' },
+  { name: 'Shadow', age: '2', breed: 'Maine Coon' },
+  { name: 'Pumpkin', age: '2', breed: 'Ragdoll' },
+  { name: 'Luna', age: '2', breed: 'Persian' },
+  { name: 'Simba', age: '2', breed: 'Siamese' },
+  { name: 'Oliver', age: '2', breed: 'Maine Coon' },
+  { name: 'Bella', age: '2', breed: 'Ragdoll' },
 ];
+
+// Get unique breeds from available cats
+const breeds = [...new Set(availableCats.map(cat => cat.breed))];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [filteredCats, setFilteredCats] = useState([]);
+  const [selectedBreed, setSelectedBreed] = useState('');
+  const [searchName, setSearchName] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Reset state on mount
+    setCats([]);
+    setFilteredCats([]);
+    setLoading(true);
+    
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
@@ -29,40 +43,90 @@ export default function AvailableCats() {
         }));
 
         setCats(catsWithImages);
+        setFilteredCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchCatImages();
   }, []);
 
-  return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+  const handleSearch = () => {
+    let results = cats;
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
-              />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
+    // Filter by breed
+    if (selectedBreed) {
+      results = results.filter(cat => cat.breed === selectedBreed);
+    }
+
+    // Filter by name
+    if (searchName.trim()) {
+      results = results.filter(cat =>
+        cat.name.toLowerCase().includes(searchName.toLowerCase())
+      );
+    }
+
+    setFilteredCats(results);
+  };
+
+  return (
+    <section className="available-cats-section">
+      <div className="available-cats-header">
+        <h2>Available cats</h2>
+        <div className="search-controls">
+          <select
+            className="breed-select"
+            value={selectedBreed}
+            onChange={(e) => setSelectedBreed(e.target.value)}
+          >
+            <option value="">select breed</option>
+            {breeds.map((breed) => (
+              <option key={breed} value={breed}>
+                {breed}
+              </option>
+            ))}
+          </select>
+          <input
+            type="text"
+            className="search-input"
+            placeholder="search by name"
+            value={searchName}
+            onChange={(e) => setSearchName(e.target.value)}
+          />
+          <button className="search-btn" onClick={handleSearch}>
+            search
+          </button>
+        </div>
+      </div>
+      <hr className="divider" />
+
+      <div className="cats-grid" id="cats-container">
+        {loading
+          ? availableCats.map((_, i) => (
+              <div key={i} className="cat-card skeleton-card">
+                <div className="skeleton-image"></div>
+                <div className="cat-info">
+                  <div className="skeleton-text skeleton-title"></div>
+                  <div className="skeleton-text skeleton-subtitle"></div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            ))
+          : filteredCats.map((cat, i) => (
+              <div key={i} className="cat-card">
+                {cat.image ? (
+                  <img src={cat.image} alt={cat.name} />
+                ) : (
+                  <div className="cat-image-placeholder"></div>
+                )}
+                <div className="cat-info">
+                  <h3>{cat.name}</h3>
+                  <p>Age: {cat.age}</p>
+                </div>
+              </div>
+            ))}
       </div>
     </section>
   );
