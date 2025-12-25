@@ -19,21 +19,15 @@ export default function Home() {
   useEffect(() => {
     const fetchCatImages = async () => {
       try {
-        const responses = await Promise.all(
-          featuredCats.map(() =>
-            fetch("https://api.thecatapi.com/v1/images/search").then(
-              (res) => res.json()
-            )
-          )
-        );
+        const responses = await fetch("https://api.thecatapi.com/v1/images/search?limit=10");
+        const catImages = await responses.json();
 
         const catsWithImages = featuredCats.map((cat, index) => ({
           ...cat,
-          image: responses[index][0].url,
+          image: catImages[index]?.url,
         }));
 
-        const limitCats = catsWithImages.slice(0, 10);
-        setCats(limitCats);
+        setCats(catsWithImages);
 
         if (cats.length > 10) {
           alert(
