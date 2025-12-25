@@ -2,7 +2,7 @@ export default function ContactUs() {
   return (
     <>
       <section className="text-center mt-5">
-        <h2 className="mb-3">Contact Us</h2>
+        <h2 className="mb-3 fw-bold">Contact Us</h2>
         <p
           className="px-4 mx-auto text-center text-muted"
           style={{ maxWidth: "600px" }}

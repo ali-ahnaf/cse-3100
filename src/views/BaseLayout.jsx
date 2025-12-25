@@ -1,36 +1,36 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, NavLink } from "react-router-dom";
 
 const BaseLayout = () => {
   return (
     <div className="layout">
-      <header className="d-flex align-items-center bg-light px-4">
-        <h2>
-          <Link className="text-decoration-none text-dark" to="/">
+      <header className="d-flex flex-column flex-md-row align-items-center bg-light px-4 py-3">
+        <h2 className="mb-2 mx-4">
+          <NavLink className="text-decoration-none text-dark fw-bold" to="/">
             Purrfect Adoption
-          </Link>
+          </NavLink>
         </h2>
         <div className="flex-grow-1"></div>
-
-        <nav className="navbar navbar-expand-lg">
-          <ul className="navbar-nav">
-            <li className="nav-item ">
-              <Link className="nav-link" to="/about-us">
+        <nav className="navbar">
+          <ul className="navbar-nav flex-row gap-3 gap-md-4">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/about-us">
                 About Us
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
+              <NavLink className="nav-link" to="/available-cats">
                 Available Cats
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact-us">
+              <NavLink className="nav-link" to="/contact-us">
                 Contact Us
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
       </header>
+
       <main id="content">
         <Outlet />
       </main>

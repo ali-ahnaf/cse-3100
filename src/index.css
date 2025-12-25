@@ -10,6 +10,7 @@
   min-height: 100vh;
   overflow: hidden;
 }
+
 .layout ul li {
   font-size: 1.1rem;
   margin: 0px 15px;
@@ -84,6 +85,7 @@ footer {
 .nav-link:hover {
   color: black !important;
 }
+
 .layout ul li::after {
   content: '';
   position: absolute;
@@ -94,7 +96,6 @@ footer {
   background-color: black;
   transition: width 0.3s ease-out;
 }
-
 .layout ul li:hover::after {
   width: 100%;
 }
@@ -102,7 +103,7 @@ footer {
 .contact-form {
   padding: 2.5rem;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .contact-form .form-control {
