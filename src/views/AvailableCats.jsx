@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: "Whiskers", breed: "Sphynx", age: "2" },
+  { name: "Mittens", breed: "Siamese", age: "2" },
+  { name: "Shadow", breed: "Peterbald", age: "1" },
+  { name: "Luna", breed: "Birman", age: "3" },
+  { name: "Oliver", breed: "Abyssinian", age: "2" },
+  { name: "Bella", breed: "Birman", age: "1" },
+  { name: "Simba", breed: "Persian", age: "4" },
+  { name: "Chloe", breed: "Bengal", age: "2" },
+  { name: "Leo", breed: "Persian", age: "3" },
+  { name: "Daisy", breed: "Siamese", age: "1" },
 ];
 
 export default function AvailableCats() {
@@ -16,21 +20,19 @@ export default function AvailableCats() {
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
+        const responses = await fetch(
+          "https://api.thecatapi.com/v1/images/search?limit=10"
         );
+        const catImages = await responses.json();
+
         const catsWithImages = availableCats.map((cat, index) => ({
           ...cat,
-          image: responses[index][0].url,
+          image: catImages[index]?.url,
         }));
 
         setCats(catsWithImages);
       } catch (error) {
-        console.error('Error fetching cat images:', error);
+        console.error("Error fetching cat images:", error);
       }
     };
 
@@ -38,14 +40,52 @@ export default function AvailableCats() {
   }, []);
 
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <div className="mx-auto mt-4" style={{ width: "85%" }}>
+      <section className="mb-4">
+        <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+          {/* Title (Left Side) */}
+          <div className="w-100 w-md-50">
+            <h3 className="fw-bold mb-1">Available Cats</h3>
+            <p className="mb-0 text-muted" style={{ fontSize: ".9rem" }}>
+              Meet our adorable cats looking for their forever home!
+            </p>
+          </div>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-            <div key={i} className="col-md-4 col-lg-2">
-              <div className="cat-card">
+          {/* Filters (Right Side) */}
+          <div className="d-flex flex-column flex-sm-row gap-2 w-100 w-md-50">
+            <input
+              type="search"
+              className="form-control"
+              placeholder="Search by name"
+            />
+
+            <select className="form-select">
+              <option value="">All Breeds</option>
+              <option value="Sphynx">Sphynx</option>
+              <option value="Siamese">Siamese</option>
+              <option value="Peterbald">Peterbald</option>
+              <option value="Birman">Birman</option>
+              <option value="Abyssinian">Abyssinian</option>
+              <option value="Bengal">Bengal</option>
+              <option value="Persian">Persian</option>
+            </select>
+
+            <button className="btn btn-info w-100 w-sm-auto">Search</button>
+          </div>
+        </div>
+      </section>
+
+      <div style={{ border: "1px solid black" }} />
+
+      <section className="mt-3">
+        <div
+          className="mt-1 row g-4"
+          id="cats-container"
+          style={{ justifyContent: "space-between" }}
+        >
+          {cats.map((cat, i) => (
+            <div key={i} className="col-12 col-md-4 col-lg-2">
+              <div className="cat-card my-2">
                 <img
                   src={cat.image}
                   alt={cat.name}
@@ -56,13 +96,14 @@ export default function AvailableCats() {
                 />
                 <div className="cat-info py-2">
                   <h3 className="mb-1">{cat.name}</h3>
-                  {/* <p className="mb-0">Breed: {cat.breed}</p> */}
+                  <p className="mb-0">Breed: {cat.breed}</p>
                   <p className="mb-0">Age: {cat.age}</p>
                 </div>
               </div>
             </div>
           ))}
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }

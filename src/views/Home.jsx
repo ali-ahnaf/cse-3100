@@ -19,7 +19,9 @@ export default function Home() {
   useEffect(() => {
     const fetchCatImages = async () => {
       try {
-        const responses = await fetch("https://api.thecatapi.com/v1/images/search?limit=10");
+        const responses = await fetch(
+          "https://api.thecatapi.com/v1/images/search?limit=10"
+        );
         const catImages = await responses.json();
 
         const catsWithImages = featuredCats.map((cat, index) => ({
@@ -43,7 +45,7 @@ export default function Home() {
   }, []); //Added dependency array to stop the infinite render
 
   return (
-    <div className="mx-auto" style={{ width: "75%" }}>
+    <div className="mx-auto" style={{ width: "85%" }}>
       <section className="text-center mt-4">
         <h2 className="fw-bold">Welcome to Purrfect Adoption</h2>
         <p className="p-4">
@@ -56,26 +58,28 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="m-4">
+      <section className="mt-3">
         <h2 className="fw-bold">Featured cats</h2>
-        <div className="mt-2 row g-3" id="cats-container">
+        <div
+          className="mt-2 row g-4"
+          id="cats-container"
+          style={{ justifyContent: "space-between" }}
+        >
           {cats.map((cat, i) => (
-            <div key={i} className="col-12 col-sm-6 col-md-2">
-              <div className="cat-card">
+            <div key={i} className="col-12 col-md-3 col-lg-2">
+              <div className="cat-card my-2">
                 <img
                   src={cat.image}
                   alt={cat.name}
                   className="img-fluid"
-                  style={{ objectFit: "cover" }}
+                  style={{
+                    objectFit: "cover",
+                  }}
                 />
                 <div className="cat-info py-2">
                   <h3 className="mb-1">{cat.name}</h3>
-                  <p className="mb-0">
-                    <b>Breed:</b> {cat.breed}
-                  </p>
-                  <p className="mb-0">
-                    <b>Age:</b> {cat.age}
-                  </p>
+                  <p className="mb-0">Breed: {cat.breed}</p>
+                  <p className="mb-0">Age: {cat.age}</p>
                 </div>
               </div>
             </div>
