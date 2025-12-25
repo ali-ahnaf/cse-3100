@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
+  { name: 'Whiskers', age: '2', breed: 'Siamese' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
+  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
 ];
 
 export default function Home() {
@@ -59,6 +59,7 @@ export default function Home() {
               <div className="cat-info">
                 <h3>{cat.name}</h3>
                 <p>Age: {cat.age}</p>
+                <p className="cat-breed">Breed: {cat.breed}</p>
               </div>
             </div>
           ))}
