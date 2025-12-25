@@ -62,8 +62,8 @@ export default function Home() {
       </section>
 
       <section className="m-4">
-        <h2>Featured cats</h2>
-        <div className="mt-1 row g-5" id="cats-container">
+        <h2 className="fw-bold">Featured cats</h2>
+        <div className="mt-2 row g-4" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4 col-lg-2">
               <div className="cat-card">
@@ -77,8 +77,8 @@ export default function Home() {
                 />
                 <div className="cat-info py-2">
                   <h3 className="mb-1">{cat.name}</h3>
-                  <p className="mb-0">Breed: {cat.breed}</p>
-                  <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-0"><b>Breed:</b> {cat.breed}</p>
+                  <p className="mb-0"><b>Age:</b> {cat.age}</p>
                 </div>
               </div>
             </div>

@@ -35,8 +35,8 @@ const BaseLayout = () => {
         <Outlet />
       </main>
 
-      <footer className="bg-light text-center mt-4 fw-bold">
-        <p>© Copyright 2024</p>
+      <footer className="bg-light text-center mt-4">
+        <p className="fw-bold">© Copyright 2024</p>
       </footer>
     </div>
   );
