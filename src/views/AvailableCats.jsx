@@ -22,9 +22,13 @@ export default function AvailableCats() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Reset state on mount
+    setCats([]);
+    setFilteredCats([]);
+    setLoading(true);
+    
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
-      setLoading(true);
       try {
         const responses = await Promise.all(
           availableCats.map(() =>

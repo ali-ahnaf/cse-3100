@@ -12,8 +12,11 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Reset state on mount
+    setCats([]);
+    setLoading(true);
+    
     const fetchCatImages = async () => {
-      setLoading(true);
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
