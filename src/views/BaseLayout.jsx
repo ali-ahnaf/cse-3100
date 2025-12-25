@@ -12,12 +12,20 @@ const BaseLayout = () => {
         </h1>
 
         <nav>
+          <Link to="/about">
+            About us
+          </Link>
+
           <Link to="/available-cats">
             Available Cats
           </Link>
 
           <Link to="/donate">
             Donate
+          </Link>
+
+          <Link to="/contact">
+            Contact us
           </Link>
         </nav>
 

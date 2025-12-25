@@ -7,6 +7,8 @@ const availableCats = [
   { name: 'Pumpkin', age: '3' },
   { name: 'Luna', age: '4' },
   { name: 'Simba', age: '2' },
+  { name: 'Oliver', age: '5' },
+  { name: 'Chloe', age: '3' },
 ];
 
 export default function AvailableCats() {
@@ -38,9 +40,23 @@ export default function AvailableCats() {
   }, []);
 
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <section className="available-cats">
+      <div className="available-header" style={{ padding: '0 1rem', alignItems: 'center' }}>
+        <h2>Available Cats</h2>
+
+        <div className="controls-row">
+          <select aria-label="Select breed" className="breed-select">
+            <option>All breeds</option>
+            <option>Siamese</option>
+            <option>Persian</option>
+            <option>Maine Coon</option>
+          </select>
+          <input aria-label="Search by name" className="name-search" placeholder="Search by name" />
+          <button type="button" className="btn primary">Search</button>
+        </div>
+      </div>
+
+      <hr className="divider" />
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">
         {cats.map((cat, i) => (
