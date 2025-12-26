@@ -48,8 +48,8 @@ const BaseLayout = () => {
         </main>
       </div>
 
-      <footer className="bg-light">
-        <p>© Copyright {new Date().getFullYear()}</p>
+      <footer>
+        © Copyright {new Date().getFullYear()}
       </footer>
     </div>
   );
