@@ -1,7 +1,7 @@
 import useCats from "../hooks/useCats.js";
 import GridView from "../components/GridView.jsx";
 import Dropdown from "../components/Dropdown.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const availableCats = [
   { title: "Whiskers", sub: "Age: 2 | Breed: Abyssinian", breed: "Abyssinian" },
@@ -14,7 +14,20 @@ const availableCats = [
 
 export default function AvailableCats() {
   const { cats } = useCats(availableCats);
+  const [filteredCats, setFilteredCats] = useState([]);
   const [breed, setBreed] = useState("All cars");
+
+  useEffect(() => {
+    setFilteredCats(cats);
+  }, [cats]);
+
+  useEffect(() => {
+    if (breed === "All cars") {
+      setFilteredCats(cats);
+    } else {
+      setFilteredCats(cats.filter(c => c.breed === breed));
+    }
+  }, [breed]);
 
   return (
     <GridView>
@@ -27,7 +40,7 @@ export default function AvailableCats() {
         </div>
         <p>Meet our adorable cats looking for their forever home!</p>
       </GridView.Title>
-      <GridView.Content contents={breed === "All cars" ? cats : cats.filter(c => c.breed === breed)} />
+      <GridView.Content contents={filteredCats} />
     </GridView>
   );
 }
