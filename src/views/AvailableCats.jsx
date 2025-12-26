@@ -15,6 +15,9 @@ const availableCats = [
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [filteredCats, setFilteredCats] = useState([]);
+  const [searchedName, setSearchedName] = useState("");
+  const [selectedBreed, setSelectedBreed] = useState("");
 
   useEffect(() => {
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
@@ -31,6 +34,7 @@ export default function AvailableCats() {
         }));
 
         setCats(catsWithImages);
+        setFilteredCats(catsWithImages);
       } catch (error) {
         console.error("Error fetching cat images:", error);
       }
@@ -38,6 +42,23 @@ export default function AvailableCats() {
 
     fetchCatImages();
   }, []);
+
+  const handleFilter = () => {
+    let filtered = cats;
+
+    //Search filter (by name)
+    if (searchedName) {
+      filtered = filtered.filter((cat) =>
+        cat.name.toLowerCase().includes(searchedName.toLocaleLowerCase())
+      );
+    }
+    //Breed filter (by breed)
+    if (selectedBreed) {
+      filtered = filtered.filter((cat) => cat.breed === selectedBreed);
+    }
+
+    setFilteredCats(filtered);
+  };
 
   return (
     <div className="mx-auto mt-4" style={{ width: "85%" }}>
@@ -57,9 +78,15 @@ export default function AvailableCats() {
               type="search"
               className="form-control"
               placeholder="Search by name"
+              value={searchedName}
+              onChange={(e) => setSearchedName(e.target.value)}
             />
 
-            <select className="form-select">
+            <select
+              className="form-select"
+              value={selectedBreed}
+              onChange={(e) => setSelectedBreed(e.target.value)}
+            >
               <option value="">All Breeds</option>
               <option value="Sphynx">Sphynx</option>
               <option value="Siamese">Siamese</option>
@@ -70,24 +97,38 @@ export default function AvailableCats() {
               <option value="Persian">Persian</option>
             </select>
 
-            <button className="btn btn-info w-100 w-sm-auto">Search</button>
+            <button
+              className="btn btn-info w-100 w-sm-auto"
+              onClick={handleFilter}
+            >
+              Search
+            </button>
           </div>
         </div>
       </section>
 
       <section className="mt-4">
-        <div className="mt-1" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="cat-card my-2">
-              <img src={cat.image} alt={cat.name} className="img-fluid" />
-              <div className="cat-info py-2">
-                <h3 className="mb-1">{cat.name}</h3>
-                <p className="mb-0">Breed: {cat.breed}</p>
-                <p className="mb-0">Age: {cat.age}</p>
+        {filteredCats.length === 0 ? (
+          <div className="text-center py-5">
+            <h4 className="text-muted">No cats found</h4>
+            <p className="text-muted">
+              Try adjusting your name or breed criteria
+            </p>
+          </div>
+        ) : (
+          <div className="mt-1" id="cats-container">
+            {filteredCats.map((cat, i) => (
+              <div key={i} className="cat-card my-2">
+                <img src={cat.image} alt={cat.name} className="img-fluid" />
+                <div className="cat-info py-2">
+                  <h3 className="mb-1">{cat.name}</h3>
+                  <p className="mb-0">Breed: {cat.breed}</p>
+                  <p className="mb-0">Age: {cat.age}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
