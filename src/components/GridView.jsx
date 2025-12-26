@@ -12,10 +12,10 @@ GridView.Title = ({ children }) => {
 
 GridView.Content = ({ contents }) => {
   return (
-    <div className="row">
+    <div className="row mb-4">
       {contents.map((content, i) => (
         <div key={i} className="col-md-3 px-0">
-          <div className="px-2">
+          <div className="p-3">
             <div className="card">
               <img src={content.image} alt={content.title} className="img-fluid" />
               <div className="info">
