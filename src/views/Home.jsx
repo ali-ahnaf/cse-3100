@@ -1,82 +1,38 @@
 import { useEffect, useState } from 'react';
 
-const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-];
-
 export default function Home() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
-        );
-
-        const catsWithImages = featuredCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
-    };
-
-    fetchCatImages();
-  });
+    fetch('https://api.thecatapi.com/v1/images/search?limit=3')
+      .then(res => res.json())
+      .then(data => setCats(data));
+  }, []);
 
   return (
-    <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
-      </section>
+    <div className="text-center">
+      {/* styling*/}
+      <div className="mb-5 py-5 bg-primary text-white rounded-5 shadow">
+        <h1 className="display-3 fw-bold">Find Your New Best Friend</h1>
+        <p className="lead fs-4">The #1 place to adopt beautiful, loving cats.</p>
+      </div>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
+      <h2 className="display-5 fw-bold mb-4">Featured Cats</h2>
+      
+      {/* row */}
+      <div className="row g-4 justify-content-center">
+        {cats.map((cat, i) => (
+          <div key={i} className="col-md-4">
+            <div className="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+              <img src={cat.url} className="card-img-top" style={{height: '250px', objectFit: 'cover'}} alt="cat" />
+              <div className="card-body">
+                <h3 className="fw-bold">Featured Pet</h3>
+                <p className="text-muted">Available for adoption today!</p>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-    </>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
