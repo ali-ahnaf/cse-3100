@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <section className="d-flex justify-content-center mt-4">
-        <div className="text-center" style={{ maxWidth: "720px" }}>
+        <div className="text-center">
           <h2>Welcome to Purrfect Adoption</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc

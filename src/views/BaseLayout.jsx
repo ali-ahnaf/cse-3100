@@ -21,7 +21,11 @@ const BaseLayout = () => {
           </nav>
         </header>
         <main id="content">
-          <Outlet />
+          <div className="d-flex justify-content-center align-items-center">
+            <div style={{ maxWidth: "1440px" }}>
+              <Outlet />
+            </div>
+          </div>
         </main>
       </div>
 
