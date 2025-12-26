@@ -13,7 +13,9 @@ GridView.Title = ({ children }) => {
 GridView.Content = ({ contents }) => {
   return (
     <div className="row mb-4">
-      {contents.map((content, i) => (
+      {contents.length === 0
+      ? <small className="text-secondary">No cats available :(</small>
+      : contents.map((content, i) => (
         <div key={i} className="col-md-3 px-0">
           <div className="p-3">
             <div className="card">
