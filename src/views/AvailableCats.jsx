@@ -61,6 +61,15 @@ export default function AvailableCats() {
 
     setFilteredCats(filtered);
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleFilter();
+  }
+  const handleClearFilters = () => {
+    setSearchedName("");
+    setSelectedBreed("");
+    setFilteredCats(cats);
+  };
 
   return (
     <div className="container">
@@ -75,7 +84,7 @@ export default function AvailableCats() {
           </div>
 
           {/* Filters (Right Side) */}
-          <div className="d-flex flex-column flex-sm-row gap-2 w-100 w-md-50">
+          <form onSubmit={handleSubmit} className="d-flex flex-column flex-sm-row gap-2 w-100 w-md-50">
             <input
               type="search"
               className="form-control"
@@ -100,12 +109,21 @@ export default function AvailableCats() {
             </select>
 
             <button
+              type="submit"
               className="btn btn-info w-100 w-sm-auto"
               onClick={handleFilter}
             >
               Search
             </button>
-          </div>
+            {(searchedName || selectedBreed) && (
+              <button
+                className="btn btn-outline-danger w-100 w-sm-auto"
+                onClick={handleClearFilters}
+              >
+                Clear
+              </button>
+            )}
+          </form>
         </div>
       </section>
 
