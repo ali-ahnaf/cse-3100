@@ -77,7 +77,7 @@ main {
 
 footer {
   background-color: var(--bg);
-  box-shadow: 0 0 0.5rem var(--bg-darker);
+  /* box-shadow: 0 0 0.5rem var(--bg-darker); */
   padding: 1rem 0.75rem;
   text-align: right;
 }

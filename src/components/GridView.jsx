@@ -17,11 +17,11 @@ GridView.Content = ({ contents }) => {
         <div key={i} className="col-md-3 px-0">
           <div className="px-2">
             <div className="card">
-              <img src={content.image} alt={content.name} className="img-fluid" />
+              <img src={content.image} alt={content.title} className="img-fluid" />
               <div className="info">
                 <div className="info-box">
-                  <div className="fw-bold">{content.name}</div>
-                  <small>Age: {content.age}</small>
+                  <div className="fw-bold">{content.title}</div>
+                  <small>{content.sub}</small>
                 </div>
               </div>
             </div>

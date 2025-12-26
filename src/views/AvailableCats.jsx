@@ -2,12 +2,12 @@ import useCats from "../hooks/useCats.js";
 import GridView from "../components/GridView.jsx";
 
 const availableCats = [
-  { name: "Whiskers", age: "2" },
-  { name: "Mittens", age: "2" },
-  { name: "Shadow", age: "1" },
-  { name: "Pumpkin", age: "3" },
-  { name: "Luna", age: "4" },
-  { name: "Simba", age: "2" },
+  { title: "Whiskers", sub: "Age: 2" },
+  { title: "Mittens", sub: "Age: 2" },
+  { title: "Shadow", sub: "Age: 1" },
+  { title: "Pumpkin", sub: "Age: 3" },
+  { title: "Luna", sub: "Age: 4" },
+  { title: "Simba", sub: "Age: 2" },
 ];
 
 export default function AvailableCats() {

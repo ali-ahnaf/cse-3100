@@ -2,9 +2,9 @@ import useCats from "../hooks/useCats.js";
 import GridView from "../components/GridView.jsx";
 
 const featuredCats = [
-  { name: "Whiskers", age: "2" },
-  { name: "Mittens", age: "2" },
-  { name: "Shadow", age: "1" },
+  { title: "Whiskers", sub: "Age: 2" },
+  { title: "Mittens", sub: "Age: 2" },
+  { title: "Shadow", sub: "Age: 1" },
 ];
 
 export default function Home() {
