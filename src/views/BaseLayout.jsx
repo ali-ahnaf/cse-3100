@@ -40,10 +40,8 @@ const BaseLayout = () => {
         </header>
 
         <main id="content">
-          <div className="d-flex justify-content-center align-items-center">
-            <div style={{ maxWidth: "1440px" }}>
-              <Outlet />
-            </div>
+          <div style={{ maxWidth: "1440px", width: "100%" }}>
+            <Outlet />
           </div>
         </main>
       </div>
