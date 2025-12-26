@@ -18,8 +18,10 @@ GridCats.Content = ({ cats }) => {
           <div className="cat-card">
             <img src={cat.image} alt={cat.name} className="img-fluid" />
             <div className="cat-info">
-              <div className="fw-bold">{cat.name}</div>
-              <small>Age: {cat.age}</small>
+              <div className="info-box">
+                <div className="fw-bold">{cat.name}</div>
+                <small>Age: {cat.age}</small>
+              </div>
             </div>
           </div>
         </div>
