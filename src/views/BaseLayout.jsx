@@ -8,11 +8,17 @@ const BaseLayout = () => {
           <Link to="/">Purrfect Adoption</Link>
         </h1>
         <nav className="navbar-nav">
+          <Link className="nav-link" to="/about-us">
+            About us
+          </Link>
           <Link className="nav-link" to="/available-cats">
             Available cats
           </Link>
           <Link className="nav-link" to="/donate">
             Donate
+          </Link>
+          <Link className="nav-link" to="/contact-us">
+            Contact us
           </Link>
         </nav>
       </header>
