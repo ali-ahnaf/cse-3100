@@ -6,32 +6,32 @@ const BaseLayout = () => {
       <div>
 
         <header className="p-0">
-          <nav class="navbar navbar-expand-md">
-            <div class="container-fluid">
-              <a class="navbar-brand fw-bold" href="/">
+          <nav className="navbar navbar-expand-md">
+            <div className="container-fluid">
+              <a className="navbar-brand fw-bold" href="/">
                 Purrfect Adoption
               </a>
-              <button class="navbar-toggler" type="button"
+              <button className="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav gap-1">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about-us">About us</a>
-                  </li><li class="nav-item">
-                    <a class="nav-link" href="/available-cats">Available Cats</a>
+              <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul className="navbar-nav gap-1">
+                  <li className="nav-item">
+                    <a className="nav-link" href="/about-us">About us</a>
+                  </li><li className="nav-item">
+                    <a className="nav-link" href="/available-cats">Available Cats</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/donate">Donate</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/donate">Donate</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/contact-us">Contact us</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/contact-us">Contact us</a>
                   </li>
                 </ul>
               </div>
