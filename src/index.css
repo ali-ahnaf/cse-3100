@@ -47,32 +47,32 @@ main {
   }
 }
 
-.cat-card {
+.card {
   border: 1px solid var(--border);
   border-radius: 0.75rem;
-  box-shadow: 0 0 0.5rem var(--bg-darker);
+  box-shadow: 0 0 1rem var(--bg-darker);
 
   overflow: hidden;
   position: relative;
 }
 
-.cat-card > img {
+.card > img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
 
-.cat-info {
+.info {
   position: absolute;
   bottom: 0;
   width: 100%;
 }
 
-.cat-info > .info-box {
+.info > .info-box {
   background: var(--bg);
   padding: 0.25rem 1rem;
   border-radius: 0.5rem;
-  opacity: 0.95;
+  opacity: 0.9;
 }
 
 footer {

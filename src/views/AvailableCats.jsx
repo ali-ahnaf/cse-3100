@@ -1,5 +1,5 @@
 import useCats from "../hooks/useCats.js";
-import GridCats from "../components/GridCats.jsx";
+import GridView from "../components/GridView.jsx";
 
 const availableCats = [
   { name: "Whiskers", age: "2" },
@@ -13,12 +13,12 @@ const availableCats = [
 export default function AvailableCats() {
   const { cats } = useCats(availableCats);
   return (
-    <GridCats>
-      <GridCats.Title>
+    <GridView>
+      <GridView.Title>
         <div className="fs-5 fw-bold mb-2">Available Cats</div>
         <p>Meet our adorable cats looking for their forever home!</p>
-      </GridCats.Title>
-      <GridCats.Content cats={cats} />
-    </GridCats>
+      </GridView.Title>
+      <GridView.Content contents={cats} />
+    </GridView>
   );
 }
