@@ -14,7 +14,7 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
+            fetch('https://api.thecatapi.com/v1/images/search').then(res =>
               res.json()
             )
           )
@@ -22,56 +22,54 @@ export default function Home() {
 
         const catsWithImages = featuredCats.map((cat, index) => ({
           ...cat,
-          image: responses[index][0].url,
+          image: responses[index]?.[0]?.url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
-        console.error('Error fetching cat images:', error);
+        console.error('Error fetching featured cats:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
+      {/* HERO SECTION */}
+      <section className="hero">
+        <div className="hero-content">
+          <h2 className="hero-title">
+            Welcome to <span>Purrfect Adoption</span>
+          </h2>
+
+          <p className="hero-subtitle">
+            Find your perfect feline companion. All our cats are vaccinated,
+            loved, and ready for a forever home.
+          </p>
+
+          <div className="hero-actions">
+            <a href="/available-cats" className="hero-btn">
+              View Available Cats
+            </a>
+          </div>
+        </div>
       </section>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+      {/* FEATURED CATS */}
+      <section>
+        <h2>Featured Cats</h2>
+        <p>
+          A few of our lovely cats who are currently looking for a caring home.
+        </p>
+
+        <div className="row">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
+            <div key={i} className="cat-card">
+              <img src={cat.image} alt={cat.name} />
+              <div className="cat-info">
+                <h3>{cat.name}</h3>
+                <p>Age: {cat.age}</p>
               </div>
             </div>
           ))}
