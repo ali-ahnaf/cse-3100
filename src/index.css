@@ -171,3 +171,27 @@ footer {
 .team-card:hover {
   transform: translateY(-10px);
 }
+
+/* Loading animation */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+.paw-loader {
+  font-size: 3rem;
+}
+.paw {
+  animation: bounce 1s infinite;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

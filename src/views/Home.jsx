@@ -15,6 +15,7 @@ const featuredCats = [
 
 export default function Home() {
   const [cats, setCats] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCatImages = async () => {
@@ -30,12 +31,13 @@ export default function Home() {
         }));
 
         setCats(catsWithImages);
+        setLoading(false);
 
-        if (cats.length > 10) {
-          alert(
-            "Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! "
-          );
-        }
+        // if (cats.length > 10) {
+        //   alert(
+        //     "Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! "
+        //   );
+        // }
       } catch (error) {
         console.error("Error fetching cat images:", error);
       }
@@ -45,7 +47,7 @@ export default function Home() {
   }, []); //Added dependency array to stop the infinite render
 
   return (
-    <div className="mx-auto" style={{ width: "85%" }}>
+    <div className="container">
       <section className="text-center mt-4">
         <h2 className="fw-bold">Welcome to Purrfect Adoption</h2>
         <p className="p-4">
@@ -60,29 +62,38 @@ export default function Home() {
 
       <section className="mt-3">
         <h2 className="fw-bold">Featured cats</h2>
-        <div
-          className="mt-2"
-          id="cats-container"
-          style={{ justifyContent: "space-between" }}
-        >
-          {cats.map((cat, i) => (
-            <div key={i} className="cat-card my-2">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="img-fluid"
-                style={{
-                  objectFit: "cover",
-                }}
-              />
-              <div className="cat-info py-2">
-                <h3 className="mb-1">{cat.name}</h3>
-                <p className="mb-0">Breed: {cat.breed}</p>
-                <p className="mb-0">Age: {cat.age}</p>
-              </div>
+        {loading ? (
+          <div className="loading-container">
+            <div className="paw-loader">
+              <div className="paw">🐾</div>
             </div>
-          ))}
-        </div>
+            <p className="mt-3 text-muted fw-bold">Loading purrfect cats...</p>
+          </div>
+        ) : (
+          <div
+            className="mt-2"
+            id="cats-container"
+            style={{ justifyContent: "space-between" }}
+          >
+            {cats.map((cat, i) => (
+              <div key={i} className="cat-card my-2">
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="img-fluid"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
+                <div className="cat-info py-2">
+                  <h3 className="mb-1">{cat.name}</h3>
+                  <p className="mb-0">Breed: {cat.breed}</p>
+                  <p className="mb-0">Age: {cat.age}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

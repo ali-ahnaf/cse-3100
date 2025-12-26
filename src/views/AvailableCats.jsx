@@ -15,6 +15,7 @@ const availableCats = [
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [filteredCats, setFilteredCats] = useState([]);
   const [searchedName, setSearchedName] = useState("");
   const [selectedBreed, setSelectedBreed] = useState("");
@@ -35,6 +36,7 @@ export default function AvailableCats() {
 
         setCats(catsWithImages);
         setFilteredCats(catsWithImages);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching cat images:", error);
       }
@@ -61,8 +63,8 @@ export default function AvailableCats() {
   };
 
   return (
-    <div className="mx-auto mt-4" style={{ width: "85%" }}>
-      <section className="mb-4">
+    <div className="container">
+      <section className="my-4">
         <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
           {/* Title (Left Side) */}
           <div className="w-100 w-md-50">
@@ -107,8 +109,15 @@ export default function AvailableCats() {
         </div>
       </section>
 
-      <section className="mt-4">
-        {filteredCats.length === 0 ? (
+      <section className="mt-5">
+        {loading ? (
+          <div className="loading-container">
+            <div className="paw-loader">
+              <div className="paw">🐾</div>
+            </div>
+            <p className="mt-3 text-muted fw-bold">Loading purrfect cats...</p>
+          </div>
+        ) : filteredCats.length === 0 ? (
           <div className="text-center py-5">
             <h4 className="text-muted">No cats found</h4>
             <p className="text-muted">
