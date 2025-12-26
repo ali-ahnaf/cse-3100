@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Bob Doe', age: '3' },
+  { name: 'Bob Doe', age: '4' },
+  { name: 'Bob Doe', age: '2 months' },
+  { name: 'Bob Doe', age: '2 months' },
 ];
 
 export default function Home() {
@@ -14,69 +15,45 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
+            fetch('https://api.thecatapi.com/v1/images/search').then((res) => res.json())
           )
         );
-
         const catsWithImages = featuredCats.map((cat, index) => ({
           ...cat,
-          image: responses[index][0].url,
+          image: responses[index][0]?.url || '',
         }));
-
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
+        setCats(featuredCats);
       }
     };
-
     fetchCatImages();
-  });
+  }, []); 
 
   return (
-    <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
+    <main>
+      <h1>Welcome to Purrfect Adoption</h1>
+      <div className="welcome-text">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          At Purrfect Adoption, we believe every cat deserves a loving home. Our mission is to connect rescue cats with caring families who will provide them with the love, care, and forever homes they deserve. Browse our available cats and find your purrfect companion today!
         </p>
-      </section>
+      </div>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+      <section>
+        <h2 className="section-title">Featured cats</h2>
+        <div className="cat-grid">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
+            <div key={i} className="cat-card">
+              {cat.image && <img src={cat.image} alt={cat.name} />}
+              <div className="cat-info">
+                <div className="cat-name">{cat.name}</div>
+                <div className="cat-age">Age: {cat.age}</div>
               </div>
             </div>
           ))}
         </div>
       </section>
-    </>
+    </main>
   );
 }
