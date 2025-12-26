@@ -15,7 +15,7 @@ export default function AvailableCats() {
   return (
     <GridCats>
       <GridCats.Title>
-        <h2>Available Cats</h2>
+        <div className="fs-5 fw-bold mb-2">Available Cats</div>
         <p>Meet our adorable cats looking for their forever home!</p>
       </GridCats.Title>
       <GridCats.Content cats={cats} />

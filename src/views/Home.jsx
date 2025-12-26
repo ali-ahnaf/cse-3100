@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <section className="d-flex justify-content-center mt-4">
         <div className="text-center">
-          <h2>Welcome to Purrfect Adoption</h2>
+          <div className="fs-3 fw-bold mb-2">Welcome to Purrfect Adoption</div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
@@ -25,7 +25,7 @@ export default function Home() {
 
       <GridCats>
         <GridCats.Title>
-          <h2>Featured cats</h2>
+          <div className="fs-5 fw-bold mb-2">Featured cats</div>
         </GridCats.Title>
         <GridCats.Content cats={cats} />
       </GridCats>

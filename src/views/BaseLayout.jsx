@@ -5,11 +5,9 @@ const BaseLayout = () => {
     <div className="layout">
       <div>
         <header className="d-flex justify-content-between align-items-center bg-light">
-          <h1>
-            <Link className="text-decoration-none text-dark" to="/">
-              Purrfect Adoption
-            </Link>
-          </h1>
+          <Link className="text-decoration-none text-dark fs-4 fw-bold" to="/">
+            Purrfect Adoption
+          </Link>
           <nav>
             <ul className="nav">
               <li className="nav-item">
