@@ -4,20 +4,41 @@ const BaseLayout = () => {
   return (
     <div className="layout">
       <div>
-        <header className="d-flex justify-content-between align-items-center bg-light">
-          <Link className="text-decoration-none text-dark fs-4 fw-bold" to="/">
-            Purrfect Adoption
-          </Link>
-          <nav>
-            <ul className="nav">
-              <li className="nav-item">
-                <Link className="nav-link" to="/available-cats">
-                  Available Cats
-                </Link>
-              </li>
-            </ul>
+
+        <header className="p-0">
+          <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+              <a class="navbar-brand fw-bold" href="/">
+                Purrfect Adoption
+              </a>
+              <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav gap-1">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about-us">About us</a>
+                  </li><li class="nav-item">
+                    <a class="nav-link" href="/available-cats">Available Cats</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/donate">Donate</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/contact-us">Contact us</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </nav>
         </header>
+
         <main id="content">
           <div className="d-flex justify-content-center align-items-center">
             <div style={{ maxWidth: "1440px" }}>
