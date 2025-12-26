@@ -1,48 +1,63 @@
-* {
-  box-sizing: content-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
 header {
   padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  background-color: #cf8080;
 }
 
 main {
   flex: 1;
   padding: 1em;
-  display: list-item;
+  display: block;
 }
 
 footer {
   padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  text-align: center;
+  background: #9cb7d1;
 }
 
 .cat-card {
   border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  border-radius: 12px;
   overflow: hidden;
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.cat-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  padding: 0.75rem;
+  text-align: center;
+  background: #fff;
+  color: #000;
+}
+
+.contact-box {
+  max-width: 500px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
 }
