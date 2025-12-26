@@ -1,60 +1,70 @@
-# Purrfect Adoption - Debugging Challenge
-# ⚠️ THE PROJECT IS BROKEN! ⚠️
+# Getting Started with Create React App
 
-Welcome to the **Purrfect Adoption Debugging Challenge**.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This project has been sabotaged! Your task is to investigate, debug, and fix the application. You cannot simply use AI to "generate a new app" because the goal is to **fix existing bugs** in the logic, layout, and component structure.
+## Available Scripts
 
-## The Mission
-The previous developer left the codebase in a chaotic state. Nothing works as expected.
+In the project directory, you can run:
 
-### 1. Fix the Layout (CSS Chaos) `index.css` (2 marks)
-*   **Task**: Restore a clean, responsive layout. Use Flexbox/Grid correctly.
+### `npm start`
 
-### 2. Fix the Navigation `BaseLayout.jsx` (2 marks)
-*   **Task**: Fix the React Router setup so pages render correctly.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### 3. Fix the Logic `Home.jsx` (1 mark)
-*   **Task**: Fix the `useEffect` hook, the API fetch implementation, and state updates.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### 4. Fix Component Rendering `AvailableCats.jsx` (1 mark)
-*   **Task**: Fix the JSX syntax and ensure the detailed list renders correctly.
+### `npm test`
 
-### 5. Add the following features
-The task is to add the following features to the cat adoption website demonstrated earlier in the lecture. Check slide for UI mockups.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-1. **Breed type** (1 mark) - add a new field in the cats list to show which breed class they belong to. Possible breeds are: Sphynx, Peterbald, Birman, Abyssinian, Persian, Bengal, Siamese. Note: this should be reflected on the UI as well.
-2. **Filtering option** (2 marks) - add 2 filters in the “Available cats” page. One of them should be a dropdown and used to filter by cat breed. The other should be a search text box to search by cat name.
-3. **New pages** (1 marks) - About Us and Contact Us page.
+### `npm run build`
 
-#### HINT: You might have to integrate bootstrap!
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## UI Mockups
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-| Mockup | Mockup |
-|-------|-------|
-| <img src="https://github.com/user-attachments/assets/fb24a67f-4276-4452-a0c3-83d7743deae2" width="100%" /> | <img src="https://github.com/user-attachments/assets/5a85f9fe-cf6a-4a3e-aa02-10433c4b4f77" width="100%" /> |
-| <img src="https://github.com/user-attachments/assets/5dd3b5f5-d49a-4281-9628-3afe0b6970e9" width="100%" /> | <img src="https://github.com/user-attachments/assets/12cd720a-6e70-4ee6-ab7e-a112877e579b" width="100%" /> |
-| <img src="https://github.com/user-attachments/assets/a555d83c-5d0a-4295-877c-e5d7575d8dbe" width="100%" /> |  |
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run eject`
 
-## Setup Instructions
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-1.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-2.  **Run the app**:
-    ```bash
-    npm run dev
-    ```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-3.  **Debug**: Open your browser console and start hunting bugs!
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Rules
-*   You must fix the *existing* code. Do not rewrite everything from scratch.
-*   Pay attention to console warnings (keys, props, etc.).
-*   Make the site look "Purrfect" again!
+## Learn More
 
-Good luck! 🐱
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
