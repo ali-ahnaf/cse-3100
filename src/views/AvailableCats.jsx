@@ -75,30 +75,15 @@ export default function AvailableCats() {
         </div>
       </section>
 
-      <div style={{ border: "1px solid black" }} />
-
-      <section className="mt-3">
-        <div
-          className="mt-1 row g-4"
-          id="cats-container"
-          style={{ justifyContent: "space-between" }}
-        >
+      <section className="mt-4">
+        <div className="mt-1" id="cats-container">
           {cats.map((cat, i) => (
-            <div key={i} className="col-12 col-md-4 col-lg-2">
-              <div className="cat-card my-2">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid"
-                  style={{
-                    objectFit: "cover",
-                  }}
-                />
-                <div className="cat-info py-2">
-                  <h3 className="mb-1">{cat.name}</h3>
-                  <p className="mb-0">Breed: {cat.breed}</p>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
+            <div key={i} className="cat-card my-2">
+              <img src={cat.image} alt={cat.name} className="img-fluid" />
+              <div className="cat-info py-2">
+                <h3 className="mb-1">{cat.name}</h3>
+                <p className="mb-0">Breed: {cat.breed}</p>
+                <p className="mb-0">Age: {cat.age}</p>
               </div>
             </div>
           ))}
