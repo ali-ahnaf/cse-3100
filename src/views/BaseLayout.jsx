@@ -20,7 +20,7 @@ const BaseLayout = () => {
             Available Cats
           </Link>
 
-          <Link to="/donate">
+          <Link>
             Donate
           </Link>
 

@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
-  { name: 'Oliver', age: '5' },
-  { name: 'Chloe', age: '3' },
+  { name: 'Whiskers', age: '2', breed: 'Sphynx' },
+  { name: 'Mittens', age: '2', breed: 'Peterbald'},
+  { name: 'Shadow', age: '1', breed: 'Persian' },
+  { name: 'Pumpkin', age: '3', breed: 'Birman' },
+  { name: 'Luna', age: '4', breed: 'Abyssinian' },
+  { name: 'Simba', age: '2', breed: 'Bengal' },
+  { name: 'Oliver', age: '5', breed: 'Siamese' },
+  { name: 'Chloe', age: '3', breed: 'Munchkin' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [selectedBreed, setSelectedBreed] = useState('All breeds');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
@@ -45,21 +47,49 @@ export default function AvailableCats() {
         <h2>Available Cats</h2>
 
         <div className="controls-row">
-          <select aria-label="Select breed" className="breed-select">
+          <select
+            aria-label="Select breed"
+            className="breed-select"
+            value={selectedBreed}
+            onChange={(e) => setSelectedBreed(e.target.value)}
+          >
             <option>All breeds</option>
             <option>Siamese</option>
             <option>Persian</option>
-            <option>Maine Coon</option>
+            <option>Sphynx</option>
+            <option>Bengal</option>
+            <option>Birman</option>
+            <option>Peterbald</option>
+            <option>Abyssinian</option>
+            <option>Munchkin</option>
           </select>
-          <input aria-label="Search by name" className="name-search" placeholder="Search by name" />
-          <button type="button" className="btn primary">Search</button>
+          <input
+            aria-label="Search by name"
+            className="name-search"
+            placeholder="Search by name"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button
+            type="button"
+            className="btn primary"
+            onClick={() => {}}
+          >
+            Search
+          </button>
         </div>
       </div>
 
       <hr className="divider" />
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
+        {cats.filter((cat) => {
+            const matchesBreed =
+              selectedBreed === 'All breeds' || cat.breed === selectedBreed;
+            const matchesName = cat.name.toLowerCase().includes(searchQuery.toLowerCase());
+            return matchesBreed && matchesName;
+          })
+          .map((cat, i) => (
           <div key={i} className="col-md-4">
             <div className="cat-card">
               <img
@@ -75,6 +105,7 @@ export default function AvailableCats() {
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
                 <p className="mb-0">Age: {cat.age}</p>
+                <p className="mb-0">Breed: {cat.breed}</p>
               </div>
             </div>
           </div>
