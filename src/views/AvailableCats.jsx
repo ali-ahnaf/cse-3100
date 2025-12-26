@@ -16,6 +16,7 @@ export default function AvailableCats() {
   const { cats } = useCats(availableCats);
   const [filteredCats, setFilteredCats] = useState([]);
   const [breed, setBreed] = useState("All cars");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     setFilteredCats(cats);
@@ -29,13 +30,31 @@ export default function AvailableCats() {
     }
   }, [breed]);
 
+  useEffect(() => {
+    if (name === "") {
+      setFilteredCats(cats);
+    } else {
+      setFilteredCats(cats.filter(c => c.title.startsWith(name)));
+    }
+  }, [name]);
+
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
+
   return (
     <GridView>
       <GridView.Title>
-        <div className="d-flex justify-content-between">
+        <div className="topbar">
           <div className="fs-5 fw-bold mb-2">Available Cats</div>
-          <div>
+          <div className="d-flex gap-2">
+
             <Dropdown breed={breed} setBreed={setBreed} />
+            <form role="search">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+              onChange={handleName} value={name} id="name" name="name" autoComplete="true" />
+            </form>
+
           </div>
         </div>
         <p>Meet our adorable cats looking for their forever home!</p>

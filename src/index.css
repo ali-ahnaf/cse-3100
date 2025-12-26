@@ -53,6 +53,13 @@ form > input {
   form > input {
     width: 90% !important;
   }
+  .topbar {
+    flex-direction: column;
+  }
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card {
