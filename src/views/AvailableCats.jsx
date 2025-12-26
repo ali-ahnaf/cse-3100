@@ -1,69 +1,90 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  /* TASK 3: cat details */
+  { name: 'Whiskers', age: '2', breed: 'Siamese' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
+  { name: 'Luna', age: '3', breed: 'Abyssinian' },
+  { name: 'Leo', age: '2', breed: 'Bengal' },
+  { name: 'Bella', age: '1', breed: 'Sphynx' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  /* TASK 4 (Breed Dropdown */
+  const [selectedBreed, setSelectedBreed] = useState('');
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
-        );
-        const catsWithImages = availableCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats(catsWithImages);
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
+    const fetchImages = async () => {
+      const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=6');
+      const data = await response.json();
+      setCats(availableCats.map((cat, i) => ({
+        ...cat,
+        image: data[i]?.url || 'https://via.placeholder.com/200'
+      })));
     };
-
-    fetchCatImages();
+    fetchImages();
   }, []);
 
-  return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+  /* TASK 4 Search Text + Breed Dropdown */
+  const filteredCats = cats.filter(cat => {
+    const matchesSearch = cat.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesBreed = selectedBreed === '' || cat.breed === selectedBreed;
+    return matchesSearch && matchesBreed;
+  });
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
-              />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
+  return (
+    <div className="container">
+      <h1 className="text-center mb-5 fw-bold">Available Cats</h1>
+
+      {/* TASK 4*/}
+      <div className="row mb-4 g-3">
+        {/* Search kora  */}
+        <div className="col-md-6">
+          <input 
+            type="text" 
+            className="form-control" 
+            placeholder="Search by cat name..." 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        
+        {/* Breed Dropdown Menu */}
+        <div className="col-md-6">
+          <select 
+            className="form-select" 
+            value={selectedBreed}
+            onChange={(e) => setSelectedBreed(e.target.value)}
+          >
+            <option value="">All Breeds</option>
+            <option value="Siamese">Siamese</option>
+            <option value="Persian">Persian</option>
+            <option value="Bengal">Bengal</option>
+            <option value="Abyssinian">Abyssinian</option>
+            <option value="Sphynx">Sphynx</option>
+          </select>
+        </div>
+      </div>
+
+      {/* TASK 1 */}
+      <div className="row">
+        {filteredCats.map((cat, i) => (
+          <div key={i} className="col-md-4 mb-4">
+            <div className="card shadow-sm border-0 rounded-4 overflow-hidden">
+              <img src={cat.image} className="card-img-top" alt={cat.name} style={{ height: '250px', objectFit: 'cover' }} />
+              <div className="card-body">
+                <h2 className="h4 fw-bold">{cat.name}</h2>
+                {/* TASK 3 */}
+                <p className="badge bg-info text-dark">{cat.breed}</p>
+                <p className="fw-bold text-primary mt-2">Age: {cat.age} Years</p>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
