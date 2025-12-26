@@ -1,13 +1,13 @@
 export default function Contact() {
   return (
     <div className="container">
-      {/* Page Header */}
+      {/* Header */}
       <div className="text-center mb-5">
         <h1 className="display-4 fw-bold">Get In Touch</h1>
         <p className="fs-5 text-muted">We'd love to hear from you. Our team is always here to help.</p>
       </div>
 
-      {/* Info Boxes Row */}
+      {/* Info Boxes  */}
       <div className="row g-4 justify-content-center">
         {/* Box 1: Address */}
         <div className="col-md-4">
@@ -43,7 +43,7 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Optional: Simple Message Box below */}
+      {/* Simple Message  */}
       <div className="row justify-content-center mt-5">
         <div className="col-md-8">
           <div className="bg-primary text-white p-5 rounded-5 text-center shadow-lg">

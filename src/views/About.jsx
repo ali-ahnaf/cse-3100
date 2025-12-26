@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div className="container">
-      {/* Top Section: Two Paragraphs and Mission */}
+      {/* Top Section */}
       <div className="row align-items-center mb-5 pb-5">
         <div className="col-md-7">
           <h1 className="display-4 fw-bold mb-4 text-start">Our Mission</h1>
@@ -19,7 +19,7 @@ export default function About() {
           </p>
         </div>
         <div className="col-md-5 text-center">
-          {/* A catchy mission image or icon can go here */}
+          {/* icon */}
           <div className="p-5 bg-white shadow-sm rounded-5">
              <span style={{fontSize: '100px'}}>🐾</span>
              <h2 className="fw-bold mt-3">100% Love</h2>
@@ -29,13 +29,13 @@ export default function About() {
 
       <hr className="my-5 opacity-25" />
 
-      {/* Developer Section: Centered like the 2nd picture */}
+      {/* Developer Section */}
       <div className="row justify-content-center text-center mt-5">
         <div className="col-md-6">
           <h2 className="display-6 fw-bold mb-5">Meet the Developer</h2>
           <div className="card border-0 shadow-sm p-4 bg-white rounded-4">
             <div className="d-flex justify-content-center mb-4">
-              {/* This uses your 3rd picture placeholder */}
+              {/* dev image */}
           
 <img 
   src="/developer.jpg" 
