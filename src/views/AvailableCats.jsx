@@ -52,7 +52,7 @@ export default function AvailableCats() {
             <Dropdown breed={breed} setBreed={setBreed} />
             <form role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-              onChange={handleName} value={name} id="name" name="name" autoComplete="true" />
+              onChange={handleName} value={name} id="name" name="name" autoComplete="true" style={{ width: "85%" }} />
             </form>
 
           </div>
