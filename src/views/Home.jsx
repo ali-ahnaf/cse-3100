@@ -25,7 +25,7 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
+        setCats(catsWithImages);
 
         if (cats.length > 10) {
           alert(
