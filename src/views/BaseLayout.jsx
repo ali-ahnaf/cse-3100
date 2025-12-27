@@ -3,29 +3,42 @@ import { Link, Outlet } from 'react-router-dom';
 const BaseLayout = () => {
   return (
     <div className="layout">
-      <header className="d-flex align-items-center bg-light">
+      <header>
+
         <h1>
-          <Link className="text-decoration-none text-dark" to="/">
+          <Link to="/">
             Purrfect Adoption
           </Link>
         </h1>
-        <div className="flex-grow-1"></div>
+
         <nav>
-          <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
-                Available Cats
-              </Link>
-            </li>
-          </ul>
+          <Link to="/about">
+            About us
+          </Link>
+
+          <Link to="/available-cats">
+            Available Cats
+          </Link>
+
+          <Link>
+            Donate
+          </Link>
+
+          <Link to="/contact">
+            Contact us
+          </Link>
         </nav>
+
       </header>
+
+
+
       <main id="content">
         <Outlet />
       </main>
-      <footer className="bg-light">
+      {/* <footer>
         <p>© Copyright 2024</p>
-      </footer>
+      </footer> */}
     </div>
   );
 };
