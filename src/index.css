@@ -1,3 +1,4 @@
+/* Reset box-sizing */
 *,
 *::before,
 *::after {
@@ -10,23 +11,27 @@
   min-height: 100vh;
 }
 
+/* Header */
 header {
   padding: 1em;
   background-color: #cf8080;
 }
 
+/* Main content area */
 main {
   flex: 1;
   padding: 1em;
   display: block;
 }
 
+/* Footer */
 footer {
   padding: 1em;
   text-align: center;
   background: #9cb7d1;
 }
 
+/* Cat card */
 .cat-card {
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -54,6 +59,7 @@ footer {
   color: #000;
 }
 
+/* Contact box */
 .contact-box {
   max-width: 500px;
   padding: 30px;
