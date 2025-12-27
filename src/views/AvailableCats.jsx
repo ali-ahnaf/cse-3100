@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-// 1. Updated data with 'breed' field
 const availableCats = [
   { name: 'Whiskers', age: '2', breed: 'Persian' },
   { name: 'Mittens', age: '2', breed: 'Siamese' },
@@ -11,10 +10,11 @@ const availableCats = [
   { name: 'Garfield', age: '5', breed: 'Persian' },
   { name: 'Oreo', age: '1', breed: 'Peterbald' },
 ];
+
 const breeds = ['All', 'Sphynx', 'Peterbald', 'Birman', 'Abyssinian', 'Persian', 'Bengal', 'Siamese'];
+
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
-  // 2. State for filters
   const [selectedBreed, setSelectedBreed] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -41,13 +41,12 @@ export default function AvailableCats() {
 
     fetchCatImages();
   }, []);
-// 3. Filtering Logic (Derived State)
+
   const filteredCats = cats.filter((cat) => {
     const matchesBreed = selectedBreed === 'All' || cat.breed === selectedBreed;
     const matchesName = cat.name.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesBreed && matchesName;
   });
-
 
   return (
     <section>
@@ -56,13 +55,17 @@ export default function AvailableCats() {
         <p>Meet our adorable cats looking for their forever home!</p>
       </div>
 
-      {/* 4. Filter Controls UI */}
       <div className="filter-container mb-4" style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
         
-        {/* Breed Dropdown */}
+        {/* Dropdown with Dark Border */}
         <select 
           className="form-control"
-          style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc', minWidth: '200px' }}
+          style={{ 
+            padding: '0.5rem', 
+            borderRadius: '4px', 
+            border: '2px solid #555', 
+            minWidth: '200px' 
+          }}
           value={selectedBreed} 
           onChange={(e) => setSelectedBreed(e.target.value)}
         >
@@ -73,17 +76,21 @@ export default function AvailableCats() {
           ))}
         </select>
 
-        {/* Search Box */}
+        {/* Input with Dark Border */}
         <input 
           type="text" 
           placeholder="Search by name" 
           className="form-control"
-          style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc', minWidth: '200px' }}
+          style={{ 
+            padding: '0.5rem', 
+            borderRadius: '4px', 
+            border: '2px solid #555', 
+            minWidth: '200px' 
+          }}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         
-        {/* Visual Search Button (Functional via onChange, but added for visual completeness per mockups) */}
         <button style={{ 
           backgroundColor: '#0d6efd', 
           color: 'white', 
@@ -99,23 +106,38 @@ export default function AvailableCats() {
       <div className="row cats-container">
         {filteredCats.map((cat, i) => (
           <div key={i}>
-            <div className="cat-card">
+            {/* Card with Dark Border */}
+            <div className="cat-card" style={{ 
+              border: '2px solid #555', 
+              borderRadius: '8px', 
+              padding: '10px',
+              height: '100%' 
+            }}>
+              
+              {/* Image with Dark Border */}
               <img
                 src={cat.image}
                 alt={cat.name}
                 style={{
-                  borderRadius: '8px',
+                  borderRadius: '4px',
                   height: '200px',
                   width: '100%',
                   objectFit: 'cover',
-                  marginBottom: '10px'
+                  marginBottom: '10px',
+                  border: '2px solid #555' 
                 }}
               />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
+              
+              {/* Info Box with Dark Border */}
+              <div className="cat-info" style={{ 
+                border: '2px solid #555', 
+                padding: '10px', 
+                borderRadius: '4px',
+                textAlign: 'left'
+              }}>
+                <h3 className="h5 mb-1" style={{ fontWeight: 'bold' }}>{cat.name}</h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem' }}>
                   <p className="mb-0">Age: {cat.age}</p>
-                  {/* 5. Displaying Breed on Card */}
                   <p className="mb-0"><strong>{cat.breed}</strong></p>
                 </div>
               </div>

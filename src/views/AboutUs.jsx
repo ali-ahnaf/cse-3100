@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function AboutUs() {
-  // 1. Updated team data with distinct names, roles, and images
   const teamMembers = [
     { 
       name: 'Sarah Jenkins', 
@@ -45,30 +44,49 @@ export default function AboutUs() {
       <div>
         <h4 style={{ marginBottom: '1rem' }}>Our team</h4>
         
-        {/* Using global .row class with inline override for 3 columns */}
         <div className="row" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
           {teamMembers.map((member, index) => (
             <div key={index}>
-              {/* Reusing existing .cat-card class for consistent styling */}
-              <div className="cat-card" style={{ height: '250px', justifyContent: 'space-between' }}>
+              {/* Increased card height slightly to fit both boxes comfortably */}
+              <div className="cat-card" style={{ height: '300px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 
-                {/* 2. Replaced placeholder DIV with IMG tag */}
-                <img 
-                  src={member.image} 
-                  alt={member.name}
-                  style={{ 
-                    flex: 1,       // Takes available space, similar to the previous placeholder div
-                    width: '100%', // Ensures it fills the card width
-                    objectFit: 'cover', // Prevents image distortion
-                    borderRadius: '4px', 
-                    marginBottom: '10px' 
-                  }} 
-                />
+                {/* 1. Image Layout Box */}
+                <div style={{ 
+                  border: '2px solid #555', 
+                  borderRadius: '4px', 
+                  padding: '3px',
+                  height: '180px',
+                  width: '100%',
+                  boxSizing: 'border-box'
+                }}>
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    style={{ 
+                      width: '100%', 
+                      height: '100%', 
+                      objectFit: 'cover', 
+                      borderRadius: '2px' 
+                    }} 
+                  />
+                </div>
                 
-                <div style={{ textAlign: 'left' }}>
-                  <h5 style={{ margin: '0 0 5px 0', fontSize: '1rem' }}>{member.name}</h5>
+                {/* 2. Text Layout Box (Applied here as requested) */}
+                <div style={{ 
+                  border: '2px solid #555',  // Same dark border
+                  borderRadius: '4px',       // Same rounded corners
+                  padding: '10px',           // Padding inside the text box
+                  textAlign: 'left',
+                  flex: 1,                   // Fills remaining vertical space
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  boxSizing: 'border-box'
+                }}>
+                  <h5 style={{ margin: '0 0 4px 0', fontSize: '1rem', fontWeight: 'bold' }}>{member.name}</h5>
                   <small style={{ color: '#6c757d' }}>{member.role}</small>
                 </div>
+
               </div>
             </div>
           ))}
