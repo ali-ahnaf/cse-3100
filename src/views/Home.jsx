@@ -1,44 +1,33 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Bengal'},
+  { name: 'Mittens', age: '2', breed: 'Siamese'},
+  { name: 'Shadow', age: '1', breed: 'Persian'},
 ];
 
 export default function Home() {
   const [cats, setCats] = useState([]);
 
-  useEffect(() => {
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
-        );
+useEffect(() => {
+  const fetchCatImages = async () => {
+    const responses = await Promise.all(
+      featuredCats.map(() =>
+        fetch('https://api.thecatapi.com/v1/images/search').then(res => res.json())
+      )
+    );
 
-        const catsWithImages = featuredCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
+    const catsWithImages = featuredCats.map((cat, index) => ({
+      ...cat,
+      image: responses[index][0].url,
+    }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
+    setCats(catsWithImages);
+  };
 
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
-    };
+  fetchCatImages();
+}, []);
 
-    fetchCatImages();
-  });
 
   return (
     <>
@@ -71,6 +60,7 @@ export default function Home() {
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-0">Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>
