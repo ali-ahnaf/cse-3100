@@ -1,3 +1,5 @@
+
+/*
 * {
   box-sizing: content-box;
 }
@@ -45,4 +47,90 @@ footer {
   background: #000;
   color: #fff;
   border-radius: 4px;
+}
+*/
+
+* {
+  box-sizing: border-box; 
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  padding: 1em;
+  background-color: #f8f9fa !important; 
+  color: #333 !important; 
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main {
+  flex: 1;
+  padding: 2em 1em;
+}
+
+footer {
+  padding: 1em;
+  text-align: center; 
+  position: relative;
+  width: 100%;
+  background: #f8f9fa !important; 
+  border-top: 1px solid #dee2e6;
+  margin-top: auto;
+}
+
+.cat-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  height: auto; 
+  overflow: hidden;
+  padding: 0; 
+}
+
+.cat-info {
+  background: #f8f9fa; 
+  color: #333; 
+  padding: 1rem;
+  border-radius: 0 0 8px 8px;
+}
+
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.filter-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-container .form-control,
+.filter-container .form-select {
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .cats-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  .filter-container {
+    flex-direction: column;
+  }
 }
