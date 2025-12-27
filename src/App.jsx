@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import BaseLayout from './views/BaseLayout';
 import Home from './views/Home';
 import AvailableCats from './views/AvailableCats';
+import AboutUs from './views/AboutUs';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       
         <Route index element={<Home />} />
         <Route path="available-cats" element={<AvailableCats />} />
+        <Route path="about-us" element={<AboutUs />} />
       </Route>
     </Routes>
   );
