@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from 'react-router';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import BaseLayout from './views/BaseLayout';
 import Home from './views/Home';
 import AvailableCats from './views/AvailableCats';

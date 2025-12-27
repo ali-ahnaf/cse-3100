@@ -1,24 +1,29 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 .layout {
   display: flex;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  overflow: auto;
+  transform: none;
 }
 
 header {
   padding: 1em;
   background-color: #fff;
-  color: #fff;
+  color: #000;
 }
 
 main {
   flex: 1;
   padding: 1em;
-  display: list-item;
+  display: block;
 }
 
 footer {
@@ -26,7 +31,8 @@ footer {
   text-align: right;
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   z-index: 9999;
   background: red;
 }
@@ -34,7 +40,7 @@ footer {
 .cat-card {
   border: 1px solid #ddd;
   text-align: center;
-  height: 150px;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
