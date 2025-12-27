@@ -46,7 +46,7 @@ export default function AvailableCats() {
           style={{ maxWidth: 240 }}
         >
           <option value="">All breeds</option>
-          {Array.from(new Set(cats.map((c) => c.breed).filter(Boolean))).map((b) => (
+          {Array.from(new Set((cats.length ? cats : availableCats).map((c) => c.breed).filter(Boolean))).map((b) => (
             <option key={b} value={b}>
               {b}
             </option>
@@ -62,6 +62,10 @@ export default function AvailableCats() {
           className="form-control"
           style={{ maxWidth: 320 }}
         />
+
+        <button className="btn btn-outline-secondary" onClick={() => { setSearchTerm(''); setBreedFilter(''); }}>
+          Clear
+        </button>
       </div>
 
       <div className="mt-2 row g-4 cats-container">
@@ -70,9 +74,11 @@ export default function AvailableCats() {
         {!loading && !error && (
           (() => {
             const q = searchTerm.trim().toLowerCase();
+            const normalize = (s) => (s || '').toString().toLowerCase().trim().replace(/\s+/g, ' ');
+            const qnorm = normalize(searchTerm);
             const filtered = cats.filter((cat) => {
               if (breedFilter && cat.breed !== breedFilter) return false;
-              if (q && !cat.name.toLowerCase().includes(q)) return false;
+              if (qnorm && !normalize(cat.name).includes(qnorm)) return false;
               return true;
             });
             if (filtered.length === 0) return <p>No cats found.</p>;
