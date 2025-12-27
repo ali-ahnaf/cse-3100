@@ -39,7 +39,7 @@ export default function AvailableCats() {
 
   return (
     <section className="text-center mt-4">
-      <h2>Available Cats</h2>
+      <h1>Available Cats</h1>
       <p>Meet our adorable cats looking for their forever home!</p>
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">

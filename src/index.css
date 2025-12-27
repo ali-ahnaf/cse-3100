@@ -4,15 +4,18 @@
 
 .layout {
   display: flex;
+   
   min-height: 100vh;
- 
+  
 }
 
 header {
   padding: 1em;
   background-color: #ffffff;
   color: #000000;
+   
 }
+ 
 
 main {
   flex: 1;
@@ -28,7 +31,7 @@ footer {
   top: 0;
   width: 100%;
   z-index: 9999;
-  background: rgb(32, 8, 139);
+  background: rgb(153, 153, 153);
 }
 
 .cat-card {

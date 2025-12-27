@@ -4,6 +4,7 @@ const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
   { name: 'Shadow', age: '1' },
+  { name: 'Lupin', age: '2' }
 ];
 
 export default function Home() {
@@ -39,6 +40,7 @@ export default function Home() {
   return (
     <>
       <section className="text-center mt-4">
+        <h2>Welcome to Purrfect Adoption</h2>
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
