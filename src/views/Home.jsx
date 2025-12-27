@@ -38,7 +38,7 @@ export default function Home() {
     };
 
     fetchCatImages();
-  });
+  },[]); //dependency array, it will not load infinitely because no constants are changing and 
 
   return (
     <>
