@@ -42,19 +42,14 @@ export default function AvailableCats() {
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
+      <div className="mt-2 cats-container" id="cats-container">
         {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
+          <div key={i} className="cat-item">
             <div className="cat-card">
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
+                className="cat-img img-fluid mb-2"
               />
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
