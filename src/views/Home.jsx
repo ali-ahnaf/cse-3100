@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Siamese' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
 ];
 
 export default function Home() {
@@ -41,33 +41,26 @@ export default function Home() {
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Purrfect Adoption is dedicated to finding loving homes for cats across Bangladesh. 
+          We believe every cat deserves a safe, caring family. Our mission is to connect rescued 
+          and abandoned cats with compassionate owners who will provide them with the love and care they deserve.
         </p>
       </section>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+      <section className="featured-section mt-5">
+        <h2>Featured Cats</h2>
+        <div className="featured-grid" id="cats-container">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
+            <div key={i} className="cat-card">
+              <img
+                src={cat.image}
+                alt={cat.name}
+                className="img-fluid"
+              />
+              <div className="cat-info">
+                <h3 className="h5 mb-1">{cat.name}</h3>
+                <p className="mb-2">Age: {cat.age}</p>
+                <p className="breed-badge">{cat.breed}</p>
               </div>
             </div>
           ))}
