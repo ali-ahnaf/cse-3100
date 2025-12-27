@@ -9,7 +9,7 @@ const availableCats = [
   { name: 'Luna', age: '4', breed: 'Sphynx' },
   { name: 'Simba', age: '2', breed: 'Birman' },
   {name: 'Mecho', age: '2'},
-  {name: 'KingRovers', age: '2'},
+  //{name: 'KingRovers', age: '2'},
 ];
 
 export default function AvailableCats() {
