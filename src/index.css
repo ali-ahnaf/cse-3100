@@ -38,44 +38,83 @@ header {
 
 /* Navbar styles */
 .navbar {
+  width: 100%;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   background: #fff;
   position: sticky;
   top: 0;
   z-index: 50;
-}
-.navbar-inner {
-  max-width: 1100px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  gap: 1rem;
 }
-.brand {
+
+.navbar .brand {
   margin: 0;
   font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.05rem;
 }
+
 .brand-link {
   color: #111;
   text-decoration: none;
 }
-.site-nav ul {
-  list-style: none;
+
+.navbar .site-nav {
+  margin-left: auto;
+}
+
+.navbar .site-nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
   margin: 0;
   padding: 0;
-  display: flex;
-  gap: 1rem;
+  list-style: none;
+  white-space: nowrap;
 }
-.site-nav .nav-link {
-  color: #333;
+
+.navbar .site-nav ul li { display: inline-block; }
+
+/* Mobile: stack nav below brand */
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .navbar .site-nav {
+    margin-left: 0;
+  }
+}
+
+/* Navbar link as buttons */
+.navbar .nav-link {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  background: transparent;
+  color: #1f2937;
   text-decoration: none;
-  padding: 0.25rem 0.5rem;
+  border: 1px solid transparent;
+  font-weight: 600;
+  transition: background .12s ease, color .12s ease, transform .06s ease;
 }
-.site-nav .nav-link:hover {
-  color: #000;
+.navbar .nav-link:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+.navbar .nav-link:active { transform: translateY(1px); }
+/* active link from react-router gets aria-current="page" */
+.navbar .nav-link[aria-current="page"] {
+  background: #2563eb;
+  color: #fff;
+  border-color: rgba(37,99,235,0.15);
+  box-shadow: 0 6px 18px rgba(37,99,235,0.12);
 }
 
 main {
@@ -170,6 +209,14 @@ footer {
   .cat-card img {
     height: var(--cat-photo-height);
   }
+}
+
+/* Search box padding adjustments for AvailableCats search row */
+.d-flex.align-items-center.gap-2.mb-3 input,
+.d-flex.align-items-center.gap-2.mb-3 select,
+.d-flex.align-items-center.gap-2.mb-3 input[type="search"] {
+  margin-left: 5px;
+  margin-bottom: 20px;
 }
 
 /* Ensure both pages use identical final dimensions for the grid */
