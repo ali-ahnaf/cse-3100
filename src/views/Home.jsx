@@ -4,6 +4,12 @@ const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
   { name: 'Shadow', age: '1' },
+  {name: 'Pumpkin', age: '2'},
+  {name: 'Rinku', age: '4'},
+  {name: 'Oskar', age: '2'},
+  {name: 'Mecho', age: '2'},
+  {name: 'KingRovers', age: '2'},
+
 ];
 
 export default function Home() {
@@ -25,20 +31,14 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages); // 1. Simpler state update (removes duplication bug)
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []); // 2. <--- THIS EMPTY ARRAY STOPS THE LOOP
 
   return (
     <>
@@ -51,10 +51,11 @@ export default function Home() {
         </p>
       </section>
 
+
       <section className="mt-5">
         <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+        <div className="mt-2 row g-4 cats-container" id="cats-container"></div>
+        <div className="mt-2 row g-4 cats-container" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
               <div className="cat-card">

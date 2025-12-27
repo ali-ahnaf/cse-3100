@@ -13,9 +13,18 @@ const BaseLayout = () => {
         <nav>
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
-                Available Cats
-              </Link>
+              <Link className="nav-link" to="/about">About us</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/available-cats">Available cats</Link>
+            </li>
+            {/* You can rename "Donate" to anything or keep it, but let's add Contact */}
+            <li className="nav-item">
+               {/* Just a placeholder per design */}
+              <span className="nav-link" style={{cursor: "pointer"}}>Donate</span>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">Contact us</Link>
             </li>
           </ul>
         </nav>
