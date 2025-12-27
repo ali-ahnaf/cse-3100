@@ -1,48 +1,60 @@
-* {
-  box-sizing: content-box;
+:root{
+  --card-bg: #fff;
+  --muted: #666;
+  --accent: #2b7cff;
 }
 
-.layout {
-  display: flex;
-  min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+body{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f4f5f7;
+  margin:0;
+  color:#222;
 }
 
-header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
+.site-shell{
+  max-width: 960px;
+  margin: 24px auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-main {
-  flex: 1;
-  padding: 1em;
-  display: list-item;
+.site-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.site-header nav a{ margin-left:12px; color:var(--muted); text-decoration:none; }
+.site-header h1{ font-family: "Brush Script MT", cursive; margin:0; font-size:1.4rem; }
+
+.filters-row{ display:flex; gap:8px; margin-bottom:12px; align-items:center; }
+.filters-row select, .filters-row input { padding:6px 8px; border-radius:4px; border:1px solid #ddd; }
+
+.cat-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
 }
 
-footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+.cat-card{
+  background: var(--card-bg);
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding:8px;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  min-height:120px;
 }
 
-.cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+.cat-image-placeholder{
+  background:#f0f0f0;
+  height:72px;
+  border-radius:6px;
+  margin-bottom:8px;
 }
 
-.cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
-}
+.cat-name{ font-weight:600; margin-bottom:6px; }
+.cat-meta{ color:var(--muted); font-size:0.9rem; display:flex; justify-content:space-between; }
+
+.contact-form label{ display:block; margin-bottom:8px; }
+.contact-form input{ width:100%; padding:6px 8px; border:1px solid #ddd; border-radius:4px; }
+
+.site-footer{ text-align:center; margin-top:16px; color:var(--muted); font-size:0.9rem; }
