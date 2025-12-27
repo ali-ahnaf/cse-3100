@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { fetchCatImages } from '../utils/fetchCats';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: 'Whiskers', age: '2', breed: 'Abyssinian' },
+  { name: 'Mittens', age: '2', breed: 'Birman' },
+  { name: 'Shadow', age: '1', breed: 'Siamese' },
+  { name: 'Pumpkin', age: '3', breed: 'Persian' },
+  { name: 'Luna', age: '4', breed: 'Bengal' },
+  { name: 'Simba', age: '2', breed: 'Sphynx' },
 ];
 
 export default function AvailableCats() {
@@ -56,6 +56,7 @@ export default function AvailableCats() {
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
                 <p className="mb-0">Age: {cat.age}</p>
+                <p className="mb-0">Breed: {cat.breed}</p>
               </div>
             </div>
           </div>

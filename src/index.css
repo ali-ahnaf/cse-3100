@@ -53,7 +53,6 @@ footer {
   border-radius: 4px;
 }
 
-/* Grid layout for cat cards */
 .cats-container {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
