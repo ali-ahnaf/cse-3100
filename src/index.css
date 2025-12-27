@@ -1,4 +1,3 @@
-/* Cleaned stylesheet (fixed syntax) */
 :root {
   --primary: #FFE7C7;
   --primary-contrast: #222;
@@ -23,7 +22,6 @@ body {
   min-height: 100vh;
 }
 
-/* Header / nav */
 header,
 .site-header {
   background: #ffffff;
@@ -43,6 +41,7 @@ header,
   margin: 0;
   font-size: 1.8rem;
   font-weight: 700;
+  color: var(--primary);
 }
 
 .site-brand-link {
@@ -101,7 +100,7 @@ header,
   }
 }
 
-/* Main content container */
+
 main {
   flex: 1;
   padding: 1em;
@@ -117,10 +116,10 @@ main h2 {
   text-align: center;
 }
 
-/* Footer */
+
 footer {
   padding: 1em;
-  text-align: right;
+  text-align: center;
   position: relative;
   bottom: 0;
   width: 100%;
@@ -128,7 +127,6 @@ footer {
   background: #f8f9fa;
 }
 
-/* Cards grid for cats (responsive) */
 .cats-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -166,7 +164,6 @@ footer {
   padding: 0.75rem;
 }
 
-/* Filters */
 .filters {
   display: flex;
   gap: 1rem;
@@ -199,7 +196,6 @@ footer {
   }
 }
 
-/* Contact form styles */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -234,7 +230,6 @@ button,
 
 .contact-submit:hover { opacity: 0.95; }
 
-/* Directors / team cards for About page */
 .directors-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

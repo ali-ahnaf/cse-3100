@@ -13,6 +13,11 @@ const BaseLayout = () => {
           <nav className="site-nav" aria-label="Main navigation">
             <ul className="site-nav-list">
               <li>
+                <Link className="site-nav-link" to="/about">
+                  About us
+                </Link>
+              </li>
+              <li>
                 <Link className="site-nav-link" to="/available-cats">
                   Available Cats
                 </Link>
@@ -22,11 +27,7 @@ const BaseLayout = () => {
                   Contact us
                 </Link>
               </li>
-              <li>
-                <Link className="site-nav-link" to="/about">
-                  About us
-                </Link>
-              </li>
+              
             </ul>
           </nav>
         </div>
@@ -35,7 +36,7 @@ const BaseLayout = () => {
         <Outlet />
       </main>
       <footer className="bg-light">
-        <p>© Copyright 2024</p>
+        <p>© Copyright 2025</p>
       </footer>
     </div>
   );
