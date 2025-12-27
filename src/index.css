@@ -1,24 +1,24 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .layout {
   display: flex;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+ 
 }
 
 header {
   padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 main {
   flex: 1;
   padding: 1em;
-  display: list-item;
+  display: inline-flexbox;
+  
 }
 
 footer {
@@ -28,21 +28,35 @@ footer {
   top: 0;
   width: 100%;
   z-index: 9999;
-  background: red;
+  background: rgb(32, 8, 139);
 }
 
 .cat-card {
   border: 1px solid #ddd;
   text-align: center;
-  height: 150px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow: hidden;
+  overflow:  auto;
 }
 
 .cat-info {
   background: #000;
   color: #fff;
   border-radius: 4px;
+}
+
+#cats-container{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cat-card img{
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
 }
