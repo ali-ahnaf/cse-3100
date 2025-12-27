@@ -1,48 +1,231 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  /*overflow: hidden;
+  transform: rotate(1deg);*/
 }
 
 header {
   padding: 1em;
+  flex-direction: row;
   background-color: #fff;
-  color: #fff;
+  color: #090606;
 }
 
 main {
-  flex: 1;
-  padding: 1em;
-  display: list-item;
+ /* flex: 1;
+  padding: 1em;*/
+  display: block;
 }
 
-footer {
+/*footer {
   padding: 1em;
-  text-align: right;
-  position: fixed;
+  text-align: center;
+  /*position: fixed;
   top: 0;
   width: 100%;
   z-index: 9999;
   background: red;
 }
-
+footer {
+  background-color: #f8f9fa !important;
+  color: #6c757d;
+  position: relative !important;
+  top: auto !important;
+}
+*/
 .cat-card {
-  border: 1px solid #ddd;
+  border: 1px solid #8e0505;
+  border-radius: 8px;
   text-align: center;
-  height: 150px;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
+  background: white;
+  
 }
 
 .cat-info {
-  background: #000;
+  background: #cf9797;
   color: #fff;
-  border-radius: 4px;
+  border-radius: 8px;
+}
+
+.contact-container {
+  background-color: #f9f9f9; /* Light grey background to make it stand out */
+  padding: 30px;             /* Space inside the box so text doesn't touch edges */
+  border-radius: 10px;       /* Makes the corners rounded and modern */
+  border: 1px solid #ddd;    /* A thin border so we can see the box shape */
+}
+
+/* 2. Styling the Labels (Name, Phone, etc.) */
+.contact-label {
+  font-weight: bold;         /* Makes text thicker/stronger */
+  margin-bottom: 5px;        /* Adds a tiny gap above the input box */
+  display: block;            /* Forces the label to be on its own line */
+}
+
+/* 3. Styling the Input boxes */
+.contact-input {
+  border: 2px solid #ccc;    /* Defines the thickness and color of the box edge */
+  border-radius: 5px;        /* Round corners for the input boxes */
+  padding: 10px;             /* Makes the box taller so it's easier to type in */
+  width: 100%;               /* Makes the box stretch to fill the container */
+}
+
+/* 4. Focus effect (When you click inside a box) */
+.contact-input:focus {
+  border-color: #0d6efd;     /* Changes border to Blue when you are typing */
+  outline: none;             /* Removes the default ugly orange/black browser line */
+}
+/* Styling the text sections */
+.about-section h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap; /* This allows items to sit side-by-side */
+}
+/* The Team Card box */
+.team-card {
+  background-color: #ffffff;
+  border-radius: 15px;      /* Rounded corners */
+  border: 1px solid #eee;   /* Light border */
+  transition: 0.3s;         /* Makes the hover effect smooth */
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+/* Hover effect to show interactivity */
+.team-card:hover {
+  transform: translateY(-10px); /* Moves card up slightly */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* The profile picture */
+.team-img {
+  width: 100px;
+  height: 100px;
+  background-color: #f0f0f0;
+  border-radius: 50%;       /* Makes the image a perfect circle */
+  object-fit: cover;
+  border: 3px solid #0d6efd; /* Adds a blue ring around the photo */
+}
+/*  This makes the main logo letters sit closer together (modern style) */
+.main-logo {
+  letter-spacing: -1px;
+  text-transform: capitalize;
+}
+
+/*  Styling the navigation links */
+.nav-item-custom {
+  color: #555 !important;    /* Dark grey instead of pure black */
+  transition: color 0.3s;    /* Makes the color change smoothly */
+  font-size: 1.1rem;
+}
+
+/*  The Hover Effect: Change to blue when mouse is over it */
+.nav-item-custom:hover {
+  color: #0d6efd !important; /* Blue color */
+  text-decoration: underline; /* Standard way to show it's a link */
+}
+/* Custom Hover Effect for Cards */
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px); /* Moves card up slightly */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
+
+/* Fix the logo color */
+.text-primary {
+  color: #0d6efd !important;
+}
+
+/* 1. Basic Reset */
+.nav-links, .dropdown-content {
+  list-style: none; /* This removes the bullet points */
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Positioning the Navbar */
+.custom-navbar {
+  background: white;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Logo left, Links right */
+  align-items: center;
+}
+
+/* 3. Horizontal Links */
+.nav-links {
+  display: flex;
+  gap: 30px; /* Space between links */
+}
+
+.nav-links a, .dropdown-trigger {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 4. THE DROPDOWN LOGIC */
+.dropdown {
+  position: relative; /* Acts as the anchor for the menu */
+}
+
+.dropdown-content {
+  display: none;        /* Hidden by default */
+  position: absolute;   /* Floats below the 'More' text */
+  top: 100%;
+  right: 0;
+  background: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 100;
+}
+
+/* 5. Show the menu when hovering over the parent 'li' */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content li a {
+  padding: 10px 20px;
+  display: block;
+}
+
+.dropdown-content li a:hover {
+  background-color: #f8f9fa;
+  color: #0d6efd;
+}
+
+/* 6. Footer Fix */
+.custom-footer {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
 }
