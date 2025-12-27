@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: 'Whiskers', age: '2', breedClass: 'Persian' },
+  { name: 'Mittens', age: '2', breedClass: 'Bengal' },
+  { name: 'Shadow', age: '1', breedClass: 'Siamese' },
+  { name: 'Pumpkin', age: '3', breedClass: 'Birman' },
+  { name: 'Luna', age: '4', breedClass: 'Abyssinian' },
+  { name: 'Simba', age: '2', breedClass: 'Sphynx' },
+  { name: 'Micky', age: '3', breedClass: 'Birman' },
+  { name: 'Fluffkin', age: '5', breedClass: 'Peterbald' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedBreed, setSelectedBreed] = useState('Select breed');
 
   useEffect(() => {
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
@@ -37,32 +42,65 @@ export default function AvailableCats() {
     fetchCatImages();
   }, []);
 
-  return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+  const filteredCats = cats.filter((cat) => {
+    const matchesSearch = cat.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesBreed = selectedBreed === 'Select breed' || cat.breedClass === selectedBreed;
+    return matchesSearch && matchesBreed;
+  });
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
+  return (
+    <section className="available-page">
+      <div className="container-wrapper">
+        <div className="available-header">
+          <h2 className="main-title">Available cats</h2>
+          
+          <div className="filters-group">
+            <select 
+              className="filter-select" 
+              value={selectedBreed}
+              onChange={(e) => setSelectedBreed(e.target.value)}
+            >
+              <option>Select breed</option>
+              <option>Abyssinian</option>
+              <option>Bengal</option>
+              <option>Birman</option>
+              <option>Persian</option>
+              <option>Peterbald</option>
+              <option>Siamese</option>
+              <option>Sphynx</option>
+            </select>
+
+            <div className="search-box">
+              <input 
+                type="text" 
+                className="filter-input" 
+                placeholder="search by name" 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
-              </div>
+              <button className="filter-button">Search</button>
             </div>
           </div>
-        ))}
+        </div>
+
+        <hr className="styled-hr" />
+
+        <div className="cats-grid">
+          {filteredCats.length > 0 ? (
+            filteredCats.map((cat, i) => (
+              <div key={i} className="cat-card">
+                <img src={cat.image} alt={cat.name} />
+                <div className="cat-info">
+                    <h3>{cat.name}</h3>
+                    <p>Age: {cat.age} month/s</p>
+                    <p>Breed Type: {cat.breedClass}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="no-results">No cats found matching your criteria.</p>
+          )}
+        </div>
       </div>
     </section>
   );
