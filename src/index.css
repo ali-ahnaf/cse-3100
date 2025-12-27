@@ -3,11 +3,15 @@
 }
 
 :root {
-  --cat-grid-cols: 3;
-  --cat-col-width: 240px;
+  --cat-grid-cols: 4;
+  --cat-col-width: 180px;
   --cat-grid-gap: 1rem;
   --cat-grid-height: 600px;
   --cat-grid-width: calc(var(--cat-col-width) * var(--cat-grid-cols) + (var(--cat-grid-cols) - 1) * var(--cat-grid-gap));
+  --cat-card-height: 300px;
+  --cat-photo-width: var(--cat-col-width);
+  --cat-photo-height: 160px;
+  --cat-info-min-height: 110px;
 }
 
 html, body {
@@ -17,48 +21,102 @@ html, body {
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: auto;
+  overflow: visible;
   transform: none;
 }
 
 header {
-  padding: 1em;
-  background-color: #fff;
+  padding: 1em 1.25em;
+  background-color: transparent;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Navbar styles */
+.navbar {
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.navbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+.brand {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.brand-link {
+  color: #111;
+  text-decoration: none;
+}
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+.site-nav .nav-link {
+  color: #333;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+}
+.site-nav .nav-link:hover {
   color: #000;
 }
 
 main {
   flex: 1;
-  padding: 1em;
+  padding: 1.5em 1em;
   display: block;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 footer {
   padding: 1em;
   text-align: right;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: red;
+  position: static;
+  background: transparent;
 }
 
 .cat-card {
   border: 1px solid #ddd;
   text-align: center;
-  min-height: 150px;
+  width: var(--cat-col-width);
+  min-height: var(--cat-card-height);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+  justify-content: flex-start;
+  overflow: visible;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  background: #fafafa;
+  color: #111;
+  border-radius: 0 0 12px 12px;
+  padding: 0.6rem 0.5rem;
+  overflow: visible;
+  display: block;
+  min-height: var(--cat-info-min-height);
+  border-top: 1px solid #eee;
+  font-size: 0.95rem;
 }
 
 /* Fixed-size grid: keep width/height stable across viewport changes */
@@ -68,33 +126,37 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(var(--cat-col-width), 1fr));
   gap: var(--cat-grid-gap);
   align-items: start;
-  width: 100%;
-  max-width: var(--cat-grid-width);
-  /* keep the grid area square */
-  aspect-ratio: 1 / 1;
-  height: auto;
+  /* fixed square size based on --cat-grid-width (falls back to viewport width if smaller) */
+  width: min(var(--cat-grid-width), 100%);
+  height: min(var(--cat-grid-width), 100vh);
   margin: 0 auto; /* center horizontally */
+  grid-auto-rows: auto;
   overflow: auto; /* scroll if content exceeds square */
   justify-content: center;
   justify-items: center;
 }
 
-.cat-card img {
+.cat-item {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.cat-card img {
+  width: var(--cat-photo-width) !important;
+  height: var(--cat-photo-height) !important;
+  object-fit: cover !important;
   display: block;
+  border-radius: 12px 12px 0 0;
 }
 
-.cat-card .cat-info {
-  padding: 0.5rem;
-}
-
+/* .cat-info already defined above */
 /* Responsive adjustments */
 @media (max-width: 900px) {
   :root {
     --cat-col-width: 200px;
     --cat-grid-height: 700px;
+    --cat-photo-height: 160px;
   }
 }
 
@@ -103,8 +165,17 @@ footer {
     --cat-col-width: 160px;
     --cat-grid-gap: 0.5rem;
     --cat-grid-height: none;
+    --cat-photo-height: 140px;
   }
   .cat-card img {
-    height: 160px;
+    height: var(--cat-photo-height);
+  }
+}
+
+/* Ensure both pages use identical final dimensions for the grid */
+@media (min-width: 901px) {
+  .cats-container {
+    width: var(--cat-grid-width);
+    height: var(--cat-grid-width);
   }
 }

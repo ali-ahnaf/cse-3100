@@ -68,7 +68,7 @@ export default function AvailableCats() {
         </button>
       </div>
 
-      <div className="mt-2 row g-4 cats-container">
+      <div className="mt-2 cats-container">
         {loading && <p>Loading cats…</p>}
         {error && <p className="text-danger">Failed to load cats.</p>}
         {!loading && !error && (
@@ -83,18 +83,9 @@ export default function AvailableCats() {
             });
             if (filtered.length === 0) return <p>No cats found.</p>;
             return filtered.map((cat) => (
-              <div key={cat.name} className="col-md-4">
+              <div key={cat.name} className="cat-item">
                 <div className="cat-card">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="img-fluid mb-2"
-                    style={{
-                      borderRadius: '8px',
-                      height: '200px',
-                      objectFit: 'cover',
-                    }}
-                  />
+                  <img src={cat.image} alt={cat.name} className="img-fluid mb-2" />
                   <div className="cat-info">
                     <h3 className="h5 mb-1">{cat.name}</h3>
                     <p className="mb-0">Age: {cat.age}</p>
