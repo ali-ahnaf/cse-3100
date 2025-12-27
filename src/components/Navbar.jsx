@@ -16,6 +16,9 @@ export default function Navbar() {
             <li>
               <Link to="/available-cats" className="nav-link">Available Cats</Link>
             </li>
+            <li>
+              <Link to="/contact" className="nav-link">Contact</Link>
+            </li>
           </ul>
         </nav>
       </div>
