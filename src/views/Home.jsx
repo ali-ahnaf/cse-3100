@@ -4,6 +4,11 @@ const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
   { name: 'Shadow', age: '1' },
+  { name: 'Pumpkin', age: '3' },
+  { name: 'Luna', age: '4' },
+  { name: 'Simba', age: '2' },
+  { name: 'Felix', age: '3' },
+  { name: 'Bella', age: '1' },
 ];
 
 export default function Home() {
@@ -38,12 +43,12 @@ export default function Home() {
     };
 
     fetchCatImages();
-  });
+  },[]);
 
   return (
     <>
       <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
+        <h2 >Welcome to Purrfect Adoption</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
@@ -52,9 +57,8 @@ export default function Home() {
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+        <h2 style={{ textAlign: 'left' }}>Featured cats</h2>
+        <div className="mt-2 row g-4 cats-container" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
               <div className="cat-card">
@@ -64,7 +68,6 @@ export default function Home() {
                   className="img-fluid mb-2"
                   style={{
                     borderRadius: '8px',
-                    height: '200px',
                     objectFit: 'cover',
                   }}
                 />
