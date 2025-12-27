@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2', breed: 'Tabby'  },
+  { name: 'Whiskers', age: '2', breed: 'Siamese' },
   { name: 'Mittens', age: '2', breed: 'Persian' },
-  { name: 'Shadow', age: '1' ,breed: 'Black Cat'  },
-  { name: 'Pumpkin', age: '3',breed: 'Orange Tabby' },
-  { name: 'Luna', age: '4', breed: 'Siamese' },
-  { name: 'Simba', age: '2', breed: 'Maine Coon' },
-  { name: 'Bella', age: '3', breed: 'Calico' },
-  { name: 'Oliver', age: '1', breed: 'Tabby' },
+  { name: 'Shadow', age: '1', breed: 'Sphynx' },
+  { name: 'Pumpkin', age: '3', breed: 'Bengal' },
+  { name: 'Luna', age: '4', breed: 'Birman' },
+  { name: 'Simba', age: '2', breed: 'Abyssinian' },
+  { name: 'Bella', age: '3', breed: 'Peterbald' },
+  { name: 'Oliver', age: '1', breed: 'Siamese' },
 ];
 
 export default function AvailableCats() {
@@ -110,6 +110,7 @@ export default function AvailableCats() {
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
                 <p className="mb-0">Age: {cat.age}</p>
+                <p className="mb-0">Breed: {cat.breed}</p>
               </div>
             </div>
           </div>
