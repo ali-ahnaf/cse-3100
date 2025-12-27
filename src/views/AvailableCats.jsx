@@ -42,7 +42,7 @@ export default function AvailableCats() {
   return (
     <section className="text-center mt-4">
       <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+      <p style={{ textAlign: 'center' }}>Meet our adorable cats looking for their forever home!</p>
 
       <div className="mt-2">
         <div className="filters">
