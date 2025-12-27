@@ -52,3 +52,22 @@ footer {
   color: #fff;
   border-radius: 4px;
 }
+
+/* Grid layout for cat cards */
+.cats-container {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.cat-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.cat-card .cat-info {
+  padding: 0.5rem;
+}
