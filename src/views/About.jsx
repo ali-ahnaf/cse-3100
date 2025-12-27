@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 
 const directors = [
   {
-    name: 'Alice Johnson',
+    name: 'Alan Becker',
     title: 'Founder & Director',
-    bio: 'Alice leads rescue operations and coordinates adoptions.',
+    bio: 'Alan leads rescue operations and coordinates adoptions.',
   },
   {
-    name: 'David Chen',
+    name: 'Ked Shiron',
     title: 'Operations Director',
-    bio: 'David manages the day-to-day shelter operations and logistics.',
+    bio: 'Ked manages the day-to-day shelter operations and logistics.',
   },
   {
-    name: 'Maria Gomez',
+    name: 'Justin Lieber',
     title: 'Volunteer Coordinator',
-    bio: 'Maria organizes volunteer activities and community outreach.',
+    bio: 'Justin organizes volunteer activities and community outreach.',
   },
 ];
 
@@ -22,7 +22,6 @@ export default function About() {
   const [team, setTeam] = useState([]);
 
   useEffect(() => {
-    // Fetch placeholder portraits from RandomUser for director cards
     const fetchPortraits = async () => {
       try {
         const results = await Promise.all(
@@ -48,21 +47,21 @@ export default function About() {
 
   return (
     <section className="mt-4" style={{ maxWidth: 1000, margin: '0 auto' }}>
-      <h2>About us</h2>
+      <h3>Our mission</h3>
       <p>
         Purrfect Adoption is a small non-profit focused on finding loving
         homes for cats. We rescue, rehabilitate and rehome cats of all ages
-        and breeds. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        and breeds. 
       </p>
 
-      <h3>Our mission</h3>
+      <h3>Our history</h3>
       <p>
         We believe every cat deserves a safe and loving home. Our volunteers
         provide care, vetting and adoption support to ensure every adoption is
         a great match.
       </p>
 
-      <h3 className="mt-4">Directors</h3>
+      <h3 className="mt-4">Our team</h3>
       <div className="directors-container mt-2">
         {team.map((d, i) => (
           <div key={i} className="director-card">
