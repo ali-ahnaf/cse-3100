@@ -35,7 +35,9 @@ export default function Contact() {
         <label>
           Phone
           <input
-            type="tel"
+            type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="Phone number"
