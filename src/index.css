@@ -110,11 +110,10 @@ footer {
 
 .cats-container {
   display: grid;
-  /* keep cards a reasonable fixed max width instead of stretching to full width */
   grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
   gap: 1rem;
   align-items: start;
-  justify-content: center; /* center cards when there are few items */
+  justify-content: center; 
 }
 
 .cat-card {
@@ -127,7 +126,7 @@ footer {
   border-radius: 8px 8px 0 0;
   background: #fff;
   width: 100%;
-  max-width: 340px; /* fixed card width to keep consistency */
+  max-width: 340px; 
 }
 
 .cat-card img {
@@ -144,7 +143,6 @@ footer {
   border-radius: 0 0 8px 8px;
 }
 
-/* Filters styling for Available Cats page */
 .filters {
   display: flex;
   gap: 1rem;
@@ -175,4 +173,77 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: stretch;
   }
+}
+
+/* Contact form styles */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.contact-form label {
+  font-weight: 600;
+}
+
+.contact-form input {
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  max-width: 480px;
+}
+
+.contact-submit {
+  background: #a24bd6;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.contact-submit:hover { opacity: 0.95; }
+
+/* Directors / team cards for About page */
+.directors-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
+  gap: 1rem;
+  justify-content: center;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.director-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.director-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.director-info {
+  padding: 0.75rem 1rem 1rem 1rem;
+}
+
+.director-info .muted {
+  color: #666;
+  margin: 0;
+}
+
+.director-info .small {
+  font-size: 0.95rem;
+  color: #333;
 }

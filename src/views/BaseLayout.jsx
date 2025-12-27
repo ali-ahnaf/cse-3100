@@ -17,6 +17,16 @@ const BaseLayout = () => {
                   Available Cats
                 </Link>
               </li>
+              <li>
+                <Link className="site-nav-link" to="/contact">
+                  Contact us
+                </Link>
+              </li>
+              <li>
+                <Link className="site-nav-link" to="/about">
+                  About us
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
