@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2',breed: 'Persian' },
+  { name: 'Mittens', age: '2' ,breed: 'Siamese'},
+  { name: 'Shadow', age: '1' ,breed: 'Birman'},
 ];
 
 export default function Home() {
@@ -25,30 +25,41 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
+        // setCats((prevCats) => [...prevCats, ...catsWithImages]);
+        setCats(catsWithImages);
 
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
-      } catch (error) {
+
+        // if (cats.length > 10) {
+        //   alert(
+        //     'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
+        //   );
+        // }
+      } 
+      catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
-      <section className="text-center mt-4">
+      <section className=" mt-4">
+        <div
+    style={{
+      maxWidth: '800px',
+      margin: '0 auto',
+      textAlign: 'center',
+    }}
+  >
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
         </p>
+        </div>
       </section>
 
       <section className="mt-5">
@@ -71,6 +82,8 @@ export default function Home() {
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-0">Breed: {cat.breed}</p>
+
                 </div>
               </div>
             </div>
