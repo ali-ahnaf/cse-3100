@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react';
 
+// 1. Updated data with 'breed' field
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
-  { name: 'Garfield', age: '5' },
-  { name: 'Oreo', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Persian' },
+  { name: 'Mittens', age: '2', breed: 'Siamese' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
+  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
+  { name: 'Luna', age: '4', breed: 'Birman' },
+  { name: 'Simba', age: '2', breed: 'Sphynx' },
+  { name: 'Garfield', age: '5', breed: 'Persian' },
+  { name: 'Oreo', age: '1', breed: 'Peterbald' },
 ];
-
+const breeds = ['All', 'Sphynx', 'Peterbald', 'Birman', 'Abyssinian', 'Persian', 'Bengal', 'Siamese'];
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  // 2. State for filters
+  const [selectedBreed, setSelectedBreed] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchCatImages = async () => {
@@ -37,6 +41,13 @@ export default function AvailableCats() {
 
     fetchCatImages();
   }, []);
+// 3. Filtering Logic (Derived State)
+  const filteredCats = cats.filter((cat) => {
+    const matchesBreed = selectedBreed === 'All' || cat.breed === selectedBreed;
+    const matchesName = cat.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesBreed && matchesName;
+  });
+
 
   return (
     <section>
@@ -45,8 +56,48 @@ export default function AvailableCats() {
         <p>Meet our adorable cats looking for their forever home!</p>
       </div>
 
+      {/* 4. Filter Controls UI */}
+      <div className="filter-container mb-4" style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+        
+        {/* Breed Dropdown */}
+        <select 
+          className="form-control"
+          style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc', minWidth: '200px' }}
+          value={selectedBreed} 
+          onChange={(e) => setSelectedBreed(e.target.value)}
+        >
+          {breeds.map(breed => (
+            <option key={breed} value={breed}>
+              {breed === 'All' ? 'Select Breed' : breed}
+            </option>
+          ))}
+        </select>
+
+        {/* Search Box */}
+        <input 
+          type="text" 
+          placeholder="Search by name" 
+          className="form-control"
+          style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc', minWidth: '200px' }}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        
+        {/* Visual Search Button (Functional via onChange, but added for visual completeness per mockups) */}
+        <button style={{ 
+          backgroundColor: '#0d6efd', 
+          color: 'white', 
+          border: 'none', 
+          padding: '0.5rem 1rem', 
+          borderRadius: '4px',
+          cursor: 'pointer' 
+        }}>
+          Search
+        </button>
+      </div>
+
       <div className="row cats-container">
-        {cats.map((cat, i) => (
+        {filteredCats.map((cat, i) => (
           <div key={i}>
             <div className="cat-card">
               <img
@@ -62,11 +113,18 @@ export default function AvailableCats() {
               />
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem' }}>
+                  <p className="mb-0">Age: {cat.age}</p>
+                  {/* 5. Displaying Breed on Card */}
+                  <p className="mb-0"><strong>{cat.breed}</strong></p>
+                </div>
               </div>
             </div>
           </div>
         ))}
+        {filteredCats.length === 0 && (
+           <p>No cats found matching your criteria.</p>
+        )}
       </div>
     </section>
   );
