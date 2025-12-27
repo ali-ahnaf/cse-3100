@@ -1,20 +1,20 @@
-import { Outlet, Route, Routes } from 'react-router';
-import BaseLayout from './views/BaseLayout';
-import Home from './views/Home';
-import AvailableCats from './views/AvailableCats';
+import { Routes, Route } from 'react-router-dom';
+import BaseLayout from './views/BaseLayout.jsx';
+import Home from './views/Home.jsx';
+import AvailableCats from './views/AvailableCats.jsx';
+import About from './views/About.jsx';
+import ContactUs from './views/ContactUs.jsx';
+import Donate from './views/Donate.jsx';
 
 function App() {
   return (
     <Routes>
-      <Route
-        element={
-          <BaseLayout>
-            <Outlet />
-          </BaseLayout>
-        }
-      >
-        <Route path={'/'} element={<Home />} />
-        <Route path={'/available-cats'} element={<AvailableCats />} />
+      <Route element={<BaseLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/available-cats" element={<AvailableCats />} />
+        <Route path="/donate" element={<Donate />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactUs />} />
       </Route>
     </Routes>
   );
