@@ -42,7 +42,7 @@ export default function About() {
       
       <section className="bg-dark text-white p-5 rounded-4 text-center my-5 about-quote">
         <p className="fs-5 italic">
-          "Beyond adoptions, we aim to advocate for responsible pet ownership, support spay and neuter efforts, and provide guidance so every adoption is a success—for both human and cat."
+          &ldquo;Beyond adoptions, we aim to advocate for responsible pet ownership, support spay and neuter efforts, and provide guidance so every adoption is a success—for both human and cat.&rdquo;
         </p>
         <h4 className="mt-4 text-warning">Because when the right cat finds the right person, it’s not just a home that’s created. It’s a family. 🐱💛</h4>
       </section>
