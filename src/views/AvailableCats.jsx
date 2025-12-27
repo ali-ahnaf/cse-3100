@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+
 const availableCats = [
   { name: 'Whiskers', age: '2', breed: 'Persian' },
   { name: 'Mittens', age: '2', breed: 'Siamese' },
@@ -11,11 +12,16 @@ const availableCats = [
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedBreed, setSelectedBreed] = useState("");
+  
+ 
+  const [breedInput, setBreedInput] = useState("");
+  const [nameInput, setNameInput] = useState("");
+
+ 
+  const [activeBreedFilter, setActiveBreedFilter] = useState("");
+  const [activeNameFilter, setActiveNameFilter] = useState("");
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
@@ -39,46 +45,87 @@ export default function AvailableCats() {
     fetchCatImages();
   }, []);
 
+ 
+  const handleSearch = () => {
+    setActiveBreedFilter(breedInput);
+    setActiveNameFilter(nameInput);
+  };
+
+  
   const filteredCats = cats.filter((cat) => {
-    const matchesName = cat.name.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesBreed = selectedBreed === "" || cat.breed === selectedBreed;
-    
+    const matchesName = cat.name.toLowerCase().includes(activeNameFilter.toLowerCase());
+    const matchesBreed = activeBreedFilter === "" || cat.breed === activeBreedFilter;
     return matchesName && matchesBreed;
   });
-  
+
   const breeds = [...new Set(availableCats.map(cat => cat.breed))];
 
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <section className="mt-4">
+      
+      
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: '10px' }}>
+        
+   
+        <h2 className="mb-0" style={{textAlign: 'left'}}>Available cats</h2>
 
-      {/* Search and Filter Section */}
-      <div className="d-flex justify-content-center gap-3 mb-4" style={{margin: "20px"}}>
-        {/* Search Input */}
-        <input 
-          type="text" 
-          placeholder="Search by name..." 
-          className="form-control" 
-          style={{maxWidth: "300px", padding: "10px", borderRadius: "5px", border: "1px solid #ccc"}}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          
+       
+          <select 
+            className="form-select"
+            style={{ 
+              width: "150px", 
+              padding: "5px", 
+              borderRadius: "5px", 
+              border: "1px solid #333" 
+            }}
+            value={breedInput}
+            onChange={(e) => setBreedInput(e.target.value)}
+          >
+            <option value="">Select breed v</option>
+            {breeds.map((breed, index) => (
+               <option key={index} value={breed}>{breed}</option>
+            ))}
+          </select>
 
-        {/* Breed Dropdown */}
-        <select 
-          className="form-select"
-          style={{maxWidth: "200px", padding: "10px", borderRadius: "5px", border: "1px solid #ccc"}}
-          value={selectedBreed}
-          onChange={(e) => setSelectedBreed(e.target.value)}
-        >
-          <option value="">All Breeds</option>
-          {breeds.map((breed, index) => (
-             <option key={index} value={breed}>{breed}</option>
-          ))}
-        </select>
+        
+          <input 
+            type="text" 
+            placeholder="search by name" 
+            className="form-control" 
+            style={{ 
+              width: "200px", 
+              padding: "5px", 
+              borderRadius: "5px", 
+              border: "1px solid #333" 
+            }}
+            value={nameInput}
+            onChange={(e) => setNameInput(e.target.value)}
+          />
+
+          <button 
+            onClick={handleSearch}
+            style={{
+              backgroundColor: '#90CDF4', 
+              border: '1px solid #333',
+              borderRadius: '5px',
+              padding: '5px 20px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              fontFamily: 'inherit'
+            }}
+          >
+            search
+          </button>
+
+        </div>
       </div>
+
+
+      <hr style={{ border: 'none', borderTop: '2px solid #333', opacity: 1, margin: '0 0 30px 0' }} />
+
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">
         {filteredCats.map((cat, i) => (
@@ -87,17 +134,11 @@ export default function AvailableCats() {
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
               />
               <div className="cat-info">
-              <h3 className="h5 mb-1">{cat.name}</h3>
-              <p className="mb-0 text-muted" style={{ fontStyle: 'italic' }}>{cat.breed}</p>
-              <p className="mb-0">Age: {cat.age}</p>
+                <h3 className="h5 mb-1">{cat.name}</h3>
+                <p className="mb-0 text-muted" style={{ fontStyle: 'italic', fontSize: '0.8rem' }}>{cat.breed}</p>
+                <p className="mb-0">Age: {cat.age}</p>
               </div>
             </div>
           </div>
