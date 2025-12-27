@@ -1,48 +1,160 @@
+/* index.css */
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .layout {
-  display: flex;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  padding: 1em 2em;
+  background: #fff;
+  color: #000;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  padding: 1.5em;
+  text-align: center;
+  background: #f8f9fa;
+  position: static;
+}
+
+/* FIX 1: Grid layout for cat cards */
+.cats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
 }
 
 .cat-card {
   border: 1px solid #ddd;
   text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  padding: 0;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+}
+
+.cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .cat-info {
-  background: #000;
+  background: #333;
   color: #fff;
+  padding: 15px;
+  border-radius: 0 0 12px 12px;
+}
+
+.cat-info h3 {
+  margin: 0 0 8px 0;
+  color: white;
+}
+
+.cat-info p {
+  margin: 4px 0;
+  font-size: 0.9em;
+  color: #ddd;
+}
+
+/* Filters styling */
+.filters-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.filter-select, .filter-input {
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+  min-width: 200px;
+}
+
+.filter-input {
+  width: 300px;
+}
+
+/* Navigation */
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 5px 10px;
   border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Form styling */
+.contact-form {
+  max-width: 500px;
+  margin: 30px auto;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.submit-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #555;
 }

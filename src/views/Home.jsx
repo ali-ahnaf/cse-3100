@@ -1,9 +1,11 @@
+// Home.jsx
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Persian' },
+  { name: 'Mittens', age: '2', breed: 'Bengal' },
+  { name: 'Shadow', age: '1', breed: 'Siamese' },
+  { name: 'Snowball', age: '3', breed: 'Peterbald' },
 ];
 
 export default function Home() {
@@ -14,7 +16,7 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
+            fetch('https://api.thecatapi.com/v1/images/search').then(res =>
               res.json()
             )
           )
@@ -25,53 +27,49 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
+        // Fallback images if API fails
+        const catsWithFallback = featuredCats.map((cat, index) => ({
+          ...cat,
+          image: `https://placekitten.com/300/200?image=${index + 1}`,
+        }));
+        setCats(catsWithFallback);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
+      <section className="text-center">
+        <h1>Welcome to Purrfect Adoption</h1>
+        <p>Your new best friend is waiting ❤️</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lue Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+        <h2>Featured Cats</h2>
+        
+        {/* FIX: Using CSS Grid instead of Bootstrap row */}
+        <div className="cats-grid">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
+            <div key={i} className="cat-card">
+              <img
+                src={cat.image}
+                alt={cat.name}
+                style={{
+                  width: '100%',
+                  height: '200px',
+                  objectFit: 'cover',
+                }}
+              />
+              <div className="cat-info">
+                <h3>{cat.name}</h3>
+                <p>Age: {cat.age} years</p>
+                <p>Breed: {cat.breed}</p>
               </div>
             </div>
           ))}
