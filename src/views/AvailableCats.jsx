@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const availableCats = [
   { title: "Whiskers", sub: "Age: 2 | Breed: Abyssinian", breed: "Abyssinian" },
   { title: "Mittens",  sub: "Age: 2 | Breed: Siamese",    breed: "Siamese" },
-  { title: "Shadow",   sub: "Age: 1 | Breed:Persian ",    breed: "Persian" },
+  { title: "Shadow",   sub: "Age: 1 | Breed: Persian ",   breed: "Persian" },
   { title: "Pumpkin",  sub: "Age: 3 | Breed: Bengal",     breed: "Bengal" },
   { title: "Luna",     sub: "Age: 4 | Breed: Persian",    breed: "Persian" },
   { title: "Simba",    sub: "Age: 2 | Breed: Sphynx",     breed: "Sphynx" },
@@ -46,7 +46,7 @@ export default function AvailableCats() {
     <GridView>
       <GridView.Title>
         <div className="topbar">
-          <div className="fs-5 fw-bold mb-2">Available Cats</div>
+          <div className="fs-5 fw-bold">Available Cats</div>
           <div className="d-flex gap-2">
 
             <Dropdown breed={breed} setBreed={setBreed} />

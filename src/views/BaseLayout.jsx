@@ -28,7 +28,7 @@ const BaseLayout = () => {
                     <a className="nav-link" href="/available-cats">Available Cats</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/donate">Donate</a>
+                    <a className="nav-link" href="/">Donate</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="/contact-us">Contact us</a>
