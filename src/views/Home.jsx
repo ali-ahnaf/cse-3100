@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2',breed: 'Sphynx' },
+  { name: 'Mittens', age: '2' ,breed: 'Peterbald'},
+  { name: 'Shadow', age: '1' ,breed: 'Birman'},
 ];
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
     };
 
     fetchCatImages();
-  });
+  },[]); //dependency array, it will not load infinitely because no constants are changing 
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function Home() {
 
       <section className="mt-5">
         <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
+//extra div removed
         <div className="mt-2 row g-4" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
@@ -71,6 +71,7 @@ export default function Home() {
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-0">Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>
