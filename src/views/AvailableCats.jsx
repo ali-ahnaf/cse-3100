@@ -1,65 +1,90 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: 'Whiskers', age: '2', breed: 'Sphynx' },
+  { name: 'Mittens', age: '2', breed: 'Peterbald' },
+  { name: 'Shadow', age: '1', breed: 'Birman' },
+  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
+  { name: 'Luna', age: '4', breed: 'Persian' },
+  { name: 'Simba', age: '2', breed: 'Bengal' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [search, setSearch] = useState('');
+  const [breed, setBreed] = useState('');
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
+    const fetchImages = async () => {
+      const responses = await Promise.all(
+        availableCats.map(() =>
+          fetch('https://api.thecatapi.com/v1/images/search').then(res =>
+            res.json()
           )
-        );
-        const catsWithImages = availableCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
+        )
+      );
 
-        setCats(catsWithImages);
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
+      setCats(
+        availableCats.map((cat, i) => ({
+          ...cat,
+          image: responses[i][0].url,
+        }))
+      );
     };
 
-    fetchCatImages();
+    fetchImages();
   }, []);
 
+  /* Q4 filtering logic */
+  const filteredCats = cats.filter(cat => {
+    const nameMatch = cat.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const breedMatch = breed === '' || cat.breed === breed;
+
+    return nameMatch && breedMatch;
+  });
+
   return (
-    <section className="text-center mt-4">
+    <section className="mt-4">
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
-              />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
-              </div>
+      {/* Filters */}
+      <div className="row mb-3">
+        <div className="col-md-6">
+          <input
+            className="form-control"
+            placeholder="Search by name"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+        </div>
+
+        <div className="col-md-6">
+          <select
+            className="form-select"
+            value={breed}
+            onChange={e => setBreed(e.target.value)}
+          >
+            <option value="">All Breeds</option>
+            {[...new Set(availableCats.map(c => c.breed))].map(b => (
+              <option key={b}>{b}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Grid */}
+      <div className="cats-container">
+        {filteredCats.map((cat, i) => (
+          <div key={i} className="cat-card">
+            <img src={cat.image} alt={cat.name} />
+            <div className="cat-info">
+              <h5>{cat.name}</h5>
+              <p>Age: {cat.age}</p>
+              <p>Breed: {cat.breed}</p>
             </div>
           </div>
         ))}

@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Bengal' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Siamese' },
 ];
 
 export default function Home() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    const fetchCatImages = async () => {
+    const fetchImages = async () => {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
@@ -20,21 +20,21 @@ export default function Home() {
           )
         );
 
-        const catsWithImages = featuredCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
         /* FIX 1:
            Replace state instead of appending.
            Appending causes infinite growth */
-        setCats(catsWithImages);
+        setCats(
+          featuredCats.map((cat, i) => ({
+            ...cat,
+            image: responses[i][0].url,
+          }))
+        );
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
-    fetchCatImages();
+    fetchImages();
 
     /* FIX 2:
        Empty dependency array ensures this runs
@@ -51,8 +51,11 @@ export default function Home() {
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4">
+        <h2>Featured Cats</h2>
+
+        {/* IMPORTANT:
+            Using cats-container so CSS grid works */}
+        <div className="cats-container mt-2 row g-4">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
               <div className="cat-card">
@@ -69,6 +72,9 @@ export default function Home() {
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
+
+                  {/* Q3 requirement: Added breed information */}
+                  <p className="mb-0">Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>
