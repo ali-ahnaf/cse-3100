@@ -15,7 +15,7 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
+            fetch('https://api.thecatapi.com/v1/images/search?size=small').then((res) =>
               res.json()
             )
           )
@@ -67,7 +67,7 @@ export default function Home() {
                   style={{
                     borderRadius: '8px',
                     height: '200px',
-                    objectFit: 'cover',
+                    // objectFit: 'cover',
                   }}
                 />
                 <div className="cat-info">

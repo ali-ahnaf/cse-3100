@@ -22,7 +22,7 @@ export default function AvailableCats() {
       try {
         const responses = await Promise.all(
           availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
+            fetch('https://api.thecatapi.com/v1/images/search?size=small').then((res) =>
               res.json()
             )
           )
