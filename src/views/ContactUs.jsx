@@ -1,45 +1,55 @@
 import React from 'react';
 
 export default function ContactUs() {
-  return (
-    <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
-      <h2 className="mb-4">Contact us</h2>
+  const inputStyle = {
+    width: '100%',
+    padding: '0.5rem',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+    marginBottom: '1rem' // Spacing between inputs
+  };
 
-      <p className="mb-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc Lorem ipsum dolor sit amet, 
-        consectetur adipiscing elit. Maecenas luc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc.
-      </p>
+  return (
+    <section>
+      <div style={{ marginBottom: '2rem' }}>
+        <h2>Contact us</h2>
+        <p style={{ maxWidth: '800px' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc Lorem ipsum dolor sit amet, 
+          consectetur adipiscing elit. Maecenas luc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc.
+        </p>
+      </div>
 
       <form style={{ maxWidth: '500px' }}>
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">Name</label>
-          <input type="text" className="form-control" id="name" style={{ borderRadius: '8px', border: '1px solid #ced4da', padding: '0.5rem' }} />
+          <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Name</label>
+          <input type="text" id="name" style={inputStyle} />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="phone" className="form-label">Phone</label>
-          <input type="tel" className="form-control" id="phone" style={{ borderRadius: '8px', border: '1px solid #ced4da', padding: '0.5rem' }} />
+          <label htmlFor="phone" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Phone</label>
+          <input type="tel" id="phone" style={inputStyle} />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email</label>
-          <input type="email" className="form-control" id="email" style={{ borderRadius: '8px', border: '1px solid #ced4da', padding: '0.5rem' }} />
+          <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Email</label>
+          <input type="email" id="email" style={inputStyle} />
         </div>
 
         <button 
           type="submit" 
-          className="btn btn-primary" 
           style={{ 
-            backgroundColor: '#9ec5fe', /* Light blue similar to mockup */
+            backgroundColor: '#9ec5fe', /* Light blue matching the mockup button */
             color: '#000', 
             border: 'none', 
             padding: '0.5rem 2rem', 
-            borderRadius: '4px'
+            borderRadius: '4px',
+            cursor: 'pointer',
+            marginTop: '10px'
           }}
         >
           Submit
         </button>
       </form>
-    </div>
+    </section>
   );
 }
