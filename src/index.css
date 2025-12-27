@@ -62,3 +62,16 @@ footer {
   border-radius: 4px;
   padding: 0.5rem;
 }
+
+.breed-badge {
+  display: inline-block;
+  background: #ffc107; /* badge color */
+  color: #111;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
