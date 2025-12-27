@@ -27,6 +27,9 @@ const BaseLayout = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/donate">Donate</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contact">Contact us</Link>
+              </li>
             </ul>
           </div>
         </div>
