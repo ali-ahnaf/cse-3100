@@ -1,69 +1,65 @@
-import { useEffect, useState } from 'react';
+import useCats from "../hooks/useCats.js";
+import GridView from "../components/GridView.jsx";
+import Dropdown from "../components/Dropdown.jsx";
+import { useEffect, useState } from "react";
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { title: "Whiskers", sub: "Age: 2 | Breed: Abyssinian", breed: "Abyssinian" },
+  { title: "Mittens",  sub: "Age: 2 | Breed: Siamese",    breed: "Siamese" },
+  { title: "Shadow",   sub: "Age: 1 | Breed: Persian ",   breed: "Persian" },
+  { title: "Pumpkin",  sub: "Age: 3 | Breed: Bengal",     breed: "Bengal" },
+  { title: "Luna",     sub: "Age: 4 | Breed: Persian",    breed: "Persian" },
+  { title: "Simba",    sub: "Age: 2 | Breed: Sphynx",     breed: "Sphynx" },
 ];
 
 export default function AvailableCats() {
-  const [cats, setCats] = useState([]);
+  const { cats } = useCats(availableCats);
+  const [filteredCats, setFilteredCats] = useState([]);
+  const [breed, setBreed] = useState("All cars");
+  const [name, setName] = useState("");
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
-        );
-        const catsWithImages = availableCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
+    setFilteredCats(cats);
+  }, [cats]);
 
-        setCats(catsWithImages);
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
-    };
+  useEffect(() => {
+    if (breed === "All cars") {
+      setFilteredCats(cats);
+    } else {
+      setFilteredCats(cats.filter(c => c.breed === breed));
+    }
+  }, [breed]);
 
-    fetchCatImages();
-  }, []);
+  useEffect(() => {
+    if (name === "") {
+      setFilteredCats(cats);
+    } else {
+      setFilteredCats(cats.filter(c => c.title.startsWith(name)));
+    }
+  }, [name]);
+
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
 
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <GridView>
+      <GridView.Title>
+        <div className="topbar">
+          <div className="fs-5 fw-bold">Available Cats</div>
+          <div className="d-flex gap-2">
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
-              />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
-              </div>
-            </div>
+            <Dropdown breed={breed} setBreed={setBreed} />
+            <form role="search">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+              onChange={handleName} value={name} id="name" name="name" autoComplete="true" style={{ width: "85%" }} />
+            </form>
+
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+        <p>Meet our adorable cats looking for their forever home!</p>
+      </GridView.Title>
+      <GridView.Content contents={filteredCats} />
+    </GridView>
   );
 }
