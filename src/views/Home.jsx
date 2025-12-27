@@ -4,6 +4,7 @@ const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
   { name: 'Shadow', age: '1' },
+{ name: 'Bob Doe', age: '3' }, // Added one to match 4 columns in mockup
 ];
 
 export default function Home() {
@@ -25,20 +26,17 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
+        
+// FIX: Don't append forever, just set the data
+        setCats(catsWithImages);
 
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []); // <--- CRITICAL FIX: Added Empty Dependency Array
 
   return (
     <>
