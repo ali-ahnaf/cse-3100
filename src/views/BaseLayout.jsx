@@ -13,9 +13,18 @@ const BaseLayout = () => {
         <nav>
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
-                Available Cats
-              </Link>
+              <Link className="nav-link" to="/about">About us</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/available-cats">Available cats</Link>
+            </li>
+            
+            <li className="nav-item">
+               
+              <span className="nav-link" style={{cursor: "pointer"}}>Donate</span>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">Contact us</Link>
             </li>
           </ul>
         </nav>
