@@ -43,9 +43,15 @@ main {
 
   padding: 1rem 3rem;
 }
+.my-form > input {
+  width: 40%;
+}
 @media screen and (max-width: 768px) {
   main {
     padding: 1rem;
+  }
+  .my-form > input {
+    width: 90%;
   }
   .topbar {
     flex-direction: column;
