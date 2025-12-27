@@ -1,20 +1,34 @@
-export default function ContactUs(){
-    return(
-        <section className="mt-4">
-            <h2>Contact Us</h2>
-            <p>
-                We would love to hear from you! Whether you have questions about our adoption process,
-                want to share feedback, or need assistance, feel free to reach out to us.
-            </p>
-            <div className="mt-3">
-                <h3>Email</h3>
-                <p>Email:purrfect@gmail.com</p>
-            </div>
-            <div className="mt-3">
-                <h3>Phone</h3>
-                <p>Phone:+880136589745</p>
-            </div>
-            </section>
-    );
+export default function ContactUs() {
+  return (
+    <section className="contact-container">
+      <h2 className="contact-title">Contact Us</h2>
+
+      <p className="contact-text">
+        We would love to hear from you! Feel free to contact us anytime.
+      </p>
+
+      <form className="contact-form">
+        <div className="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Enter your name" />
+        </div>
+
+        <div className="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" />
+        </div>
+
+        <div className="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="Enter your phone number" />
+        </div>
+
+        <button type="submit" className="submit-btn">
+          Submit
+        </button>
+      </form>
+    </section>
+  );
 }
+
 
