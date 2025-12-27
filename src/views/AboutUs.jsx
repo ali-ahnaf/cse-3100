@@ -6,7 +6,7 @@ const teamInfo = [
 
 export default function AboutUs() {
   return (
-    <div className="mx-auto" style={{ maxWidth: "60%" }}>
+    <div className="about mx-auto" style={{ maxWidth: "70%" }}>
       <section className="m-4 mt-3">
         <h2 className="mb-3 fw-bold">Our Mission</h2>
         <p style={{ textAlign: "justify" }}>

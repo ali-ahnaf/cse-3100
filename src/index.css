@@ -119,6 +119,20 @@ footer {
   padding-right: 1.2rem;
 }
 
+/* Phone Screens */
+@media (max-width: 575px) {
+  .layout .nav-link {
+    font-size: .9rem;
+  }
+  .about {
+    max-width: 90% !important;
+    font-size: .9rem;
+  }
+  .container form {
+    width: 80% !important;
+  }
+}
+
 /* Cat Cards responsive */
 /* Small Devices */
 @media (min-width: 576px) {
