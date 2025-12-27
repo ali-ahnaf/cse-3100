@@ -7,13 +7,14 @@ const availableCats = [
   { name: 'Pumpkin', age: '3' },
   { name: 'Luna', age: '4' },
   { name: 'Simba', age: '2' },
+  { name: 'Garfield', age: '5' },
+  { name: 'Oreo', age: '1' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
@@ -38,22 +39,25 @@ export default function AvailableCats() {
   }, []);
 
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <section>
+      <div style={{ marginBottom: '2rem' }}>
+        <h2>Available Cats</h2>
+        <p>Meet our adorable cats looking for their forever home!</p>
+      </div>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
+      <div className="row cats-container">
         {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
+          <div key={i}>
             <div className="cat-card">
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="img-fluid mb-2"
                 style={{
                   borderRadius: '8px',
                   height: '200px',
+                  width: '100%',
                   objectFit: 'cover',
+                  marginBottom: '10px'
                 }}
               />
               <div className="cat-info">
