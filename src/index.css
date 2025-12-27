@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+:root {
+  --cat-grid-cols: 3;
+  --cat-col-width: 240px;
+  --cat-grid-gap: 1rem;
+  --cat-grid-height: 600px;
+  --cat-grid-width: calc(var(--cat-col-width) * var(--cat-grid-cols) + (var(--cat-grid-cols) - 1) * var(--cat-grid-gap));
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -53,11 +61,22 @@ footer {
   border-radius: 4px;
 }
 
+/* Fixed-size grid: keep width/height stable across viewport changes */
 .cats-container {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
+  /* responsive columns: fit as many columns as possible with a min column width */
+  grid-template-columns: repeat(auto-fit, minmax(var(--cat-col-width), 1fr));
+  gap: var(--cat-grid-gap);
   align-items: start;
+  width: 100%;
+  max-width: var(--cat-grid-width);
+  /* keep the grid area square */
+  aspect-ratio: 1 / 1;
+  height: auto;
+  margin: 0 auto; /* center horizontally */
+  overflow: auto; /* scroll if content exceeds square */
+  justify-content: center;
+  justify-items: center;
 }
 
 .cat-card img {
@@ -69,4 +88,23 @@ footer {
 
 .cat-card .cat-info {
   padding: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  :root {
+    --cat-col-width: 200px;
+    --cat-grid-height: 700px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --cat-col-width: 160px;
+    --cat-grid-gap: 0.5rem;
+    --cat-grid-height: none;
+  }
+  .cat-card img {
+    height: 160px;
+  }
 }
