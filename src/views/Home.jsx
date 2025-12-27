@@ -43,14 +43,19 @@ export default function Home() {
 
   return (
     <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
+      <section className="mt-5 mb-4">
+        <div style={{ textAlign: 'center' }}>
+
+          <h2>Welcome to Purrfect Adoption</h2>
+          <p style={{ maxWidth: '600px', margin: '0 auto' }}>
+            We help loving cats find caring homes. Browse through our featured cats
+            and give one a forever family today.
+          </p>
+        </div>
       </section>
 
-      <section className="mt-5">
+
+      <section className="mt-5 text-center">
         <h2>Featured Cats</h2>
 
         {/* IMPORTANT:

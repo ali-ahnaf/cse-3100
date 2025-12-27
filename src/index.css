@@ -6,7 +6,8 @@
 /* FIX 2: Removed rotation, set proper flex layout */
 .layout {
   display: flex;
-  flex-direction: column; /* Changed from row to column */
+  flex-direction: column;
+  /* Changed from row to column */
   min-height: 100vh;
   overflow: hidden;
 }
@@ -14,7 +15,8 @@
 /* Header unchanged */
 header {
   padding: 1em;
-  background-color: #f8f9fa; /* Added light background */
+  background-color: #f8f9fa;
+  /* Added light background */
   color: #333;
   display: flex;
   align-items: center;
@@ -24,7 +26,8 @@ header {
 
 /* FIX 3: main should fill available space */
 main {
-  flex: 1; /* This makes it take available space */
+  flex: 1;
+  /* This makes it take available space */
   padding: 2em 1em;
   display: block;
 }
@@ -33,7 +36,8 @@ main {
 footer {
   padding: 1em;
   text-align: center;
-  background: #f8f9fa; /* Changed from red */
+  background: #f8f9fa;
+  /* Changed from red */
   border-top: 1px solid #ddd;
 }
 
@@ -50,12 +54,13 @@ footer {
   border: 1px solid #ddd;
   border-radius: 8px;
   text-align: center;
-  height: auto; /* Changed from 150px */
+  height: auto;
+  /* Changed from 150px */
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cat-card img {
@@ -66,8 +71,10 @@ footer {
 }
 
 .cat-info {
-  background: #f8f9fa; /* Changed from black */
-  color: #333; /* Changed from white */
+  background: #f8f9fa;
+  /* Changed from black */
+  color: #333;
+  /* Changed from white */
   padding: 1rem;
   border-radius: 0 0 8px 8px;
 }
@@ -93,7 +100,8 @@ footer {
 }
 
 /* FIX 8: Form styles for filters */
-.form-select, .form-control {
+.form-select,
+.form-control {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ddd;
@@ -105,4 +113,42 @@ footer {
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 500;
+}
+
+/* Filters container (PDF style) */
+.filters {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Each filter block */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+}
+
+.filter-group label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+/* Input + select styled like mockup */
+.filter-group input,
+.filter-group select {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+/* Subtle focus effect */
+.filter-group input:focus,
+.filter-group select:focus {
+  border-color: #999;
 }

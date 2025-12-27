@@ -5,10 +5,18 @@ const BaseLayout = () => {
     <div className="layout">
       <header className="d-flex align-items-center bg-light">
         <h1>
-          <Link className="text-decoration-none text-dark" to="/">
+          <Link
+            to="/"
+            style={{
+              textDecoration: 'none',
+              color: '#000000ff',
+              fontWeight: 'bold'
+            }}
+          >
             Purrfect Adoption
           </Link>
         </h1>
+
 
         <div className="flex-grow-1"></div>
 

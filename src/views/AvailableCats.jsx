@@ -49,22 +49,22 @@ export default function AvailableCats() {
   return (
     <section className="mt-4">
       <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
 
       {/* Filters */}
-      <div className="row mb-3">
-        <div className="col-md-6">
+      <div className="filters mt-3">
+        <div className="filter-group">
+          <label>Search by name</label>
           <input
-            className="form-control"
-            placeholder="Search by name"
+            type="text"
+            placeholder="Type a cat name"
             value={search}
             onChange={e => setSearch(e.target.value)}
           />
         </div>
 
-        <div className="col-md-6">
+        <div className="filter-group">
+          <label>Filter by breed</label>
           <select
-            className="form-select"
             value={breed}
             onChange={e => setBreed(e.target.value)}
           >
@@ -75,6 +75,7 @@ export default function AvailableCats() {
           </select>
         </div>
       </div>
+
 
       {/* Grid */}
       <div className="cats-container">
