@@ -19,6 +19,9 @@ const BaseLayout = () => {
               <Link className="nav-link" to="/about">
                 About
               </Link>
+              <Link className="nav-link" to="/contact">
+                Contact
+              </Link>
             </li>
           </ul>
         </nav>
@@ -26,7 +29,7 @@ const BaseLayout = () => {
       <main id="content">
         <Outlet />
       </main>
-      <footer className="bg-light">
+      <footer className="bg-light ext-center py-3 mt-auto">
         <p>© Copyright 2024</p>
       </footer>
     </div>

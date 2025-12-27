@@ -6,7 +6,8 @@
   display: flex;
   min-height: 100vh;
   overflow: hidden;
-  transform: rotate(1deg);
+
+  flex-direction: column;
 }
 
 header {
@@ -23,12 +24,8 @@ main {
 
 footer {
   padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  text-align: center;
+
 }
 
 .cat-card {
