@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from 'react-router';
+import { Route, Routes } from 'react-router-dom';
 import BaseLayout from './views/BaseLayout';
 import Home from './views/Home';
 import AvailableCats from './views/AvailableCats';
@@ -6,15 +6,10 @@ import AvailableCats from './views/AvailableCats';
 function App() {
   return (
     <Routes>
-      <Route
-        element={
-          <BaseLayout>
-            <Outlet />
-          </BaseLayout>
-        }
-      >
-        <Route path={'/'} element={<Home />} />
-        <Route path={'/available-cats'} element={<AvailableCats />} />
+      <Route path="/" element={<BaseLayout />}>
+      
+        <Route index element={<Home />} />
+        <Route path="available-cats" element={<AvailableCats />} />
       </Route>
     </Routes>
   );
