@@ -1,48 +1,281 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .layout {
   display: flex;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  flex-direction: column;
 }
 
 header {
-  padding: 1em;
+  padding: 1rem;
   background-color: #fff;
-  color: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 1rem;
 }
 
 footer {
-  padding: 1em;
+  padding: 1rem;
   text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  background: #f1f1f1;
 }
 
-.cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
+footer p {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+  gap: 1.5rem;
 }
 
-.cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+nav a {
+  color: #4a6fa5;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: color 0.2s ease;
 }
+
+nav a:hover {
+  color: #3b5d8a;
+}
+
+
+/* Featured cats grid - 4 columns */
+.featured-cats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.featured-cat-card {
+  border: 2px solid #999;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+
+}
+
+.featured-cat-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.featured-cat-card .cat-info {
+  padding: 0.75rem;
+  background: #fff;
+  text-align: center;
+}
+
+.featured-cat-card h3 {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+}
+
+.featured-cat-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Available cats grid - 4 columns */
+.available-cats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.available-cat-card {
+  border: 2px solid #999;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+
+}
+
+.available-cat-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.available-cat-card .cat-info {
+  padding: 0.75rem;
+  background: #fff;
+  text-align: center;
+}
+
+.available-cat-card h3 {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+}
+
+.available-cat-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ===== Filters ===== */
+.filters-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filter-select,
+.filter-input {
+  padding: 0.6rem 0.75rem;
+  border: 2px solid #4a6fa5; /* muted button color */
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-select:hover,
+.filter-input:hover,
+.filter-select:focus,
+.filter-input:focus {
+  border-color: #3b5d8a; /* hover button color */
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Contact form */
+.contact-form {
+  max-width: 400px;
+  margin-top: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.submit-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #87ceeb;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.submit-btn:hover {
+  background-color: #5dade2;
+}
+
+/* Team section */
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.team-member {
+  text-align: center;
+}
+
+.team-photo {
+  width: 100%;
+  height: 150px;
+  background: #ddd;
+  border: 2px solid #999;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.team-member h4 {
+  margin: 0.5rem 0;
+}
+
+.team-member p {
+  margin: 0;
+  color: #666;
+}
+h2, h3 {
+  color: #333;
+}
+
+
+
+/* ===== Shared button style ===== */
+.app-btn,
+.app-btn:link,
+.app-btn:visited {
+  color: #4a6fa5;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+}
+
+.app-btn:hover {
+  color: #3b5d8a;
+}
+
+/* Fix nav-link override */
+.nav-link.app-btn {
+  color: #4a6fa5;
+}
+
+/* Native buttons */
+button.app-btn {
+  background: transparent;
+  border: none;
+}
+
+/* Submit button specifics */
+.submit-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #4a6fa5;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: transparent;
+}
+
+
+
