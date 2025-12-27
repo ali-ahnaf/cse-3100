@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: 'Whiskers', age: '2', breed: 'Sphynx' },
+  { name: 'Mittens', age: '2', breed: 'Peterbald' },
+  { name: 'Shadow', age: '1', breed: 'Birman' },
+  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
+  { name: 'Luna', age: '4', breed: 'Persian' },
+  { name: 'Simba', age: '2', breed: 'Bengal' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
@@ -38,32 +37,31 @@ export default function AvailableCats() {
   }, []);
 
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <>
+      <section className="hero-section text-center py-5 bg-light">
+        <div className="container">
+          <h2 className="display-5 fw-bold mb-3">Available Cats</h2>
+          <p className="lead">Meet our adorable cats looking for their forever home!</p>
+        </div>
+      </section>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
+      <section className="container mt-5">
+        <div className="cats-container">
+          {cats.map((cat, i) => (
+            <div key={i} className="cat-card">
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
               />
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
                 <p className="mb-0">Age: {cat.age}</p>
+                <p className="mb-0">Breed: {cat.breed}</p>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
