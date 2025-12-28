@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+
 const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
@@ -25,35 +26,30 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
+        
+        setCats(catsWithImages);
 
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []); 
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Find your perfect feline friend at Purrfect Adoption! We connect loving cats with caring families. 
+          All our cats are vaccinated, neutered/spayed, and ready to find their forever homes.
         </p>
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
+        <h2>Featured Cats</h2>
         <div className="mt-2 row g-4" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
@@ -66,11 +62,13 @@ export default function Home() {
                     borderRadius: '8px',
                     height: '200px',
                     objectFit: 'cover',
+                    width: '100%'
                   }}
                 />
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-1">Age: {cat.age} years</p>
+                  <p className="mb-0">Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>

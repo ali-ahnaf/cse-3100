@@ -13,8 +13,23 @@ const BaseLayout = () => {
         <nav>
           <ul className="nav">
             <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/available-cats">
                 Available Cats
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                About Us
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">
+                Contact Us
               </Link>
             </li>
           </ul>
@@ -24,7 +39,7 @@ const BaseLayout = () => {
         <Outlet />
       </main>
       <footer className="bg-light">
-        <p>© Copyright 2024</p>
+        <p>© Copyright 2024 Purrfect Adoption</p>
       </footer>
     </div>
   );
