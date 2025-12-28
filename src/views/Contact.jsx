@@ -72,28 +72,11 @@ export default function Contact() {
                 ></textarea>
               </div>
               
-              <button type="submit" className="btn btn-primary">Send Message</button>
+              <button type="submit" className="btn btn-primary">Submit</button>
             </form>
           </div>
           
-          <div className="col-md-6">
-            <h3>Contact Information</h3>
-            <div className="contact-info">
-              <p><strong>Address:</strong><br />123 Cat Street, Feline City, FC 12345</p>
-              <p><strong>Phone:</strong><br />(555) 123-4567</p>
-              <p><strong>Email:</strong><br />info@purrfectadoption.org</p>
-              <p><strong>Hours:</strong><br />Monday - Friday: 9am - 6pm<br />Saturday: 10am - 4pm<br />Sunday: Closed</p>
-            </div>
-            
-            <h4 className="mt-4">Adoption Process</h4>
-            <ol>
-              <li>Browse available cats on our website</li>
-              <li>Submit an adoption inquiry</li>
-              <li>Schedule a meet-and-greet</li>
-              <li>Complete adoption paperwork</li>
-              <li>Welcome your new feline friend home!</li>
-            </ol>
-          </div>
+          
         </div>
       </div>
     </section>
