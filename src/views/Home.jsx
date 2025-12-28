@@ -1,60 +1,66 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Bengal' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Siamese' },
 ];
 
 export default function Home() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    const fetchCatImages = async () => {
+    const fetchImages = async () => {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
+            fetch('https://api.thecatapi.com/v1/images/search').then(res =>
               res.json()
             )
           )
         );
 
-        const catsWithImages = featuredCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        /* FIX 1:
+           Replace state instead of appending.
+           Appending causes infinite growth */
+        setCats(
+          featuredCats.map((cat, i) => ({
+            ...cat,
+            image: responses[i][0].url,
+          }))
+        );
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
-    fetchCatImages();
-  });
+    fetchImages();
+
+    /* FIX 2:
+       Empty dependency array ensures this runs
+       only once on component mount */
+  }, []);
 
   return (
     <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
+      <section className="mt-5 mb-4">
+        <div style={{ textAlign: 'center' }}>
+
+          <h2>Welcome to Purrfect Adoption</h2>
+          <p style={{ maxWidth: '600px', margin: '0 auto' }}>
+            We help loving cats find caring homes. Browse through our featured cats
+            and give one a forever family today.
+          </p>
+        </div>
       </section>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+
+      <section className="mt-5 text-center">
+        <h2>Featured Cats</h2>
+
+        {/* IMPORTANT:
+            Using cats-container so CSS grid works */}
+        <div className="cats-container mt-2 row g-4">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
               <div className="cat-card">
@@ -71,6 +77,9 @@ export default function Home() {
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
+
+                  {/* Q3 requirement: Added breed information */}
+                  <p className="mb-0">Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>

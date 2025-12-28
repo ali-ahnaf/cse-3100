@@ -3,6 +3,10 @@ import BaseLayout from './views/BaseLayout';
 import Home from './views/Home';
 import AvailableCats from './views/AvailableCats';
 
+/*Import new pages required for Question 5 */
+import About from './views/About';
+import Contact from './views/Contact';
+
 function App() {
   return (
     <Routes>
@@ -13,8 +17,12 @@ function App() {
           </BaseLayout>
         }
       >
-        <Route path={'/'} element={<Home />} />
-        <Route path={'/available-cats'} element={<AvailableCats />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/available-cats" element={<AvailableCats />} />
+
+        {/*Routes added for About & Contact pages */}
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Route>
     </Routes>
   );

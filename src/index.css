@@ -1,48 +1,154 @@
+/* FIX 1: Bootstrap grid requires border-box */
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
+/* FIX 2: Removed rotation, set proper flex layout */
 .layout {
   display: flex;
+  flex-direction: column;
+  /* Changed from row to column */
   min-height: 100vh;
   overflow: hidden;
-  transform: rotate(1deg);
 }
 
+/* Header unchanged */
 header {
   padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  background-color: #f8f9fa;
+  /* Added light background */
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
 }
 
+/* FIX 3: main should fill available space */
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  /* This makes it take available space */
+  padding: 2em 1em;
+  display: block;
 }
 
+/* FIX 4: Footer at bottom */
 footer {
   padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  text-align: center;
+  background: #f8f9fa;
+  /* Changed from red */
+  border-top: 1px solid #ddd;
 }
 
+/* FIX 5: Add grid for cat cards */
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* FIX 6: Improve card appearance */
 .cat-card {
   border: 1px solid #ddd;
+  border-radius: 8px;
   text-align: center;
-  height: 150px;
+  height: auto;
+  /* Changed from 150px */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cat-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
+  background: #f8f9fa;
+  /* Changed from black */
+  color: #333;
+  /* Changed from white */
+  padding: 1rem;
+  border-radius: 0 0 8px 8px;
+}
+
+/* FIX 7: Navigation styles */
+.nav {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
+}
+
+.nav-link:hover {
+  background-color: #e9ecef;
+}
+
+/* FIX 8: Form styles for filters */
+.form-select,
+.form-control {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+/* Filters container (PDF style) */
+.filters {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Each filter block */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+}
+
+.filter-group label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+/* Input + select styled like mockup */
+.filter-group input,
+.filter-group select {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+/* Subtle focus effect */
+.filter-group input:focus,
+.filter-group select:focus {
+  border-color: #999;
 }
