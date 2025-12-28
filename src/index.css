@@ -1,48 +1,136 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fafafa;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
+/* HEADER STYLE */
 header {
-  padding: 1em;
+  padding: 1.5rem 2rem;
   background-color: #fff;
-  color: #fff;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+header h1 a {
+  text-decoration: none;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Matching the doodle style */
+}
+
+/* NAVIGATION */
+.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+/* MAIN CONTENT */
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
-}
-
-footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
+  padding: 3rem 2rem;
+  max-width: 1200px;
   width: 100%;
-  z-index: 9999;
-  background: red;
+  margin: 0 auto;
 }
 
-.cat-card {
-  border: 1px solid #ddd;
+h2 {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
   text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+  color: #333;
 }
 
+section p {
+  text-align: center;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+/* --- THE ASSIGNMENT FIX: GRID SYSTEM --- */
+.cats-container {
+  display: grid;
+  /* This creates 4 equal columns as requested */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* CARD STYLING */
+.cat-card {
+  position: relative; /* This is key! It tells the info-box "Your position is relative to ME" */
+  height: 240px;      /* We force a fixed height so all cards match */
+  border: 2px solid #333; /* Hand-drawn style border */
+  border-radius: 15px;
+  overflow: hidden;   /* Ensures the image stays inside the rounded corners */
+  padding: 0;         /* <--- REMOVED PADDING (This removes the gap you hated) */
+  box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+  background-color: #eee;
+}
+
+/* 2. The Image (Red part of your drawing) */
+.cat-card img {
+  width: 100%;
+  height: 100%;       /* Image now takes up the FULL card space */
+  object-fit: cover;  /* Ensures image doesn't stretch/squish */
+  border: none;       /* Remove any old borders */
+  border-radius: 0;   /* Let the parent container handle the curves */
+}
+
+/* 3. The Info Box (Green part of your drawing) */
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  position: absolute; /* "Floating" mode */
+  bottom: 2px;       /* Position it 2px from the bottom */
+  left: 2px;         /* 2px from left side */
+  right: 2px;        /* 2px from right side (Makes it a floating box inside!) */
+
+  background-color: rgba(255, 255, 255, 0.822); /* Makes text readable over the image */
+  border: 1px solid #333;
+  border-radius: 10px;     /* Rounded corners for the text box */
+  padding: 10px;
+  
+  /* Text styling */
+  text-align: left;
+  z-index: 2;         /* Ensures it sits ON TOP of the image */
+}
+
+.cat-info h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: #333;
+}
+
+.cat-info p {
+  text-align: left; /* Override global p alignment */
+  font-size: 0.85rem;
+  margin: 0;
+  color: #666;
+}
+
+/* FOOTER */
+footer {
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff;
+  border-top: 1px solid #eaeaea;
 }
