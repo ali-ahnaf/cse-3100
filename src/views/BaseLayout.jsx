@@ -11,22 +11,24 @@ const BaseLayout = () => {
         </h1>
         <div className="flex-grow-1"></div>
         <nav>
-          <ul className="nav">
+
+         <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/about">About us</Link>
+              <Link className="nav-link" style={{ fontFamily: 'Comic Sans MS, cursive, sans-serif' ,color: '#000000ff' }} to="/about">About us</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">Available cats</Link>
+              <Link className="nav-link" style={{ fontFamily: 'Comic Sans MS, cursive, sans-serif' ,color: '#000000ff' }} to="/available-cats">Available cats</Link>
             </li>
             {/* You can rename "Donate" to anything or keep it, but let's add Contact */}
             <li className="nav-item">
                {/* Just a placeholder per design */}
-              <span className="nav-link" style={{cursor: "pointer"}}>Donate</span>
+              <span className="nav-link" style={{ cursor: "pointer", fontFamily: 'Comic Sans MS, cursive, sans-serif' ,color: '#000000ff' }}>Donate</span>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">Contact us</Link>
+              <Link className="nav-link" style={{ fontFamily: 'Comic Sans MS, cursive, sans-serif' ,color: '#000000ff' }} to="/contact">Contact us</Link>
             </li>
           </ul>
+
         </nav>
       </header>
       <main id="content">

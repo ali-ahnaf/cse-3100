@@ -8,8 +8,6 @@ const availableCats = [
   { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
   { name: 'Luna', age: '4', breed: 'Sphynx' },
   { name: 'Simba', age: '2', breed: 'Birman' },
-  {name: 'Mecho', age: '2'},
-  //{name: 'KingRovers', age: '2'},
 ];
 
 export default function AvailableCats() {
@@ -66,10 +64,10 @@ export default function AvailableCats() {
     <section className="mt-4">
       
       {/* HEADER SECTION: Flexbox for Side-by-Side layout */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: '10px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between',  marginBottom: '5px' }}>
         
         {/* Left Side: Title */}
-        <h2 className="mb-0" style={{textAlign: 'left'}}>Available cats</h2>
+        <h2 className="" style={{textAlign: 'left'}}>Available cats</h2>
 
         {/* Right Side: Search Controls */}
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
@@ -78,7 +76,7 @@ export default function AvailableCats() {
           <select 
             className="form-select"
             style={{ 
-              width: "150px", 
+              width: "180px", 
               padding: "5px", 
               borderRadius: "5px", 
               border: "1px solid #333" 
@@ -86,7 +84,7 @@ export default function AvailableCats() {
             value={breedInput}
             onChange={(e) => setBreedInput(e.target.value)}
           >
-            <option value="">Select breed v</option>
+            <option value="">Select breed</option>
             {breeds.map((breed, index) => (
                <option key={index} value={breed}>{breed}</option>
             ))}
@@ -95,11 +93,11 @@ export default function AvailableCats() {
           {/* 2. Search Box */}
           <input 
             type="text" 
-            placeholder="search by name" 
+            placeholder="Search by name" 
             className="form-control" 
             style={{ 
-              width: "200px", 
-              padding: "5px", 
+              width: "190px", 
+              padding: "7px", 
               borderRadius: "5px", 
               border: "1px solid #333" 
             }}
@@ -137,6 +135,12 @@ export default function AvailableCats() {
               <img
                 src={cat.image}
                 alt={cat.name}
+                className="img-fluid mb-2"
+                style={{
+                  borderRadius: "8px",
+                  
+                  objectFit: "cover",
+                }}
               />
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
