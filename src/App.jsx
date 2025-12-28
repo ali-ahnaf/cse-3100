@@ -8,13 +8,7 @@ import Contact from './views/Contact';
 function App() {
   return (
     <Routes>
-      <Route
-        element={
-          <BaseLayout>
-            <Outlet />
-          </BaseLayout>
-        }
-      >
+      <Route path={'/'} element={<BaseLayout />}>
         <Route path={'/'} element={<Home />} />
         <Route path={'/available-cats'} element={<AvailableCats />} />
         <Route path={'/about'} element={<About />} />

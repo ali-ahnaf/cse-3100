@@ -40,8 +40,8 @@ const BaseLayout = () => {
       <main id="content">
         <Outlet />
       </main>
-      <footer className="bg-light">
-        <p>© Copyright 2024</p>
+      <footer>
+        <small>© Purrfect Adoption</small>
       </footer>
     </div>
   );

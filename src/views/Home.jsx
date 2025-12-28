@@ -1,39 +1,34 @@
 import { useEffect, useState } from 'react';
 
-const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-];
-
 export default function Home() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
     const fetchCatImages = async () => {
       try {
+        const availableCats = [
+          { name: 'Whiskers', age: '2', breed: 'Siamese' },
+          { name: 'Mittens', age: '2', breed: 'Persian' },
+          { name: 'Shadow', age: '1', breed: 'Abyssinian' },
+          { name: 'Pumpkin', age: '3', breed: 'Bengal' },
+          { name: 'Luna', age: '4', breed: 'Birman' },
+          { name: 'Simba', age: '2', breed: 'Sphynx' },
+        ];
+
         const responses = await Promise.all(
-          featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
+          availableCats.map(() =>
+            fetch('https://api.thecatapi.com/v1/images/search').then((r) => r.json())
           )
         );
 
-        const catsWithImages = featuredCats.map((cat, index) => ({
+        const catsWithImages = availableCats.map((cat, index) => ({
           ...cat,
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
-        console.error('Error fetching cat images:', error);
+        console.error(error);
       }
     };
 

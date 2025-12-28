@@ -20,13 +20,15 @@ export default function AvailableCats() {
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
+        // Example: fetch images for each available cat from a placeholder API (or random API)
         const responses = await Promise.all(
           availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
+            fetch('https://api.thecatapi.com/v1/images/search').then((r) =>
+              r.json()
             )
           )
         );
+
         const catsWithImages = availableCats.map((cat, index) => ({
           ...cat,
           image: responses[index][0].url,
@@ -36,6 +38,13 @@ export default function AvailableCats() {
         setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
+        // Fallback: attach placeholder images
+        const catsWithPlaceholders = availableCats.map((cat) => ({
+          ...cat,
+          image: 'https://via.placeholder.com/400x300?text=Cat',
+        }));
+        setAllCats(catsWithPlaceholders);
+        setCats(catsWithPlaceholders);
       }
     };
 
@@ -62,7 +71,7 @@ export default function AvailableCats() {
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
 
-        <div className="mt-2">
+      <div className="mt-2">
         <div className="filter-bar">
           <div>
             <label htmlFor="breed-select">Filter by breed:</label>
