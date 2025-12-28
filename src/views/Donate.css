@@ -1,0 +1,52 @@
+.donate-page {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding-top: 12px;
+}
+
+.donate-title {
+  margin: 18px 0 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.donate-text {
+  margin: 0 0 18px;
+  max-width: 900px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.donate-card {
+  border: 2px solid #222;
+  border-radius: 18px;
+  background: #fff;
+  padding: 18px 18px 16px;
+  max-width: 680px;
+}
+
+.donate-card-title {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.donate-list {
+  margin: 0 0 14px;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.donate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.donate-note {
+  margin: 12px 0 0;
+  font-size: 12px;
+  opacity: 0.85;
+}

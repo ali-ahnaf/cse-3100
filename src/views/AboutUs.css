@@ -1,0 +1,71 @@
+.about-page {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding-top: 12px;
+}
+
+.about-title {
+    margin: 18px 0 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.about-text {
+    margin: 0 0 18px;
+    max-width: 900px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.about-team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+    .about-team-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.about-team-card {
+  border: 2px solid #222;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-team-photo {
+  height: 200px;      
+  width: 100%;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.about-team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   
+  object-position: center 65%;
+}
+
+.about-team-info {
+  border-top: 2px solid #222;
+  padding: 10px 12px;
+}
+
+.about-team-name {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.about-team-role {
+  font-size: 12px;
+  opacity: 0.9;
+}
