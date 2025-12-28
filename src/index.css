@@ -1,48 +1,93 @@
-* {
-  box-sizing: content-box;
+/* Navigation: Logo Left, Menu Right */
+.navbar-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+  padding: 15px 5%;
+  border-bottom: 2px solid #000;
 }
 
-.layout {
-  display: flex;
-  min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+.nav-links {
+  display: flex !important; /* Menu pasapashi korbe */
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
 }
 
-header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
+/* Grid for 4 Columns (Cat Cards) */
+.featured-cats-container, .cats-container {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important; /* 4 items per row */
+  gap: 20px;
+  margin-top: 20px;
 }
 
-main {
-  flex: 1;
-  padding: 1em;
-  display: list-item;
-}
-
-footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
+/* Photo stretch fix */
+.featured-cat-card img, .cat-card img {
   width: 100%;
-  z-index: 9999;
-  background: red;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1.5px solid #000;
 }
 
-.cat-card {
-  border: 1px solid #ddd;
+.app-btn {
+  background-color: #add8e6;
+  padding: 5px 15px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Team Section: 3 members per row */
+.team-container {
+  display: flex !important;
+  justify-content: center; /* Chhobi gulo majhkhane thakbe */
+  gap: 30px; /* Protiti chhobir majhkhane faka jayga */
+  margin-top: 30px;
+  flex-wrap: wrap; /* Screen chhoto hole niche chole jabe */
+}
+
+.team-member {
   text-align: center;
-  height: 150px;
+  width: 250px; /* Protiti card-er width */
+  border: 1.5px solid black;
+  border-radius: 15px;
+  overflow: hidden;
+  background: white;
+  padding-bottom: 15px;
+}
+
+.team-photo {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* Chhobi stretch hobe na */
+  border-bottom: 1.5px solid black;
+  margin-bottom: 15px;
+}
+
+/* Contact form styling for spacing */
+.contact-form {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+  gap: 20px; /* Eita Name, Phone, Email box-er majhkhane distance toiri korbe */
+  max-width: 400px;
+  margin-top: 30px;
 }
 
-.cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Label ebong Input box-er majhkhane gap */
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1.5px solid #000;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  margin-top: 10px; /* Input box theke Submit button-ke niche sorabe */
+  align-self: flex-start; /* Button-ke bame align rakhbe */
 }
