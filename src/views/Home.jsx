@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Persian' },
+  { name: 'Mittens', age: '2', breed: 'Siamese' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
 ];
 
 export default function Home() {
@@ -25,36 +25,29 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []); 
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Find your perfect feline companion! We connect loving cats with caring
+          families. Browse our available cats and discover your new best friend
+          today. Every cat deserves a forever home filled with love and care.
         </p>
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+        <h2>Featured Cats</h2>
+        <div className="mt-2 row g-4">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
               <div className="cat-card">
@@ -66,11 +59,13 @@ export default function Home() {
                     borderRadius: '8px',
                     height: '200px',
                     objectFit: 'cover',
+                    width: '100%',
                   }}
                 />
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-0">Age: {cat.age} years</p>
+                  <p className="mb-0">Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>
