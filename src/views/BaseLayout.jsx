@@ -12,9 +12,19 @@ const BaseLayout = () => {
         <div className="flex-grow-1"></div>
         <nav>
           <ul className="nav">
+             <li className="nav-item">
+              <Link className="nav-link" to="/about-us">
+                About us
+              </Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/available-cats">
                 Available Cats
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact-us"> 
+                Contact us
               </Link>
             </li>
           </ul>
