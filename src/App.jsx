@@ -1,23 +1,21 @@
-import { Outlet, Route, Routes } from 'react-router';
-import BaseLayout from './views/BaseLayout';
-import Home from './views/Home';
-import AvailableCats from './views/AvailableCats';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import AvailableCats from './pages/AvailableCats';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
-function App() {
+const App = () => {
   return (
-    <Routes>
-      <Route
-        element={
-          <BaseLayout>
-            <Outlet />
-          </BaseLayout>
-        }
-      >
-        <Route path={'/'} element={<Home />} />
-        <Route path={'/available-cats'} element={<AvailableCats />} />
-      </Route>
-    </Routes>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<AvailableCats />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
