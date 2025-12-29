@@ -14,6 +14,8 @@ export default function AvailableCats() {
 
   useEffect(() => {
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
+    let isMounted = true;
+
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
@@ -23,12 +25,16 @@ export default function AvailableCats() {
             )
           )
         );
-        const catsWithImages = availableCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
 
-        setCats(catsWithImages);
+        if(isMounted){
+          const catsWithImages =availableCats.map((cat, index) => ({
+            ...cat,
+            image: responses[index][0].url,
+            breed: cat.breed || '',
+
+          }));
+          setCats(catsWithImages);
+        }
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
@@ -42,9 +48,9 @@ export default function AvailableCats() {
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
+      <div className="row g-4 mt-2 " id="cats-container">
         {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
+          <div key={i} className="col-12 col-sm-6 col-md-4">
             <div className="cat-card">
               <img
                 src={cat.image}
