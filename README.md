@@ -1,33 +1,56 @@
-# Purrfect Adoption - Debugging Challenge
-# ⚠️ THE PROJECT IS BROKEN! ⚠️
+# CSE-3100: Web application development with DevOps
 
-Welcome to the **Purrfect Adoption Debugging Challenge**.
+### Marks distribution
 
-This project has been sabotaged! Your task is to investigate, debug, and fix the application. You cannot simply use AI to "generate a new app" because the goal is to **fix existing bugs** in the logic, layout, and component structure.
+| Strategy                  | Marks |
+|---------------------------|-------|
+| Attendance               | 20%   |
+| Assignment               | 10%   |
+| Project Proposal Submission | 5%   |
+| Project Checkpoint 1     | 15%   |
+| Project Checkpoint 2     | 15%   |
+| Final Project Submission | 20%   |
+| Lab Exam                 | 15%   |
+| **Total**                | **100%** |
 
-## The Mission
-The previous developer left the codebase in a chaotic state. Nothing works as expected.
 
-### 1. Fix the Layout (CSS Chaos) `index.css` (2 marks)
-*   **Task**: Restore a clean, responsive layout. Use Flexbox/Grid correctly.
+### Tasks & Course outcomes
 
-### 2. Fix the Navigation `BaseLayout.jsx` (2 marks)
-*   **Task**: Fix the React Router setup so pages render correctly.
+This repository is used for a debugging exercise (Purrfect Adoption). Below are the assignment tasks followed by the overall course outcomes.
 
-### 3. Fix the Logic `Home.jsx` (1 mark)
-*   **Task**: Fix the `useEffect` hook, the API fetch implementation, and state updates.
+#### Assignment tasks (marks)
 
-### 4. Fix Component Rendering `AvailableCats.jsx` (1 mark)
-*   **Task**: Fix the JSX syntax and ensure the detailed list renders correctly.
+1. **Fix the Layout (`index.css`)** — Restore a clean, responsive layout using Flexbox/Grid. (2 marks)
+2. **Fix the Navigation (`BaseLayout.jsx`)** — Repair React Router setup and links. (2 marks)
+3. **Fix the Logic (`Home.jsx`)** — Correct the `useEffect` logic, API fetch, and state updates. (1 mark)
+4. **Fix Component Rendering (`AvailableCats.jsx`)** — Correct JSX and ensure the detailed list renders. (1 mark)
+5. **Add features**: breed type display, filtering (breed dropdown + name search), and About/Contact pages. (4 marks total)
 
-### 5. Add the following features
-The task is to add the following features to the cat adoption website demonstrated earlier in the lecture. Check slide for UI mockups.
+### Course outcome
 
-1. **Breed type** (1 mark) - add a new field in the cats list to show which breed class they belong to. Possible breeds are: Sphynx, Peterbald, Birman, Abyssinian, Persian, Bengal, Siamese. Note: this should be reflected on the UI as well.
-2. **Filtering option** (2 marks) - add 2 filters in the “Available cats” page. One of them should be a dropdown and used to filter by cat breed. The other should be a search text box to search by cat name.
-3. **New pages** (1 marks) - About Us and Contact Us page.
+By the end of this course, students will:
 
-#### HINT: You might have to integrate bootstrap!
+1. Understand design principles to create visually appealing and user-friendly websites.
+2. Build dynamic and data-driven web applications.
+3. Implement RESTful APIs and manage application logic effectively.
+4. Collaborate efficiently using Git and GitHub.
+5. Apply branching, merging, and conflict resolution techniques.
+6. Set up and manage containerized environments using Docker.
+7. Understand CI/CD pipelines and automation in DevOps.
+8. Automate repetitive tasks and streamline development workflows.
+9. Apply learned skills to develop a full-stack web application deployed in a containerized setup.
+
+### How to navigate between branches
+
+The repository contains several branches for lectures/assignments. To switch branches locally use:
+
+```
+git checkout <branch-name>
+```
+
+```
+git checkout <branch-name>
+```
 
 ## UI Mockups
 
@@ -37,24 +60,30 @@ The task is to add the following features to the cat adoption website demonstrat
 | <img src="https://github.com/user-attachments/assets/5dd3b5f5-d49a-4281-9628-3afe0b6970e9" width="100%" /> | <img src="https://github.com/user-attachments/assets/12cd720a-6e70-4ee6-ab7e-a112877e579b" width="100%" /> |
 | <img src="https://github.com/user-attachments/assets/a555d83c-5d0a-4295-877c-e5d7575d8dbe" width="100%" /> |  |
 
-
 ## Setup Instructions
 
-1.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
+1. Install dependencies:
 
-2.  **Run the app**:
-    ```bash
-    npm run dev
-    ```
+```bash
+npm install
+```
 
-3.  **Debug**: Open your browser console and start hunting bugs!
+2. Run the development server:
 
-## Rules
-*   You must fix the *existing* code. Do not rewrite everything from scratch.
-*   Pay attention to console warnings (keys, props, etc.).
-*   Make the site look "Purrfect" again!
+```bash
+npm run dev
+```
 
-Good luck! 🐱
+3. Debug: open the browser console and address warnings/errors (keys, props, hooks).
+
+### How to fork and create a pull request
+
+1. Fork the repository into your GitHub account.
+2. Clone the repository into your local machine.
+3. Create a new branch for your fixes.
+4. Make changes, commit, and push.
+5. Create a pull request to the upstream repository.
+
+### Course Materials
+
+1. [Intro](https://docs.google.com/presentation/d/1hVYzMQtvLynTEOgOY-VScGsHDXFIdlUJPOOFTTOWqrE/edit?usp=sharing)
