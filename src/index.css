@@ -1,48 +1,187 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-.layout {
+body {
+  background: #f4f1ee;
+  margin: 0;
+}
+
+/* Layout */
+.page {
+  padding: 2rem 0;
+}
+
+.container {
+  width: 900px;
+  margin: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+/* Header */
+.header {
   display: flex;
-  min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
+.header nav {
+  margin-left: auto;
 }
 
-main {
-  flex: 1;
-  padding: 1em;
-  display: list-item;
+.header nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #000;
 }
 
-footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+/* Sections */
+section {
+  margin-bottom: 2rem;
+}
+
+/* ---------------- HOME PAGE ---------------- */
+
+.welcome {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Featured Cats */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.featured-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0.8rem;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-box {
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.card-info {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* ---------------- ABOUT PAGE ---------------- */
+
+.team-grid {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.team-card {
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.avatar {
+  height: 90px;
+  border: 1px solid #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.team-card p {
+  margin: 0;
+}
+
+.team-card small {
+  display: block;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* ---------------- AVAILABLE CATS ---------------- */
+
+.cats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filters select,
+.filters input {
+  padding: 0.4rem;
+}
+
+.filters button {
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+}
+
+hr {
+  margin: 1rem 0 1.5rem;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
 .cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   overflow: hidden;
+}
+
+.cat-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
 }
 
 .cat-info {
   background: #000;
   color: #fff;
-  border-radius: 4px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+/* ---------------- CONTACT PAGE ---------------- */
+
+.contact-form {
+  width: 300px;
+}
+
+.contact-form label {
+  display: block;
+  margin-top: 0.8rem;
+}
+
+.contact-form input {
+  width: 100%;
+  padding: 0.4rem;
+}
+
+.contact-form button {
+  margin-top: 1rem;
+  padding: 0.4rem 1rem;
 }
