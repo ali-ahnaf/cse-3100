@@ -36,29 +36,29 @@ export default function Home() {
 
   return (
     <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
+      <section className="text-center mt-4 welcome-section">
+        <h2>Welcome to <span className="lavender-text">Purrfect</span> Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+        Purrfect Adoption helps loving cats find their forever homes by connecting them with caring families. We believe every cat deserves a safe, happy life filled with love and warmth. 🐾
         </p>
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container">
+        <h2 className="featured-cats-title">Featured cats</h2>
+        <div className="mt-2 row g-4 justify-content-center" id="cats-container">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={i} className="col-md-3 col-sm-6 col-12">
               <div className="cat-card">
                 <img
                   src={cat.image}
                   alt={cat.name}
                   className="img-fluid mb-2"
                   style={{
-                    borderRadius: '8px',
-                    height: '200px',
+                    borderRadius: '20px',
+                    height: '240px',
                     objectFit: 'cover',
+                    width: '95%',
+                    margin: '0 auto',
                   }}
                 />
                 <div className="cat-info">
