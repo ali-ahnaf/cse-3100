@@ -17,8 +17,9 @@ export default function Contact() {
         <section>
             <h2>Contact Us</h2>
             <p>
-                Have a question or want to volunteer? Fill the form below or reach us
-                at contact@purrfectadoption.example
+                Have a question or want to volunteer? Fill the form below or reach us at
+                <br />
+                <strong>Email:</strong> info@purrfectadoption.org | <strong>Phone:</strong> (555) 123-4567
             </p>
 
             <form onSubmit={handleSubmit} style={{ maxWidth: 600, margin: '0 auto' }}>

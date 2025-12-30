@@ -48,9 +48,7 @@ export default function Home() {
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          At Purrfect Adoption, we believe every cat deserves a loving home. Our dedicated team works tirelessly to rescue cats in need, provide medical care and rehabilitation, and match them with families who will cherish them forever. Whether you&apos;re looking for a playful kitten or a calm senior companion, we have the perfect match waiting for you.
         </p>
       </section>
 
