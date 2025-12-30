@@ -25,58 +25,44 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []); // Added dependency array to prevent infinite loop
 
   return (
-    <>
-      <section className="text-center mt-4">
+    <div className="home-container">
+      <section className="welcome-section">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Discover your perfect feline companion! Purrfect Adoption is dedicated to finding loving homes for cats in need. Our featured cats below are waiting to bring joy and companionship to your family. Each cat has been carefully evaluated and is ready for their forever home.
         </p>
       </section>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
+      <div className="dashboard-layout">
+        <section className="featured-cats-section">
+          <h2>Featured cats</h2>
+          <div className="featured-cats-grid">
+            {cats.map((cat, i) => (
+              <div key={i} className="cat-card">
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
+                  className="cat-image"
                 />
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
   );
 }
