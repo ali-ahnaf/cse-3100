@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const featuredCats = [
   { name: 'Whiskers', age: '2' },
@@ -36,6 +37,14 @@ export default function Home() {
 
   return (
     <>
+      <section className="hero">
+        <div className="overlay">
+          <h1 style={{ margin: 0, fontSize: '2rem' }}>Find Your Purrfect Companion</h1>
+          <p style={{ marginTop: 8, marginBottom: 16, color: 'rgba(0,0,0,0.85)' }}>Adopt a cat, save a life</p>
+          <Link to="/available-cats" className="browse-button">Browse Cats</Link>
+        </div>
+      </section>
+
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>

@@ -4,6 +4,7 @@ import Home from './views/Home';
 import AvailableCats from './views/AvailableCats';
 import About from './views/About';
 import Contact from './views/Contact';
+import DonatePage from './views/Donate';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path={'/available-cats'} element={<AvailableCats />} />
         <Route path={'/about'} element={<About />} />
         <Route path={'/contact'} element={<Contact />} />
+        <Route path={'/donate'} element={<DonatePage />} />
       </Route>
     </Routes>
   );

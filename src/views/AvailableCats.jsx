@@ -88,12 +88,12 @@ export default function AvailableCats() {
       <div className="cats-grid" id="cats-container">
         {filteredCats.map((cat) => (
           <article key={cat.id} className="cat-card">
-            <img src={cat.image} alt={cat.name} />
+            <img src={cat.image} alt={cat.name} className="cat-image" />
             <div className="cat-info">
               <h3 className="h5 mb-1">{cat.name}</h3>
-              <p className="mb-1">Breed: {cat.breed}</p>
-              <p className="mb-1">Age: {cat.age}</p>
+              <p className="cat-meta mb-1">Breed: {cat.breed} • Age: {cat.age}</p>
               <p className="mb-0">{cat.description}</p>
+              <button className="adopt-button">Adopt Me</button>
             </div>
           </article>
         ))}
