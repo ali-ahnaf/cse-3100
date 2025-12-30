@@ -171,3 +171,120 @@ section h2 {
   color: #666;
   font-size: 0.95rem;
 }
+
+/* Available Cats Page Styles */
+.available-cats-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.available-cats-intro {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.available-cats-intro p {
+  font-size: 1.1rem;
+  color: #999;
+  margin: 0;
+}
+
+.paw-icon {
+  font-size: 1.5rem;
+  color: #DAB6FC;
+  display: inline;
+}
+
+.available-cats-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 2rem;
+}
+
+.available-cats-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.available-cats-subtitle {
+  color: #999;
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.filters-container {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  flex-shrink: 0;
+}
+
+.breed-select,
+.name-search {
+  border: 2px solid #DAB6FC;
+  border-radius: 4px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  background-color: #fff;
+  accent-color: #DAB6FC;
+}
+
+.breed-select:focus,
+.name-search:focus {
+  outline: none;
+  border-color: #C8A2F0;
+}
+
+.breed-select {
+  min-width: 140px;
+  cursor: pointer;
+}
+
+.name-search {
+  min-width: 160px;
+}
+
+.search-btn {
+  background-color: #DAB6FC;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+}
+
+.search-btn:hover {
+  background-color: #C8A2F0;
+}
+
+.divider-line {
+  margin: 0.75rem 0 1.5rem 0;
+  border: none;
+  border-top: 2px solid transparent;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #C8A2F0 20%,
+    #C8A2F0 80%,
+    transparent 100%
+  );
+  height: 2px;
+}
