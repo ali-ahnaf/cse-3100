@@ -1,48 +1,71 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
 header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  color: #212529;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 1rem;
 }
 
 footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  padding: 1rem;
+  text-align: center;
+  background: #f1f1f1;
+}
+
+/* Cats grid */
+.cats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  align-items: start;
 }
 
 .cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+}
+
+.cat-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
+  padding: 0.75rem;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters select,
+.filters input {
+  padding: 0.5rem;
   border-radius: 4px;
+  border: 1px solid #ccc;
 }
