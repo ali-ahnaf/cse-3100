@@ -1,21 +1,23 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import AvailableCats from './pages/AvailableCats';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import { Routes, Route } from 'react-router-dom';
+import BaseLayout from './views/BaseLayout';
+import Home from './views/Home';
+import AvailableCats from './views/AvailableCats';
+import About from './views/About';     // New page
+import Contact from './views/Contact'; // New page
 
-const App = () => {
+function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<AvailableCats />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </Router>
+    <Routes>
+      {/* BaseLayout wraps all child routes */}
+      <Route path="/" element={<BaseLayout />}>
+        {/* Child routes */}
+        <Route index element={<Home />} />                   {/* / */}
+        <Route path="available-cats" element={<AvailableCats />} />  {/* /available-cats */}
+        <Route path="about" element={<About />} />          {/* /about */}
+        <Route path="contact" element={<Contact />} />      {/* /contact */}
+      </Route>
+    </Routes>
   );
-};
+}
 
 export default App;
