@@ -41,6 +41,7 @@ header h1 a {
   text-decoration: none;
   color: #555;
   font-weight: 500;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 h2 {
@@ -123,4 +124,82 @@ footer {
   font-size: 1rem;
   margin: 0;
   color: #333;
+}
+
+.available-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.available-title,
+.section-title-left {
+  text-align: left;
+}
+
+.filter-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-select {
+  width: 190px;
+  height: 40px;
+  padding: 5px;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.filter-input {
+  width: 160px;
+  height: 40px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.filter-btn {
+  width: 160px;
+  height: 40px;
+  background-color: #97d5fc;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.section-separator {
+  border: none;
+  border-top: 2px solid #333;
+  opacity: 1;
+  margin: 0 0 30px 0;
+}
+
+.cat-image {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.available-title {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 500; 
+  letter-spacing: 0.2px;
+}
+
+.cat-info h3 {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.cat-info p {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
 }

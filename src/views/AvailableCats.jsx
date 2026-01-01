@@ -56,19 +56,13 @@ export default function AvailableCats() {
 
   return (
     <section className="text-center mt-4">
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+      <div className="available-header">
 
-        <h2 className="" style={{ textAlign: 'left' }}>Available cats</h2>
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <h2 className="available-title">Available cats</h2>
+        <div className="filter-row">
 
           <select
-            className="form-select"
-            style={{
-              width: "180px",
-              padding: "5px",
-              borderRadius: "5px",
-              border: "1px solid #333"
-            }}
+            className="form-select filter-select"
             value={breedInsert}
             onChange={(e) => setBreedInsert(e.target.value)}
           >
@@ -81,28 +75,14 @@ export default function AvailableCats() {
           <input
             type="text"
             placeholder="Search by name"
-            className="form-control"
-            style={{
-              width: "190px",
-              padding: "7px",
-              borderRadius: "5px",
-              border: "1px solid #333"
-            }}
+            className="form-control filter-input"
             value={nameInsert}
             onChange={(e) => setNameInsert(e.target.value)}
           />
 
           <button
             onClick={handleSearch}
-            style={{
-              backgroundColor: '#90CDF4',
-              border: '1px solid #333',
-              borderRadius: '5px',
-              padding: '5px 20px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              fontFamily: 'inherit'
-            }}
+            className="filter-btn"
           >
             search
           </button>
@@ -110,7 +90,7 @@ export default function AvailableCats() {
         </div>
       </div>
       <p>Meet our adorable cats looking for their forever home!</p>
-      <hr style={{ border: 'none', borderTop: '2px solid #333', opacity: 1, margin: '0 0 30px 0' }} />
+      <hr className="section-separator" />
       <div className="mt-2 row g-4 cats-container" id="cats-container">
         {filteredResults.map((cat, i) => (
           <div key={i} className="col-md-4">
@@ -118,11 +98,7 @@ export default function AvailableCats() {
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  objectFit: 'cover',
-                }}
+                className="img-fluid mb-2 cat-image"
               />
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
