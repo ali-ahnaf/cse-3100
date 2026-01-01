@@ -455,3 +455,81 @@ section h2 {
 .submit-btn:hover {
   background-color: #C8A2F0;
 }
+
+/* Donate Page Styles */
+.donate-page {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.donate-page h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.donate-intro {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.donate-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.donate-section {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(218, 182, 252, 0.3);
+}
+
+.donate-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.donate-section p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.donate-section p:last-child {
+  margin-bottom: 0;
+}
+
+.donate-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.donate-list li {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #666;
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.donate-list li::before {
+  content: '🐾';
+  position: absolute;
+  left: 0;
+  color: #DAB6FC;
+}
