@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif, Tahoma, Verdana;
+  font-family: 'Segoe UI', sans-serif, Tahoma, Verdana, Verdana, Geneva, Tahoma, sans-serif;
   background-color: #fafafa;
 }
 
@@ -23,12 +23,52 @@ header {
   align-items: center;
 }
 
+header h1 a {
+  text-decoration: none;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+h2 {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+section p {
+  text-align: center;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
 main {
   flex: 1;
   padding: 3rem 2rem;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+}
+
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px;
+  margin-top: 20px;
 }
 
 footer {
@@ -49,6 +89,14 @@ footer {
   background-color: #eee;
 }
 
+.cat-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  border-radius: 0;
+}
+
 .cat-info {
   position: absolute;
   bottom: 2px;
@@ -62,4 +110,17 @@ footer {
 
   text-align: left;
   z-index: 2;
+}
+
+.cat-info p {
+  text-align: left;
+  font-size: 0.85rem;
+  margin: 0;
+  color: #666;
+}
+
+.cat-info h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: #333;
 }

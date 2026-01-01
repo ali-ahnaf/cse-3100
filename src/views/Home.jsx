@@ -4,6 +4,9 @@ const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
   { name: 'Shadow', age: '1' },
+  { name: 'Pumpkin', age: '3' },
+  { name: 'Luna', age: '4' },
+  { name: 'Simba', age: '2' },
 ];
 
 export default function Home() {
@@ -52,7 +55,7 @@ export default function Home() {
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
+        <h2 style={{ textAlign: 'left' }}>Featured cats</h2>
         <div className="mt-2 row g-4" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
@@ -63,7 +66,6 @@ export default function Home() {
                   className="img-fluid mb-2"
                   style={{
                     borderRadius: '8px',
-                    height: '200px',
                     objectFit: 'cover',
                   }}
                 />

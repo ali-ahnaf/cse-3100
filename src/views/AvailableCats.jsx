@@ -13,7 +13,6 @@ export default function AvailableCats() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
@@ -39,9 +38,14 @@ export default function AvailableCats() {
 
   return (
     <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+       <div style={{ display: 'flex', justifyContent: 'space-between',  marginBottom: '5px' }}>
 
+        <h2 className="" style={{textAlign: 'left'}}>Available cats</h2>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          </div>
+          </div>
+      <p>Meet our adorable cats looking for their forever home!</p>
+     <hr style={{ border: 'none', borderTop: '2px solid #333', opacity: 1, margin: '0 0 30px 0' }} />
       <div className="mt-2 row g-4 cats-container" id="cats-container">
         {cats.map((cat, i) => (
           <div key={i} className="col-md-4">
