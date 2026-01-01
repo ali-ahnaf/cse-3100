@@ -1,48 +1,65 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif, Tahoma, Verdana;
+  background-color: #fafafa;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
 header {
-  padding: 1em;
+  padding: 1.5rem 2rem;
   background-color: #fff;
-  color: #fff;
+  border-bottom: 1px solid #f9f6f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff;
+  border-top: 1px solid #eaeaea;
 }
 
 .cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  position: relative;
+  height: 240px;
+  border: 2px solid #333;
+  border-radius: 15px;
   overflow: hidden;
+  padding: 0;
+  box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+  background-color: #eee;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+
+  background-color: rgba(255, 255, 255, 0.822);
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 10px;
+
+  text-align: left;
+  z-index: 2;
 }
