@@ -1,82 +1,82 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Bengal' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Siamese' },
+  { name: 'Pumpkin', age: '3', breed: 'Birman' },
 ];
 
 export default function Home() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
-        );
+    const fetchImages = async () => {
+      const responses = await Promise.all(
+        featuredCats.map(() =>
+          fetch('https://api.thecatapi.com/v1/images/search')
+            .then(res => res.json())
+        )
+      );
 
-        const catsWithImages = featuredCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
+      const data = featuredCats.map((cat, i) => ({
+        ...cat,
+        id: i,
+        image: responses[i][0].url,
+      }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
+      setCats(data);
     };
 
-    fetchCatImages();
-  });
+    fetchImages();
+  }, []);
 
   return (
     <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+      {/* WELCOME SECTION */}
+      <section style={styles.welcomeSection}>
+        <h2 style={styles.welcomeTitle}>Welcome to Purrfect Adoption</h2>
+        <p style={styles.welcomeParagraph}>
+          We help loving cats find safe, caring homes. Browse our featured cats
+          below or explore all available cats ready for adoption.
         </p>
       </section>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
-              </div>
+      {/* FEATURED TITLE */}
+      <h3 style={styles.featuredTitle}>Featured Cats</h3>
+
+      {/* CAT GRID */}
+      <div className="featured-cats">
+        {cats.map(cat => (
+          <div className="cat-card" key={cat.id}>
+            <img src={cat.image} alt={cat.name} />
+            <div className="cat-info">
+              {cat.name}<br />
+              Age: {cat.age}
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
+
+const styles = {
+  welcomeSection: {
+    textAlign: "center",
+    marginBottom: "50px", 
+  },
+  welcomeTitle: {
+    fontSize: "2rem",
+    marginBottom: "20px", 
+  },
+  welcomeParagraph: {
+    fontSize: "1.2rem",
+    lineHeight: "1.6",
+    marginBottom: "30px", 
+  },
+  featuredTitle: {
+    marginBottom: "20px",
+    textAlign: "center",
+  },
+};
