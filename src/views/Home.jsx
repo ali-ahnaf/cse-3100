@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name:  'Shadow', age: '1' },
 ];
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
-          featuredCats.map(() =>
+          featuredCats. map(() =>
             fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
               res.json()
             )
@@ -25,20 +25,14 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);  // ✅ FIX 1: Replace instead of append
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);  // ✅ FIX 2: Add empty dependency array
 
   return (
     <>
