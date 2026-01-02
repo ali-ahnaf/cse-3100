@@ -97,6 +97,7 @@ export default function AvailableCats() {
           </button>
         </div>
       </div>
+      <hr className="section-divider" />
 
       {/* Cat Cards */}
       <div className="mt-2 row g-4 cats-container" id="cats-container">
