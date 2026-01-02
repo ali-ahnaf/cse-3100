@@ -7,6 +7,7 @@ const availableCats = [
     breed: 'Siamese',
     location: 'Shelter A',
     description: 'Playful and affectionate. Good with kids.',
+    image: 'https://cdn2.thecatapi.com/images/9j7.jpg',
   },
   {
     name: 'Mittens',
@@ -14,6 +15,7 @@ const availableCats = [
     breed: 'Persian',
     location: 'Foster Home',
     description: 'Calm lap cat who enjoys naps and brushing.',
+    image: 'https://cdn2.thecatapi.com/images/ae.jpg',
   },
   {
     name: 'Shadow',
@@ -21,6 +23,7 @@ const availableCats = [
     breed: 'Abyssinian',
     location: 'Shelter B',
     description: 'Curious and energetic — loves to climb.',
+    image: 'https://cdn2.thecatapi.com/images/bb.jpg',
   },
   {
     name: 'Pumpkin',
@@ -28,6 +31,7 @@ const availableCats = [
     breed: 'Bengal',
     location: 'Shelter A',
     description: 'Active and playful; needs space to run.',
+    image: 'https://cdn2.thecatapi.com/images/cc.jpg',
   },
   {
     name: 'Luna',
@@ -35,6 +39,7 @@ const availableCats = [
     breed: 'Birman',
     location: 'Foster Home',
     description: 'Gentle and social; great with other pets.',
+    image: 'https://cdn2.thecatapi.com/images/dd.jpg',
   },
   {
     name: 'Simba',
@@ -42,40 +47,20 @@ const availableCats = [
     breed: 'Sphinx',
     location: 'Shelter C',
     description: 'Affectionate and attention-seeking.',
+    image: 'https://cdn2.thecatapi.com/images/ee.jpg',
   },
 ];
 
 const breeds = ['Siamese', 'Persian', 'Abyssinian', 'Bengal', 'Birman', 'Sphinx', 'Peterbald'];
 
 export default function AvailableCats() {
-  const [cats, setCats] = useState([]);
+  const [cats, setCats] = useState(availableCats);
   const [filteredCats, setFilteredCats] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState('');
   const [searchName, setSearchName] = useState('');
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the availableCats list
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
-        );
-        const catsWithImages = availableCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats(catsWithImages);
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
-    };
-
-    fetchCatImages();
+    setCats(availableCats);
   }, []);
 
   useEffect(() => {

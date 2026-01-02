@@ -1,42 +1,21 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2', breed: 'Siamese', location: 'Shelter A', description: 'Playful and affectionate. Good with kids.' },
-  { name: 'Mittens', age: '2', breed: 'Persian', location: 'Foster Home', description: 'Calm lap cat who enjoys naps and brushing.' },
-  { name: 'Shadow', age: '1', breed: 'Abyssinian', location: 'Shelter B', description: 'Curious and energetic — loves to climb.' },
-  { name: 'Pumpkin', age: '3', breed: 'Bengal', location: 'Shelter A', description: 'Active and playful; needs space to run.' },
-  { name: 'Luna', age: '4', breed: 'Birman', location: 'Foster Home', description: 'Gentle and social; great with other pets.' },
-  { name: 'Simba', age: '2', breed: 'Sphinx', location: 'Shelter C', description: 'Affectionate and attention-seeking.' },
-  { name: 'Oreo', age: '1', breed: 'Domestic Shorthair', location: 'Shelter A', description: 'Playful kitten who loves toys.' },
-  { name: 'Bella', age: '5', breed: 'Ragdoll', location: 'Foster Home', description: 'Calm and cuddly — perfect indoor companion.' },
+  { name: 'Whiskers', age: '2', breed: 'Siamese', location: 'Shelter A', description: 'Playful and affectionate. Good with kids.', image: 'https://cdn2.thecatapi.com/images/9j7.jpg' },
+  { name: 'Mittens', age: '2', breed: 'Persian', location: 'Foster Home', description: 'Calm lap cat who enjoys naps and brushing.', image: 'https://cdn2.thecatapi.com/images/ae.jpg' },
+  { name: 'Shadow', age: '1', breed: 'Abyssinian', location: 'Shelter B', description: 'Curious and energetic — loves to climb.', image: 'https://cdn2.thecatapi.com/images/bb.jpg' },
+  { name: 'Pumpkin', age: '3', breed: 'Bengal', location: 'Shelter A', description: 'Active and playful; needs space to run.', image: 'https://cdn2.thecatapi.com/images/cc.jpg' },
+  { name: 'Luna', age: '4', breed: 'Birman', location: 'Foster Home', description: 'Gentle and social; great with other pets.', image: 'https://cdn2.thecatapi.com/images/dd.jpg' },
+  { name: 'Simba', age: '2', breed: 'Sphinx', location: 'Shelter C', description: 'Affectionate and attention-seeking.', image: 'https://cdn2.thecatapi.com/images/ee.jpg' },
+  { name: 'Oreo', age: '1', breed: 'Domestic Shorthair', location: 'Shelter A', description: 'Playful kitten who loves toys.', image: 'https://cdn2.thecatapi.com/images/ff.jpg' },
+  { name: 'Bella', age: '5', breed: 'Ragdoll', location: 'Foster Home', description: 'Calm and cuddly — perfect indoor companion.', image: 'https://cdn2.thecatapi.com/images/gg.jpg' },
 ];
 
 export default function Home() {
-  const [cats, setCats] = useState([]);
+  const [cats, setCats] = useState(featuredCats);
 
   useEffect(() => {
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
-        );
-
-        const catsWithImages = featuredCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats(catsWithImages);
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
-    };
-
-    fetchCatImages();
+    setCats(featuredCats);
   }, []);
 
   return (

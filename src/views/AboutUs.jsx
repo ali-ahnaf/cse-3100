@@ -1,66 +1,44 @@
 export default function AboutUs() {
   return (
-    <section className="about-section py-4">
+    <section className="about-section">
       <div className="container">
-        <h2 className="mb-4">About Us</h2>
+        <h2 className="about-heading">Our mission</h2>
+        <p className="about-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+        </p>
 
-        <div className="row mb-4">
-          <div className="col-lg-8">
-            <h3 className="mb-2">Our mission</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              lacinia, arcu id vehicula cursus, urna nibh luctus nibh, sit amet
-              convallis lacus urna a neque. We rescue, rehabilitate and rehome
-              cats while educating the community about responsible pet
-              ownership.
-            </p>
-          </div>
-        </div>
+        <h2 className="about-heading">Our history</h2>
+        <p className="about-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+        </p>
 
-        <div className="row mb-4">
-          <div className="col-lg-8">
-            <h3 className="mb-2">Our history</h3>
-            <p>
-              Founded by a group of volunteers, Purrfect Adoption started as a
-              small foster network and has grown into a community-supported
-              non-profit. Over the years we have reunited many cats with loving
-              families and helped dozens of shelters improve their care.
-            </p>
-          </div>
-        </div>
-
-        <div className="row mb-3">
-          <div className="col-12">
-            <h3 className="mb-3">Our team</h3>
-          </div>
-
-          <div className="col-md-4 col-sm-6 mb-3">
-            <div className="team-card">
-              <div className="team-photo" aria-hidden="true"></div>
-              <div className="team-info">
-                <strong>Bob Doe</strong>
-                <div className="muted">Director</div>
-              </div>
+        <h2 className="about-heading">Our team</h2>
+        <div className="team-grid">
+          <div className="team-card">
+            <div className="team-photo" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop)' }}></div>
+            <div className="team-info">
+              <h3>John Smith</h3>
+              <p className="team-role">Director</p>
             </div>
           </div>
 
-          <div className="col-md-4 col-sm-6 mb-3">
-            <div className="team-card">
-              <div className="team-photo" aria-hidden="true"></div>
-              <div className="team-info">
-                <strong>Jane Roe</strong>
-                <div className="muted">Volunteer Coordinator</div>
-              </div>
+          <div className="team-card">
+            <div className="team-photo" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=500&fit=crop)' }}></div>
+            <div className="team-info">
+              <h3>Sarah Johnson</h3>
+              <p className="team-role">Director</p>
             </div>
           </div>
 
-          <div className="col-md-4 col-sm-6 mb-3">
-            <div className="team-card">
-              <div className="team-photo" aria-hidden="true"></div>
-              <div className="team-info">
-                <strong>Ali Khan</strong>
-                <div className="muted">Vet Partner</div>
-              </div>
+          <div className="team-card">
+            <div className="team-photo" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=500&fit=crop)' }}></div>
+            <div className="team-info">
+              <h3>Michael Brown</h3>
+              <p className="team-role">Director</p>
             </div>
           </div>
         </div>
