@@ -4,6 +4,7 @@ import Home from './views/Home';
 import AvailableCats from './views/AvailableCats';
 import AboutUs from './views/AboutUs';
 import ContactUs from './views/ContactUs';
+import Donate from './views/Donate';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="available-cats" element={<AvailableCats />} />
         <Route path="about" element={<AboutUs />} />
         <Route path="contact" element={<ContactUs />} />
+        <Route path="donate" element={<Donate />} />
       </Route>
     </Routes>
   );

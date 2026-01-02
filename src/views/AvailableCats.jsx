@@ -190,9 +190,7 @@ export default function AvailableCats() {
                 <p className="cat-details">
                   Breed: <span className="breed-badge">{cat.breed}</span>
                 </p>
-                <button className="adopt-btn">
-                  Adopt {cat.name}
-                </button>
+                
               </div>
             </div>
           ))}

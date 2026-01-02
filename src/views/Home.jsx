@@ -44,9 +44,7 @@ export default function Home() {
           Find your perfect feline companion from our selection of beautiful cats.
           Each cat has a unique personality and comes from various breed backgrounds.
         </p>
-        <Link to="/available-cats" className="btn btn-primary mt-3">
-          View All Available Cats
-        </Link>
+        
       </section>
 
       <section className="mt-5">

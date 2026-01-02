@@ -50,9 +50,13 @@ export default function AboutUs() {
                 <div className="team-member">
                   <div className="team-photo">
                     <img 
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
                       alt="Alex Chen" 
                       className="img-fluid"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://via.placeholder.com/400x300/F8F9FA/6C757D?text=Alex+Chen";
+                      }}
                     />
                   </div>
                   <div className="team-info">
@@ -67,9 +71,13 @@ export default function AboutUs() {
                 <div className="team-member">
                   <div className="team-photo">
                     <img 
-                      src="https://images.unsplash.com/photo-1494790108755-2616b786d4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                      src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
                       alt="Maria Rodriguez" 
                       className="img-fluid"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://via.placeholder.com/400x300/F8F9FA/6C757D?text=Maria+Rodriguez";
+                      }}
                     />
                   </div>
                   <div className="team-info">
@@ -84,9 +92,13 @@ export default function AboutUs() {
                 <div className="team-member">
                   <div className="team-photo">
                     <img 
-                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
                       alt="David Wilson" 
                       className="img-fluid"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://via.placeholder.com/400x300/F8F9FA/6C757D?text=David+Wilson";
+                      }}
                     />
                   </div>
                   <div className="team-info">

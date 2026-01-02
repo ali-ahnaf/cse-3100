@@ -11,9 +11,7 @@ const BaseLayout = () => {
         </h1>
         <nav className="ms-auto">
           <ul className="nav mb-0">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
-            </li>
+            
             <li className="nav-item">
               <Link className="nav-link" to="/available-cats">Available Cats</Link>
             </li>
@@ -22,6 +20,9 @@ const BaseLayout = () => {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/contact">Contact Us</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link donate-link" to="/donate">Donate</Link>
             </li>
           </ul>
         </nav>
