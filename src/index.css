@@ -1,48 +1,136 @@
+
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
+
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
 header {
   padding: 1em;
   background-color: #fff;
-  color: #fff;
+  color: #333; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
 
 main {
   flex: 1;
   padding: 1em;
-  display: list-item;
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
+.text-center {
+  text-align: center;
+  width: 100%;       
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+
+.text-center p {
+  color: #666;
+  max-width: 600px;  
+  margin-left: auto;
+  margin-right: auto;
+}
 footer {
   padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
+  text-align: center;
+  background: #f8f9fa;
+  color: #666;
   width: 100%;
-  z-index: 9999;
-  background: red;
 }
 
 .cat-card {
   border: 1px solid #ddd;
   text-align: center;
-  height: 150px;
+  height: 100%; 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  border-radius: 8px;
   overflow: hidden;
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.cat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #333;
+  padding: 10px;
+}
+
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-4 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+
+
+
+.nav {
+  display: flex;       
+  list-style: none;   
+  margin: 0;
+  padding: 0;
+  gap: 20px;          
+}
+
+.nav-link {
+  text-decoration: none; 
+  color: #555;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 8px 12px;
   border-radius: 4px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+
+.nav-link:hover {
+  color: #000;
+  background-color: #e9ecef;
+}
+
+
+header {
+  display: flex;             
+  align-items: center;     
+  justify-content: space-between; 
 }
