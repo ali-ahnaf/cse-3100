@@ -51,7 +51,7 @@ export default function Home() {
         <div style={{ maxWidth: "800px" }}>
           <h2>Welcome to Purrfect Adoption</h2>
           <p style={{ marginTop: "1.5rem" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+            Home ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
             luc Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Maecenas luc Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Maecenas luc
