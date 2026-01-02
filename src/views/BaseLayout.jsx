@@ -12,6 +12,9 @@ const BaseLayout = () => {
 
         <nav className="header-right">
           <Link to="/available-cats">Available cats</Link>
+          <Link to="/about">About us</Link>
+<Link to="/contact">Contact us</Link>
+
           <a href="#">Donate</a>
         </nav>
       </header>

@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Micky mouse', age: '2', breed: 'Bengal' },
-  { name: 'Micky mouse', age: '2', breed: 'Persian' },
-  { name: 'Micky mouse', age: '2', breed: 'Siamese' },
-  { name: 'Micky mouse', age: '2', breed: 'Birman' },
-  { name: 'Micky mouse', age: '2', breed: 'Sphynx' },
-  { name: 'Micky mouse', age: '2', breed: 'Abyssinian' },
-  { name: 'Micky mouse', age: '2', breed: 'Peterbald' },
-  { name: 'Micky mouse', age: '2', breed: 'Bengal' },
+  { name: 'Whiskers', age: '2', breed: 'Bengal' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Siamese' },
+  { name: 'Pumpkin', age: '3', breed: 'Birman' },
+  { name: 'Luna', age: '4', breed: 'Sphynx' },
+  { name: 'Simba', age: '2', breed: 'Abyssinian' },
+  { name: 'Leo', age: '1', breed: 'Peterbald' },
+  { name: 'Nala', age: '3', breed: 'Bengal' },
 ];
 
 export default function AvailableCats() {
@@ -17,6 +17,7 @@ export default function AvailableCats() {
   const [breed, setBreed] = useState('');
   const [search, setSearch] = useState('');
 
+ 
   useEffect(() => {
     const fetchImages = async () => {
       const responses = await Promise.all(
@@ -38,21 +39,27 @@ export default function AvailableCats() {
     fetchImages();
   }, []);
 
-  const handleSearch = () => {
+  
+  useEffect(() => {
     const result = cats.filter(cat => {
-      const breedMatch = breed === '' || cat.breed === breed;
-      const nameMatch = cat.name.toLowerCase().includes(search.toLowerCase());
+      const breedMatch =
+        breed === '' ||
+        cat.breed.toLowerCase() === breed.toLowerCase();
+
+      const nameMatch =
+        cat.name.toLowerCase().includes(search.toLowerCase());
+
       return breedMatch && nameMatch;
     });
 
     setFilteredCats(result);
-  };
+  }, [breed, search, cats]);
 
   return (
     <>
-      {/* TITLE + FILTERS ON SAME LINE */}
+   
       <div className="page-header">
-        <h2 className="page-title">Available cats</h2>
+        <h2 className="page-title">Available Cats</h2>
 
         <div className="filter-bar">
           <select
@@ -77,23 +84,20 @@ export default function AvailableCats() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-
-          <button
-            className="filter-button"
-            onClick={handleSearch}
-          >
-            Search
-          </button>
         </div>
       </div>
 
-      {/* CAT GRID */}
+     
       <div className="available-cats-grid">
+        {filteredCats.length === 0 && (
+          <p>No cats found.</p>
+        )}
+
         {filteredCats.map((cat, i) => (
           <div className="cat-card" key={i}>
             <img src={cat.image} alt={cat.name} />
             <div className="cat-info">
-              {cat.name}<br />
+              <strong>{cat.name}</strong><br />
               Age: {cat.age}<br />
               Breed: {cat.breed}
             </div>

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Bob Doe', age: '3', breed: 'Bengal' },
-  { name: 'Bob Doe', age: '4', breed: 'Persian' },
-  { name: 'Bob Doe', age: '2 months', breed: 'Siamese' },
-  { name: 'Bob Doe', age: '2 months', breed: 'Birman' },
+  { name: 'Whiskers', age: '2', breed: 'Bengal' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Siamese' },
+  { name: 'Pumpkin', age: '3', breed: 'Birman' },
 ];
 
 export default function Home() {
@@ -33,15 +33,19 @@ export default function Home() {
 
   return (
     <>
-      <section className="text-center mb-5">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
+      {/* WELCOME SECTION */}
+      <section style={styles.welcomeSection}>
+        <h2 style={styles.welcomeTitle}>Welcome to Purrfect Adoption</h2>
+        <p style={styles.welcomeParagraph}>
           We help loving cats find safe, caring homes. Browse our featured cats
           below or explore all available cats ready for adoption.
         </p>
       </section>
 
-      <h3>Featured Cats</h3>
+      {/* FEATURED TITLE */}
+      <h3 style={styles.featuredTitle}>Featured Cats</h3>
+
+      {/* CAT GRID */}
       <div className="featured-cats">
         {cats.map(cat => (
           <div className="cat-card" key={cat.id}>
@@ -56,3 +60,23 @@ export default function Home() {
     </>
   );
 }
+
+const styles = {
+  welcomeSection: {
+    textAlign: "center",
+    marginBottom: "50px", 
+  },
+  welcomeTitle: {
+    fontSize: "2rem",
+    marginBottom: "20px", 
+  },
+  welcomeParagraph: {
+    fontSize: "1.2rem",
+    lineHeight: "1.6",
+    marginBottom: "30px", 
+  },
+  featuredTitle: {
+    marginBottom: "20px",
+    textAlign: "center",
+  },
+};
