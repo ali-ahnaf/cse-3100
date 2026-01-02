@@ -613,3 +613,267 @@ section.mt-5 h2 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== ABOUT PAGE ===== */
+.about-page {
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #4dabf7;
+}
+
+.mission-content p,
+.history-content p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+/* Team Section */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.team-member {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+}
+
+.team-photo {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover .team-photo img {
+  transform: scale(1.05);
+}
+
+.team-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.team-name {
+  color: #2c3e50;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.25rem;
+}
+
+.team-position {
+  color: #4dabf7;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+}
+
+.team-bio {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== CONTACT PAGE ===== */
+.contact-page {
+  background: linear-gradient(135deg, #f9f9f9 0%, #f0f7ff 100%);
+}
+
+.contact-title {
+  color: #2c3e50;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.contact-text p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.contact-details {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.detail-title {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.detail-content {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Contact Form */
+.contact-form-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  color: #2c3e50;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-label::after {
+  content: ' *';
+  color: #e74c3c;
+  visibility: hidden;
+}
+
+.form-label[for="phone"]::after,
+.form-label[for="message"]::after {
+  visibility: hidden;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.875rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #4dabf7;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #4dabf7 0%, #339af0 100%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #339af0 0%, #228be6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(51, 154, 240, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .contact-title {
+    font-size: 1.75rem;
+  }
+  
+  .contact-form-container {
+    padding: 1.5rem;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .contact-title {
+    font-size: 1.5rem;
+  }
+  
+  .form-title {
+    font-size: 1.25rem;
+  }
+  
+  .contact-details {
+    padding: 1.5rem;
+  }
+}

@@ -52,9 +52,7 @@ export default function Home() {
       <section className="mt-5">
         <div className="d-flex justify-content-between align-items-center">
           <h2>Featured cats</h2>
-          <Link to="/available-cats" className="btn btn-outline-secondary">
-            See All Cats
-          </Link>
+          
         </div>
         <div className="mt-2 row g-4">
           {cats.map((cat, i) => (
