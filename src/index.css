@@ -1,48 +1,88 @@
+/* General Layout Fixes */
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Mockup sketch font */
+  background-color: #fff;
+  padding: 20px;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
 header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
-}
-
-main {
-  flex: 1;
-  padding: 1em;
-  display: list-item;
-}
-
-footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
-}
-
-.cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+/* Fix: Cat Grid as seen in mockup */
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px;
+  border-top: 1px solid #000;
+  padding-top: 20px;
+}
+
+/* Sketch Style Cards */
+.cat-card {
+  border: 1.5px solid #000;
+  border-radius: 20px;
+  padding: 0;
   overflow: hidden;
+  background: #fff;
+}
+
+.cat-image-placeholder {
+  height: 150px;
+  border-bottom: 1px solid #000;
+  background: #fff;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  padding: 10px;
+}
+
+/* Contact Form Fix */
+.contact-form {
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  border: 1.5px solid #000 !important;
+  border-radius: 10px !important;
+  padding: 8px !important;
+  width: 100%;
+}
+
+.btn-sketch {
+  background-color: #aaddff;
+  border: 1.5px solid #000;
+  border-radius: 5px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #eee;
 }
