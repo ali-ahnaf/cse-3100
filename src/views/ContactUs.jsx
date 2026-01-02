@@ -1,58 +1,54 @@
 export default function ContactUs() {
   return (
-    <section className="mt-4">
-      <div className="row">
-        <div className="col-lg-8 mx-auto">
-          <h2 className="mb-3">Contact us</h2>
-          <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-            ut lectus mi. Maecenas lorem.
-          </p>
+    <section className="contact-section">
+      <div className="container">
+        <h2 className="contact-heading">Contact us</h2>
+        <p className="contact-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+        </p>
 
-          <form className="contact-form">
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label">
-                Name
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="name"
-                placeholder=""
-                required
-              />
-            </div>
+        <form className="contact-form">
+          <div className="form-group">
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              className="form-input"
+              id="name"
+              required
+            />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="phone" className="form-label">
-                Phone
-              </label>
-              <input
-                type="tel"
-                className="form-control"
-                id="phone"
-                placeholder=""
-              />
-            </div>
+          <div className="form-group">
+            <label htmlFor="phone" className="form-label">
+              Phone
+            </label>
+            <input
+              type="tel"
+              className="form-input"
+              id="phone"
+            />
+          </div>
 
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Email
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                placeholder=""
-                required
-              />
-            </div>
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              className="form-input"
+              id="email"
+              required
+            />
+          </div>
 
-            <button type="submit" className="btn btn-primary mt-2">
-              Submit
-            </button>
-          </form>
-        </div>
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
+        </form>
       </div>
     </section>
   );
