@@ -1,12 +1,12 @@
-* {
-  box-sizing: content-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 .layout {
   display: flex;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
 header {
@@ -18,17 +18,13 @@ header {
 main {
   flex: 1;
   padding: 1em;
-  display: list-item;
+  display: block;
 }
 
 footer {
   padding: 1em;
   text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  background: white;
 }
 
 .cat-card {
