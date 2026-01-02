@@ -1,59 +1,67 @@
 export default function AboutUs() {
   return (
-    <section className="mt-4">
-      <div className="row">
-        <div className="col-lg-8 mx-auto">
-          <h2 className="text-center mb-4">About Purrfect Adoption</h2>
+    <section className="about-section py-4">
+      <div className="container">
+        <h2 className="mb-4">About Us</h2>
 
-          <div className="mb-5">
-            <h3>Our Mission</h3>
+        <div className="row mb-4">
+          <div className="col-lg-8">
+            <h3 className="mb-2">Our mission</h3>
             <p>
-              At Purrfect Adoption, we are dedicated to finding loving forever
-              homes for cats in need. We believe every cat deserves a caring
-              family and a safe, comfortable environment to thrive in.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+              lacinia, arcu id vehicula cursus, urna nibh luctus nibh, sit amet
+              convallis lacus urna a neque. We rescue, rehabilitate and rehome
+              cats while educating the community about responsible pet
+              ownership.
             </p>
           </div>
+        </div>
 
-          <div className="mb-5">
-            <h3>Who We Are</h3>
+        <div className="row mb-4">
+          <div className="col-lg-8">
+            <h3 className="mb-2">Our history</h3>
             <p>
-              Purrfect Adoption is a non-profit organization committed to cat
-              welfare and rescue. Our team of passionate volunteers works
-              tirelessly to care for cats, provide medical treatment, and find
-              them perfect matches with adoptive families.
+              Founded by a group of volunteers, Purrfect Adoption started as a
+              small foster network and has grown into a community-supported
+              non-profit. Over the years we have reunited many cats with loving
+              families and helped dozens of shelters improve their care.
             </p>
           </div>
+        </div>
 
-          <div className="mb-5">
-            <h3>What We Do</h3>
-            <ul>
-              <li>Rescue and rehabilitate cats from shelters and the streets</li>
-              <li>Provide medical care, vaccines, and spaying/neutering</li>
-              <li>Offer behavioral training and socialization</li>
-              <li>Match cats with suitable adoptive families</li>
-              <li>Provide ongoing support to adoptive families</li>
-              <li>Educate the public about responsible cat ownership</li>
-            </ul>
+        <div className="row mb-3">
+          <div className="col-12">
+            <h3 className="mb-3">Our team</h3>
           </div>
 
-          <div className="mb-5">
-            <h3>Why Adopt?</h3>
-            <p>
-              Adopting a cat saves lives! By choosing to adopt, you:
-            </p>
-            <ul>
-              <li>Give a deserving cat a second chance at happiness</li>
-              <li>Make space for us to rescue another cat in need</li>
-              <li>Support our non-profit mission</li>
-              <li>Get a loving, loyal companion</li>
-            </ul>
+          <div className="col-md-4 col-sm-6 mb-3">
+            <div className="team-card">
+              <div className="team-photo" aria-hidden="true"></div>
+              <div className="team-info">
+                <strong>Bob Doe</strong>
+                <div className="muted">Director</div>
+              </div>
+            </div>
           </div>
 
-          <div className="text-center">
-            <p className="lead">
-              Ready to find your purrfect match? Browse our available cats and
-              start your adoption journey today!
-            </p>
+          <div className="col-md-4 col-sm-6 mb-3">
+            <div className="team-card">
+              <div className="team-photo" aria-hidden="true"></div>
+              <div className="team-info">
+                <strong>Jane Roe</strong>
+                <div className="muted">Volunteer Coordinator</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-4 col-sm-6 mb-3">
+            <div className="team-card">
+              <div className="team-photo" aria-hidden="true"></div>
+              <div className="team-info">
+                <strong>Ali Khan</strong>
+                <div className="muted">Vet Partner</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

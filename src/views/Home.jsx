@@ -41,19 +41,22 @@ export default function Home() {
 
   return (
     <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
+      <section className="home-hero text-center mt-4">
+        <div className="container">
+          <h2>Welcome to Purrfect Adoption</h2>
+          <p className="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          </p>
+        </div>
       </section>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
+      <section className="featured-section mt-5">
+        <div className="container">
+          <h2>Featured cats</h2>
 
-        <div className="cats-grid mt-3" id="featured-cats">
+          <div className="cats-grid mt-3" id="featured-cats">
           {cats.map((cat, i) => (
             <div key={i}>
               <div className="cat-card">
@@ -73,6 +76,7 @@ export default function Home() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </section>
     </>

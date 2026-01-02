@@ -1,12 +1,48 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2', breed: 'Siamese' },
-  { name: 'Mittens', age: '2', breed: 'Persian' },
-  { name: 'Shadow', age: '1', breed: 'Abyssinian' },
-  { name: 'Pumpkin', age: '3', breed: 'Bengal' },
-  { name: 'Luna', age: '4', breed: 'Birman' },
-  { name: 'Simba', age: '2', breed: 'Sphinx' },
+  {
+    name: 'Whiskers',
+    age: '2',
+    breed: 'Siamese',
+    location: 'Shelter A',
+    description: 'Playful and affectionate. Good with kids.',
+  },
+  {
+    name: 'Mittens',
+    age: '2',
+    breed: 'Persian',
+    location: 'Foster Home',
+    description: 'Calm lap cat who enjoys naps and brushing.',
+  },
+  {
+    name: 'Shadow',
+    age: '1',
+    breed: 'Abyssinian',
+    location: 'Shelter B',
+    description: 'Curious and energetic — loves to climb.',
+  },
+  {
+    name: 'Pumpkin',
+    age: '3',
+    breed: 'Bengal',
+    location: 'Shelter A',
+    description: 'Active and playful; needs space to run.',
+  },
+  {
+    name: 'Luna',
+    age: '4',
+    breed: 'Birman',
+    location: 'Foster Home',
+    description: 'Gentle and social; great with other pets.',
+  },
+  {
+    name: 'Simba',
+    age: '2',
+    breed: 'Sphinx',
+    location: 'Shelter C',
+    description: 'Affectionate and attention-seeking.',
+  },
 ];
 
 const breeds = ['Siamese', 'Persian', 'Abyssinian', 'Bengal', 'Birman', 'Sphinx', 'Peterbald'];
@@ -123,7 +159,16 @@ export default function AvailableCats() {
                 />
                 <div className="cat-info">
                   <h3>{cat.name}</h3>
-                  <p>Age: {cat.age} • {cat.breed}</p>
+                  <p>
+                    <strong>Age:</strong> {cat.age} &nbsp;•&nbsp; <strong>Breed:</strong> {cat.breed}
+                  </p>
+                  <p>
+                    <strong>Location:</strong> {cat.location}
+                  </p>
+                  <p className="cat-desc">{cat.description}</p>
+                  <div style={{ marginTop: '8px' }}>
+                    <button className="btn btn-outline-primary btn-sm">Adopt</button>
+                  </div>
                 </div>
               </div>
             </div>
