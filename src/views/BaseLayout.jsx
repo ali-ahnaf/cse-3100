@@ -3,28 +3,25 @@ import { Link, Outlet } from 'react-router-dom';
 const BaseLayout = () => {
   return (
     <div className="layout">
-      <header className="d-flex align-items-center bg-light">
-        <h1>
-          <Link className="text-decoration-none text-dark" to="/">
+      <header className="header">
+        <div className="header-left">
+          <Link to="/" className="logo">
             Purrfect Adoption
           </Link>
-        </h1>
-        <div className="flex-grow-1"></div>
-        <nav>
-          <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
-                Available Cats
-              </Link>
-            </li>
-          </ul>
+        </div>
+
+        <nav className="header-right">
+          <Link to="/available-cats">Available cats</Link>
+          <a href="#">Donate</a>
         </nav>
       </header>
-      <main id="content">
+
+      <main className="content">
         <Outlet />
       </main>
-      <footer className="bg-light">
-        <p>© Copyright 2024</p>
+
+      <footer className="footer">
+        © 2024 Purrfect Adoption
       </footer>
     </div>
   );
