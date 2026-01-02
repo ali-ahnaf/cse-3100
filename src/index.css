@@ -1,48 +1,229 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
 header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  padding: 1.5rem 2rem;
+  background-color: #f8f9fa;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 2rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #f8f9fa;
+  color: #666;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Cat Cards Grid */
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 1200px) {
+  .cats-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .cats-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .cats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cats-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cat-card {
   border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
   text-align: center;
-  height: 150px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+}
+
+.cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.cat-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
+  padding: 1rem;
+  background: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cat-info h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.cat-info p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 1rem;
+  min-width: 200px;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.form-group .error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* About Us Page */
+.about-section {
+  margin-bottom: 3rem;
+}
+
+.about-section h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.about-section p {
+  line-height: 1.6;
+  color: #666;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.team-member {
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+}
+
+.team-member h3 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.team-member p {
+  color: #666;
 }
