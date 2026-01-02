@@ -1,10 +1,21 @@
+import { useEffect, useState } from "react";
+
 export default function AboutUs() {
+  const [teamPhotos, setTeamPhotos] = useState([]);
+  
   const teamMembers = [
     { name: "Sarah Johnson", title: "Director" },
     { name: "Mike Chen", title: "Veterinarian" },
     { name: "Emma Wilson", title: "Adoption Coordinator" },
-    { name: "David Lee", title: "Volunteer Manager" },
   ];
+
+  useEffect(() => {
+    const avatarUrls = teamMembers.map((member, index) => {
+      const randomSeed = Math.floor(Math.random() * 1000); 
+      return `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(member.name)}_${randomSeed}&backgroundColor=ffdfbf`;
+    });
+    setTeamPhotos(avatarUrls);
+  }, []);
 
   return (
     <div className="p-4">
@@ -26,7 +37,7 @@ export default function AboutUs() {
         </p>
       </div>
 
-            <div style={{ marginTop: '4rem' }}>
+      <div style={{ marginTop: '4rem' }}>
         <h3>Our Team</h3>
         <div style={{
           display: 'grid',
@@ -35,7 +46,7 @@ export default function AboutUs() {
           marginTop: '2rem',
           maxWidth: '900px' 
         }}>
-          {teamMembers.slice(0, 3).map((member, index) => (
+          {teamMembers.map((member, index) => (
             <div key={index} className="cat-card h-100">
               <div 
                 style={{
@@ -44,12 +55,24 @@ export default function AboutUs() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  borderBottom: '1px solid black'
+                  overflow: 'hidden'
                 }}
               >
-                <span style={{ color: '#666', fontStyle: 'italic' }}>
-                  Team Member Photo
-                </span>
+                {teamPhotos[index] ? (
+                  <img 
+                    src={teamPhotos[index]} 
+                    alt={member.name}
+                    style={{
+                      width: '80%',
+                      height: '80%',
+                      objectFit: 'contain'
+                    }}
+                  />
+                ) : (
+                  <span style={{ color: '#666', fontStyle: 'italic' }}>
+                    Loading...
+                  </span>
+                )}
               </div>
               <div className="cat-info">
                 <h4 className="h5 mb-2">{member.name}</h4>
