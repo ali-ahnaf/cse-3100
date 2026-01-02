@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { id: 1, name: 'Whiskers', breed: 'Siamese', age: '2' },
+  { id: 2, name: 'Mittens', breed: 'Persian', age: '2' },
+  { id: 3, name: 'Shadow', breed: 'Bengal', age: '1' },
 ];
 
 export default function Home() {
@@ -25,53 +25,40 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Find your perfect feline companion today! At Purrfect Adoption, we are dedicated to
+          connecting loving families with cats in need of a forever home. Whether you're looking for
+          a playful kitten or a calm adult cat, we have the perfect match waiting for you. Adopt, don't shop!
         </p>
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
+        <h2>Featured Cats</h2>
+        <div className="cats-container">
+          {cats.map((cat) => (
+            <div key={cat.id} className="cat-card">
+              <img
+                src={cat.image}
+                alt={cat.name}
+                className="cat-image"
+              />
+              <div className="cat-info">
+                <h3 className="cat-name">{cat.name}</h3>
+                <p className="cat-breed">{cat.breed}</p>
+                <p className="cat-age">Age: {cat.age}</p>
               </div>
             </div>
           ))}
