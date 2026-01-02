@@ -25,15 +25,14 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats(catsWithImages);  // ✅ FIX 1: Replace instead of append
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  }, []);  // ✅ FIX 2: Add empty dependency array
-
+  }, []);  
   return (
     <>
       <section className="text-center mt-4">
