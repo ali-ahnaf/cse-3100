@@ -1,12 +1,18 @@
-# Purrfect Adoption - Debugging Challenge
-# ⚠️ THE PROJECT IS BROKEN! ⚠️
+# CSE-3100: Web application development with DevOps
 
-Welcome to the **Purrfect Adoption Debugging Challenge**.
+### Marks distribution
 
-This project has been sabotaged! Your task is to investigate, debug, and fix the application. You cannot simply use AI to "generate a new app" because the goal is to **fix existing bugs** in the logic, layout, and component structure.
+| Strategy                  | Marks |
+|---------------------------|-------|
+| Attendance               | 20%   |
+| Assignment               | 10%   |
+| Project Proposal Submission | 5%   |
+| Project Checkpoint 1     | 15%   |
+| Project Checkpoint 2     | 15%   |
+| Final Project Submission | 20%   |
+| Lab Exam                 | 15%   |
+| **Total**                | **100%** |
 
-## The Mission
-The previous developer left the codebase in a chaotic state. Nothing works as expected.
 
 ### 1. Fix the Layout (CSS Chaos) `index.css` (2 marks)
 *   **Task**: Restore a clean, responsive layout. Use Flexbox/Grid correctly.
@@ -27,7 +33,9 @@ The task is to add the following features to the cat adoption website demonstrat
 2. **Filtering option** (2 marks) - add 2 filters in the “Available cats” page. One of them should be a dropdown and used to filter by cat breed. The other should be a search text box to search by cat name.
 3. **New pages** (1 marks) - About Us and Contact Us page.
 
-#### HINT: You might have to integrate bootstrap!
+```
+git checkout <branch-name>
+```
 
 ## UI Mockups
 
@@ -40,21 +48,14 @@ The task is to add the following features to the cat adoption website demonstrat
 
 ## Setup Instructions
 
-1.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
+1. Fork the repository into your GitHub account
+2. Clone the repository into your local machine
+3. Create a new branch
+4. Make changes
+5. Commit the changes
+6. Push the changes
+7. Create a pull request to the upstream respository
 
-2.  **Run the app**:
-    ```bash
-    npm run dev
-    ```
+### Course Materials
 
-3.  **Debug**: Open your browser console and start hunting bugs!
-
-## Rules
-*   You must fix the *existing* code. Do not rewrite everything from scratch.
-*   Pay attention to console warnings (keys, props, etc.).
-*   Make the site look "Purrfect" again!
-
-Good luck! 🐱
+1. [Intro](https://docs.google.com/presentation/d/1hVYzMQtvLynTEOgOY-VScGsHDXFIdlUJPOOFTTOWqrE/edit?usp=sharing)
