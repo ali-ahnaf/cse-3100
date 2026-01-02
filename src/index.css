@@ -1,12 +1,13 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
-  transform: rotate(1deg);
+  transform: none;
 }
 
 header {
@@ -18,31 +19,120 @@ header {
 main {
   flex: 1;
   padding: 1em;
-  display: list-item;
+  background: #f5f5f5;
+   
 }
+  
+
 
 footer {
   padding: 1em;
-  text-align: right;
-  position: fixed;
+  text-align: center;
+  position: static;
   top: 0;
   width: 100%;
   z-index: 9999;
   background: red;
 }
 
+
 .cat-card {
   border: 1px solid #ddd;
   text-align: center;
-  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
+  background: #fff;
 }
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+
 
 .cat-info {
   background: #000;
   color: #fff;
+  padding: 0.5em;
   border-radius: 4px;
+}
+
+/* About Us & Contact Us page styles */
+.page-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  line-height: 1.6;
+}
+
+.page-section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.page-section p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+/* Contact form styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.contact-form button {
+  padding: 0.75rem;
+  background-color: #ff6b6b;
+  color: white;
+  border: 3px solid #ff6b6b; 
+  border-radius: 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.contact-form button:hover {
+  background-color: #ff3b3b;
+}
+/* Team section as a single row with square photos */
+.team-row {
+  display: flex;
+  justify-content: center; /* center the row */
+  gap: 2rem; /* space between team members */
+  flex-wrap: nowrap; /* all in one row */
+  overflow-x: auto; /* horizontal scroll on small screens */
+  padding-bottom: 1rem;
+}
+
+.team-member {
+  text-align: center;
+  flex: 0 0 150px; /* fixed width */
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border: 3px solid #ff6b6b; 
+  border-radius: 0; 
 }
