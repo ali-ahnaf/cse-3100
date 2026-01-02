@@ -1,31 +1,53 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, NavLink } from 'react-router-dom';
 
 const BaseLayout = () => {
+  const handleDonateClick = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="layout">
-      <header className="d-flex align-items-center bg-light">
-        <h1>
-          <Link className="text-decoration-none text-dark" to="/">
-            Purrfect Adoption
-          </Link>
-        </h1>
-        <div className="flex-grow-1"></div>
-        <nav>
-          <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
-                Available Cats
-              </Link>
-            </li>
-          </ul>
+      <header className="site-header">
+        <Link to="/" className="brand-link">
+          Purrfect Adoption
+        </Link>
+
+        <nav className="site-nav">
+          <NavLink className="nav-link" to="/">
+            Home
+          </NavLink>
+
+          <NavLink className="nav-link" to="/available-cats">
+            Available cats
+          </NavLink>
+
+          <a href="#" className="nav-link" onClick={handleDonateClick}>
+            Donate
+          </a>
+
+          <NavLink className="nav-link" to="/about">
+            About us
+          </NavLink>
+
+          <NavLink className="nav-link" to="/contact">
+            Contact us
+          </NavLink>
         </nav>
       </header>
-      <main id="content">
+
+      <main className="content">
         <Outlet />
       </main>
-      <footer className="bg-light">
-        <p>© Copyright 2024</p>
+
+      <footer className="site-footer">
+        <div className="footer-content">
+          <p>© 2025 Purrfect Adoption</p>
+          <p className="footer-tagline">
+            Helping cats find loving forever homes.
+          </p>
+        </div>
       </footer>
+
     </div>
   );
 };
