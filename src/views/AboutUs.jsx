@@ -1,46 +1,66 @@
 export default function AboutUs() {
   const teamMembers = [
-    { name: 'Sarah Johnson', title: 'Director' },
-    { name: 'Mike Chen', title: 'Veterinarian' },
-    { name: 'Emma Wilson', title: 'Adoption Coordinator' },
-    { name: 'David Lee', title: 'Volunteer Manager' },
+    { name: "Sarah Johnson", title: "Director" },
+    { name: "Mike Chen", title: "Veterinarian" },
+    { name: "Emma Wilson", title: "Adoption Coordinator" },
+    { name: "David Lee", title: "Volunteer Manager" },
   ];
 
   return (
-    <section className="text-center mt-4">
-      <h2>About Us</h2>
-      
-      <div className="mt-5">
+    <div className="p-4">
+      {/* All content left-aligned */}
+
+      <div style={{ marginTop: "0rem", marginBottom: "4rem" }}>
         <h3>Our Mission</h3>
-        <p className="mx-auto" style={{ maxWidth: '600px' }}>
-          At Purrfect Adoption, our mission is to find loving forever homes for every cat in our care. 
-          We believe every cat deserves a chance at happiness.
+        <p style={{ maxWidth: "600px", marginTop: "1.5rem" }}>
+          At Purrfect Adoption, our mission is to find loving forever homes for
+          every cat in our care. We believe every cat deserves a chance at
+          happiness.
         </p>
       </div>
 
-      <div className="mt-5">
+      <div style={{ marginTop: "4rem", marginBottom: "4rem" }}>
         <h3>Our History</h3>
-        <p className="mx-auto" style={{ maxWidth: '600px' }}>
-          Founded in 2010, we've successfully adopted over 5,000 cats into loving families. 
-          What started as a small shelter has grown into a community-focused adoption center.
+        <p style={{ maxWidth: "600px", marginTop: "1.5rem" }}>
+          Founded in 2020, we've successfully adopted over 5,000 cats into
+          loving families. What started as a small shelter has grown into a
+          community-focused adoption center.
         </p>
       </div>
 
-      <div className="mt-5">
+            <div style={{ marginTop: '4rem' }}>
         <h3>Our Team</h3>
-        <div className="row g-4 mt-3">
-          {teamMembers.map((member, index) => (
-            <div key={index} className="col-md-3">
-              <div className="cat-card">
-                <div className="cat-info">
-                  <h4 className="h5">{member.name}</h4>
-                  <p className="mb-0">{member.title}</p>
-                </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '20px',
+          marginTop: '2rem',
+          maxWidth: '900px' // Add this to limit total width
+        }}>
+          {teamMembers.slice(0, 3).map((member, index) => (
+            <div key={index} className="cat-card h-100">
+              <div 
+                style={{
+                  height: '200px',
+                  backgroundColor: '#f0f0f0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderBottom: '1px solid black'
+                }}
+              >
+                <span style={{ color: '#666', fontStyle: 'italic' }}>
+                  Team Member Photo
+                </span>
+              </div>
+              <div className="cat-info">
+                <h4 className="h5 mb-2">{member.name}</h4>
+                <p className="mb-0">{member.title}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
