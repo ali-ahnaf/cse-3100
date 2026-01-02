@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Add this import
+import { Link } from 'react-router-dom';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
+  { name: 'Whiskers', age: '2', breed: 'Siamese' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
+  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
 ];
 
 export default function Home() {
@@ -14,7 +14,6 @@ export default function Home() {
   useEffect(() => {
     const fetchCatImages = async () => {
       try {
-        // Fetch for ALL featured cats (not just 3)
         const responses = await Promise.all(
           featuredCats.map(() =>
             fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
@@ -35,18 +34,16 @@ export default function Home() {
     };
 
     fetchCatImages();
-  }, []); // Empty dependency array
+  }, []);
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Find your perfect feline companion from our selection of beautiful cats.
+          Each cat has a unique personality and comes from various breed backgrounds.
         </p>
-        {/* Add link to Available Cats page */}
         <Link to="/available-cats" className="btn btn-primary mt-3">
           View All Available Cats
         </Link>
@@ -61,7 +58,7 @@ export default function Home() {
         </div>
         <div className="mt-2 row g-4">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={i} className="col-md-4 col-lg-3">
               <div className="cat-card">
                 <img
                   src={cat.image}
@@ -76,10 +73,11 @@ export default function Home() {
                 />
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                  <Link to="/available-cats" className="btn btn-sm btn-primary mt-2">
-                    Learn More
-                  </Link>
+                  <p className="mb-1">Age: {cat.age} years</p>
+                  <p className="mb-2 breed-type">
+                    Breed: <span className="breed-badge">{cat.breed}</span>
+                  </p>
+                  
                 </div>
               </div>
             </div>

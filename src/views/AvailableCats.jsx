@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
-  { name: 'Oliver', age: '5' },
-  { name: 'Chloe', age: '3' },
+  { name: 'Whiskers', age: '2', breed: 'Siamese' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
+  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
+  { name: 'Luna', age: '4', breed: 'Birman' },
+  { name: 'Simba', age: '2', breed: 'Sphynx' },
+  { name: 'Oliver', age: '5', breed: 'Peterbald' },
+  { name: 'Chloe', age: '3', breed: 'Siamese' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchCatImages = async () => {
@@ -55,10 +55,10 @@ export default function AvailableCats() {
     <section className="text-center mt-4">
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
-
+        
       <div className="mt-2 row g-4">
         {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
+          <div key={i} className="col-md-4 col-lg-3">
             <div className="cat-card">
               <img
                 src={cat.image}
@@ -73,7 +73,11 @@ export default function AvailableCats() {
               />
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
+                <p className="mb-1">Age: {cat.age} years</p>
+                <p className="mb-2 breed-type">
+                  Breed: <span className="breed-badge">{cat.breed}</span>
+                </p>
+               
               </div>
             </div>
           </div>

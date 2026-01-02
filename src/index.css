@@ -270,3 +270,91 @@ section.mt-5 h2 {
     height: 180px;
   }
 }
+
+/* Add these styles to your existing CSS file */
+
+/* Breed type styling */
+.breed-type {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.breed-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: #e3f2fd;
+  color: #1565c0;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-left: 0.25rem;
+}
+
+/* Make cat cards slightly larger to accommodate extra content */
+.col-lg-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+/* Responsive adjustments for breed display */
+@media (max-width: 1200px) {
+  .col-lg-3 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+  }
+}
+
+@media (max-width: 768px) {
+  .col-lg-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  .breed-badge {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-lg-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Optional: Different colors for different breeds */
+.breed-badge[data-breed="Sphynx"] {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.breed-badge[data-breed="Peterbald"] {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.breed-badge[data-breed="Birman"] {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.breed-badge[data-breed="Abyssinian"] {
+  background-color: #e0f7fa;
+  color: #006064;
+}
+
+.breed-badge[data-breed="Persian"] {
+  background-color: #fff8e1;
+  color: #ff8f00;
+}
+
+.breed-badge[data-breed="Bengal"] {
+  background-color: #e8eaf6;
+  color: #3949ab;
+}
+
+.breed-badge[data-breed="Siamese"] {
+  background-color: #fce4ec;
+  color: #c2185b;
+}
