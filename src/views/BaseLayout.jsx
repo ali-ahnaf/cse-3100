@@ -3,47 +3,29 @@ import { Link, Outlet } from 'react-router-dom';
 const BaseLayout = () => {
   return (
     <div className="layout">
-      <header className="d-flex align-items-center bg-light">
-        <h1 className="m-0">
-          <Link className="text-decoration-none text-dark" to="/">
+      <header>
+        <h1>
+          <Link to="/" style={{ textDecoration: 'none', color: '#2c3e50' }}>
             Purrfect Adoption
           </Link>
         </h1>
-        <div className="flex-grow-1"></div>
         <nav>
-          <ul className="nav m-0">
-            <li className="nav-item">
-              <Link className="nav-link text-dark" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-dark" to="/available-cats">
-                Available Cats
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-dark" to="/about-us">
-                About Us
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-dark" to="/contact-us">
-                Contact Us
-              </Link>
-            </li>
+          <ul>
+            <li><Link to="/available-cats">Available cats</Link></li>
+            <li><a href="#donate">Donate</a></li>
+            <li><Link to="/about-us">About us</Link></li>
+            <li><Link to="/contact-us">Contact us</Link></li>
           </ul>
         </nav>
       </header>
-      <main id="content">
+      <main>
         <Outlet />
       </main>
-      <footer className="bg-light p-3 text-center">
-        <p className="m-0">© Copyright 2024 Purrfect Adoption</p>
+      <footer>
+        <p>© Copyright 2024 Purrfect Adoption</p>
       </footer>
     </div>
   );
 };
 
 export default BaseLayout;
-

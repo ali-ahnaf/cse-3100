@@ -5,74 +5,48 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="text-center mt-4">
-      <h2>Contact Us</h2>
-      <p className="mb-4">
-        Have questions about adopting a cat? Reach out to us!
-      </p>
+    <section className="text-center">
+      <h2>Contact us</h2>
+      <div className="card">
+              <p>
+                  Have questions about adopting a cat? Need information about our adoption process?
+                  Our team is here to help! Fill out the form below and we'll get back to you within 24 hours
+                  to assist with your cat adoption journey.
+              </p>
 
-      <div className="row justify-content-center">
-        <div className="col-md-8">
-          <div className="card p-4">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3 text-start">
-                <label htmlFor="name" className="form-label">Name:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
-
-              <div className="mb-3 text-start">
-                <label htmlFor="phone" className="form-label">Phone:</label>
-                <input
-                  type="tel"
-                  className="form-control"
-                  id="phone"
-                  placeholder="Enter your phone number"
-                  required
-                />
-              </div>
-
-              <div className="mb-3 text-start">
-                <label htmlFor="email" className="form-label">Email:</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-
-              <div className="mb-3 text-start">
-                <label htmlFor="message" className="form-label">Message:</label>
-                <textarea
-                  className="form-control"
-                  id="message"
-                  rows="4"
-                  placeholder="Enter your message"
-                  required
-                ></textarea>
-              </div>
-
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </form>
-
-            <div className="mt-5">
-              <h4>Our Contact Information</h4>
-              <p className="mb-1"><strong>Address:</strong> 123 Cat Street, Meowington</p>
-              <p className="mb-1"><strong>Phone:</strong> (123) 456-7890</p>
-              <p className="mb-1"><strong>Email:</strong> contact@purrfectadoption.com</p>
-              <p className="mb-0"><strong>Hours:</strong> Mon-Fri 9AM-5PM</p>
-            </div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Name:</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter your name"
+              required
+            />
           </div>
-        </div>
+
+          <div className="mb-3">
+            <label className="form-label">Phone:</label>
+            <input
+              type="tel"
+              className="form-control"
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Email:</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn">Submit</button>
+        </form>
       </div>
     </section>
   );

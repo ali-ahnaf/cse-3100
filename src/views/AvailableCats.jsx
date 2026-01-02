@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2', breed: 'Persian' },
-  { name: 'Mittens', age: '2', breed: 'Siamese' },
-  { name: 'Shadow', age: '1', breed: 'Bengal' },
-  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
-  { name: 'Luna', age: '4', breed: 'Birman' },
-  { name: 'Simba', age: '2', breed: 'Sphynx' },
-  { name: 'Fluffy', age: '1', breed: 'Peterbald' },
-  { name: 'Oscar', age: '3', breed: 'Persian' },
-  { name: 'Milo', age: '2', breed: 'Bengal' },
+  { name: 'Whiskers', age: '2 years', breed: 'Persian' },
+  { name: 'Mittens', age: '3 years', breed: 'Siamese' },
+  { name: 'Shadow', age: '1 year', breed: 'Bengal' },
+  { name: 'Luna', age: '4 years', breed: 'Abyssinian' },
+  { name: 'Simba', age: '2 years', breed: 'Birman' },
+  { name: 'Oliver', age: '5 years', breed: 'Sphynx' },
+  { name: 'Bella', age: '1 year', breed: 'Peterbald' },
+  { name: 'Charlie', age: '3 years', breed: 'Persian' },
+  { name: 'Lucy', age: '2 years', breed: 'Bengal' },
 ];
 
 const breedOptions = [
@@ -57,12 +57,10 @@ export default function AvailableCats() {
   useEffect(() => {
     let result = cats;
 
-    // Filter by breed
     if (selectedBreed !== 'All Breeds') {
       result = result.filter(cat => cat.breed === selectedBreed);
     }
 
-    // Filter by name search
     if (searchName.trim() !== '') {
       result = result.filter(cat =>
         cat.name.toLowerCase().includes(searchName.toLowerCase())
@@ -73,17 +71,15 @@ export default function AvailableCats() {
   }, [selectedBreed, searchName, cats]);
 
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
+    <section className="text-center">
+      <h2>Available cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
 
-      {/* Filters Section */}
-      <div className="filters-container mb-4">
-        <div className="row justify-content-center">
-          <div className="col-md-4 mb-3">
-            <label htmlFor="breedFilter" className="form-label">Filter by Breed:</label>
+      <div className="filters-container">
+        <div className="row">
+          <div className="col-md-4">
+            <label className="form-label">Select breed:</label>
             <select
-              id="breedFilter"
               className="form-select"
               value={selectedBreed}
               onChange={(e) => setSelectedBreed(e.target.value)}
@@ -93,13 +89,12 @@ export default function AvailableCats() {
               ))}
             </select>
           </div>
-          <div className="col-md-4 mb-3">
-            <label htmlFor="nameSearch" className="form-label">Search by Name:</label>
+          <div className="col-md-4">
+            <label className="form-label">Search by name:</label>
             <input
-              id="nameSearch"
               type="text"
               className="form-control"
-              placeholder="Enter cat name..."
+              placeholder="Search..."
               value={searchName}
               onChange={(e) => setSearchName(e.target.value)}
             />
@@ -107,32 +102,24 @@ export default function AvailableCats() {
         </div>
       </div>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
+      <div className="cats-container">
         {filteredCats.length > 0 ? (
           filteredCats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age} years</p>
-                  <p className="mb-0">Breed: {cat.breed}</p>
-                </div>
+            <div className="cat-card" key={i}>
+              <img
+                src={cat.image}
+                alt={cat.name}
+              />
+              <div className="cat-info">
+                <h3>{cat.name}</h3>
+                <p>Age: {cat.age}</p>
+                <p>Breed: {cat.breed}</p>
               </div>
             </div>
           ))
         ) : (
-          <div className="col-12">
-            <p className="text-muted">No cats found matching your filters.</p>
+          <div className="no-results">
+            <p>No cats found matching your filters.</p>
           </div>
         )}
       </div>
