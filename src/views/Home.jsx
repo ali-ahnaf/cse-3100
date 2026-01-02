@@ -1,82 +1,71 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '3 months' },
+  { name: 'Luna', age: '3 months' },
+  { name: 'Oliver', age: '2 months' },
+  { name: 'Bella', age: '5 months' },
 ];
 
 export default function Home() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
+    const fetchImages = async () => {
+      const responses = await Promise.all(
+        featuredCats.map(() =>
+          fetch('https://api.thecatapi.com/v1/images/search').then(res =>
+            res.json()
           )
-        );
+        )
+      );
 
-        const catsWithImages = featuredCats.map((cat, index) => ({
+      setCats(
+        featuredCats.map((cat, i) => ({
           ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
+          image: responses[i][0].url,
+        }))
+      );
     };
 
-    fetchCatImages();
-  });
+    fetchImages();
+  }, []);
 
   return (
     <>
-      <section className="text-center mt-4">
+      <div style={{ textAlign: 'center' }}>
         <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+        <p style={{ maxWidth: '800px', margin: '20px auto' }}>
+          At Purrfect Adoption, we believe every cat deserves a safe and loving home. Our mission is to connect wonderful cats with caring families through a simple and trusted adoption process.
         </p>
-      </section>
+      </div>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
-              </div>
+      <hr style={{ margin: '40px 0', border: '1px solid #ddd' }} />
+
+      <h2 style={{ textAlign: 'center' }}>Featured cats</h2>
+
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        flexWrap: 'wrap', 
+        gap: '30px',
+        marginTop: '30px'
+      }}>
+        {cats.map((cat, i) => (
+          <div key={i} className="cat-card" style={{ 
+            width: '250px',
+            border: '1px solid #ddd',
+            borderRadius: '12px',
+            overflow: 'hidden'
+          }}>
+            <img src={cat.image} alt={cat.name} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
+            <div style={{ padding: '15px' }}>
+              <strong>{cat.name}</strong>
+              <p>Age: {cat.age}</p>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
