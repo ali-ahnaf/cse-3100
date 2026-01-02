@@ -213,17 +213,18 @@ footer {
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 8px;
 }
 
 .contact-button {
   background-color: #87CEFA;
-  border: none;
+  border: 1px solid #333;
   padding: 10px 30px;
-  border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
   font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+.contact-button:hover {
+  background-color: #3ea8eb;
 }
 
 label {
