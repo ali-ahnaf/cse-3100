@@ -7,12 +7,19 @@ const featuredCats = [
 ];
 
 export default function Home() {
+
   const [cats, setCats] = useState([]);
 
+
+
   useEffect(() => {
+
     const fetchCatImages = async () => {
+
       try {
+
         const responses = await Promise.all(
+
           featuredCats.map(() =>
             fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
               res.json()
@@ -20,63 +27,196 @@ export default function Home() {
           )
         );
 
+
+
         const catsWithImages = featuredCats.map((cat, index) => ({
+
           ...cat,
+
           image: responses[index][0].url,
+
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
 
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+
+        setCats(catsWithImages);
+
       } catch (error) {
+
         console.error('Error fetching cat images:', error);
+
       }
+
     };
 
+
+
     fetchCatImages();
-  });
 
-  return (
-    <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
-      </section>
+  }, []);
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+
+
+    return (
+
+
+
+      <>
+
+
+
+        <section className="mt-5">
+
+
+
+                    <div className="container">
+
+
+
+                      <div className="row justify-content-center">
+
+
+
+                        <div className="col-md-10">
+
+
+
+                          <div className="animated-box">
+
+
+
+                                                        <h1
+
+
+
+                                                          className="text-center mb-1 display-3"
+
+
+
+                                                          style={{ fontFamily: "'Bangers', cursive" }}
+
+
+
+                                                        >
+
+
+
+                                                          Welcome to Purrfect Adoption
+
+
+
+                                                        </h1>
+
+
+
+                                                        <p className="text-center mt-0" style={{ fontFamily: "'Caveat', cursive", fontWeight: "700", fontSize: '1.5em' }}>
+
+
+
+                                                          Find your perfect feline companion today!
+
+
+
+                                                        </p>
+
+
+
+                                                        <p className="text-center mt-3">
+
+
+
+                                                          <a href="/available-cats" style={{ textDecoration: 'underline', color: 'white' }}>
+
+
+
+                                                            View Available Cats
+
+
+
+                                                          </a>
+
+
+
+                                                        </p>
+
+
+
+                          </div>
+
+
+
+                        </div>
+
+
+
+                      </div>
+
+
+
+          </div>
+
+
+
+        </section>
+
+
+
+        
+
+
+
+  
+
+
+
+        <section className="mt-5">
+
+
+
+          <h2 className="text-center">Our Featured Cats</h2>
+
+                <div className="container mt-4" style={{ maxWidth: '800px', margin: 'auto' }}>
+
+                  <div className="row g-4">
+
+                    {cats.map((cat, i) => (
+
+                                            <div key={i} className="col-4">
+
+                                              <div className="card cat-card-unique">
+
+                                                <img
+
+                                                  src={cat.image}
+
+                                                  className="card-img-top"
+
+                                                  alt={cat.name}
+
+                                                />
+
+                                                <div className="card-body">
+
+                                                  <h5 className="card-title">{cat.name}</h5>
+
+                                                  <p className="card-text">Age: {cat.age}</p>
+
+                                                </div>
+
+                                              </div>
+
+                                            </div>
+
+                    ))}
+
+                  </div>
+
         </div>
+
       </section>
+
     </>
+
   );
+
 }

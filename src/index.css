@@ -1,48 +1,273 @@
-* {
-  box-sizing: content-box;
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.layout {
-  display: flex;
-  min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
 }
 
-header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
-}
-
-main {
-  flex: 1;
-  padding: 1em;
-  display: list-item;
-}
-
-footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
-}
-
-.cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
+body {
+  margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* Custom styles for big navbar */
+header.bg-light {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+header h1 a {
+  font-size: 2rem; /* Adjusted for smaller size */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+header h1 a:hover {
+  color: #FFD1DC !important; /* Pink shade on hover */
+}
+
+nav .nav-link {
+  font-size: 1rem; /* Adjusted for smaller size */
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  color: black !important; /* Default font color black */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+nav .nav-link:hover {
+  color: #FFD1DC !important; /* Pink shade on hover */
+}
+
+/* Custom styles for animated-box (pink hero section) */
+.animated-box {
+  background-color: #E4B9C0; /* Pastel Pink (E4 type) color */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.animated-box h1,
+.animated-box p {
+  color: white;
+}
+
+/* Keyframes for fade-in-up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom styles for unique cat cards on Home page */
+.cat-card-unique {
+  height: 100%; /* Ensure cards in the same row have equal height */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd; /* Add a subtle border */
+  border-radius: 15px; /* Increased border-radius for rounder corners */
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for animation */
+  background-color: white; /* Changed from black to white */
+  animation: fadeInUp 0.5s ease-out forwards; /* Apply fade-in animation */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Default shadow */
+}
+
+/* Initial state for the animation before it plays */
+.cat-card-unique {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.cat-card-unique .card-img-top {
+  height: 200px; /* Fixed height for images */
+  object-fit: cover; /* Ensure images cover the area without distortion */
+  border-top-left-radius: 15px; /* Match card's border-radius */
+  border-top-right-radius: 15px; /* Match card's border-radius */
+}
+
+.cat-card-unique:hover {
+  transform: translateY(-8px); /* Lift card slightly on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* More prominent shadow on hover */
+}
+
+.cat-card-unique .card-body {
+  flex-grow: 1; /* Allow card body to take up remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute content within the body */
+  padding: 15px; /* Add some padding to the card body */
+}
+
+/* Also apply to general cat cards in AvailableCats.jsx if they exist */
+.cat-card {
+  border-radius: 15px; /* Rounded corners for general cat cards */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for animation */
+  background-color: white; /* Changed from black to white */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow from previous version */
+  animation: fadeInUp 0.5s ease-out forwards; /* Apply fade-in animation */
+}
+
+/* Initial state for the animation before it plays */
+.cat-card {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.cat-card:hover {
+  transform: translateY(-8px); /* Lift card slightly on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* More prominent shadow on hover */
+}
+
+.cat-card img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 200px; /* Fixed height for images from previous version */
+  object-fit: cover; /* Ensure images cover the area without distortion from previous version */
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  padding: 15px; /* Padding for info section from previous version */
+}
+
+.cat-info h3 {
+  color: #333; /* Changed to dark color for white background */
+  margin-top: 0;
+}
+
+.cat-info p {
+  color: #333; /* Changed to dark color for white background */
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+/* Footer padding */
+footer.bg-light {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Custom style for btn-pink */
+.btn-pink {
+  background-color: #E4B9C0; /* Pastel pink */
+  color: white;
+  border-color: #E4B9C0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-pink:hover {
+  background-color: #d4a8b7; /* Slightly darker pink on hover */
+  border-color: #d4a8b7;
+}
+
+/* Modal Styling for Donation Form */
+/* Using .modal-content specifically to apply to the modal's content box */
+.modal-content {
+  background-color: #fce4ec; /* Light pink background for the form */
+  transition: background-color 0.3s ease;
+}
+
+.modal-body .form-control {
+  background-color: white; /* Ensure input fields are white */
+  border-color: #ced4da;
+  transition: border-color 0.3s ease;
+}
+
+.modal-body .form-control:focus {
+  border-color: #e4b9c0; /* Pink border on focus */
+  box-shadow: 0 0 0 0.25rem rgba(228, 185, 192, 0.25); /* Light pink shadow on focus */
+  background-color: white;
+}
+
+/* Modal entrance animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal.show .modal-dialog {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* About Us Cards Styling */
+.about-card-unique {
+  background-color: #fce4ec; /* Pink background for About Us cards */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none; /* Remove default card border if desired */
+}
+
+.about-card-unique:hover {
+  background-color: white; /* Transition to white on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+}
+
+.about-card-unique .card-title {
+  color: #333; /* Dark text for readability on light background */
+}
+
+.about-card-unique .card-text {
+  color: #555; /* Dark text for readability on light background */
 }
