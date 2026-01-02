@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2', breed: 'Siamese' },
-  { name: 'Mittens', age: '2', breed: 'Persian' },
-  { name: 'Shadow', age: '1', breed: 'Abyssinian' },
+  { name: 'Whiskers', age: '2', breed: 'Siamese', location: 'Shelter A', description: 'Playful and affectionate. Good with kids.' },
+  { name: 'Mittens', age: '2', breed: 'Persian', location: 'Foster Home', description: 'Calm lap cat who enjoys naps and brushing.' },
+  { name: 'Shadow', age: '1', breed: 'Abyssinian', location: 'Shelter B', description: 'Curious and energetic — loves to climb.' },
+  { name: 'Pumpkin', age: '3', breed: 'Bengal', location: 'Shelter A', description: 'Active and playful; needs space to run.' },
+  { name: 'Luna', age: '4', breed: 'Birman', location: 'Foster Home', description: 'Gentle and social; great with other pets.' },
+  { name: 'Simba', age: '2', breed: 'Sphinx', location: 'Shelter C', description: 'Affectionate and attention-seeking.' },
+  { name: 'Oreo', age: '1', breed: 'Domestic Shorthair', location: 'Shelter A', description: 'Playful kitten who loves toys.' },
+  { name: 'Bella', age: '5', breed: 'Ragdoll', location: 'Foster Home', description: 'Calm and cuddly — perfect indoor companion.' },
 ];
 
 export default function Home() {
@@ -47,24 +52,23 @@ export default function Home() {
 
       <section className="mt-5">
         <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+
+        <div className="cats-grid mt-3" id="featured-cats">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={i}>
               <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
+                <div
+                  className="cat-image"
+                  role="img"
+                  aria-label={cat.name}
+                  style={{ backgroundImage: `url(${cat.image})` }}
                 />
                 <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
+                  <h3>{cat.name}</h3>
+                  <p>
+                    <strong>Age:</strong> {cat.age} &nbsp;•&nbsp; <strong>Breed:</strong> {cat.breed}
+                  </p>
+                  <p className="cat-desc">{cat.description}</p>
                 </div>
               </div>
             </div>
