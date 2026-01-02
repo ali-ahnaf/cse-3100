@@ -1,48 +1,272 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
+/* Header with proper alignment */
 header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  padding: 1em 2em;
+  background-color: #f8f9fa;
+  color: #333;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between logo and nav */
+  position: relative;
+}
+
+/* Center the main title */
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+/* Navigation to the right */
+nav {
+  margin-left: auto; /* Push nav to the right */
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav .nav-link {
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+nav .nav-link:hover {
+  background-color: #e9ecef;
+  color: #2c3e50;
 }
 
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 2em 1em;
+  display: block;
 }
 
 footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
+  padding: 1.5em;
+  text-align: center;
+  background: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  position: relative;
   width: 100%;
-  z-index: 9999;
-  background: red;
+  margin-top: auto;
+}
+
+/* Horizontal grid for cat cards - FIXED */
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Alternative using flex for horizontal layout */
+.row.g-4 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Use gap instead of negative margin for simplicity */
+  margin-top: 2rem;
+}
+
+.row.g-4 > .col-md-4 {
+  flex: 1;
+  min-width: 300px; /* Minimum width for each card */
+  display: flex;
 }
 
 .cat-card {
   border: 1px solid #ddd;
+  border-radius: 12px;
   text-align: center;
-  height: 150px;
+  padding: 1.5rem;
+  overflow: hidden;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+  justify-content: space-between;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.cat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.cat-card img {
+  border-radius: 8px;
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  background: #f8f9fa;
+  color: #333;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.cat-info h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.cat-info p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Section styles */
+section.text-center {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+section.text-center h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+section.text-center > p {
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Featured cats section */
+section.mt-5 {
+  margin-top: 3rem;
+}
+
+section.mt-5 h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .cats-container {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1em;
+  }
+  
+  header h1 {
+    position: relative;
+    left: auto;
+    transform: none;
+    margin-bottom: 1rem;
+    order: 1;
+  }
+  
+  nav {
+    margin-left: 0;
+    order: 2;
+  }
+  
+  .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 1em;
+  }
+  
+  .cats-container {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1rem;
+  }
+  
+  .row.g-4 > .col-md-4 {
+    min-width: 100%; /* Full width on mobile */
+  }
+  
+  .cat-card img {
+    height: 200px;
+  }
+  
+  section.text-center h2 {
+    font-size: 2rem;
+  }
+  
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  header {
+    padding: 0.75em;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  nav .nav-link {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  section.text-center h2 {
+    font-size: 1.75rem;
+  }
+  
+  .cat-card {
+    padding: 1rem;
+  }
+  
+  .cat-card img {
+    height: 180px;
+  }
 }
