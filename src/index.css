@@ -188,7 +188,80 @@ main {
   color: #555;
 }
 
-/* ===== ABOUT SECTION ===== */
+/* ===== AVAILABLE CATS SECTION ===== */
+.available-cats-section {
+  padding: 2rem 0;
+}
+
+.cats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cats-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.filters-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.breed-select,
+.name-search {
+  padding: 8px 16px;
+  border: 1px solid #999;
+  border-radius: 24px;
+  font-size: 0.95rem;
+}
+
+.breed-select {
+  min-width: 140px;
+  background: #fff;
+}
+
+.name-search {
+  min-width: 160px;
+  background: #fff;
+  border-color: #ccc;
+}
+
+.name-search::placeholder {
+  color: #999;
+}
+
+.search-btn {
+  padding: 8px 24px;
+  background: #4a9eff;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-btn:hover {
+  background: #3b8ce0;
+}
+
+.cats-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 1.5rem 0;
+}
+
+.cat-age {
+  margin: 0;
+  color: #888;
+  font-size: 0.85rem;
+}
 .about-section {
   padding: 2rem 0;
 }

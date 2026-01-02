@@ -82,87 +82,76 @@ export default function AvailableCats() {
   }, [cats, selectedBreed, searchName]);
 
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <section className="available-cats-section">
+      <div className="container">
+        <div className="cats-header">
+          <h2>Available cats</h2>
+          <div className="filters-row">
+            <label htmlFor="breed-filter" className="visually-hidden">
+              Breed
+            </label>
+            <select
+              id="breed-filter"
+              className="breed-select"
+              value={selectedBreed}
+              onChange={(e) => setSelectedBreed(e.target.value)}
+            >
+              <option value="">select breed</option>
+              {breeds.map((breed) => (
+                <option key={breed} value={breed}>
+                  {breed}
+                </option>
+              ))}
+            </select>
 
-      <div className="filters-row">
-        <div>
-          <label htmlFor="breed-filter" className="form-label visually-hidden">
-            Breed
-          </label>
-          <select
-            id="breed-filter"
-            className="form-select"
-            value={selectedBreed}
-            onChange={(e) => setSelectedBreed(e.target.value)}
-          >
-            <option value="">All Breeds</option>
-            {breeds.map((breed) => (
-              <option key={breed} value={breed}>
-                {breed}
-              </option>
-            ))}
-          </select>
+            <label htmlFor="name-search" className="visually-hidden">
+              Search
+            </label>
+            <input
+              id="name-search"
+              type="text"
+              className="name-search"
+              placeholder="search by name"
+              value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
+            />
+
+            <button
+              type="button"
+              className="search-btn"
+              onClick={() => {}}
+            >
+              search
+            </button>
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="name-search" className="form-label visually-hidden">
-            Search
-          </label>
-          <input
-            id="name-search"
-            type="text"
-            className="form-control"
-            placeholder="search by name"
-            value={searchName}
-            onChange={(e) => setSearchName(e.target.value)}
-          />
-        </div>
+        <hr className="cats-divider" />
 
-        <div>
-          <button
-            type="button"
-            className="btn btn-primary search-btn"
-            onClick={() => {}}
-          >
-            Search
-          </button>
-        </div>
-      </div>
-
-      <div className="cats-grid" id="cats-container">
-        {filteredCats.length > 0 ? (
-          filteredCats.map((cat, i) => (
-            <div key={i}>
-              <div className="cat-card">
-                <div
-                  className="cat-image"
-                  role="img"
-                  aria-label={cat.name}
-                  style={{ backgroundImage: `url(${cat.image})` }}
-                />
-                <div className="cat-info">
-                  <h3>{cat.name}</h3>
-                  <p>
-                    <strong>Age:</strong> {cat.age} &nbsp;•&nbsp; <strong>Breed:</strong> {cat.breed}
-                  </p>
-                  <p>
-                    <strong>Location:</strong> {cat.location}
-                  </p>
-                  <p className="cat-desc">{cat.description}</p>
-                  <div style={{ marginTop: '8px' }}>
-                    <button className="btn btn-outline-primary btn-sm">Adopt</button>
+        <div className="cats-grid" id="cats-container">
+          {filteredCats.length > 0 ? (
+            filteredCats.map((cat, i) => (
+              <div key={i}>
+                <div className="cat-card">
+                  <div
+                    className="cat-image"
+                    role="img"
+                    aria-label={cat.name}
+                    style={{ backgroundImage: `url(${cat.image})` }}
+                  />
+                  <div className="cat-info">
+                    <h3>{cat.name}</h3>
+                    <p className="cat-age">Age: {cat.age}</p>
                   </div>
                 </div>
               </div>
+            ))
+          ) : (
+            <div className="col-12">
+              <p>No cats found matching your criteria.</p>
             </div>
-          ))
-        ) : (
-          <div className="col-12">
-            <p>No cats found matching your criteria.</p>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );
