@@ -92,9 +92,7 @@ export default function AvailableCats() {
           {" "}
           {/* Breed Filter Dropdown */}
           <div className="text-start">
-            <label htmlFor="breedFilter" className="form-label">
-              Filter by Breed:
-            </label>
+            
             <select
               id="breedFilter"
               className="form-select"
@@ -111,9 +109,7 @@ export default function AvailableCats() {
           </div>
           {/* Name Search Input */}
           <div className="text-start">
-            <label htmlFor="nameSearch" className="form-label">
-              Search by Name:
-            </label>
+            
             <input
               id="nameSearch"
               type="text"

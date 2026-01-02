@@ -19,9 +19,7 @@ const BaseLayout = () => {
         {/* Navigation links on right */}
         <nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <Link className="text-dark text-decoration-none" to="/">
-              Home
-            </Link>
+            
             <Link className="text-dark text-decoration-none" to="/about">
               About Us
             </Link>
