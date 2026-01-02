@@ -4,9 +4,9 @@ const availableCats = [
   { name: 'Whiskers', age: '2', breed: 'Sphynx' },
   { name: 'Mittens', age: '2', breed: 'Peterbald' },
   { name: 'Shadow', age: '1', breed: 'Birman' },
-  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
+  { name: 'Pumpkin', age: '3 months', breed: 'Abyssinian' },
   { name: 'Luna', age: '4', breed: 'Persian' },
-  { name: 'Simba', age: '2', breed: 'Bengal' },
+  { name: 'Simba', age: '2 months', breed: 'Bengal' },
 ];
 
 export default function AvailableCats() {
@@ -57,10 +57,8 @@ export default function AvailableCats() {
   return (
     <section className="text-center mt-4">
       <div className="available-header">
-
         <h2 className="available-title">Available cats</h2>
         <div className="filter-row">
-
           <select
             className="form-select filter-select"
             value={breedInsert}
@@ -80,34 +78,39 @@ export default function AvailableCats() {
             onChange={(e) => setNameInsert(e.target.value)}
           />
 
-          <button
-            onClick={handleSearch}
-            className="filter-btn"
+          <button 
+          type="button" 
+          class="btn filter-btn"
+          onClick={handleSearch}
           >
-            search
+            Search
           </button>
 
         </div>
       </div>
-      <p>Meet our adorable cats looking for their forever home!</p>
+      <p className="available-description">Meet our adorable cats looking for their forever home!</p>
       <hr className="section-separator" />
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
+      <div className="row g-4 mt-2" id="cats-container">
         {filteredResults.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
+          <div key={i} className="col-12 col-sm-6 col-lg-3">
+            <div className="card h-100">
               <img
                 src={cat.image}
+                className="card-img-top"
                 alt={cat.name}
-                className="img-fluid mb-2 cat-image"
               />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
+
+              <div className="card cat-info">
+                <div className="card-body p-2">
+                  <h6 className="card-title mb-1">{cat.name}</h6>
+                  <p className="card-text mb-0">Age: {cat.age}</p>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+
     </section>
   );
 }

@@ -29,6 +29,12 @@ header h1 a {
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
+.comic-paragraph {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 .nav {
   list-style: none;
   padding: 0;
@@ -81,49 +87,38 @@ footer {
 
 .cat-card {
   position: relative;
-  height: 240px;
-  border: 2px solid #333;
-  border-radius: 15px;
-  overflow: hidden;
-  padding: 0;
-  box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
-  background-color: #eee;
 }
 
-.cat-card img {
-  width: 100%;
-  height: 100%;
+.card-img-top {
+  height: 230px;
   object-fit: cover;
-  border: none;
   border-radius: 0;
 }
 
 .cat-info {
   position: absolute;
-  bottom: 2px;
-  left: 2px;
-  right: 2px;
-
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
   background-color: rgba(255, 255, 255, 0.822);
   border: 1px solid #333;
-  border-radius: 10px;
   padding: 10px;
-
   text-align: left;
   z-index: 2;
 }
 
-.cat-info p {
+.cat-info .card-text {
   text-align: left;
   font-size: 0.85rem;
   margin: 0;
   color: #666;
 }
 
-.cat-info h3 {
+.cat-info .card-title {
   font-size: 1rem;
   margin: 0;
   color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .available-header {
@@ -140,38 +135,36 @@ footer {
 
 .filter-row {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 30px;
 }
 
 .filter-select {
-  width: 190px;
-  height: 40px;
-  padding: 5px;
-  align-items: center;
-  border-radius: 5px;
+  width: 180px;
+  height: 42px;
   border: 1px solid #333;
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .filter-input {
-  width: 160px;
-  height: 40px;
-  padding: 5px;
-  border-radius: 5px;
+  width: 180px;
+  height: 42px;
   border: 1px solid #333;
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .filter-btn {
-  width: 160px;
-  height: 40px;
+  width: 100px;
+  height: 42px;
   background-color: #97d5fc;
   border: 1px solid #333;
-  border-radius: 5px;
-  padding: 5px;
   cursor: pointer;
   font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+.filter-btn:hover {
+  background-color: #3ea8eb;
 }
 
 .section-separator {
@@ -202,4 +195,99 @@ footer {
   font-family: 'Comic Sans MS', cursive, sans-serif;
   font-weight: 400;
   font-size: 0.85rem;
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-description {
+  margin-bottom: 30px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.contact-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.contact-button {
+  background-color: #87CEFA;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+label {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.about-section-title {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  font-weight: 600;
+}
+
+.about-team-title {
+  margin-bottom: 20px;
+}
+
+.about-paragraph {
+  text-align: left;
+  max-width: 100%;
+  margin: 10px 0 30px 0;
+  color: #333;
+}
+
+.team-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;  
+  align-items: flex-start;
+}
+
+.team-card {
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+
+.team-member-image {
+  width: 100%;
+  height: 100%;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0G3BoDZb1NESOfdhMRKHs7Joy1f5yKzYpI_RCJDPtSw&s);
+  background-size: cover;
+}
+
+.team-member-name {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.team-member-role {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: left;
+}
+
+.available-description {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
