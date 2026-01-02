@@ -1,65 +1,69 @@
 import { useEffect, useState } from 'react';
 
-const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+const breedList = ["Sphynx", "Peterbald", "Birman", "Abyssinian", "Persian", "Bengal", "Siamese"];
+
+const initialCats = [
+  { name: 'Micky mouse', age: '2', breed: 'Persian' },
+  { name: 'Micky mouse', age: '2', breed: 'Siamese' },
+  { name: 'Micky mouse', age: '2', breed: 'Bengal' },
+  { name: 'Micky mouse', age: '2', breed: 'Sphynx' },
+  { name: 'Micky mouse', age: '2', breed: 'Birman' },
+  { name: 'Micky mouse', age: '2', breed: 'Abyssinian' },
+  { name: 'Micky mouse', age: '2', breed: 'Peterbald' },
+  { name: 'Micky mouse', age: '2', breed: 'Persian' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedBreed, setSelectedBreed] = useState('');
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
-    const fetchCatImages = async () => {
-      try {
+    // API images loading...
+    const loadImages = async () => {
         const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
+            initialCats.map(() => fetch('https://api.thecatapi.com/v1/images/search').then(res => res.json()))
         );
-        const catsWithImages = availableCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats(catsWithImages);
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
+        const mapped = initialCats.map((cat, i) => ({...cat, image: responses[i][0].url}));
+        setCats(mapped);
     };
-
-    fetchCatImages();
+    loadImages();
   }, []);
 
-  return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+  const filteredCats = cats.filter(cat => 
+    cat.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    (selectedBreed === '' || cat.breed === selectedBreed)
+  );
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
-              />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
-              </div>
+  return (
+    <section>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2 className="h4">Available cats</h2>
+        <div className="d-flex gap-2">
+          <select className="form-select w-auto" onChange={(e) => setSelectedBreed(e.target.value)}>
+            <option value="">select breed</option>
+            {breedList.map(b => <option key={b} value={b}>{b}</option>)}
+          </select>
+          <input 
+            type="text" 
+            className="form-control w-auto" 
+            placeholder="search by name" 
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button className="btn btn-submit">search</button>
+        </div>
+      </div>
+      <hr />
+      <div className="cats-container">
+        {filteredCats.map((cat, i) => (
+          <div key={i} className="cat-card">
+            <div className="cat-image-area">
+                <img src={cat.image} alt={cat.name} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
+            <div className="cat-info">
+              <div className="fw-bold">{cat.name}</div>
+              <div className="small text-muted">Age: {cat.age}</div>
+              <div className="small text-muted">Breed: {cat.breed}</div>
             </div>
           </div>
         ))}
