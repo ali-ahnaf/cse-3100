@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: "Oliver", age: "2 years" },
+  { name: "Bella", age: "3 years" },
+  { name: "Milo", age: "1 year" },
+  { name: "Cleo", age: "4 years" },
 ];
 
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
+            fetch("https://api.thecatapi.com/v1/images/search").then((res) =>
               res.json()
             )
           )
@@ -25,35 +26,29 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
-        console.error('Error fetching cat images:', error);
+        console.error("Error fetching cat images:", error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Find your purrfect furry companion today! We connect loving families
+          with adorable cats in need of forever homes. Every cat deserves a warm
+          lap and a loving family. Browse our available cats and start your
+          adoption journey with us.
         </p>
       </section>
 
       <section className="mt-5">
         <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
         <div className="mt-2 row g-4" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-4">
@@ -63,9 +58,9 @@ export default function Home() {
                   alt={cat.name}
                   className="img-fluid mb-2"
                   style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
+                    borderRadius: "8px",
+                    height: "200px",
+                    objectFit: "cover",
                   }}
                 />
                 <div className="cat-info">
