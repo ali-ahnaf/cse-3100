@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: 'Whiskers', age: '2', breed: 'Sphynx' },
+  { name: 'Mittens', age: '2', breed: 'Peterbald' },
+  { name: 'Shadow', age: '1', breed: 'Birman' },
+  { name: 'Pumpkin', age: '3 months', breed: 'Abyssinian' },
+  { name: 'Luna', age: '4', breed: 'Persian' },
+  { name: 'Simba', age: '2 months', breed: 'Bengal' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
 
+  const [breedInsert, setBreedInsert] = useState("");
+  const [nameInsert, setNameInsert] = useState("");
+  const [selectedBreedFilter, setSelectedBreedFilter] = useState("");
+  const [selectedNameFilter, setselectedNameFilter] = useState("");
+
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
@@ -37,33 +41,76 @@ export default function AvailableCats() {
     fetchCatImages();
   }, []);
 
+  const handleSearch = () => {
+    setSelectedBreedFilter(breedInsert);
+    setselectedNameFilter(nameInsert);
+  };
+
+  const filteredResults = cats.filter((cat) => {
+    const matchName = cat.name.toLowerCase().includes(selectedNameFilter.toLowerCase());
+    const matchBreed = selectedBreedFilter === "" || cat.breed === selectedBreedFilter;
+    return matchName && matchBreed;
+  });
+
+  const breeds = [...new Set(availableCats.map(cat => cat.breed))];
+
   return (
     <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+      <div className="available-header">
+        <h2 className="available-title">Available cats</h2>
+        <div className="filter-row">
+          <select
+            className="form-select filter-select"
+            value={breedInsert}
+            onChange={(e) => setBreedInsert(e.target.value)}
+          >
+            <option value="">Select breed</option>
+            {breeds.map((breed, index) => (
+              <option key={index} value={breed}>{breed}</option>
+            ))}
+          </select>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
+          <input
+            type="text"
+            placeholder="Search by name"
+            className="form-control filter-input"
+            value={nameInsert}
+            onChange={(e) => setNameInsert(e.target.value)}
+          />
+
+          <button 
+          type="button" 
+          class="btn filter-btn"
+          onClick={handleSearch}
+          >
+            Search
+          </button>
+
+        </div>
+      </div>
+      <p className="available-description">Meet our adorable cats looking for their forever home!</p>
+      <hr className="section-separator" />
+      <div className="row g-4 mt-2" id="cats-container">
+        {filteredResults.map((cat, i) => (
+          <div key={i} className="col-12 col-sm-6 col-lg-3">
+            <div className="card h-100">
               <img
                 src={cat.image}
+                className="card-img-top"
                 alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
               />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
+
+              <div className="card cat-info">
+                <div className="card-body p-2">
+                  <h6 className="card-title mb-1">{cat.name}</h6>
+                  <p className="card-text mb-0">Age: {cat.age}</p>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+
     </section>
   );
 }

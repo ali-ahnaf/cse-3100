@@ -4,6 +4,9 @@ const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
   { name: 'Shadow', age: '1' },
+  { name: 'Pumpkin', age: '3 months' },
+  { name: 'Luna', age: '4' },
+  { name: 'Simba', age: '2 months' },
 ];
 
 export default function Home() {
@@ -38,13 +41,13 @@ export default function Home() {
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
-        <p>
+        <p className= "comic-paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
@@ -52,31 +55,30 @@ export default function Home() {
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+        <h2 className="section-title-left">Featured cats</h2>
+
+        <div className="row g-4 mt-2">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
+            <div key={i} className="col-12 col-sm-6 col-lg-3">
+              <div className="card h-100">
                 <img
                   src={cat.image}
+                  className="card-img-top"
                   alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
                 />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
+
+                <div className="card cat-info">
+                  <div className="card-body p-2">
+                    <h6 className="card-title mb-1">{cat.name}</h6>
+                    <p className="card-text mb-0">Age: {cat.age}</p>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </section>
+
     </>
   );
 }

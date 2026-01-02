@@ -1,48 +1,294 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif, Tahoma, Verdana, Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #fafafa;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
 header {
-  padding: 1em;
+  padding: 1.5rem 2rem;
   background-color: #fff;
-  color: #fff;
+  border-bottom: 1px solid #f9f6f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.comic-paragraph {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+h2 {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+section p {
+  text-align: center;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
 }
 
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px;
+  margin-top: 20px;
 }
 
 footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff;
+  border-top: 1px solid #eaeaea;
 }
 
 .cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+  position: relative;
+}
+
+.card-img-top {
+  height: 230px;
+  object-fit: cover;
+  border-radius: 0;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(255, 255, 255, 0.822);
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: left;
+  z-index: 2;
+}
+
+.cat-info .card-text {
+  text-align: left;
+  font-size: 0.85rem;
+  margin: 0;
+  color: #666;
+}
+
+.cat-info .card-title {
+  font-size: 1rem;
+  margin: 0;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.available-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.available-title,
+.section-title-left {
+  text-align: left;
+}
+
+.filter-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.filter-select {
+  width: 180px;
+  height: 42px;
+  border: 1px solid #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.filter-input {
+  width: 180px;
+  height: 42px;
+  border: 1px solid #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.filter-btn {
+  width: 100px;
+  height: 42px;
+  background-color: #97d5fc;
+  border: 1px solid #333;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+.filter-btn:hover {
+  background-color: #3ea8eb;
+}
+
+.section-separator {
+  border: none;
+  border-top: 2px solid #333;
+  opacity: 1;
+  margin: 0 0 30px 0;
+}
+
+.cat-image {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.available-title {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 500; 
+  letter-spacing: 0.2px;
+}
+
+.cat-info h3 {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.cat-info p {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-description {
+  margin-bottom: 30px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.contact-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+}
+
+.contact-button {
+  background-color: #87CEFA;
+  border: 1px solid #333;
+  padding: 10px 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+.contact-button:hover {
+  background-color: #3ea8eb;
+}
+
+label {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.about-section-title {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  font-weight: 600;
+}
+
+.about-team-title {
+  margin-bottom: 20px;
+}
+
+.about-paragraph {
+  text-align: left;
+  max-width: 100%;
+  margin: 10px 0 30px 0;
+  color: #333;
+}
+
+.team-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;  
+  align-items: flex-start;
+}
+
+.team-card {
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+
+.team-member-image {
+  width: 100%;
+  height: 100%;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0G3BoDZb1NESOfdhMRKHs7Joy1f5yKzYpI_RCJDPtSw&s);
+  background-size: cover;
+}
+
+.team-member-name {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.team-member-role {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: left;
+}
+
+.available-description {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
