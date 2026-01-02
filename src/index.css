@@ -1,48 +1,57 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6f6f6;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 .layout {
-  display: flex;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  padding: 16px 24px;
+  color: #111;
+  border-bottom: 1px solid #eaeaea;
 }
 
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 24px;
 }
 
 footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  padding: 16px 24px;
+  background: #fff;
+  border-top: 1px solid #eaeaea;
+  text-align: center;
+  color: #555;
 }
 
+/* card styling */
 .cat-card {
   border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  border-radius: 12px;
+  background: #fff;
   overflow: hidden;
+  height: 100%;
 }
 
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  padding: 10px 12px;
+  background: #f3f3f3;
+  border-top: 1px solid #e5e5e5;
+  text-align: left;
+}
+
+/* grid restore */
+.cats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
 }
