@@ -65,63 +65,65 @@ export default function AvailableCats() {
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
 
-      <div className="row g-3 mb-4">
-        <div className="col-md-6">
-          <div className="form-group">
-            <label htmlFor="breed-filter" className="form-label">
-              Filter by Breed
-            </label>
-            <select
-              id="breed-filter"
-              className="form-select"
-              value={selectedBreed}
-              onChange={(e) => setSelectedBreed(e.target.value)}
-            >
-              <option value="">All Breeds</option>
-              {breeds.map((breed) => (
-                <option key={breed} value={breed}>
-                  {breed}
-                </option>
-              ))}
-            </select>
-          </div>
+      <div className="filters-row">
+        <div>
+          <label htmlFor="breed-filter" className="form-label visually-hidden">
+            Breed
+          </label>
+          <select
+            id="breed-filter"
+            className="form-select"
+            value={selectedBreed}
+            onChange={(e) => setSelectedBreed(e.target.value)}
+          >
+            <option value="">All Breeds</option>
+            {breeds.map((breed) => (
+              <option key={breed} value={breed}>
+                {breed}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="col-md-6">
-          <div className="form-group">
-            <label htmlFor="name-search" className="form-label">
-              Search by Name
-            </label>
-            <input
-              id="name-search"
-              type="text"
-              className="form-control"
-              placeholder="Enter cat name..."
-              value={searchName}
-              onChange={(e) => setSearchName(e.target.value)}
-            />
-          </div>
+
+        <div>
+          <label htmlFor="name-search" className="form-label visually-hidden">
+            Search
+          </label>
+          <input
+            id="name-search"
+            type="text"
+            className="form-control"
+            placeholder="search by name"
+            value={searchName}
+            onChange={(e) => setSearchName(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <button
+            type="button"
+            className="btn btn-primary search-btn"
+            onClick={() => {}}
+          >
+            Search
+          </button>
         </div>
       </div>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
+      <div className="cats-grid" id="cats-container">
         {filteredCats.length > 0 ? (
           filteredCats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={i}>
               <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
+                <div
+                  className="cat-image"
+                  role="img"
+                  aria-label={cat.name}
+                  style={{ backgroundImage: `url(${cat.image})` }}
                 />
                 <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-1">Age: {cat.age}</p>
-                  <p className="mb-0">Breed: {cat.breed}</p>
+                  <h3>{cat.name}</h3>
+                  <p>Age: {cat.age} • {cat.breed}</p>
                 </div>
               </div>
             </div>
