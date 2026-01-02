@@ -13,16 +13,32 @@ const BaseLayout = () => {
         <nav>
           <ul className="nav">
             <li className="nav-item">
+              <Link className="nav-link" to="/about-us">
+                About Us
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/available-cats">
                 Available Cats
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/donate">
+                Donate
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact-us">
+                Contact Us
               </Link>
             </li>
           </ul>
         </nav>
       </header>
-      <main id="content">
-        <Outlet />
+      <main id="content" className="page-wrapper">
+       <Outlet />
       </main>
+
       <footer className="bg-light">
         <p>© Copyright 2024</p>
       </footer>
