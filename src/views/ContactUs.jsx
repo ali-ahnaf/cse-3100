@@ -1,7 +1,7 @@
 export default function ContactUs() {
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Form submitted! (This is a demo)');
+    alert('Form submitted!');
   };
 
   return (

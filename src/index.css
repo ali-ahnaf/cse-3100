@@ -173,3 +173,11 @@ nav a {
   text-decoration: none !important;
 }
 
+/* Make all filter inputs match search button shape */
+.form-select, 
+.form-control {
+  border-radius: 20px !important;
+  border: 1px solid black !important;
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+

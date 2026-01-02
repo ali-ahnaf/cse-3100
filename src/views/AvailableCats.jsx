@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-// Added breed field to all cats with valid breeds from list
 const availableCats = [
   { name: "Whiskers", age: "2", breed: "Siamese" },
   { name: "Mittens", age: "2", breed: "Persian" },
@@ -12,9 +11,8 @@ const availableCats = [
   { name: "Bella", age: "1", breed: "Siamese" },
 ];
 
-// All possible breeds for dropdown
 const allBreeds = [
-  "All",
+  "Select breed",
   "Sphynx",
   "Peterbald",
   "Birman",
@@ -27,7 +25,7 @@ const allBreeds = [
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
   const [filteredCats, setFilteredCats] = useState([]);
-  const [selectedBreed, setSelectedBreed] = useState("All");
+  const [selectedBreed, setSelectedBreed] = useState("Select breed");
   const [searchName, setSearchName] = useState("");
 
   useEffect(() => {
@@ -46,7 +44,7 @@ export default function AvailableCats() {
         }));
 
         setCats(catsWithImages);
-        setFilteredCats(catsWithImages); // Initialize filtered cats
+        setFilteredCats(catsWithImages);
       } catch (error) {
         console.error("Error fetching cat images:", error);
       }
@@ -55,16 +53,13 @@ export default function AvailableCats() {
     fetchCatImages();
   }, []);
 
-  // Filter function triggered by search button
   const handleSearch = () => {
     let result = cats;
 
-    // Filter by breed
-    if (selectedBreed !== "All") {
+    if (selectedBreed !== "Select breed") {
       result = result.filter((cat) => cat.breed === selectedBreed);
     }
 
-    // Filter by name (case insensitive)
     if (searchName.trim() !== "") {
       result = result.filter((cat) =>
         cat.name.toLowerCase().includes(searchName.toLowerCase())
@@ -75,96 +70,104 @@ export default function AvailableCats() {
   };
 
   return (
-    <section className="text-center mt-4 available-cats-page">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <section className="mt-4 available-cats-page">
+      {/* Header with title and filters side by side */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          marginBottom: "1rem",
+        }}
+      >
+        {/* Title on left */}
+        <div>
+          <h2>Available Cats</h2>
+          <p>Meet our adorable cats looking for their forever home!</p>
+        </div>
 
-      {/* Filter Controls - FIXED: Side by side */}
-      <div className="filter-controls mt-4">
+        {/* Filters on right */}
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
             alignItems: "flex-end",
-            gap: "1.5rem",
+            gap: "1rem",
+            marginTop: "0.5rem",
           }}
         >
-          {" "}
-          {/* Breed Filter Dropdown */}
-          <div className="text-start">
-            
-            <select
-              id="breedFilter"
-              className="form-select"
-              value={selectedBreed}
-              onChange={(e) => setSelectedBreed(e.target.value)}
-              style={{ minWidth: "180px" }}
-            >
-              {allBreeds.map((breed) => (
-                <option key={breed} value={breed}>
-                  {breed}
-                </option>
-              ))}
-            </select>
-          </div>
-          {/* Name Search Input */}
-          <div className="text-start">
-            
-            <input
-              id="nameSearch"
-              type="text"
-              className="form-control"
-              placeholder="Search by name..."
-              value={searchName}
-              onChange={(e) => setSearchName(e.target.value)}
-              style={{ minWidth: "220px" }}
-            />
-          </div>
-          {/* Search Button */}
-          <div className="text-start">
-            <button
-              className="btn btn-search"
-              onClick={handleSearch}
-              style={{
-                backgroundColor: "#aadaff",
-                border: "1px solid black",
-                borderRadius: "20px",
-                padding: "8px 20px",
-              }}
-            >
-              Search
-            </button>
-          </div>
+          <select
+            className="form-select"
+            value={selectedBreed}
+            onChange={(e) => setSelectedBreed(e.target.value)}
+            style={{ minWidth: "150px" }}
+          >
+            {allBreeds.map((breed) => (
+              <option key={breed} value={breed}>
+                {breed}
+              </option>
+            ))}
+          </select>
+
+          <input
+            type="text"
+            className="form-control"
+            placeholder="search by name"
+            value={searchName}
+            onChange={(e) => setSearchName(e.target.value)}
+            style={{
+              minWidth: "150px",
+              borderRadius: "20px",
+              border: "1px solid black",
+              paddingLeft: "15px", // Added for text visibility
+              paddingRight: "15px",
+            }}
+          />
+
+          <button
+            className="btn"
+            onClick={handleSearch}
+            style={{
+              backgroundColor: "#aadaff",
+              border: "1px solid black",
+              borderRadius: "20px",
+              padding: "8px 20px",
+            }}
+          >
+            search
+          </button>
         </div>
       </div>
 
+      {/* Divider line */}
+      <hr
+        style={{
+          borderTop: "1px solid black",
+          margin: "1.5rem 0 2rem 0",
+        }}
+      />
+
       {/* Cats Grid - UNCHANGED */}
-      <div className="mt-4">
-        <div className="row g-4" id="cats-container">
-          {filteredCats.map((cat, i) => (
-            <div key={i} className="col-md-3">
-              {" "}
-              {/* Changed to col-md-3 for 4 columns */}
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid"
-                  style={{
-                    height: "200px",
-                    objectFit: "cover",
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                  <p className="mb-0">Breed: {cat.breed}</p>{" "}
-                  {/* Added breed display */}
-                </div>
+      <div className="row g-4" id="cats-container">
+        {filteredCats.map((cat, i) => (
+          <div key={i} className="col-md-3">
+            <div className="cat-card">
+              <img
+                src={cat.image}
+                alt={cat.name}
+                className="img-fluid"
+                style={{
+                  height: "200px",
+                  objectFit: "cover",
+                }}
+              />
+              <div className="cat-info">
+                <h3 className="h5 mb-1">{cat.name}</h3>
+                <p className="mb-0">Age: {cat.age}</p>
+                <p className="mb-0">Breed: {cat.breed}</p>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
