@@ -13,7 +13,7 @@ export default function Home() {
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
-          uredCats.map(() =>
+          featuredCats.map(() =>
             fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
               res.json()
             )

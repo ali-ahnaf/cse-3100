@@ -27,25 +27,22 @@ main {
   width: 100%;
 }
 
-/* --- UTILITY CLASSES FIX --- */
-/* This forces the "text-center" class to actually work */
 .text-center {
   text-align: center;
-  width: 100%;       /* Ensures it spans the full width to center properly */
+  width: 100%;       
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Fixes the "mt-4" (margin top) spacing */
 .mt-4 {
   margin-top: 1.5rem;
 }
 
-/* Makes sure the paragraph text is a nice readable gray */
+
 .text-center p {
   color: #666;
-  max-width: 600px;  /* Stops the text from being too wide */
-  margin-left: auto; /* Centers the block itself */
+  max-width: 600px;  
+  margin-left: auto;
   margin-right: auto;
 }
 footer {
