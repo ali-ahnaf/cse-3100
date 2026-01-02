@@ -37,7 +37,6 @@ export default function Home() {
 
   return (
     <>
-      {/* Centered welcome section */}
       <section
         style={{
           textAlign: "center",
@@ -51,19 +50,16 @@ export default function Home() {
         <div style={{ maxWidth: "800px" }}>
           <h2>Welcome to Purrfect Adoption</h2>
           <p style={{ marginTop: "1.5rem" }}>
-            Home ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-            luc Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Maecenas luc Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Maecenas luc
+            Find your perfect feline companion at Purrfect Adoption! We connect
+            loving families with adorable cats in need of forever homes. Browse
+            our available cats, learn about different breeds, and discover how
+            you can make a difference in a cat's life today.
           </p>
         </div>
       </section>
 
-      {/* Featured cats with gap */}
       <section style={{ marginTop: "8rem" }} className="home-page">
-        
         <h2>Featured Cats</h2>
-        {/* <div style={{ marginBottom: "2rem" }}></div> */}
         <div className="row g-4" id="cats-container">
           {cats.map((cat, i) => (
             <div key={i} className="col-md-3">

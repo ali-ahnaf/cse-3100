@@ -10,7 +10,6 @@ export default function ContactUs() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert('Form submitted!');
-    // Clear form after submission
     setFormData({
       name: '',
       phone: '',
@@ -28,7 +27,6 @@ export default function ContactUs() {
 
   return (
     <div className="p-4">
-      {/* Header left-aligned */}
       <div>
         <h2>Contact Us</h2>
         <p style={{ marginBottom: '8rem' }}>
@@ -36,7 +34,6 @@ export default function ContactUs() {
         </p>
       </div>
 
-      {/* Form left-aligned */}
       <form 
         onSubmit={handleSubmit} 
         style={{ 
@@ -47,7 +44,6 @@ export default function ContactUs() {
           marginTop: '2rem'
         }}
       >
-        {/* Name Field */}
         <div>
           <label style={{ 
             display: 'block', 
@@ -72,7 +68,6 @@ export default function ContactUs() {
           />
         </div>
 
-        {/* Phone Field */}
         <div>
           <label style={{ 
             display: 'block', 
@@ -97,7 +92,6 @@ export default function ContactUs() {
           />
         </div>
 
-        {/* Email Field */}
         <div>
           <label style={{ 
             display: 'block', 
@@ -122,7 +116,6 @@ export default function ContactUs() {
           />
         </div>
 
-        {/* Submit Button - left-aligned */}
         <button 
           type="submit" 
           style={{

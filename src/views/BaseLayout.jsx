@@ -9,14 +9,12 @@ const BaseLayout = () => {
         alignItems: 'center', 
         padding: '1rem'
       }}>
-        {/* Logo on left */}
         <h1 style={{ margin: 0 }}>
           <Link className="text-decoration-none text-dark" to="/">
             Purrfect Adoption
           </Link>
         </h1>
         
-        {/* Navigation links on right */}
         <nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             

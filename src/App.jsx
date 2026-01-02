@@ -2,8 +2,6 @@ import { Outlet, Route, Routes } from 'react-router';
 import BaseLayout from './views/BaseLayout';
 import Home from './views/Home';
 import AvailableCats from './views/AvailableCats';
-
-// Import new pages (to be created)
 import ContactUs from './views/ContactUs';
 import AboutUs from './views/AboutUs';
 

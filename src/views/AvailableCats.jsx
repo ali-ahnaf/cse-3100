@@ -71,7 +71,6 @@ export default function AvailableCats() {
 
   return (
     <section className="mt-4 available-cats-page">
-      {/* Header with title and filters side by side */}
       <div
         style={{
           display: "flex",
@@ -80,13 +79,11 @@ export default function AvailableCats() {
           marginBottom: "1rem",
         }}
       >
-        {/* Title on left */}
         <div>
           <h2>Available Cats</h2>
           <p>Meet our adorable cats looking for their forever home!</p>
         </div>
 
-        {/* Filters on right */}
         <div
           style={{
             display: "flex",
@@ -118,7 +115,7 @@ export default function AvailableCats() {
               minWidth: "150px",
               borderRadius: "20px",
               border: "1px solid black",
-              paddingLeft: "15px", // Added for text visibility
+              paddingLeft: "15px", 
               paddingRight: "15px",
             }}
           />
@@ -138,7 +135,6 @@ export default function AvailableCats() {
         </div>
       </div>
 
-      {/* Divider line */}
       <hr
         style={{
           borderTop: "1px solid black",
@@ -146,7 +142,6 @@ export default function AvailableCats() {
         }}
       />
 
-      {/* Cats Grid - UNCHANGED */}
       <div className="row g-4" id="cats-container">
         {filteredCats.map((cat, i) => (
           <div key={i} className="col-md-3">

@@ -21,7 +21,6 @@ header {
   padding: 1em 2em;
   background-color: #fff;
   color: #000;
-  border-bottom: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -70,24 +69,20 @@ footer {
   margin-bottom: 5px;
 }
 
-/* Grid Layouts */
 #cats-container {
   display: grid;
   gap: 20px;
   padding: 20px 0;
 }
 
-/* Homepage: 4 cards in a single row */
 .home-page #cats-container {
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* Available Cats: Multi-row 4-column grid */
 .available-cats-page #cats-container {
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* Filter Controls */
 .filter-controls {
   display: flex;
   gap: 15px;
@@ -116,7 +111,6 @@ footer {
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-/* Form Styling */
 .contact-form input {
   display: block;
   width: 100%;
@@ -137,7 +131,6 @@ footer {
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-/* Responsive */
 @media (max-width: 1200px) {
   .home-page #cats-container,
   .available-cats-page #cats-container {
@@ -159,7 +152,6 @@ footer {
   }
 }
 
-/* Remove underline from all links */
 a {
   text-decoration: none !important;
 }
@@ -168,12 +160,10 @@ a:hover {
   text-decoration: none !important;
 }
 
-/* Specific fix for navbar links */
 nav a {
   text-decoration: none !important;
 }
 
-/* Make all filter inputs match search button shape */
 .form-select, 
 .form-control {
   border-radius: 20px !important;

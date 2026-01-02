@@ -8,8 +8,6 @@ export default function AboutUs() {
 
   return (
     <div className="p-4">
-      {/* All content left-aligned */}
-
       <div style={{ marginTop: "0rem", marginBottom: "4rem" }}>
         <h3>Our Mission</h3>
         <p style={{ maxWidth: "600px", marginTop: "1.5rem" }}>
@@ -35,7 +33,7 @@ export default function AboutUs() {
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '20px',
           marginTop: '2rem',
-          maxWidth: '900px' // Add this to limit total width
+          maxWidth: '900px' 
         }}>
           {teamMembers.slice(0, 3).map((member, index) => (
             <div key={index} className="cat-card h-100">
