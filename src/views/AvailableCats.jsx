@@ -1,65 +1,76 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: 'Whiskers', age: '2', breed: 'Persian' },
+  { name: 'Mittens', age: '2', breed: 'Bengal' },
+  { name: 'Shadow', age: '1', breed: 'Siamese' },
+  { name: 'Pumpkin', age: '3', breed: 'Birman' },
+  { name: 'Luna', age: '4', breed: 'Abyssinian' },
+  { name: 'Simba', age: '2', breed: 'Sphynx' },
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [breed, setBreed] = useState('');
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
+      const responses = await Promise.all(
+        availableCats.map(() =>
+          fetch('https://api.thecatapi.com/v1/images/search').then(res =>
+            res.json()
           )
-        );
-        const catsWithImages = availableCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
+        )
+      );
 
-        setCats(catsWithImages);
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
+      const catsWithImages = availableCats.map((cat, index) => ({
+        ...cat,
+        image: responses[index][0].url,
+      }));
+
+      setCats(catsWithImages);
     };
 
     fetchCatImages();
   }, []);
 
+  const filteredCats = cats.filter(cat =>
+    (breed === '' || cat.breed === breed) &&
+    cat.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <section className="text-center mt-4">
       <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
-            <div className="cat-card">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="img-fluid mb-2"
-                style={{
-                  borderRadius: '8px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
-              />
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Age: {cat.age}</p>
-              </div>
+      {/* FILTERS */}
+      <div className="mb-3">
+        <select onChange={e => setBreed(e.target.value)}>
+          <option value="">All Breeds</option>
+          <option value="Sphynx">Sphynx</option>
+          <option value="Birman">Birman</option>
+          <option value="Persian">Persian</option>
+          <option value="Bengal">Bengal</option>
+          <option value="Siamese">Siamese</option>
+        </select>
+
+        <input
+          type="text"
+          placeholder="Search by name"
+          onChange={e => setSearch(e.target.value)}
+        />
+      </div>
+
+      {/* GRID */}
+      <div className="cat-grid">
+        {filteredCats.map((cat, i) => (
+          <div key={i} className="cat-card">
+            <img src={cat.image} alt={cat.name} />
+            <div className="cat-info">
+              <h3>{cat.name}</h3>
+              <p>Age: {cat.age}</p>
+              <p>Breed: {cat.breed}</p>
             </div>
           </div>
         ))}
