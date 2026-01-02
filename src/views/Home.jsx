@@ -13,7 +13,7 @@ export default function Home() {
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
-          featuredCats.map(() =>
+          uredCats.map(() =>
             fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
               res.json()
             )
@@ -38,16 +38,14 @@ export default function Home() {
     };
 
     fetchCatImages();
-  });
+  }, [] );
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          we adopt neko (cat)
         </p>
       </section>
 
