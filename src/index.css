@@ -1,48 +1,259 @@
+/* Global Styles & Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+:root {
+  --bg-color: #fdfaf6; 
+  --text-color: #333333; /* Darker for better readability with serif fonts */
+  --primary-color: #81d4fa; 
+  --secondary-color: #f0ebe5; 
+  --border-color: #444444; 
+  --card-bg: #ffffff; 
+  --shadow-color: rgba(0, 0, 0, 0.1); 
+}
+
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Updated to Times New Roman as requested */
+  font-family: "Times New Roman", Times, serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ... keep the rest of the layout, header, nav, and card styles from previous version ... */
+/* Ensure headings also use the serif font */
+h1, h2, h3 {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
 }
 
+/* Header & Navigation */
 header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  padding: 1.5rem 2rem;
+  border-bottom: 3px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
 }
 
+.logo-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+/* Nicer, Colorful Navigation Buttons */
+.nav-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 3px 3px 0px var(--shadow-color);
+}
+
+.nav-button:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0px var(--shadow-color);
+  border-color: var(--text-color);
+}
+
+/* Main Content */
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
-}
-
-footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
-  z-index: 9999;
-  background: red;
 }
 
-.cat-card {
-  border: 1px solid #ddd;
+/* Welcome Section */
+.welcome-section {
   text-align: center;
-  height: 150px;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  background-color: var(--secondary-color);
+  border-radius: 20px;
+  border: 2px solid var(--border-color);
+  box-shadow: 5px 5px 0px var(--shadow-color);
+}
+
+.welcome-section h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px dashed var(--border-color);
+  display: inline-block;
+}
+
+/* Card Grid & Styles (used for cats and team) */
+.cat-grid, .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.cat-card, .team-card {
+  border: 3px solid var(--border-color);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--card-bg);
+  transition: all 0.3s ease;
+  box-shadow: 4px 4px 0px var(--shadow-color);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
 }
 
-.cat-info {
-  background: #000;
+.cat-card:hover, .team-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 7px 7px 0px var(--shadow-color);
+}
+
+.cat-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--border-color);
+}
+
+/* Placeholder for team images */
+.team-img-placeholder {
+    width: 100%;
+    height: 240px;
+    background-color: var(--secondary-color);
+    border-bottom: 3px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: var(--border-color);
+    font-weight: bold;
+}
+
+.cat-info, .team-info {
+  padding: 1.5rem;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.cat-info h3, .team-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.breed-tag, .designation {
+  font-size: 1.1rem;
+  color: var(--border-color);
+  font-style: italic;
+  margin-top: 0.8rem;
+  display: block;
+}
+
+/* Filters - Nicer Design */
+.filters-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+  border: 2px solid var(--border-color);
+  box-shadow: 3px 3px 0px var(--shadow-color);
+}
+
+.filter-input {
+  padding: 12px 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  outline: none;
+  flex-grow: 1;
+  min-width: 200px;
+}
+.filter-input:focus {
+    border-color: var(--primary-color);
+}
+
+select.filter-input {
+    cursor: pointer;
+}
+
+.btn-search {
+  background-color: var(--primary-color);
   color: #fff;
-  border-radius: 4px;
+  border: 2px solid var(--border-color);
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 3px 3px 0px var(--shadow-color);
+}
+
+.btn-search:hover {
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0px var(--shadow-color);
+  background-color: #4fc3f7; /* Slightly darker blue on hover */
+}
+
+/* About Us Page Styles */
+.about-section {
+    margin-bottom: 3rem;
+}
+.about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--border-color);
+}
+.about-section p {
+    font-size: 1.3rem;
+    max-width: 900px;
+}
+
+/* Footer */
+footer {
+  padding: 2rem;
+  text-align: center;
+  background: var(--secondary-color);
+  border-top: 3px solid var(--border-color);
+  font-weight: bold;
 }
