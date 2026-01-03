@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Siamese' },
+  { name: 'Mittens', age: '2', breed: 'Persian' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
+  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
 ];
 
 export default function Home() {
@@ -25,38 +27,34 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Find your perfect feline companion from our selection of beautiful cats.
+          Each cat has a unique personality and comes from various breed backgrounds.
         </p>
+        
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+        <div className="d-flex justify-content-between align-items-center">
+          <h2>Featured cats</h2>
+          
+        </div>
+        <div className="mt-2 row g-4">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={i} className="col-md-4 col-lg-3">
               <div className="cat-card">
                 <img
                   src={cat.image}
@@ -66,11 +64,16 @@ export default function Home() {
                     borderRadius: '8px',
                     height: '200px',
                     objectFit: 'cover',
+                    width: '100%',
                   }}
                 />
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-1">Age: {cat.age} years</p>
+                  <p className="mb-2 breed-type">
+                    Breed: <span className="breed-badge">{cat.breed}</span>
+                  </p>
+                  
                 </div>
               </div>
             </div>
