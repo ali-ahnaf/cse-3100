@@ -5,7 +5,7 @@ export default function Contact() {
 
       <p className="contact-text">
          Have questions or want to adopt a loving cat?  
-  Get in touch with us and we’ll be happy to help you.
+        Get in touch with us and we will be happy to help you.
       </p>
 
       <form className="contact-form">
