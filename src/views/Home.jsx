@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <>
       <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
+        <h2> Welcome to Purrfect Adoption </h2>
         <p>
            We rescue, rehabilitate and rehome cats. Our mission is to match every cat
           with a loving home and provide community education about responsible pet ownership.
