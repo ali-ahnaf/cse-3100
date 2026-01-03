@@ -1,33 +1,35 @@
 import { Link, Outlet } from 'react-router-dom';
 
-const BaseLayout = () => {
+export default function BaseLayout() {
   return (
-    <div className="layout">
-      <header className="d-flex align-items-center bg-light">
-        <h1>
-          <Link className="text-decoration-none text-dark" to="/">
-            Purrfect Adoption
-          </Link>
-        </h1>
-        <div className="flex-grow-1"></div>
-        <nav>
-          <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
-                Available Cats
-              </Link>
-            </li>
-          </ul>
-        </nav>
+    <>
+      {/* Navbar */}
+      <header className="navbar">
+        <div className="container">
+          <h1 className="logo">Purrfect Adoption</h1>
+          <nav>
+            <ul className="nav-links">
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/available-cats">Available Cats</Link></li>
+              <li><Link to="/about-us">About Us</Link></li>
+              <li><Link to="/donate">Donate</Link></li>
+              <li><Link to="/contact-us">Contact Us</Link></li>
+            </ul>
+          </nav>
+        </div>
       </header>
-      <main id="content">
+
+      {/* Main content */}
+      <main className="main-container">
         <Outlet />
       </main>
-      <footer className="bg-light">
-        <p>© Copyright 2024</p>
-      </footer>
-    </div>
-  );
-};
 
-export default BaseLayout;
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container text-center">
+          &copy; {new Date().getFullYear()} Purrfect Adoption. All rights reserved.
+        </div>
+      </footer>
+    </>
+  );
+}
