@@ -68,14 +68,14 @@ export default function AvailableCats() {
   const [selectedBreed, setSelectedBreed] = useState('All');
   const [searchName, setSearchName] = useState('');
 
-  // initialize cats (NO LOOP)
+  // Initialize cats
   useEffect(() => {
     setCats(availableCats);
-    setFilteredCats(availableCats);
+    setFilteredCats(availableCats); // show all by default
   }, []);
 
-  // filtering logic
-  useEffect(() => {
+  // Filter logic only on search button click
+  const handleSearch = () => {
     let result = [...cats];
 
     if (selectedBreed !== 'All') {
@@ -88,8 +88,8 @@ export default function AvailableCats() {
       );
     }
 
-    setFilteredCats(result);
-  }, [cats, selectedBreed, searchName]);
+    setFilteredCats(result); // update cats based on search
+  };
 
   return (
     <section className="available-cats-section">
@@ -117,6 +117,15 @@ export default function AvailableCats() {
             value={searchName}
             onChange={(e) => setSearchName(e.target.value)}
           />
+
+          {/* Search Button */}
+          <button
+            type="button"
+            className="search-btn"
+            onClick={handleSearch}
+          >
+            Search
+          </button>
         </div>
 
         <hr className="cats-divider" />
