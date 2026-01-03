@@ -13,7 +13,6 @@ export default function AvailableCats() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
@@ -23,6 +22,7 @@ export default function AvailableCats() {
             )
           )
         );
+
         const catsWithImages = availableCats.map((cat, index) => ({
           ...cat,
           image: responses[index][0].url,
@@ -30,7 +30,7 @@ export default function AvailableCats() {
 
         setCats(catsWithImages);
       } catch (error) {
-        console.error('Error fetching cat images:', error);
+        console.error(error);
       }
     };
 
