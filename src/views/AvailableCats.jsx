@@ -11,10 +11,12 @@ const availableCats = [
 ];
 
 
-const BREEDS = ['Sphynx', 'Peterbald', 'Birman', 'Abyssinian', 'Persian', 'Bengal', 'Siamese'];
+const BREEDS = ['Sphynx', 'Peterbald', 'Birman', 'Abyssinian', 'Persian', 'Bengal'];
 
 
 const MAX_RETRIES = 3;
+
+const FALLBACK_IMAGE = 'https://placekitten.com/600/400';
 
 
 export default function AvailableCats() {
@@ -30,7 +32,9 @@ export default function AvailableCats() {
 
   const fetchReplacement = async (index, attempt = 0) => {
     if (attempt >= MAX_RETRIES) {
-      setCats((prev) => prev.map((c, i) => (i === index ? { ...c, imageFailed: true } : c)));
+      setCats((prev) =>
+        prev.map((c, i) => (i === index ? { ...c, image: FALLBACK_IMAGE, imageFailed: false } : c))
+      );
       return;
     }
 
@@ -54,15 +58,7 @@ export default function AvailableCats() {
 
 
   const handleImageError = (index) => {
-    setCats((prev) => {
-      const c = prev[index] || {};
-      const retries = (c.retryCount || 0) + 1;
-      const updated = prev.map((x, i) => (i === index ? { ...x, retryCount: retries } : x));
-      return updated;
-    });
-
-    
-    setTimeout(() => fetchReplacement(index, 1), 0);
+    setCats((prev) => prev.map((c, i) => (i === index ? { ...c, image: FALLBACK_IMAGE, imageFailed: false } : c)));
   };
 
 
@@ -84,7 +80,7 @@ export default function AvailableCats() {
           const url =
             responses[index] && Array.isArray(responses[index]) && responses[index][0] && responses[index][0].url
               ? responses[index][0].url
-              : undefined;
+              : FALLBACK_IMAGE;
           return {
             ...cat,
             image: url,
@@ -102,7 +98,7 @@ export default function AvailableCats() {
         });
       } catch (error) {
         console.error('Error fetching cat images:', error);
-        const initial = availableCats.map((cat) => ({ ...cat, image: undefined, retryCount: 0, imageFailed: false }));
+        const initial = availableCats.map((cat) => ({ ...cat, image: FALLBACK_IMAGE, retryCount: 0, imageFailed: false }));
         setCats(initial);
         initial.forEach((_, index) => fetchReplacement(index, 0));
       }
@@ -117,55 +113,62 @@ export default function AvailableCats() {
 
   
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <section className="mb-4">
+      <div className="container">
+        <div className="text-start mb-3">
+          <h2 className="display-6 fw-bold">Available Cats</h2>
+          <p className="text-muted">Meet our adorable cats looking for their forever home!</p>
+        </div>
 
-      <div className="filters">
-        <select value={selectedBreed} onChange={(e) => setSelectedBreed(e.target.value)}>
-          <option value="All">All breeds</option>
-          {BREEDS.map((b) => (
-            <option key={b} value={b}>
-              {b}
-            </option>
-          ))}
-        </select>
+        <div className="row align-items-center mb-4 g-2 filters">
+          <div className="col-6">
+            <select className="form-select rounded-pill" value={selectedBreed} onChange={(e) => setSelectedBreed(e.target.value)}>
+              <option value="All">All breeds</option>
+              {BREEDS.map((b) => (
+                <option key={b} value={b}>{b}</option>
+              ))}
+            </select>
+          </div>
 
-        <input
-          type="text"
-          placeholder="Search by name"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div>
+          <div className="col-6">
+            <input
+              type="text"
+              className="form-control form-control-lg rounded-pill"
+              placeholder="Search by name..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        </div>
 
-      <div className="mt-2 cats-container">
-        {filteredCats.length === 0 ? (
-          <p>No cats found.</p>
-        ) : (
-          filteredCats.map((cat, i) => (
-            <div key={i} className="cat-item">
-              <div className="cat-card">
-                {cat.image && !cat.imageFailed ? (
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="cat-image"
-                    loading="lazy"
-                    onError={() => handleImageError(i)}
-                  />
-                ) : (
-                  <div className="image-placeholder">Image unavailable</div>
-                )}
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Breed: {cat.breed}</p>
-                  <p className="mb-0">Age: {cat.age}</p>
+        <div className="row g-4 cats-container">
+          {filteredCats.length === 0 ? (
+            <div className="col-12"><p>No cats found.</p></div>
+          ) : (
+            filteredCats.map((cat, i) => (
+              <div key={i} className="col-12 col-md-6 col-lg-4">
+                <div className="cat-card">
+                  {cat.image && !cat.imageFailed ? (
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="cat-image"
+                      loading="lazy"
+                      onError={() => handleImageError(i)}
+                    />
+                  ) : (
+                    <div className="image-placeholder">Image unavailable</div>
+                  )}
+
+                  <div className="cat-info">
+                    <h3 className="h5 mb-1">{cat.name}</h3>
+                    <p className="mb-0">Breed: {cat.breed} • Age: {cat.age}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </div>
     </section>
   );

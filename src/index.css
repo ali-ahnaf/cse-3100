@@ -16,7 +16,7 @@ html,body,#root{
 }
 
 body {
-  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   background: var(--page-bg);
   color: var(--accent);
   -webkit-font-smoothing: antialiased;
@@ -37,8 +37,9 @@ header {
 }
 
 .brand a {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.5rem;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-weight: 700;
+  font-size: 1.25rem;
   color: var(--accent);
   text-decoration: none;
 }
@@ -72,12 +73,17 @@ main {
   border-radius: 12px;
   padding: 2rem 2.5rem;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  /* use Bootstrap container inside for responsive sizing */
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .panel h2{
   text-align: left;
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-weight: 700;
   margin-top: 0;
+  font-size: 1.5rem;
 }
 
 .panel section.text-center {
@@ -91,11 +97,12 @@ main {
 }
 
 .filters {
-  display: flex;
+  /* let Bootstrap's .row manage layout; ensure items do not wrap */
   gap: 0.75rem;
   align-items: center;
   justify-content: flex-start;
   margin: 1rem 0;
+  flex-wrap: nowrap;
 }
 
 .filters select,
@@ -115,59 +122,48 @@ footer {
   color: #777;
 }
 
-/* Cats grid, tuned for mockup with 4 cards on wide screens */
-.cats-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  justify-items: center;
-}
 
-.cat-item {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
+.cats-container{ width: 100%; }
+
+.cat-item { width: 100%; }
 
 .cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
   background: #fff;
-  width: 100%;
+  box-shadow: 0 8px 24px rgba(18,18,18,0.06);
   min-height: 320px;
+  border: 1px solid #eee;
 }
 
-.cat-card .cat-image,
 .cat-image {
   width: 100%;
-  height: 200px;
+  height: 260px;
   object-fit: cover;
   display: block;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
 }
 
 .cat-info {
-  background: #000;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 1rem;
   color: #fff;
-  padding: 0.75rem;
-  margin-top: auto;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(0,0,0,0.66), rgba(0,0,0,0.18));
 }
 
-.image-placeholder{
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f5f5f5;
-  color: #777;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+.cat-info h3 { margin: 0; font-size: 1.125rem; font-weight: 700; }
+.cat-info p { margin: 0; font-size: 0.9rem; opacity: 0.95; }
+
+.image-placeholder {
+  height: 260px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f5f5f5;
+  color:#777;
 }
 @media (min-width: 900px){
   .cats-container{ grid-template-columns: repeat(4, minmax(160px, 1fr)); }
@@ -177,3 +173,37 @@ footer {
   .panel{ padding: 1.25rem; }
   .brand a{ font-size: 1.25rem }
 }
+
+/* About/Contact styles */
+.about-hero{ position: relative; }
+.about-hero .display-5{ font-size: 2rem; }
+
+/* Navbar tweaks: keep brand left and refine links */
+.navbar .brand{ font-weight: 700; }
+.navbar .nav-link{ color: var(--accent); padding: 0.5rem 0.75rem; }
+.navbar .nav-link:hover{ color: rgba(0,0,0,0.85); }
+
+.info-card{ background: #fff; border-radius: 14px; box-shadow: 0 12px 30px rgba(18,18,18,0.05); border: 0; }
+.info-card--accent{ background: #fff; }
+.team-pill{ background:#fff; border-radius: 12px; box-shadow: 0 18px 34px rgba(36,36,36,0.04); min-height:72px; display:flex; align-items:center; padding:1rem; }
+.team-pill .fw-semibold{ font-weight:600 }
+
+.muted{ color: #666; font-size: 0.9rem }
+
+.contact-card{ border-radius: 18px; overflow: visible; }
+.contact-card .card-body{ background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%); border-radius: 14px; }
+
+.contact-input{ border-radius: 10px; border: 1px solid #eceaf0; padding: 0.85rem 1rem; box-shadow: none; }
+.contact-input:focus{ outline: none; box-shadow: 0 6px 20px rgba(18,18,18,0.06); border-color: #e9e6f6; }
+
+.btn-gradient{
+  background: linear-gradient(90deg, #6b61ff 0%, #b96cff 60%);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.85rem 1.25rem;
+  box-shadow: 0 18px 34px rgba(107,97,255,0.18);
+}
+
+.contact-form{ max-width: 520px; margin-top: 0.5rem }
+.contact-form label{ display:block; margin-top: 0.75rem; margin-bottom: 0.5rem }
+.form-input{ width: 100%; padding: 0.75rem 0.9rem; border-radius: 8px; border: 1px solid #ddd }
