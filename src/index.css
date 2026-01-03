@@ -1,43 +1,52 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  width: 100%;
+  /*overflow: hidden;*/
+
 }
 
 header {
   padding: 1em;
   background-color: #fff;
-  color: #fff;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 main {
   flex: 1;
   padding: 1em;
-  display: list-item;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
 }
 
 footer {
   padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
+  text-align: center;
+  position: relative;
+  /* top: 0;*/
   width: 100%;
-  z-index: 9999;
+  /*z-index: 9999;*/
   background: red;
+  color: #fff;
 }
 
 .cat-card {
   border: 1px solid #ddd;
   text-align: center;
-  height: 150px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   overflow: hidden;
 }
 
