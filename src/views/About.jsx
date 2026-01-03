@@ -1,4 +1,5 @@
 export default function About() {
+  
   return (
     <div className="container py-5">
       <section className="about-hero mb-5">
@@ -52,7 +53,7 @@ export default function About() {
           <div className="col-sm-6 col-md-4">
             <div className="team-pill p-3">
               <div>
-                <div className="fw-semibold">Abrarul Haque</div>
+                <div className="fw-semibold">Abrarul Haque Tonmoy</div>
                 <div className="text-muted">Operations</div>
               </div>
             </div>
@@ -61,4 +62,5 @@ export default function About() {
       </section>
     </div>
   );
+
 }
