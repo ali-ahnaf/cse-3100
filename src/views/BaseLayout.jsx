@@ -1,33 +1,26 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet } from "react-router-dom";
 
-const BaseLayout = () => {
+export default function BaseLayout() {
   return (
-    <div className="layout">
-      <header className="d-flex align-items-center bg-light">
-        <h1>
-          <Link className="text-decoration-none text-dark" to="/">
-            Purrfect Adoption
-          </Link>
-        </h1>
-        <div className="flex-grow-1"></div>
+    <>
+      <header className="navbar">
+        <h2>Purrfect Adoption</h2>
         <nav>
-          <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
-                Available Cats
-              </Link>
-            </li>
-          </ul>
+          <Link to="/">Home</Link>
+          <Link to="/available">Available Cats</Link>
+          <Link to="/about">About Us</Link>
+          <Link to="/donate">Donate</Link>
+          <Link to="/contact">Contact Us</Link>
         </nav>
       </header>
-      <main id="content">
+
+      <main className="container">
         <Outlet />
       </main>
-      <footer className="bg-light">
-        <p>© Copyright 2024</p>
-      </footer>
-    </div>
-  );
-};
 
-export default BaseLayout;
+      <footer className="footer">
+        © 2026 Purrfect Adoption
+      </footer>
+    </>
+  );
+}
