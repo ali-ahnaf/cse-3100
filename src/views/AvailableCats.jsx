@@ -4,10 +4,10 @@ const availableCats = [
   { name: 'Whiskers', age: '2', breed: 'Persian' },
   { name: 'Mittens', age: '2', breed: 'Abyssinian' },
   { name: 'Shadow', age: '1', breed: 'Siamese' },
-  { name: 'Pumpkin', age: '3', breed: 'Maine Coon' },
-  { name: 'Luna', age: '4', breed: 'Persian' },
+  { name: 'Pumpkin', age: '3', breed: 'Sphynx' },
+  { name: 'Luna', age: '4', breed: 'Peterbald' },
   { name: 'Simba', age: '2', breed: 'Bengal' },
-  { name: 'Tiger', age: '3', breed: 'Abyssinian' },
+  { name: 'Tiger', age: '3', breed: 'Birman' },
   { name: 'Cleo', age: '2', breed: 'Siamese' },
 ];
 
@@ -58,13 +58,12 @@ export default function AvailableCats() {
     setFilteredCats(filtered);
   }, [selectedBreed, searchTerm, cats]);
 
-  const breeds = [...new Set(availableCats.map((cat) => cat.breed))];
+  const breeds = [... new Set(availableCats.map((cat) => cat.breed))];
 
   return (
     <section className="text-center mt-4">
       <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
-
+      <p>Meet our adorable cats looking for their forever home! </p>
 
       <div className="filters">
         <div className="filter-group">
@@ -83,7 +82,6 @@ export default function AvailableCats() {
           </select>
         </div>
 
-
         <div className="filter-group">
           <label htmlFor="search-box">Search by Name:</label>
           <input
@@ -95,6 +93,7 @@ export default function AvailableCats() {
           />
         </div>
       </div>
+
       <div className="mt-2 row g-4" id="cats-container">
         {filteredCats.length > 0 ? (
           filteredCats.map((cat, i) => (
@@ -103,17 +102,11 @@ export default function AvailableCats() {
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
                 />
                 <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                  <p className="mb-0">Breed: {cat.breed}</p>
+                  <h3>{cat.name}</h3>
+                  <p>Age: {cat.age}</p>
+                  <p>Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>
