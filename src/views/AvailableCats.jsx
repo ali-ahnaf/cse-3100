@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const availableCats = [
   { name: "Whiskers", age: "2", breed: "Siamese" },

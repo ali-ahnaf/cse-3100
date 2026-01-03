@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 const featuredCats = [
-  { name: "Whiskers", age: "2" },
-  { name: "Mittens", age: "2" },
-  { name: "Shadow", age: "1" },
+  { name: "Whiskers", age: "2", breed: "Siamese" },
+  { name: "Mittens", age: "2", breed: "Persian" },
+  { name: "Shadow", age: "1", breed: "Maine Coon" },
 ];
 
 export default function Home() {
