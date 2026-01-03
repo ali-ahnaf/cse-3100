@@ -3,22 +3,37 @@ import { Link, Outlet } from 'react-router-dom';
 const BaseLayout = () => {
   return (
     <div className="layout">
-      <header className="d-flex align-items-center bg-light">
-        <h1>
+      <header className="d-flex justify-content-between align-items-center px-4 py-3 border-bottom">
+        <div className="site-brand">
           <Link className="text-decoration-none text-dark" to="/">
             Purrfect Adoption
           </Link>
-        </h1>
-        <div className="flex-grow-1"></div>
+        </div>
+        <div className="header-actions d-flex align-items-center gap-3">
         <nav>
-          <ul className="nav">
+          <ul className="nav mb-0 d-flex">
             <li className="nav-item">
               <Link className="nav-link" to="/available-cats">
                 Available Cats
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                About Us
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">
+                Contact Us
+              </Link>
+            </li>
+        
           </ul>
         </nav>
+    <Link className="btn-adopt" to="/donation">
+      Donation
+    </Link>
+        </div>
       </header>
       <main id="content">
         <Outlet />

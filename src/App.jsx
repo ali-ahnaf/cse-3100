@@ -2,6 +2,8 @@ import { Outlet, Route, Routes } from 'react-router';
 import BaseLayout from './views/BaseLayout';
 import Home from './views/Home';
 import AvailableCats from './views/AvailableCats';
+import About from './views/About';
+import Contact from './views/Contact';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         }
       >
         <Route path={'/'} element={<Home />} />
+  <Route path={'/about'} element={<About />} />
+  <Route path={'/contact'} element={<Contact />} />
         <Route path={'/available-cats'} element={<AvailableCats />} />
       </Route>
     </Routes>
