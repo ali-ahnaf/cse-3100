@@ -1,53 +1,69 @@
-# CSE-3100: Web application development with DevOps
+# CSE-3100: Web Application Development with DevOps
 
-### Marks distribution
+## Marks Distribution
 
-| Strategy                  | Marks |
-|---------------------------|-------|
-| Attendance               | 20%   |
-| Assignment               | 10%   |
-| Project Proposal Submission | 5%   |
-| Project Checkpoint 1     | 15%   |
-| Project Checkpoint 2     | 15%   |
-| Final Project Submission | 20%   |
-| Lab Exam                 | 15%   |
-| **Total**                | **100%** |
+| Strategy                     | Marks |
+|------------------------------|-------|
+| Attendance                   | 20%   |
+| Assignment                   | 10%   |
+| Project Proposal Submission  | 5%    |
+| Project Checkpoint 1         | 15%   |
+| Project Checkpoint 2         | 15%   |
+| Final Project Submission     | 20%   |
+| Lab Exam                     | 15%   |
+| **Total**                    | **100%** |
 
+---
 
-### Course outcome
+## Assignment Tasks
 
-By the end of this course, students will:
+### 1. Fix the Layout (CSS Chaos) — `index.css` (2 marks)
+- Restore a clean, responsive layout.
+- Use Flexbox/Grid correctly.
 
-1. Understand design principles to create visually appealing and user-friendly websites.
-2. Build dynamic and data-driven web applications using the Laravel framework.
-3. Implement RESTful APIs and manage application logic effectively.
-4. Collaborate efficiently in development projects using Git and GitHub.
-5. Apply branching, merging, and conflict resolution techniques in version control workflows.
-6. Set up and manage containerized environments using Docker.
-7. Understand the fundamentals of CI/CD pipelines and their role in modern development.
-8. Automate repetitive tasks and streamline development workflows using DevOps principles.
-9. Apply all learned skills to develop a full-stack web application deployed in a containerized setup.
+### 2. Fix the Navigation — `BaseLayout.jsx` (2 marks)
+- Fix the React Router setup so pages render correctly.
 
-### How to navigate between branches?
+### 3. Fix the Logic — `Home.jsx` (1 mark)
+- Fix the `useEffect` hook.
+- Correct API fetch implementation and state updates.
 
-The repository contains several branches, each branch corresponds to either the lecture number or the assignment number and contains the source files.
+### 4. Fix Component Rendering — `AvailableCats.jsx` (1 mark)
+- Fix JSX syntax.
+- Ensure the detailed list renders correctly.
 
-To switch between the branches, use: 
+### 5. Add the Following Features
 
-```
-git checkout <branch-name>
-```
+The task is to add the following features to the cat adoption website demonstrated earlier in the lecture.
 
-### How to fork and give a pull request?
+1. **Breed Type** (1 mark)  
+   - Add a new field in the cats list to show their breed class.  
+   - Possible breeds: Sphynx, Peterbald, Birman, Abyssinian, Persian, Bengal, Siamese.  
+   - This must be reflected in the UI.
 
-1. Fork the repository into your GitHub account
-2. Clone the repository into your local machine
-3. Create a new branch
-4. Make changes
-5. Commit the changes
-6. Push the changes
-7. Create a pull request to the upstream respository
+2. **Filtering Option** (2 marks)  
+   - Add two filters in the “Available Cats” page:
+     - A dropdown to filter by cat breed.
+     - A search text box to search by cat name.
 
-### Course Materials
+3. **New Pages** (1 mark)  
+   - Create an **About Us** page.
+   - Create a **Contact Us** page.
 
-1. [Intro](https://docs.google.com/presentation/d/1hVYzMQtvLynTEOgOY-VScGsHDXFIdlUJPOOFTTOWqrE/edit?usp=sharing)
+---
+
+## UI Mockups
+
+| Mockup | Mockup |
+|------|------|
+| <img src="https://github.com/user-attachments/assets/fb24a67f-4276-4452-a0c3-83d7743deae2" width="100%" /> | <img src="https://github.com/user-attachments/assets/5a85f9fe-cf6a-4a3e-aa02-10433c4b4f77" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/5dd3b5f5-d49a-4281-9628-3afe0b6970e9" width="100%" /> | <img src="https://github.com/user-attachments/assets/12cd720a-6e70-4ee6-ab7e-a112877e579b" width="100%" /> |
+| <img src="https://github.com/user-attachments/assets/a555d83c-5d0a-4295-877c-e5d7575d8dbe" width="100%" /> |  |
+
+---
+
+## Setup Instructions
+
+1. Clone the repository.
+2. Install dependencies.
+3. Run the development server.
