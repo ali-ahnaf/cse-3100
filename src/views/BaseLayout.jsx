@@ -34,7 +34,7 @@ const BaseLayout = () => {
         <Outlet />
       </main>
       <footer className="bg-light">
-        <p>Copyright 2026</p>
+        <p>© Copyright 2024</p>
       </footer>
     </div>
   );
