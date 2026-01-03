@@ -16,17 +16,17 @@ const BaseLayout = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/donate">
+              <Link className="nav-link" to="">
                 Donate
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/some-other-route">
+              <Link className="nav-link" to="/about">
                 About us
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/some-other-route">
+              <Link className="nav-link" to="/contact-us">
                 Contact us
               </Link>
             </li>

@@ -90,3 +90,12 @@ footer.footer {
   text-align: center;
   border-radius: 0 0 12px 12px;
 }
+
+.home-cat-info {
+  background: #111 !important;      /* black background */
+  color: #fff !important;           /* white text */
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 0 0 12px 12px;
+}
+

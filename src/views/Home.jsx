@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Sphynx' },
+  { name: 'Mittens', age: '2', breed: 'Peterbald' },
+  { name: 'Shadow', age: '1', breed: 'Birman' },
 ];
 
 export default function Home() {
@@ -39,8 +39,7 @@ export default function Home() {
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Welcome to Purrfect Adoption — where every cat finds their forever home!
         </p>
       </section>
 
@@ -69,6 +68,9 @@ export default function Home() {
                 <div className="card-body text-center">
                   <h5 className="card-title">{cat.name}</h5>
                   <p className="card-text">Age: {cat.age}</p>
+                  <p className="card-text">
+                    <strong>Breed:</strong> {cat.breed}
+                  </p>
                 </div>
               </div>
             </div>
