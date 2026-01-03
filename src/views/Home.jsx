@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Sphynx' },
+  { name: 'Mittens', age: '2', breed: 'Birman' },
+  { name: 'Shadow', age: '1', breed: 'Abyssinian' },
 ];
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
           ...cat,
           image: responses[index][0].url,
         }));
-        
+
         setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
@@ -46,10 +46,10 @@ export default function Home() {
       </section>
 
       <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4">
+        <h2>Featured Cats</h2>
+        <div className="mt-2 cats-container">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={i} className="col-12 col-sm-6 col-md-4">
               <div className="cat-card">
                 <img
                   src={cat.image}
@@ -64,6 +64,7 @@ export default function Home() {
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-0">Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>
