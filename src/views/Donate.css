@@ -1,0 +1,32 @@
+.donate-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.donate-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.donate-form input {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 0.3rem;
+}
+
+.donate-form .btn {
+  background: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.donate-form .btn:hover {
+  background: #3a5a85;
+}

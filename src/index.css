@@ -1,48 +1,203 @@
+/* ========== Global Reset ========== */
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.layout {
-  display: flex;
-  min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+/* ========== Container for side margins ========== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-header {
-  padding: 1em;
-  background-color: #fff;
-  color: #fff;
-}
-
+/* Apply container to main content */
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 2rem 0;     /* vertical padding only */
 }
 
-footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
 }
 
-.cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
+/* ========== Layout ========== */
+.layout {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
+/* ========== Header ========== */
+header {
+  background: linear-gradient(90deg, #4a6fa5, #6fa5c9);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.05);
+}
+
+/* ========== Page Title ========== */
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: #4a6fa5;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* ========== Filters ========== */
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.filter-dropdown,
+.search-box {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.filter-dropdown:focus,
+.search-box:focus {
+  border-color: #4a6fa5;
+  box-shadow: 0 0 6px rgba(74,111,165,0.4);
+  outline: none;
+}/* ========== Cat Grid ========== */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* smaller min width */
+  gap: 1.5rem; /* tighter spacing */
+  margin-top: 1.5rem;
+}
+
+/* ========== Cat Card ========== */
+.cat-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* ========== Cat Image ========== */
+.cat-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  transition: transform 0.3s ease;
+}
+
+.cat-card:hover .cat-image {
+  transform: scale(1.05);
+}
+
+/* ========== Cat Info ========== */
 .cat-info {
-  background: #000;
-  color: #fff;
-  border-radius: 4px;
+  padding: 0.8rem;        /* smaller padding */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cat-name {
+  font-size: 1.2rem;      /* smaller text */
+  font-weight: bold;
+  color: #4a6fa5;
+}
+
+.cat-breed,
+.cat-age {
+  color: #666;
+  font-size: 0.85rem;     /* smaller text */
+}
+.btn {
+  background: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #3a5a85;
+}
+
+
+/* ========== Footer ========== */
+footer {
+  background: #4a6fa5;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .cat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
 }
