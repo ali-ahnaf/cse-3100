@@ -65,17 +65,18 @@ export default function Home() {
         className="home-hero text-center"
         style={{ backgroundColor: '#fdf8f2', padding: '5rem 1rem' }}
       >
-        <div className="container">
-          <h2 style={{ color: '#b66e41', marginBottom: '1rem' }}>
+        <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <h2 style={{ color: '#b66e41', marginBottom: '1rem', fontWeight: '600' }}>
             Welcome to Purrfect Adoption
           </h2>
           <p
             className="lead"
             style={{
               fontSize: '1.2rem',
-              lineHeight: '1.8rem',
+              lineHeight: '1.6rem',
               maxWidth: '700px',
               margin: '0 auto',
+              fontWeight: '500',
             }}
           >
             Discover your purr-fect feline friend! We help cats find loving forever homes
@@ -89,8 +90,10 @@ export default function Home() {
         className="featured-section mt-5"
         style={{ backgroundColor: '#fffdf7', padding: '3rem 1rem' }}
       >
-        <div className="container">
-          <h2 style={{ color: '#b66e41', marginBottom: '2rem' }}>Featured Cats</h2>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <h2 style={{ color: '#b66e41', marginBottom: '1.5rem', fontWeight: '600' }}>
+            Featured Cats
+          </h2>
 
           <div
             className="cats-grid"
@@ -114,6 +117,7 @@ export default function Home() {
                   flexDirection: 'column',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   cursor: 'pointer',
+                  aspectRatio: '1 / 1', // keeps card roughly square
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
@@ -124,22 +128,23 @@ export default function Home() {
                   e.currentTarget.style.boxShadow = '0 4px 12px rgba(182,110,65,0.15)';
                 }}
               >
-                <img
-                  src={cat.image}
-                  alt={cat.name}
+                <div
                   style={{
-                    width: '100%',
-                    height: '220px', // slightly smaller
-                    objectFit: 'cover',
+                    backgroundImage: `url(${cat.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    flex: 1, // takes most of the card height
                   }}
-                />
-                <div className="cat-info" style={{ padding: '1rem' }}>
-                  <h3 style={{ marginBottom: '0.5rem' }}>{cat.name}</h3>
-                  <p style={{ marginBottom: '0.5rem' }}>
+                ></div>
+                <div className="cat-info" style={{ padding: '0.8rem' }}>
+                  <h3 style={{ marginBottom: '0.3rem', fontWeight: '600' }}>{cat.name}</h3>
+                  <p style={{ marginBottom: '0.3rem', fontWeight: '500' }}>
                     <strong>Age:</strong> {cat.age} &nbsp;•&nbsp;
                     <strong>Breed:</strong> {cat.breed}
                   </p>
-                  <p style={{ fontSize: '0.95rem', color: '#555' }}>{cat.description}</p>
+                  <p style={{ fontSize: '0.9rem', color: '#555', fontWeight: '400' }}>
+                    {cat.description}
+                  </p>
                 </div>
               </div>
             ))}

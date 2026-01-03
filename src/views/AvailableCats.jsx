@@ -47,25 +47,20 @@ const BREEDS = [
 ];
 
 export default function AvailableCats() {
-  const [searchInput, setSearchInput] = useState('');
+  const [selectedBreed, setSelectedBreed] = useState('All');
+  const [searchName, setSearchName] = useState('');
   const [filteredCats, setFilteredCats] = useState(availableCats);
 
   const handleSearch = () => {
-    if (!searchInput || searchInput.toLowerCase() === 'all') {
-      // Show all cats if input empty or "All"
-      setFilteredCats(availableCats);
-      return;
-    }
-
     let result = [...availableCats];
 
-    // Check if input matches a breed
-    if (BREEDS.includes(searchInput) && searchInput !== 'All') {
-      result = result.filter((cat) => cat.breed === searchInput);
-    } else {
-      // Otherwise search by name
+    if (selectedBreed !== 'All') {
+      result = result.filter((cat) => cat.breed === selectedBreed);
+    }
+
+    if (searchName.trim() !== '') {
       result = result.filter((cat) =>
-        cat.name.toLowerCase().includes(searchInput.toLowerCase())
+        cat.name.toLowerCase().includes(searchName.toLowerCase())
       );
     }
 
@@ -75,46 +70,32 @@ export default function AvailableCats() {
   return (
     <section className="available-cats-section">
       <div className="container">
-        <h2 className="text-center" style={{ marginBottom: '2rem' }}>
-          Available Cats
-        </h2>
+        {/* Headline with extra space */}
+        <h2 className="text-center mb-5">Available Cats</h2>
 
-        {/* Search Box */}
-        <div className="filters-row">
+        {/* Added extra margin top to search/filter row */}
+        <div className="filters-row" style={{ marginTop: '1.5rem' }}>
+          <select
+            className="breed-select"
+            value={selectedBreed}
+            onChange={(e) => setSelectedBreed(e.target.value)}
+          >
+            {BREEDS.map((breed) => (
+              <option key={breed} value={breed}>
+                {breed}
+              </option>
+            ))}
+          </select>
+
           <input
             type="text"
-            className="search-box"
-            placeholder="Enter cat name or select breed..."
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            list="breeds"
-            style={{
-              padding: '0.5rem 1rem',
-              borderRadius: '0.5rem',
-              border: '1px solid #ccc',
-              width: '250px',
-            }}
+            className="name-search"
+            placeholder="Search by name"
+            value={searchName}
+            onChange={(e) => setSearchName(e.target.value)}
           />
-          <datalist id="breeds">
-            {BREEDS.map((breed) => (
-              <option key={breed} value={breed} />
-            ))}
-          </datalist>
 
-          <button
-            type="button"
-            className="search-btn"
-            onClick={handleSearch}
-            style={{
-              padding: '0.5rem 1rem',
-              marginLeft: '0.5rem',
-              borderRadius: '0.5rem',
-              border: 'none',
-              backgroundColor: '#f28c28', // cat-themed color
-              color: '#fff',
-              cursor: 'pointer',
-            }}
-          >
+          <button type="button" className="search-btn" onClick={handleSearch}>
             Search
           </button>
         </div>
@@ -128,12 +109,7 @@ export default function AvailableCats() {
               <div key={i} className="cat-card">
                 <div
                   className="cat-image"
-                  style={{
-                    backgroundImage: `url(${cat.image})`,
-                    height: '200px',
-                    backgroundSize: 'cover',
-                    borderRadius: '0.5rem',
-                  }}
+                  style={{ backgroundImage: `url(${cat.image})` }}
                 />
                 <div className="cat-info">
                   <h3>{cat.name}</h3>

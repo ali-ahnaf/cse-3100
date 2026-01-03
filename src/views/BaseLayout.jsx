@@ -6,9 +6,9 @@ const BaseLayout = () => {
       <header
         className="site-header"
         style={{
-          backgroundColor: '#8B5E3C', // deep cat-theme brown
+          backgroundColor: '#8B5E3C', 
           color: '#fff',
-          padding: '1.4rem 2rem', // navbar height slightly increased
+          padding: '1.4rem 2rem', 
           display: 'flex',
           alignItems: 'center',
           boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
@@ -59,7 +59,7 @@ const BaseLayout = () => {
                       color: '#fff',
                       textDecoration: 'none',
                       fontWeight: '500',
-                      padding: '0.45rem 0.9rem', // slightly taller links
+                      padding: '0.45rem 0.9rem', 
                       borderRadius: '4px',
                       transition: 'background 0.3s',
                     }}

@@ -13,10 +13,10 @@ export default function AboutUs() {
           className="about-heading"
           style={{
             color: '#b66e41',
-            marginBottom: '0.5rem', // reduced gap
+            marginBottom: '0.5rem', 
             fontSize: '2rem',
             fontWeight: '700',
-            fontStyle: 'normal', // ensure not italic
+            fontStyle: 'normal',
             borderBottom: '2px solid #f28c28',
             display: 'inline-block',
             paddingBottom: '0.3rem',
@@ -31,11 +31,11 @@ export default function AboutUs() {
             marginBottom: '2rem',
             fontSize: '1.05rem',
             fontWeight: '600',
-            fontStyle: 'normal', // ensure not italic
+            fontStyle: 'normal',
           }}
         >
           At Purrfect Adoption, our mission is to connect loving families with cats in need of
-          forever homes. We ensure that every cat is treated with care, respect, and compassion,
+          forever homes. We ensure that every cat is treated with care, respect, and compassion
           while educating our community about responsible pet ownership and animal welfare.
         </p>
 
@@ -44,7 +44,7 @@ export default function AboutUs() {
           className="about-heading"
           style={{
             color: '#b66e41',
-            marginBottom: '0.5rem', // reduced gap
+            marginBottom: '0.5rem', 
             fontSize: '2rem',
             fontWeight: '700',
             fontStyle: 'normal',
@@ -76,7 +76,7 @@ export default function AboutUs() {
           className="about-heading"
           style={{
             color: '#b66e41',
-            marginBottom: '0.5rem', // reduced gap
+            marginBottom: '0.5rem',
             fontSize: '2rem',
             fontWeight: '700',
             fontStyle: 'normal',
@@ -93,7 +93,7 @@ export default function AboutUs() {
           style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '1.5rem', // slightly reduced
+            gap: '1.5rem', 
             justifyContent: 'center',
             marginTop: '1.5rem',
           }}
