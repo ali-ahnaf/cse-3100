@@ -1,48 +1,80 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .layout {
   display: flex;
+  flex-direction: column; 
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  overflow: hidden; 
 }
 
 header {
   padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  background-color: #6f5da6;
+  color: #fff; 
+  border-bottom: 2px solid #5a4a8a;
 }
 
 main {
   flex: 1;
-  padding: 1em;
-  display: list-item;
+  padding: 2em 1em; 
+  display: block;
+  min-height: calc(100vh - 120px); 
 }
 
 footer {
   padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
+  text-align: center; 
+  position: static;
+  top: auto; 
   width: 100%;
   z-index: 9999;
-  background: red;
+  background: #6f5da6; 
+  color: white; 
+  border-top: 2px solid #5a4a8a;
 }
 
 .cat-card {
   border: 1px solid #ddd;
+  border-radius: 8px; 
   text-align: center;
-  height: 150px;
+  height: auto; 
+  min-height: 300px; 
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between; 
   overflow: hidden;
+  padding: 0.5rem; 
+  background-color: #fff; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s; 
+}
+
+.cat-card:hover {
+  transform: translateY(-5px);
+}
+
+.cat-card img {
+  width: 100%;
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 6px; 
 }
 
 .cat-info {
-  background: #000;
+  background: #6f5da6; 
   color: #fff;
   border-radius: 4px;
+  padding: 0.75rem; 
+  margin-top: 0.5rem;
+}
+
+#cats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
