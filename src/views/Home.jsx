@@ -65,9 +65,9 @@ export default function Home() {
         {loading ? (
           <p>Loading featured cats...</p>
         ) : (
-          <div className="mt-2 row g-4" id="cats-container">
+          <div className="cats-grid" id="cats-container">
             {cats.map((cat, i) => (
-              <div key={i} className="col">
+              <div key={i} className="cat-card-wrapper">
                 <div className="cat-card">
                   <img
                     src={cat.image}
@@ -76,7 +76,7 @@ export default function Home() {
                   />
                   <div className="cat-info">
                     <h3 className="cat-name">{cat.name}</h3>
-                    <p className="cat-age">Age: {cat.age} years</p>
+                    <p className="cat-age">Age: {cat.age}</p>
                     <p className="cat-breed">Breed: {cat.breed}</p>
                   </div>
                 </div>

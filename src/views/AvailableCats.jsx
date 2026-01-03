@@ -11,9 +11,14 @@ const availableCats = [
   { name: 'Bella', age: '1', breed: 'Sphynx' },
 ];
 
+const availableBreeds = ['Sphynx', 'Persian', 'Bengal', 'Maine Coon', 'Ragdoll', 'British Shorthair', 'Siamese'];
+
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filteredCats, setFilteredCats] = useState([]);
+  const [selectedBreed, setSelectedBreed] = useState('All');
+  const [searchName, setSearchName] = useState('');
 
   useEffect(() => {
     let mounted = true;
@@ -35,6 +40,7 @@ export default function AvailableCats() {
           }));
 
           setCats(catsWithImages);
+          setFilteredCats(catsWithImages);
           setLoading(false);
         }
       } catch (error) {
@@ -52,17 +58,144 @@ export default function AvailableCats() {
     };
   }, []);
 
+  useEffect(() => {
+    let result = [...cats];
+    
+    // Filter by breed
+    if (selectedBreed !== 'All') {
+      result = result.filter(cat => cat.breed === selectedBreed);
+    }
+    
+    // Filter by name search
+    if (searchName.trim() !== '') {
+      result = result.filter(cat => 
+        cat.name.toLowerCase().includes(searchName.toLowerCase())
+      );
+    }
+    
+    setFilteredCats(result);
+  }, [selectedBreed, searchName, cats]);
+
+  const handleBreedChange = (e) => {
+    setSelectedBreed(e.target.value);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchName(e.target.value);
+  };
+
+  const handleClearFilters = () => {
+    setSelectedBreed('All');
+    setSearchName('');
+  };
+
   return (
-    <section className="text-center mt-4">
+    <section className="available-cats-page">
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
 
+      {/* Filtering Controls */}
+      <div className="filter-container">
+        <div className="filter-header">
+          <h3>Filter Cats</h3>
+          <button 
+            className="clear-filters-btn"
+            onClick={handleClearFilters}
+            disabled={selectedBreed === 'All' && searchName === ''}
+          >
+            Clear Filters
+          </button>
+        </div>
+        
+        <div className="filter-controls">
+          <div className="filter-group">
+            <label htmlFor="breedFilter" className="filter-label">Filter by Breed</label>
+            <select 
+              id="breedFilter" 
+              className="filter-select"
+              value={selectedBreed}
+              onChange={handleBreedChange}
+            >
+              <option value="All">All Breeds</option>
+              {availableBreeds.map((breed, index) => (
+                <option key={index} value={breed}>{breed}</option>
+              ))}
+            </select>
+          </div>
+          
+          <div className="filter-group">
+            <label htmlFor="nameSearch" className="filter-label">Search by Name</label>
+            <div className="search-container">
+              <input 
+                type="text" 
+                id="nameSearch" 
+                className="filter-input"
+                placeholder="Enter cat name..."
+                value={searchName}
+                onChange={handleSearchChange}
+              />
+              {searchName && (
+                <button 
+                  className="clear-search-btn"
+                  onClick={() => setSearchName('')}
+                >
+                  ×
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+        
+        {/* Active filters indicator */}
+        {(selectedBreed !== 'All' || searchName) && (
+          <div className="active-filters">
+            <span>Active Filters:</span>
+            {selectedBreed !== 'All' && (
+              <span className="filter-tag">
+                Breed: {selectedBreed}
+                <button onClick={() => setSelectedBreed('All')}>
+                  ×
+                </button>
+              </span>
+            )}
+            {searchName && (
+              <span className="filter-tag">
+                Name: "{searchName}"
+                <button onClick={() => setSearchName('')}>
+                  ×
+                </button>
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Results count */}
+      <div className="results-count">
+        Showing {filteredCats.length} of {cats.length} cats
+        {(selectedBreed !== 'All' || searchName) && (
+          <span className="filtered-count">
+            (filtered from {cats.length})
+          </span>
+        )}
+      </div>
+
       {loading ? (
-        <p>Loading cats...</p>
+        <div className="loading">Loading cats...</div>
+      ) : filteredCats.length === 0 ? (
+        <div className="no-results">
+          <p>No cats found matching your criteria. Try changing your filters.</p>
+          <button 
+            className="reset-filters-btn"
+            onClick={handleClearFilters}
+          >
+            Clear All Filters
+          </button>
+        </div>
       ) : (
-        <div className="mt-2 row g-4 cats-container" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col">
+        <div className="cats-grid" id="cats-container">
+          {filteredCats.map((cat, i) => (
+            <div key={i} className="cat-card-wrapper">
               <div className="cat-card">
                 <img
                   src={cat.image}
