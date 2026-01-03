@@ -1,76 +1,36 @@
-import { useEffect, useState } from 'react';
+import whiskers from '../assets/images/cat-whiskers.jpg';
+import mittens from '../assets/images/cat-mittens.jpg';
+import shadow from '../assets/images/cat-shadow.jpg';
+import luna from '../assets/images/cat-luna.jpg';
+import hero from '../assets/images/hero-banner.jpg';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { id: 1, name: 'Whiskers', age: '2 years', breed: 'Persian', image: whiskers },
+  { id: 2, name: 'Mittens', age: '2 years', breed: 'Siamese', image: mittens },
+  { id: 3, name: 'Shadow', age: '1 year', breed: 'Bengal', image: shadow },
+  { id: 4, name: 'Luna', age: '4 months', breed: 'Birman', image: luna },
 ];
 
 export default function Home() {
-  const [cats, setCats] = useState([]);
-
-  useEffect(() => {
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
-        );
-
-        const catsWithImages = featuredCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
-    };
-
-    fetchCatImages();
-  });
-
   return (
     <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
+      <section className="hero-section text-center" style={{ backgroundImage: `url(${hero})` }}>
+        <div className="container">
+          <h1 className="display-3 fw-bold">Welcome to Purrfect Adoption</h1>
+          <p className="lead col-lg-8 mx-auto">Find your new best friend today. Our cats are waiting for their loving hoomans.</p>
+        </div>
       </section>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
+      <section className="container py-5">
+        <h2 className="text-center mb-5 display-5">Featured Cats</h2>
+        <div className="row g-4">
+          {featuredCats.map(cat => (
+            <div key={cat.id} className="col-md-6 col-lg-3">
+              <div className="cat-card h-100">
+                <img src={cat.image} alt={cat.name} className="w-100" />
                 <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
+                  <h3 className="h4">{cat.name}</h3>
+                  <p>Age: {cat.age}<br />Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>
