@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Bob Doe', age: '3', breed: 'Persian' },
+  { name: 'Bob Doe', age: '4', breed: 'Birman' },
+  { name: 'Bob Doe', age: '2 months', breed: 'Siamese' },
+  { name: 'Bob Doe', age: '2 months', breed: 'Tabby' },
 ];
 
 export default function Home() {
@@ -14,9 +16,7 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
+            fetch('https://api.thecatapi.com/v1/images/search').then((res) => res.json())
           )
         );
 
@@ -25,58 +25,56 @@ export default function Home() {
           image: responses[index][0].url,
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
-    <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
-      </section>
+    <div className="layout">
+      {/* NAVIGATION BAR SECTION */}
+      <header>
+        <Link to="/" className="logo">Purrfect Adoption</Link>
+        <nav>
+          <Link to="/available-cats">Available cats</Link>
+          <Link to="/donate">Donate</Link>
+        </nav>
+      </header>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+      <main>
+        {/* HERO SECTION */}
+        <section className="welcome-section">
+          <h1>Welcome to Purrfect Adoption</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc.
+          </p>
+        </section>
+
+        {/* FEATURED SECTION */}
+        <h2 className="featured-header">Featured cats</h2>
+        <div className="cat-grid">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
+            <div key={i} className="cat-card">
+              <div className="cat-image-container">
+                <img src={cat.image} alt={cat.name} />
+              </div>
+              <div className="cat-info">
+                <h3>{cat.name}</h3>
+                <p>Age: {cat.age}</p>
               </div>
             </div>
           ))}
         </div>
-      </section>
-    </>
+      </main>
+
+      <footer>
+        <p>© 2026 Purrfect Adoption</p>
+      </footer>
+    </div>
   );
 }
