@@ -1,16 +1,28 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: 'Whiskers', age: '2', breed: 'Persian' },
+  { name: 'Mittens', age: '2', breed: 'Siamese' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
+  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
+  { name: 'Luna', age: '4', breed: 'Sphynx' },
+  { name: 'Simba', age: '2', breed: 'Birman' },
+];
+
+const breeds = [
+  'Sphynx',
+  'Peterbald',
+  'Birman',
+  'Abyssinian',
+  'Persian',
+  'Bengal',
+  'Siamese',
 ];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [selectedBreed, setSelectedBreed] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     // Fetch cat images from an API endpoint and assign it to the featuredCats list
@@ -37,13 +49,45 @@ export default function AvailableCats() {
     fetchCatImages();
   }, []);
 
+  const filteredCats = cats.filter((cat) => {
+    const matchesBreed = selectedBreed ? cat.breed === selectedBreed : true;
+    const matchesName = cat.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    return matchesBreed && matchesName;
+  });
+
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <section className="mt-4">
+      <div className="text-center section-panel">
+        <h2>Available Cats</h2>
+        <p className="lead">Meet our adorable cats looking for their forever home!</p>
+      </div>
+
+      <div className="d-flex justify-content-center gap-3 mb-4 mt-4 filter-bar">
+        <select
+          className="form-select w-auto"
+          value={selectedBreed}
+          onChange={(e) => setSelectedBreed(e.target.value)}
+        >
+          <option value="">Select Breed</option>
+          {breeds.map((breed) => (
+            <option key={breed} value={breed}>
+              {breed}
+            </option>
+          ))}
+        </select>
+        <input
+          type="text"
+          className="form-control w-auto"
+          placeholder="Search by name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
+        {filteredCats.map((cat, i) => (
           <div key={i} className="col-md-4">
             <div className="cat-card">
               <img
@@ -59,6 +103,7 @@ export default function AvailableCats() {
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
                 <p className="mb-0">Age: {cat.age}</p>
+                <p className="mb-0">Breed: {cat.breed}</p>
               </div>
             </div>
           </div>
