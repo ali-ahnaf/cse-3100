@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Luna', age: '1 year' },
+  { name: 'Simba', age: '2 years' },
+  { name: 'Milo', age: '3 years' },
+  { name: 'Bella', age: '2 years' },
+  { name: 'Oliver', age: '1.5 years' },
+  { name: 'Chloe', age: '4 years' },
+  { name: 'Leo', age: '2.5 years' },
+  { name: 'Nala', age: '1 year' },
+  { name: 'Charlie', age: '3 years' },
 ];
 
 export default function Home() {
@@ -14,69 +20,84 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
+            fetch('https://api.thecatapi.com/v1/images/search').then(res => res.json())
           )
         );
 
         const catsWithImages = featuredCats.map((cat, index) => ({
           ...cat,
-          image: responses[index][0].url,
+          image: responses[index][0]?.url || '',
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
-  });
+  }, []);
 
   return (
-    <>
+    <div className="home-page">
+      {/* Intro Section */}
       <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+        <h2 style={{ textAlign: 'center' }}>Welcome to Purrfect Adoption</h2>
+        <p
+          style={{
+            textAlign: 'center',
+            marginTop: '12px',
+            marginBottom: '40px',
+          }}
+        >
+          We believe every cat deserves a loving and safe home.
+          <br />
+          At Purrfect Adoption, we connect adorable cats with kind-hearted
+          people who are ready to give them a forever family.
         </p>
       </section>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                </div>
+      {/* Featured Cats */}
+      <section className="mt-4">
+        <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>
+          Featured Cats
+        </h2>
+        <div
+          className="team-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '20px',
+            padding: '0 40px',
+          }}
+        >
+          {cats.map((cat, index) => (
+            <div key={index} className="team-card">
+              <img
+                src={cat.image}
+                alt={cat.name}
+                style={{
+                  width: '100%',
+                  height: '220px',
+                  objectFit: 'cover',
+                  borderRadius: '8px',
+                }}
+              />
+              <div
+                className="team-info"
+                style={{
+                  textAlign: 'center',
+                  marginTop: '6px',
+                  fontSize: '14px', // 👈 smaller text
+                }}
+              >
+                <strong style={{ fontSize: '14px' }}>{cat.name}</strong>
+                <p style={{ fontSize: '13px', margin: 0 }}>Age: {cat.age}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }
