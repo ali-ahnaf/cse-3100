@@ -1,60 +1,69 @@
-# Purrfect Adoption - Debugging Challenge
-# ⚠️ THE PROJECT IS BROKEN! ⚠️
+# CSE-3100: Web Application Development with DevOps
 
-Welcome to the **Purrfect Adoption Debugging Challenge**.
+## Marks Distribution
 
-This project has been sabotaged! Your task is to investigate, debug, and fix the application. You cannot simply use AI to "generate a new app" because the goal is to **fix existing bugs** in the logic, layout, and component structure.
+| Strategy                     | Marks |
+|------------------------------|-------|
+| Attendance                   | 20%   |
+| Assignment                   | 10%   |
+| Project Proposal Submission  | 5%    |
+| Project Checkpoint 1         | 15%   |
+| Project Checkpoint 2         | 15%   |
+| Final Project Submission     | 20%   |
+| Lab Exam                     | 15%   |
+| **Total**                    | **100%** |
 
-## The Mission
-The previous developer left the codebase in a chaotic state. Nothing works as expected.
+---
 
-### 1. Fix the Layout (CSS Chaos) `index.css` (2 marks)
-*   **Task**: Restore a clean, responsive layout. Use Flexbox/Grid correctly.
+## Assignment Tasks
 
-### 2. Fix the Navigation `BaseLayout.jsx` (2 marks)
-*   **Task**: Fix the React Router setup so pages render correctly.
+### 1. Fix the Layout (CSS Chaos) — `index.css` (2 marks)
+- Restore a clean, responsive layout.
+- Use Flexbox/Grid correctly.
 
-### 3. Fix the Logic `Home.jsx` (1 mark)
-*   **Task**: Fix the `useEffect` hook, the API fetch implementation, and state updates.
+### 2. Fix the Navigation — `BaseLayout.jsx` (2 marks)
+- Fix the React Router setup so pages render correctly.
 
-### 4. Fix Component Rendering `AvailableCats.jsx` (1 mark)
-*   **Task**: Fix the JSX syntax and ensure the detailed list renders correctly.
+### 3. Fix the Logic — `Home.jsx` (1 mark)
+- Fix the `useEffect` hook.
+- Correct API fetch implementation and state updates.
 
-### 5. Add the following features
-The task is to add the following features to the cat adoption website demonstrated earlier in the lecture. Check slide for UI mockups.
+### 4. Fix Component Rendering — `AvailableCats.jsx` (1 mark)
+- Fix JSX syntax.
+- Ensure the detailed list renders correctly.
 
-1. **Breed type** (1 mark) - add a new field in the cats list to show which breed class they belong to. Possible breeds are: Sphynx, Peterbald, Birman, Abyssinian, Persian, Bengal, Siamese. Note: this should be reflected on the UI as well.
-2. **Filtering option** (2 marks) - add 2 filters in the “Available cats” page. One of them should be a dropdown and used to filter by cat breed. The other should be a search text box to search by cat name.
-3. **New pages** (1 marks) - About Us and Contact Us page.
+### 5. Add the Following Features
 
-#### HINT: You might have to integrate bootstrap!
+The task is to add the following features to the cat adoption website demonstrated earlier in the lecture.
+
+1. **Breed Type** (1 mark)  
+   - Add a new field in the cats list to show their breed class.  
+   - Possible breeds: Sphynx, Peterbald, Birman, Abyssinian, Persian, Bengal, Siamese.  
+   - This must be reflected in the UI.
+
+2. **Filtering Option** (2 marks)  
+   - Add two filters in the “Available Cats” page:
+     - A dropdown to filter by cat breed.
+     - A search text box to search by cat name.
+
+3. **New Pages** (1 mark)  
+   - Create an **About Us** page.
+   - Create a **Contact Us** page.
+
+---
 
 ## UI Mockups
 
 | Mockup | Mockup |
-|-------|-------|
+|------|------|
 | <img src="https://github.com/user-attachments/assets/fb24a67f-4276-4452-a0c3-83d7743deae2" width="100%" /> | <img src="https://github.com/user-attachments/assets/5a85f9fe-cf6a-4a3e-aa02-10433c4b4f77" width="100%" /> |
 | <img src="https://github.com/user-attachments/assets/5dd3b5f5-d49a-4281-9628-3afe0b6970e9" width="100%" /> | <img src="https://github.com/user-attachments/assets/12cd720a-6e70-4ee6-ab7e-a112877e579b" width="100%" /> |
 | <img src="https://github.com/user-attachments/assets/a555d83c-5d0a-4295-877c-e5d7575d8dbe" width="100%" /> |  |
 
+---
 
 ## Setup Instructions
 
-1.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
-
-2.  **Run the app**:
-    ```bash
-    npm run dev
-    ```
-
-3.  **Debug**: Open your browser console and start hunting bugs!
-
-## Rules
-*   You must fix the *existing* code. Do not rewrite everything from scratch.
-*   Pay attention to console warnings (keys, props, etc.).
-*   Make the site look "Purrfect" again!
-
-Good luck! 🐱
+1. Clone the repository.
+2. Install dependencies.
+3. Run the development server.
