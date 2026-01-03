@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
+  { name: 'Whiskers', age: '2', breed: 'Persian' },
+  { name: 'Mittens', age: '2', breed: 'Siamese' },
+  { name: 'Shadow', age: '1', breed: 'Bengal' },
+  { name: 'Pumpkin', age: '3', breed: 'Maine Coon' },
+  { name: 'Luna', age: '4 months', breed: 'Ragdoll' },
+  { name: 'Simba', age: '2', breed: 'British Shorthair' },
+  { name: 'Oliver', age: '3', breed: 'Persian' },
+  { name: 'Bella', age: '1', breed: 'Sphynx' },
 ];
 
 export default function AvailableCats() {
@@ -15,7 +17,7 @@ export default function AvailableCats() {
 
   useEffect(() => {
     let mounted = true;
-    
+
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
@@ -48,7 +50,7 @@ export default function AvailableCats() {
     return () => {
       mounted = false;
     };
-  }, []); 
+  }, []);
 
   return (
     <section className="text-center mt-4">
@@ -60,21 +62,17 @@ export default function AvailableCats() {
       ) : (
         <div className="mt-2 row g-4 cats-container" id="cats-container">
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={i} className="col">
               <div className="cat-card">
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="img-fluid mb-2"
-                  style={{
-                    borderRadius: '8px',
-                    height: '200px',
-                    objectFit: 'cover',
-                  }}
+                  className="cat-image"
                 />
                 <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
+                  <h3 className="cat-name">{cat.name}</h3>
+                  <p className="cat-age">Age: {cat.age} years</p>
+                  <p className="cat-breed">Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>

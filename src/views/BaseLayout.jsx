@@ -1,45 +1,30 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const BaseLayout = () => {
-  const location = useLocation();
-  
   return (
     <div className="layout">
-      <header className="d-flex align-items-center justify-content-between bg-light">
-        <h1 className="m-0">
-          <Link className="text-decoration-none text-dark" to="/">
-            Purrfect Adoption
-          </Link>
+      <header className="site-header">
+        <h1 className="site-title">
+          <Link to="/" className="title-link">Purrfect Adoption</Link>
         </h1>
-        <nav>
-          <ul className="nav">
+        <nav className="site-nav">
+          <ul className="nav-list">
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${location.pathname === '/' || location.pathname === '/home' ? 'active' : ''}`} 
-                to="/"
-              >
-                Home
-              </Link>
+              <Link to="/available-cats" className="nav-link">Available Cats</Link>
             </li>
-            
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${location.pathname === '/available-cats' ? 'active' : ''}`} 
-                to="/available-cats"
-              >
-                Available Cats
-              </Link>
+              <Link to="/donate" className="nav-link">Donate</Link>
             </li>
           </ul>
         </nav>
       </header>
       
-      <main id="content" className="container py-4">
-        <Outlet /> 
+      <main className="site-main">
+        <Outlet />
       </main>
       
-      <footer className="bg-light text-center py-3">
-        <p className="m-0">© Copyright 2024 Purrfect Adoption</p>
+      <footer className="site-footer">
+        <p>© Copyright 2024 Purrfect Adoption</p>
       </footer>
     </div>
   );
