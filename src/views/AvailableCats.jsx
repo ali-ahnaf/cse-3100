@@ -42,9 +42,9 @@ export default function AvailableCats() {
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
 
-      <div className="mt-2 row g-4 cats-container" id="cats-container">
+      <div className="mt-2 cats-container">
         {cats.map((cat, i) => (
-          <div key={i} className="col-md-4">
+          <div key={i} className="cat-item">
             <div className="cat-card">
               <img
                 src={cat.image}

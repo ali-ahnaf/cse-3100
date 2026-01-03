@@ -4,7 +4,7 @@ const BaseLayout = () => {
   return (
     <div className="layout">
       <header className="d-flex align-items-center bg-light">
-        <h1>
+        <h1 className="brand">
           <Link className="text-decoration-none text-dark" to="/">
             Purrfect Adoption
           </Link>
@@ -21,7 +21,11 @@ const BaseLayout = () => {
         </nav>
       </header>
       <main id="content">
-        <Outlet />
+        <div className="site-shell">
+          <div className="panel">
+            <Outlet />
+          </div>
+        </div>
       </main>
       <footer className="bg-light">
         <p>© Copyright 2024</p>
