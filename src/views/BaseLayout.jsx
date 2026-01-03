@@ -1,57 +1,45 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const BaseLayout = () => {
   return (
     <div className="layout">
-      <header className="d-flex align-items-center bg-light p-3">
-        <h1 className="m-0">
-          <NavLink className="text-decoration-none text-dark" to="/">
+      <header className="site-header">
+        <h1>
+          <Link className="site-title" to="/">
             Purrfect Adoption
-          </NavLink>
+          </Link>
         </h1>
-        <div className="flex-grow-1"></div>
-        <nav aria-label="Main navigation">
-          <ul className="nav">
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  'nav-link' + (isActive ? ' active' : '')
-                }
-                to="/available-cats"
-              >
-                Available Cats
-              </NavLink>
+        <div className="spacer" />
+        <nav>
+          <ul className="nav-links">
+            <li>
+              <Link className="nav-link" to="/about">
+                About us
+              </Link>
             </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  'nav-link' + (isActive ? ' active' : '')
-                }
-                to="/about"
-              >
-                About
-              </NavLink>
+            <li>
+              <Link className="nav-link" to="/available-cats">
+                Available cats
+              </Link>
             </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  'nav-link' + (isActive ? ' active' : '')
-                }
-                to="/contact"
-              >
-                Contact
-              </NavLink>
+            <li>
+              <Link className="nav-link" to="/donate">
+                Donate
+              </Link>
+            </li>
+            <li>
+              <Link className="nav-link" to="/contact">
+                Contact us
+              </Link>
             </li>
           </ul>
         </nav>
       </header>
-
       <main id="content">
         <Outlet />
       </main>
-
-      <footer className="bg-light text-center p-3">
-        <p className="mb-0">© {new Date().getFullYear()} Purrfect Adoption</p>
+      <footer className="site-footer">
+        <p>© Copyright 2024</p>
       </footer>
     </div>
   );

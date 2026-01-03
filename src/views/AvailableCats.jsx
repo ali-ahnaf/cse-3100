@@ -1,96 +1,150 @@
 import { useEffect, useState } from 'react';
 
 const availableCats = [
-  { name: 'Whiskers', age: '2', breed: 'Persian' },
-  { name: 'Mittens', age: '2', breed: 'Siamese' },
-  { name: 'Shadow', age: '1', breed: 'Bengal' },
-  { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
-  { name: 'Luna', age: '4', breed: 'Birman' },
-  { name: 'Simba', age: '2', breed: 'Sphynx' },
-  { name: 'Oscar', age: '1', breed: 'Peterbald' },
-  { name: 'Bella', age: '3', breed: 'Persian' },
+  {
+    name: 'Whiskers',
+    age: '2',
+    breed: 'Siamese',
+    location: 'Shelter A',
+    description: 'Playful and affectionate. Good with kids.',
+    image: 'https://cdn2.thecatapi.com/images/9j7.jpg',
+  },
+  {
+    name: 'Mittens',
+    age: '2',
+    breed: 'Persian',
+    location: 'Foster Home',
+    description: 'Calm lap cat who enjoys naps and brushing.',
+    image: 'https://cdn2.thecatapi.com/images/ae.jpg',
+  },
+  {
+    name: 'Shadow',
+    age: '1',
+    breed: 'Abyssinian',
+    location: 'Shelter B',
+    description: 'Curious and energetic — loves to climb.',
+    image: 'https://cdn2.thecatapi.com/images/bb.jpg',
+  },
+  {
+    name: 'Pumpkin',
+    age: '3',
+    breed: 'Bengal',
+    location: 'Shelter A',
+    description: 'Active and playful; needs space to run.',
+    image: 'https://cdn2.thecatapi.com/images/cc.jpg',
+  },
+  {
+    name: 'Luna',
+    age: '4',
+    breed: 'Birman',
+    location: 'Foster Home',
+    description: 'Gentle and social; great with other pets.',
+    image: 'https://cdn2.thecatapi.com/images/dd.jpg',
+  },
+  {
+    name: 'Simba',
+    age: '2',
+    breed: 'Sphynx',
+    location: 'Shelter C',
+    description: 'Affectionate and attention-seeking.',
+    image: 'https://cdn2.thecatapi.com/images/ee.jpg',
+  },
 ];
 
-const ALL_BREEDS = ['All','Sphynx','Peterbald','Birman','Abyssinian','Persian','Bengal','Siamese'];
+const BREEDS = [
+  'All',
+  'Siamese',
+  'Persian',
+  'Abyssinian',
+  'Bengal',
+  'Birman',
+  'Sphynx',
+  'Peterbald',
+];
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
   const [filteredCats, setFilteredCats] = useState([]);
-  const [breedFilter, setBreedFilter] = useState('All');
-  const [nameSearch, setNameSearch] = useState('');
+  const [selectedBreed, setSelectedBreed] = useState('All');
+  const [searchName, setSearchName] = useState('');
 
+  // initialize cats (NO LOOP)
   useEffect(() => {
-    let cancelled = false;
-
-    const fetchImages = async () => {
-      try {
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then(r => r.json())
-          )
-        );
-        if (cancelled) return;
-
-        const catsWithImages = availableCats.map((cat, i) => ({
-          ...cat,
-          image: responses[i]?.[0]?.url || '',
-        }));
-
-        setCats(catsWithImages);
-        setFilteredCats(catsWithImages);
-      } catch(e) { console.error(e); }
-    };
-    fetchImages();
-    return () => { cancelled = true; };
+    setCats(availableCats);
+    setFilteredCats(availableCats);
   }, []);
 
+  // filtering logic
   useEffect(() => {
     let result = [...cats];
-    if (breedFilter !== 'All') result = result.filter(c => c.breed === breedFilter);
-    if (nameSearch.trim() !== '') {
-      const term = nameSearch.toLowerCase();
-      result = result.filter(c => c.name.toLowerCase().includes(term));
+
+    if (selectedBreed !== 'All') {
+      result = result.filter((cat) => cat.breed === selectedBreed);
     }
+
+    if (searchName.trim() !== '') {
+      result = result.filter((cat) =>
+        cat.name.toLowerCase().includes(searchName.toLowerCase())
+      );
+    }
+
     setFilteredCats(result);
-  }, [cats, breedFilter, nameSearch]);
+  }, [cats, selectedBreed, searchName]);
 
   return (
-    <section className="text-center mt-4">
-      <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+    <section className="available-cats-section">
+      <div className="container">
+        <h2 className="text-center mb-3">Available Cats</h2>
 
-      <div className="filters d-flex justify-content-center gap-3 mb-4 flex-wrap">
-        <div>
-          <label>Filter by Breed:</label>
-          <select value={breedFilter} onChange={e => setBreedFilter(e.target.value)}>
-            {ALL_BREEDS.map(b => <option key={b} value={b}>{b}</option>)}
+        {/* Filters */}
+        <div className="filters-row">
+          <select
+            className="breed-select"
+            value={selectedBreed}
+            onChange={(e) => setSelectedBreed(e.target.value)}
+          >
+            {BREEDS.map((breed) => (
+              <option key={breed} value={breed}>
+                {breed}
+              </option>
+            ))}
           </select>
-        </div>
 
-        <div>
-          <label>Search by Name:</label>
           <input
             type="text"
-            placeholder="Enter name..."
-            value={nameSearch}
-            onChange={e => setNameSearch(e.target.value)}
+            className="name-search"
+            placeholder="Search by name"
+            value={searchName}
+            onChange={(e) => setSearchName(e.target.value)}
           />
         </div>
-      </div>
 
-      <div className="cats-grid mt-2">
-        {filteredCats.length ? filteredCats.map((cat, i) => (
-          <div key={i} className="cat-card">
-            <img src={cat.image} alt={cat.name} />
-            <div className="cat-info">
-              <h3>{cat.name}</h3>
-              <p>Age: {cat.age}</p>
-              <p>Breed: {cat.breed}</p>
-            </div>
-          </div>
-        )) : (
-          <p>No cats match your criteria.</p>
-        )}
+        <hr className="cats-divider" />
+
+        {/* Cats Grid */}
+        <div className="cats-grid">
+          {filteredCats.length > 0 ? (
+            filteredCats.map((cat, i) => (
+              <div key={i} className="cat-card">
+                <div
+                  className="cat-image"
+                  style={{ backgroundImage: `url(${cat.image})` }}
+                />
+                <div className="cat-info">
+                  <h3>{cat.name}</h3>
+                  <p>
+                    <strong>Age:</strong> {cat.age}
+                  </p>
+                  <p>
+                    <strong>Breed:</strong> {cat.breed}
+                  </p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="text-center">No cats found.</p>
+          )}
+        </div>
       </div>
     </section>
   );
