@@ -45,11 +45,13 @@ const BaseLayout = () => {
           </ul>
         </nav>
       </header>
+
       <main id="content">
         <Outlet />
       </main>
+
       <footer className="bg-light text-center p-3">
-        <p className="mb-0">© Copyright {new Date().getFullYear()}</p>
+        <p className="mb-0">© {new Date().getFullYear()} Purrfect Adoption</p>
       </footer>
     </div>
   );
