@@ -1,49 +1,70 @@
-import { useEffect, useState } from 'react';
-
-const availableCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
-  { name: 'Pumpkin', age: '3' },
-  { name: 'Luna', age: '4' },
-  { name: 'Simba', age: '2' },
-];
+import { useEffect, useState, useMemo } from 'react';
+import { getCats, BREEDS } from '../lib/getCats';
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [selectedBreed, setSelectedBreed] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
-    const fetchCatImages = async () => {
-      try {
-        const responses = await Promise.all(
-          availableCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
-          )
-        );
-        const catsWithImages = availableCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
-
-        setCats(catsWithImages);
-      } catch (error) {
-        console.error('Error fetching cat images:', error);
-      }
-    };
-
-    fetchCatImages();
+    let mounted = true;
+    
+    getCats(16).then((data) => {
+      if (mounted) setCats(data);
+    });
+    return () => (mounted = false);
   }, []);
+
+  const filteredCats = useMemo(() => {
+    const normalize = (s = '') =>
+      s
+        .toString()
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .toLowerCase();
+
+    const q = normalize(searchTerm.trim());
+
+    return cats.filter((cat) => {
+      const matchesBreed = selectedBreed === 'all' || cat.breed === selectedBreed;
+      if (!q) return matchesBreed;
+      const name = normalize(cat.name);
+      const matchesSearch = name.includes(q);
+      return matchesBreed && matchesSearch;
+    });
+  }, [cats, selectedBreed, searchTerm]);
 
   return (
     <section className="text-center mt-4">
       <h2>Available Cats</h2>
-      <p>Meet our adorable cats looking for their forever home!</p>
+
+      <div className="filters">
+        <label htmlFor="cats">Select Breed:</label>
+        <select
+          name="cats"
+          id="cats"
+          className="filter-select"
+          value={selectedBreed}
+          onChange={(e) => setSelectedBreed(e.target.value)}
+        >
+          <option value="all">All breeds</option>
+          {BREEDS.map((b) => (
+            <option key={b} value={b}>{b}</option>
+          ))}
+        </select>
+
+        <input
+          type="text"
+          className="filter-search"
+          placeholder="Search by name..."
+          aria-label="Search cats by name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
 
       <div className="mt-2 row g-4 cats-container" id="cats-container">
-        {cats.map((cat, i) => (
+        {filteredCats.map((cat, i) => (
           <div key={i} className="col-md-4">
             <div className="cat-card">
               <img
@@ -58,11 +79,17 @@ export default function AvailableCats() {
               />
               <div className="cat-info">
                 <h3 className="h5 mb-1">{cat.name}</h3>
+                <p className="mb-0">Breed: {cat.breed}</p>
                 <p className="mb-0">Age: {cat.age}</p>
               </div>
             </div>
           </div>
         ))}
+        {filteredCats.length === 0 && (
+          <div style={{ width: '100%', textAlign: 'center', padding: '2rem 0' }}>
+            <p style={{ color: '#666' }}>No cats match your search.</p>
+          </div>
+        )}
       </div>
     </section>
   );
