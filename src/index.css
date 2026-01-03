@@ -1,48 +1,101 @@
+/* Global reset */
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* Page layout */
 .layout {
-  display: flex;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  display: flex;
+  flex-direction: column;
+  background: #f7f7f7;
 }
 
-header {
-  padding: 1em;
-  background-color: #fff;
+/* Header */
+header.header-bar {
+  display: flex;
+  justify-content: space-between; /* logo left, nav right */
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #222;
   color: #fff;
 }
 
-main {
-  flex: 1;
-  padding: 1em;
-  display: list-item;
+/* Logo */
+.logo-link {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
 }
 
-footer {
-  padding: 1em;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
-}
-
-.cat-card {
-  border: 1px solid #ddd;
-  text-align: center;
-  height: 150px;
+/* Navigation */
+nav ul.nav {
+  list-style: none;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  gap: 1.5rem; /* spacing between links */
+}
+
+nav ul.nav li.nav-item {
+  /* no extra styles needed */
+}
+
+nav ul.nav li.nav-item .nav-link {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+nav ul.nav li.nav-item .nav-link:hover {
+  color: #ff8c00; /* a nice accent color on hover */
+}
+
+/* Main content */
+main.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Footer */
+footer.footer {
+  padding: 1rem;
+  text-align: center;
+  background: #222;
+  color: #fff;
+  margin-top: auto;
+}
+
+/* Cat cards */
+.cat-card {
+  border: none;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .cat-info {
-  background: #000;
+  background: #111;
   color: #fff;
-  border-radius: 4px;
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 0 0 12px 12px;
 }
+
+.home-cat-info {
+  background: #111 !important;      /* black background */
+  color: #fff !important;           /* white text */
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 0 0 12px 12px;
+}
+
