@@ -141,6 +141,16 @@ footer {
   margin-top: auto;
 }
 
+.image-placeholder{
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  color: #777;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
 @media (min-width: 900px){
   .cats-container{ grid-template-columns: repeat(4, minmax(160px, 1fr)); }
 }

@@ -6,6 +6,10 @@ const featuredCats = [
   { name: 'Shadow', age: '1' },
 ];
 
+const BREEDS = ['Sphynx', 'Peterbald', 'Birman', 'Abyssinian', 'Persian', 'Bengal', 'Siamese'];
+
+const FALLBACK_IMAGE = 'https://placekitten.com/400/300';
+
 export default function Home() {
   const [cats, setCats] = useState([]);
 
@@ -14,21 +18,28 @@ export default function Home() {
       try {
         const responses = await Promise.all(
           featuredCats.map(() =>
-            fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
-              res.json()
-            )
+            fetch('https://api.thecatapi.com/v1/images/search')
+              .then((res) => res.json())
+              .catch(() => null) 
           )
         );
 
-        const catsWithImages = featuredCats.map((cat, index) => ({
-          ...cat,
-          image: responses[index][0].url,
-        }));
+        const catsWithImages = featuredCats.map((cat, index) => {
+          const url =
+            responses[index] && Array.isArray(responses[index]) && responses[index][0] && responses[index][0].url
+              ? responses[index][0].url
+              : FALLBACK_IMAGE;
+          return {
+            ...cat,
+            image: url,
+            breed: cat.breed || BREEDS[index % BREEDS.length],
+          };
+        });
 
-        // Replace the state once with fetched images to avoid re-renders
         setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
+        setCats(featuredCats.map((cat, index) => ({ ...cat, image: FALLBACK_IMAGE, breed: cat.breed || BREEDS[index % BREEDS.length] })));
       }
     };
 
@@ -56,9 +67,15 @@ export default function Home() {
                   src={cat.image}
                   alt={cat.name}
                   className="cat-image"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = FALLBACK_IMAGE;
+                  }}
                 />
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
+                  <p className="mb-0">Breed: {cat.breed}</p>
                   <p className="mb-0">Age: {cat.age}</p>
                 </div>
               </div>
