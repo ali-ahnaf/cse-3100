@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' },
-  { name: 'Mittens', age: '2' },
-  { name: 'Shadow', age: '1' },
+  { name: 'Whiskers', age: '2', breed: 'Siamese' },
+  { name: 'Mittens', age: '2', breed: 'Bengal' },
+  { name: 'Shadow', age: '1', breed: 'Persian' },
 ];
 
 export default function Home() {
   const [cats, setCats] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let cancelled = false;
+
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
@@ -20,25 +23,28 @@ export default function Home() {
           )
         );
 
+        if (cancelled) return;
+
         const catsWithImages = featuredCats.map((cat, index) => ({
           ...cat,
-          image: responses[index][0].url,
+          image: responses[index]?.[0]?.url || '',
         }));
 
-        setCats((prevCats) => [...prevCats, ...catsWithImages]);
-
-        if (cats.length > 10) {
-          alert(
-            'Hey, you should quickly fix this infinite state loop before your PC crashes! Stop the App, Refresh the browser and fix the bug!! '
-          );
-        }
+        // replace state once (avoid appending repeatedly which caused the loop)
+        setCats(catsWithImages);
       } catch (error) {
         console.error('Error fetching cat images:', error);
+      } finally {
+        if (!cancelled) setLoading(false);
       }
     };
 
     fetchCatImages();
-  });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []); // run once on mount
 
   return (
     <>
@@ -53,24 +59,37 @@ export default function Home() {
 
       <section className="mt-5">
         <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
+
+        {/* CSS Grid container to ensure cards display in a responsive grid */}
+        <div
+          id="cats-container"
+          className="mt-2"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '1rem',
+            alignItems: 'start',
+          }}
+        >
+          {loading && <p>Loading cats...</p>}
           {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
+            <div key={`${cat.name}-${i}`} className="cat-grid-item">
               <div className="cat-card">
                 <img
-                  src={cat.image}
+                  src={cat.image || '/placeholder-cat.png'}
                   alt={cat.name}
                   className="img-fluid mb-2"
                   style={{
                     borderRadius: '8px',
                     height: '200px',
                     objectFit: 'cover',
+                    width: '100%',
                   }}
                 />
                 <div className="cat-info">
                   <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
+                  <p className="mb-0 text-muted">Breed: {cat.breed}</p>
                 </div>
               </div>
             </div>
