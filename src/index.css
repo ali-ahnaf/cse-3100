@@ -574,3 +574,123 @@ section h3 {
   font-size: 0.85rem;
   color: #777;
 }
+
+/* ---------- Contact Page Styling ---------- */
+.contact-section {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.contact-section p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+/* Office Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.contact-info strong {
+  color: var(--primary);
+}
+
+/* Form Styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  font-weight: 600;
+  color: #2b0e56;
+  margin-bottom: 6px;
+}
+
+.form-row input,
+.form-row textarea {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  background: #fff;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: 3px solid var(--focus-outline);
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(139,92,246,0.12);
+}
+
+/* Submit Button */
+.contact-form .btn-primary {
+  width: fit-content;
+  padding: 0.75rem 1.5rem;
+  align-self: center;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(180deg, var(--accent), var(--primary));
+  color: #fff;
+  box-shadow: 0 18px 50px rgba(107,33,168,0.12);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
+}
+
+.contact-form .btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow);
+  opacity: 0.98;
+}
+
+/* Submitted Message */
+.contact-success {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #ffffff, #fafafa);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  color: #2b0e56;
+  font-size: 1.05rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-row input,
+  .form-row textarea {
+    font-size: 0.9rem;
+  }
+
+  .contact-form .btn-primary {
+    width: 100%;
+  }
+}
+
