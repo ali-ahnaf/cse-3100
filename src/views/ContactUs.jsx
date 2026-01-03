@@ -2,11 +2,11 @@ export default function ContactUs() {
   return (
     <section className="contact-section">
       <div className="container">
-        <h2 className="contact-heading">Contact us</h2>
+        <h2 className="contact-heading">Contact Us</h2>
         <p className="contact-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          We would love to hear from you! Whether you have questions about adopting a cat,
+          want to donate, or simply want to learn more about our organization, feel free to
+          reach out. Our team is dedicated to providing prompt and helpful responses to all inquiries.
         </p>
 
         <form className="contact-form">

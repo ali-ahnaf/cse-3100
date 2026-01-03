@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const featuredCats = [
   {
-    name: 'Whiskers',
+    name: 'Mochi',
     age: '2',
     breed: 'Siamese',
     location: 'Shelter A',
@@ -10,15 +10,7 @@ const featuredCats = [
     image: 'https://cdn2.thecatapi.com/images/9j7.jpg',
   },
   {
-    name: 'Mittens',
-    age: '2',
-    breed: 'Persian',
-    location: 'Foster Home',
-    description: 'Calm lap cat who enjoys quiet afternoons and gentle brushing.',
-    image: 'https://cdn2.thecatapi.com/images/ae.jpg',
-  },
-  {
-    name: 'Shadow',
+    name: 'Nemo',
     age: '1',
     breed: 'Abyssinian',
     location: 'Shelter B',
@@ -26,7 +18,7 @@ const featuredCats = [
     image: 'https://cdn2.thecatapi.com/images/bb.jpg',
   },
   {
-    name: 'Pumpkin',
+    name: 'Tiger',
     age: '3',
     breed: 'Bengal',
     location: 'Shelter A',
@@ -34,7 +26,7 @@ const featuredCats = [
     image: 'https://cdn2.thecatapi.com/images/cc.jpg',
   },
   {
-    name: 'Luna',
+    name: 'Lily',
     age: '4',
     breed: 'Birman',
     location: 'Foster Home',
@@ -48,6 +40,14 @@ const featuredCats = [
     location: 'Shelter C',
     description: 'Affectionate and attention-seeking; loves warmth and cuddles.',
     image: 'https://cdn2.thecatapi.com/images/ee.jpg',
+  },
+  {
+    name: 'Cleo',
+    age: '2',
+    breed: 'Persian',
+    location: 'Foster Home',
+    description: 'Calm lap cat who enjoys quiet afternoons and gentle brushing.',
+    image: 'https://cdn2.thecatapi.com/images/ae.jpg',
   },
 ];
 
@@ -107,11 +107,21 @@ export default function Home() {
                 style={{
                   backgroundColor: '#fffefc',
                   borderRadius: '10px',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                  boxShadow: '0 4px 12px rgba(182,110,65,0.15)',
                   overflow: 'hidden',
                   textAlign: 'center',
                   display: 'flex',
                   flexDirection: 'column',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  e.currentTarget.style.boxShadow = '0 8px 20px rgba(182,110,65,0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(182,110,65,0.15)';
                 }}
               >
                 <img
@@ -119,7 +129,7 @@ export default function Home() {
                   alt={cat.name}
                   style={{
                     width: '100%',
-                    height: '220px',
+                    height: '220px', // slightly smaller
                     objectFit: 'cover',
                   }}
                 />

@@ -75,7 +75,9 @@ export default function AvailableCats() {
   return (
     <section className="available-cats-section">
       <div className="container">
-        <h2 className="text-center mb-3">Available Cats</h2>
+        <h2 className="text-center" style={{ marginBottom: '2rem' }}>
+          Available Cats
+        </h2>
 
         {/* Search Box */}
         <div className="filters-row">
