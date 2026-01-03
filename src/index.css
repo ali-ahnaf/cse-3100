@@ -1,48 +1,145 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --max-width: 1600px;
+  --brand-color: #98db1c;
+  --accent: #ff8b07;
 }
 
 .layout {
   display: flex;
   min-height: 100vh;
-  overflow: hidden;
-  transform: rotate(1deg);
+  flex-direction: column;
+  background: #ebf4dd;
 }
 
 header {
+  display: flex;
+  align-items: center;
   padding: 1em;
-  background-color: #fff;
-  color: #fff;
+  background-color: #90ab8b;
+  color: #000000;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-buttons .btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #ffffff;
+  color: #000;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.nav-buttons .btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.brand h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #000;
 }
 
 main {
   flex: 1;
   padding: 1em;
-  display: list-item;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 footer {
   padding: 1em;
   text-align: right;
-  position: fixed;
   top: 0;
-  width: 100%;
-  z-index: 9999;
-  background: red;
+  background-color: #90ab8b;
+  color: #000000;
 }
 
 .cat-card {
   border: 1px solid #ddd;
+  border-radius: 8px;
+
+  background: #fff;
   text-align: center;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   overflow: hidden;
 }
 
 .cat-info {
-  background: #000;
+  background: #5a7863;
   color: #fff;
   border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.cat-card img {
+  display: block;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  .cat-card img {
+    height: 450px;
+  }
+  .header-inner {
+    padding: 0.5rem;
+  }
+  .brand h1 {
+    font-size: 1rem;
+  }
+}
+
+.donate-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #98db1c;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 60px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.donate-btn:hover {
+  background-color: #f6ffe6;
+  border-color: #7fc400;
+}
+
+.donate-btn:active {
+  transform: scale(0.97);
 }
