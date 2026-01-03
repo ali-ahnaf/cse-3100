@@ -90,6 +90,24 @@ main {
   color: #555;
 }
 
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+.filters select,
+.filters input[type="text"] {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.filters select { min-width: 160px; }
+
 footer {
   padding: 1rem 2rem;
   text-align: right;

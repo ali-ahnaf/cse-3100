@@ -19,8 +19,15 @@ const MAX_RETRIES = 3;
 
 export default function AvailableCats() {
   const [cats, setCats] = useState([]);
+  const [selectedBreed, setSelectedBreed] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
- 
+  const filteredCats = cats.filter((cat) => {
+    const matchesBreed = selectedBreed === 'All' || cat.breed === selectedBreed;
+    const matchesName = cat.name.toLowerCase().includes(searchQuery.trim().toLowerCase());
+    return matchesBreed && matchesName;
+  });
+
   const fetchReplacement = async (index, attempt = 0) => {
     if (attempt >= MAX_RETRIES) {
       setCats((prev) => prev.map((c, i) => (i === index ? { ...c, imageFailed: true } : c)));
@@ -114,29 +121,51 @@ export default function AvailableCats() {
       <h2>Available Cats</h2>
       <p>Meet our adorable cats looking for their forever home!</p>
 
+      <div className="filters">
+        <select value={selectedBreed} onChange={(e) => setSelectedBreed(e.target.value)}>
+          <option value="All">All breeds</option>
+          {BREEDS.map((b) => (
+            <option key={b} value={b}>
+              {b}
+            </option>
+          ))}
+        </select>
+
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
       <div className="mt-2 cats-container">
-        {cats.map((cat, i) => (
-          <div key={i} className="cat-item">
-            <div className="cat-card">
-              {cat.image && !cat.imageFailed ? (
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="cat-image"
-                  loading="lazy"
-                  onError={() => handleImageError(i)}
-                />
-              ) : (
-                <div className="image-placeholder">Image unavailable</div>
-              )}
-              <div className="cat-info">
-                <h3 className="h5 mb-1">{cat.name}</h3>
-                <p className="mb-0">Breed: {cat.breed}</p>
-                <p className="mb-0">Age: {cat.age}</p>
+        {filteredCats.length === 0 ? (
+          <p>No cats found.</p>
+        ) : (
+          filteredCats.map((cat, i) => (
+            <div key={i} className="cat-item">
+              <div className="cat-card">
+                {cat.image && !cat.imageFailed ? (
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="cat-image"
+                    loading="lazy"
+                    onError={() => handleImageError(i)}
+                  />
+                ) : (
+                  <div className="image-placeholder">Image unavailable</div>
+                )}
+                <div className="cat-info">
+                  <h3 className="h5 mb-1">{cat.name}</h3>
+                  <p className="mb-0">Breed: {cat.breed}</p>
+                  <p className="mb-0">Age: {cat.age}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </section>
   );
