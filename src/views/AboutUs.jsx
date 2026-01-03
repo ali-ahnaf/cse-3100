@@ -4,17 +4,17 @@ import member3 from '../assets/team/member3.jpg';
 
 const team = [
   {
-    name: 'Bob Doe',
+    name: 'Asmita',
     role: 'Director',
     image: member1
   },
   {
-    name: 'Jane Smith',
+    name: 'Humayra',
     role: 'Director',
     image: member2
   },
   {
-    name: 'John Wilson',
+    name: 'Zamila',
     role: 'Director',
     image: member3
   }

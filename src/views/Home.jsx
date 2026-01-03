@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const featuredCats = [
   { name: 'Whiskers', age: '2' },
   { name: 'Mittens', age: '2' },
-  { name:  'Shadow', age: '1' },
+  { name: 'Shadow', age: '1' },
 ];
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(
-          featuredCats. map(() =>
+          featuredCats.map(() =>
             fetch('https://api.thecatapi.com/v1/images/search').then((res) =>
               res.json()
             )
@@ -32,15 +32,16 @@ export default function Home() {
     };
 
     fetchCatImages();
-  }, []);  
+  }, []);
   return (
     <>
       <section className="text-center mt-4">
         <h2>Welcome to Purrfect Adoption</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
+          Find your perfect feline companion and give a deserving cat a loving forever home.
+          Every cat in our care has been rescued, health-checked, and is ready to bring joy
+          and companionship into your life.  Browse our available cats, learn about our mission,
+          and take the first step toward making a difference in a cat's life today.
         </p>
       </section>
 

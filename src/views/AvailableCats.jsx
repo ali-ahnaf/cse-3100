@@ -4,10 +4,10 @@ const availableCats = [
   { name: 'Whiskers', age: '2', breed: 'Persian' },
   { name: 'Mittens', age: '2', breed: 'Abyssinian' },
   { name: 'Shadow', age: '1', breed: 'Siamese' },
-  { name:  'Pumpkin', age: '3', breed: 'Maine Coon' },
-  { name: 'Luna', age: '4', breed:  'Persian' },
+  { name: 'Pumpkin', age: '3', breed: 'Maine Coon' },
+  { name: 'Luna', age: '4', breed: 'Persian' },
   { name: 'Simba', age: '2', breed: 'Bengal' },
-  { name: 'Tiger', age: '3', breed:  'Abyssinian' },
+  { name: 'Tiger', age: '3', breed: 'Abyssinian' },
   { name: 'Cleo', age: '2', breed: 'Siamese' },
 ];
 
@@ -29,7 +29,7 @@ export default function AvailableCats() {
         );
         const catsWithImages = availableCats.map((cat, index) => ({
           ...cat,
-          image: responses[index][0]. url,
+          image: responses[index][0].url,
         }));
 
         setCats(catsWithImages);
@@ -50,7 +50,7 @@ export default function AvailableCats() {
     }
 
     if (searchTerm) {
-      filtered = filtered. filter((cat) =>
+      filtered = filtered.filter((cat) =>
         cat.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
@@ -72,10 +72,10 @@ export default function AvailableCats() {
           <select
             id="breed-filter"
             value={selectedBreed}
-            onChange={(e) => setSelectedBreed(e. target.value)}
+            onChange={(e) => setSelectedBreed(e.target.value)}
           >
             <option value="">All Breeds</option>
-            {breeds. map((breed) => (
+            {breeds.map((breed) => (
               <option key={breed} value={breed}>
                 {breed}
               </option>
@@ -83,7 +83,7 @@ export default function AvailableCats() {
           </select>
         </div>
 
-        
+
         <div className="filter-group">
           <label htmlFor="search-box">Search by Name:</label>
           <input
@@ -111,7 +111,7 @@ export default function AvailableCats() {
                   }}
                 />
                 <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat. name}</h3>
+                  <h3 className="h5 mb-1">{cat.name}</h3>
                   <p className="mb-0">Age: {cat.age}</p>
                   <p className="mb-0">Breed: {cat.breed}</p>
                 </div>
@@ -120,7 +120,7 @@ export default function AvailableCats() {
           ))
         ) : (
           <p className="no-results">
-            No cats found matching your criteria. 
+            No cats found matching your criteria.
           </p>
         )}
       </div>
