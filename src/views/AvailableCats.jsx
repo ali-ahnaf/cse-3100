@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const availableCats = [
   {
@@ -33,22 +33,6 @@ const availableCats = [
     description: 'Active and playful; needs space to run.',
     image: 'https://cdn2.thecatapi.com/images/cc.jpg',
   },
-  {
-    name: 'Luna',
-    age: '4',
-    breed: 'Birman',
-    location: 'Foster Home',
-    description: 'Gentle and social; great with other pets.',
-    image: 'https://cdn2.thecatapi.com/images/dd.jpg',
-  },
-  {
-    name: 'Simba',
-    age: '2',
-    breed: 'Sphynx',
-    location: 'Shelter C',
-    description: 'Affectionate and attention-seeking.',
-    image: 'https://cdn2.thecatapi.com/images/ee.jpg',
-  },
 ];
 
 const BREEDS = [
@@ -63,32 +47,29 @@ const BREEDS = [
 ];
 
 export default function AvailableCats() {
-  const [cats, setCats] = useState([]);
-  const [filteredCats, setFilteredCats] = useState([]);
-  const [selectedBreed, setSelectedBreed] = useState('All');
-  const [searchName, setSearchName] = useState('');
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredCats, setFilteredCats] = useState(availableCats);
 
-  // Initialize cats
-  useEffect(() => {
-    setCats(availableCats);
-    setFilteredCats(availableCats); // show all by default
-  }, []);
-
-  // Filter logic only on search button click
   const handleSearch = () => {
-    let result = [...cats];
-
-    if (selectedBreed !== 'All') {
-      result = result.filter((cat) => cat.breed === selectedBreed);
+    if (!searchInput || searchInput.toLowerCase() === 'all') {
+      // Show all cats if input empty or "All"
+      setFilteredCats(availableCats);
+      return;
     }
 
-    if (searchName.trim() !== '') {
+    let result = [...availableCats];
+
+    // Check if input matches a breed
+    if (BREEDS.includes(searchInput) && searchInput !== 'All') {
+      result = result.filter((cat) => cat.breed === searchInput);
+    } else {
+      // Otherwise search by name
       result = result.filter((cat) =>
-        cat.name.toLowerCase().includes(searchName.toLowerCase())
+        cat.name.toLowerCase().includes(searchInput.toLowerCase())
       );
     }
 
-    setFilteredCats(result); // update cats based on search
+    setFilteredCats(result);
   };
 
   return (
@@ -96,33 +77,41 @@ export default function AvailableCats() {
       <div className="container">
         <h2 className="text-center mb-3">Available Cats</h2>
 
-        {/* Filters */}
+        {/* Search Box */}
         <div className="filters-row">
-          <select
-            className="breed-select"
-            value={selectedBreed}
-            onChange={(e) => setSelectedBreed(e.target.value)}
-          >
-            {BREEDS.map((breed) => (
-              <option key={breed} value={breed}>
-                {breed}
-              </option>
-            ))}
-          </select>
-
           <input
             type="text"
-            className="name-search"
-            placeholder="Search by name"
-            value={searchName}
-            onChange={(e) => setSearchName(e.target.value)}
+            className="search-box"
+            placeholder="Enter cat name or select breed..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            list="breeds"
+            style={{
+              padding: '0.5rem 1rem',
+              borderRadius: '0.5rem',
+              border: '1px solid #ccc',
+              width: '250px',
+            }}
           />
+          <datalist id="breeds">
+            {BREEDS.map((breed) => (
+              <option key={breed} value={breed} />
+            ))}
+          </datalist>
 
-          {/* Search Button */}
           <button
             type="button"
             className="search-btn"
             onClick={handleSearch}
+            style={{
+              padding: '0.5rem 1rem',
+              marginLeft: '0.5rem',
+              borderRadius: '0.5rem',
+              border: 'none',
+              backgroundColor: '#f28c28', // cat-themed color
+              color: '#fff',
+              cursor: 'pointer',
+            }}
           >
             Search
           </button>
@@ -137,7 +126,12 @@ export default function AvailableCats() {
               <div key={i} className="cat-card">
                 <div
                   className="cat-image"
-                  style={{ backgroundImage: `url(${cat.image})` }}
+                  style={{
+                    backgroundImage: `url(${cat.image})`,
+                    height: '200px',
+                    backgroundSize: 'cover',
+                    borderRadius: '0.5rem',
+                  }}
                 />
                 <div className="cat-info">
                   <h3>{cat.name}</h3>
