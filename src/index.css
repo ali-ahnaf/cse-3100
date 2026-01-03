@@ -97,7 +97,7 @@ main {
 }
 
 .filters {
-  /* let Bootstrap's .row manage layout; ensure items do not wrap */
+ 
   gap: 0.75rem;
   align-items: center;
   justify-content: flex-start;
@@ -174,11 +174,11 @@ footer {
   .brand a{ font-size: 1.25rem }
 }
 
-/* About/Contact styles */
+
 .about-hero{ position: relative; }
 .about-hero .display-5{ font-size: 2rem; }
 
-/* Navbar tweaks: keep brand left and refine links */
+
 .navbar .brand{ font-weight: 700; }
 .navbar .nav-link{ color: var(--accent); padding: 0.5rem 0.75rem; }
 .navbar .nav-link:hover{ color: rgba(0,0,0,0.85); }
@@ -196,13 +196,16 @@ footer {
 .contact-input{ border-radius: 10px; border: 1px solid #eceaf0; padding: 0.85rem 1rem; box-shadow: none; }
 .contact-input:focus{ outline: none; box-shadow: 0 6px 20px rgba(18,18,18,0.06); border-color: #e9e6f6; }
 
-.btn-gradient{
-  background: linear-gradient(90deg, #6b61ff 0%, #b96cff 60%);
+/* blue & white button for contact form */
+.btn-blue{
+  background: #1e60ff; /* solid blue */
   color: #fff;
   font-weight: 600;
   padding: 0.85rem 1.25rem;
-  box-shadow: 0 18px 34px rgba(107,97,255,0.18);
+  box-shadow: 0 8px 20px rgba(30,96,255,0.12);
+  border: none;
 }
+.btn-blue:hover{ background: #154ecc; }
 
 .contact-form{ max-width: 520px; margin-top: 0.5rem }
 .contact-form label{ display:block; margin-top: 0.75rem; margin-bottom: 0.5rem }
